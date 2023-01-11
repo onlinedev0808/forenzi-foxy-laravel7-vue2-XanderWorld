@@ -11,6 +11,19 @@
 #### Usiamo il pacchetto Laravel ui per creare un nuovo scaffolding vue con autenticazione
 `php artisan ui vue --auth`
 
+#### proteggo tutte le rotte con il middleware
+//! devo essere autenticato altrimenti non mi viene restituita la pagina di login
+Route::middleware('auth')
+    //! aggiorna ogni url
+    ->prefix('admin')
+    //! aggiorna la cartella all'interno della quale si trovano i controller 
+    ->namespace('Admin')
+    //! aggiorna ogni name
+    ->name('admin.')
+    ->group(function () {
+        Route::get('/home', 'HomeController@index')->name('home');
+    });
+
 #### Chiamiamo i comandi di "compilazione" del nostro progetto
 `npm install bootstrap`
 `npm install`
