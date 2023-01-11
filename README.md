@@ -12,7 +12,11 @@
 `php artisan ui vue --auth`
 
 #### Chiamiamo i comandi di "compilazione" del nostro progetto
+`npm install bootstrap`
 `npm install`
+#### Chiamiamo i comandi di "run" del nostro progetto
+`php artisan serve`
+`npm run watch`
 
 ## Creazione database & configurazione
 
