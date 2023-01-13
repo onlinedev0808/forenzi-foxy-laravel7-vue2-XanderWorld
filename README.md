@@ -11,15 +11,6 @@
 #### Usiamo il pacchetto Laravel ui per creare un nuovo scaffolding vue con autenticazione
 `php artisan ui vue --auth`
 
-#### Proteggo tutte le rotte con il middleware
-`Route::middleware('auth')
-    ->prefix('admin')
-    ->namespace('Admin')
-    ->name('admin.')
-    ->group(function () {
-        Route::get('/home', 'HomeController@index')->name('home');
-    });`
-
 #### Chiamiamo i comandi di "compilazione" del nostro progetto
 `npm install bootstrap`
 `npm install`
@@ -62,6 +53,13 @@ Inseriamo i dati relativi al database nel nostro file `.env`
 ### Gestione delle rotte
 #### Creo una nuova rotta per ogni indirizzo che voglio mandare ad un determinato metodo di un controller
 Mi occupo di gestire anche tutti i sistemi di raggruppamento o middleware per fare si che gli indirizzi siano accessibili esclusivamente a chi ritengo le possa visualizzare.
+`Route::middleware('auth')`
+    `->prefix('admin')`
+    `->namespace('Admin')`
+    `->name('admin.')`
+    `->group(function () {`
+        `Route::get('/home', 'HomeController@index')->name('home');`
+    `});`
 
 ## Layout
 ### Creazione dello scaffolding
