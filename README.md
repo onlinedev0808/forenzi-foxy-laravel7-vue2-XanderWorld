@@ -12,7 +12,11 @@
 `php artisan ui vue --auth`
 
 #### Chiamiamo i comandi di "compilazione" del nostro progetto
+`npm install bootstrap`
 `npm install`
+#### Chiamiamo i comandi di "run" del nostro progetto
+`php artisan serve`
+`npm run watch`
 
 ## Creazione database & configurazione
 
@@ -40,7 +44,8 @@ Inseriamo i dati relativi al database nel nostro file `.env`
 #### Creiamo i Seeder relativi ai nostri dati.
 1. Importiamo il nostro modello / i nostri modelli relativo/i.
 2. Creiamo la logica di popolamento, se favorevole usiamo i Faker (rimuovendo il pacchetto `composer remove fzaninotto/faker` ed inserendo `composer require fakerphp/faker`
-3. Ricordiamoci di salvare ogni modello popolato
+3. Ricordiamoci di salvare ogni modello popolato e inserire `use Faker\Generator as Faker;` per poter utilizzare faker
+
 
 ### Creazione dei controller
 #### Creo un controller per ogni risorsa di cui ho bisogno ed eventualmente anche per gestire link non relazionati ad una risorsa (ex. HomeController)
@@ -49,6 +54,13 @@ Inseriamo i dati relativi al database nel nostro file `.env`
 ### Gestione delle rotte
 #### Creo una nuova rotta per ogni indirizzo che voglio mandare ad un determinato metodo di un controller
 Mi occupo di gestire anche tutti i sistemi di raggruppamento o middleware per fare si che gli indirizzi siano accessibili esclusivamente a chi ritengo le possa visualizzare.
+`Route::middleware('auth')`
+    `->prefix('admin')`
+    `->namespace('Admin')`
+    `->name('admin.')`
+    `->group(function () {`
+        `Route::get('/home', 'HomeController@index')->name('home');`
+    `});`
 
 ## Layout
 ### Creazione dello scaffolding
