@@ -1,1 +1,17 @@
-//
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+//! Variables
+@import "variables";
+
+//! Blade
+@import "show.blade";
+
+//! General
+@import "general.scss";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// Fontawesome
+@import "~@fortawesome/fontawesome-free/css/all.css";

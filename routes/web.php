@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\userDetail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+
+// ! proteggo tutte le rotte con il middleware: devo essere autenticato altrimenti non mi viene restituita la pagina di login
+Route::middleware('auth')
+    //! aggiorna ogni url
+    ->prefix('admin')
+    //! aggiorna la cartella all'interno della quale si trovano i controller 
+    ->namespace('Admin')
+    //! aggiorna la cartella all'interno della quale si trovani i blade
+    ->name('admin.')
+    ->group(function () {
+        Route::get('/home', 'HomeController@index')->name('home');
+        Route::resource('/products', 'ProductController');
+        Route::resource('/orders', 'OrderController');
+        Route::resource('/payments', 'PaymentController');
+        Route::resource('/users', 'UserController');
+
+    });
