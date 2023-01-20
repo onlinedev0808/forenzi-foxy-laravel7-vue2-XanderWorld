@@ -19,8 +19,8 @@
                             class="form-control"
                             id="transaction_id"
                             name="transaction_id"
-                            rquired
-                            type="text"
+                            required
+                            type="number"
                             value="{{ old('transaction_id', $payment->transaction_id) }}"
                         />
                         <small
@@ -50,7 +50,7 @@
                             id="amount"
                             name="amount"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('amount', $payment->amount) }}"
                         />
                         <small
@@ -112,22 +112,22 @@
                     <div class="form-outline">
                         <label
                             class="form-label"
-                            for="status"
+                            for="status_payment"
                         >Stato Pagamento
                         </label>
                         <select
                             class="form-control"
-                            id="status"
-                            name="status"
+                            id="status_payment"
+                            name="status_payment"
                             required
                         >
 
-                            @foreach ($statuss as $status)
+                            @foreach ($payment_statuss as $status)
                                 <option
-                                    {{ $status->status == old('status', $payment->status) ? 'selected' : '' }}
-                                    value="{{ $status->status }}"
+                                    {{ $status->payment_status == old('payment_status', $payment->payment_status) ? 'selected' : '' }}
+                                    value="{{ $status->payment_status }}"
                                 >
-                                    {{ ucwords($status->status) }}
+                                    {{ ucwords($status->payment_status) }}
                                 </option>
                             @endforeach
 

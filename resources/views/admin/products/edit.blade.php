@@ -20,7 +20,7 @@
                             id="code"
                             name="code"
                             rquired
-                            type="text"
+                            type="number"
                             value="{{ old('code', $product->code) }}"
                         />
 
@@ -63,14 +63,14 @@
                         <label
                             class="form-label"
                             for="length"
-                        >Lato Lungo(cm)
+                        >Lato Lungo in cm
                         </label>
                         <input
                             class="form-control"
                             id="length"
                             name="length"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('length', $product->length) }}"
                         />
 
@@ -87,14 +87,14 @@
                         <label
                             class="form-label"
                             for="width"
-                        >Lato Corto(cm)
+                        >Lato Corto in cm
                         </label>
                         <input
                             class="form-control"
                             id="width"
                             name="width"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('width', $product->width) }}"
                         />
 
@@ -111,14 +111,14 @@
                         <label
                             class="form-label"
                             for="height"
-                        >Altezza(cm)
+                        >Altezza in cm
                         </label>
                         <input
                             class="form-control"
                             id="height"
                             name="height"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('height', $product->height) }}"
                         />
 
@@ -201,7 +201,7 @@
                 <hr>
 
                 <div class="col">
-                   
+
                     <div class="form-outline">
                         <label for="category_id">Categoria</label>
                         <select
@@ -249,7 +249,7 @@
                             id="first_price"
                             name="first_price"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('first_price', $product->first_price) }}"
                         />
 
@@ -273,7 +273,7 @@
                             id="second_price"
                             name="second_price"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('second_price', $product->second_price) }}"
                         />
 
@@ -297,7 +297,7 @@
                             id="third_price"
                             name="third_price"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('third_price', $product->third_price) }}"
                         />
 
@@ -321,7 +321,7 @@
                             id="fourth_price"
                             name="fourth_price"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('fourth_price', $product->fourth_price) }}"
                         />
 
@@ -349,7 +349,7 @@
                             id="price"
                             name="price"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('price', $product->price) }}"
                         />
 
@@ -394,7 +394,7 @@
                             id="quantity"
                             name="quantity"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('quantity', $product->quantity) }}"
                         />
 
@@ -409,14 +409,14 @@
                         <label
                             class="form-label"
                             for="weight"
-                        >Peso(kg)
+                        >Peso in kg
                         </label>
                         <input
                             class="form-control"
                             id="weight"
                             name="weight"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('weight', $product->weight) }}"
                         />
 
@@ -494,7 +494,7 @@
                         name="mini_description"
                         required
                         rows="4"
-                        style="white-space: nowrap !important;"
+                        style="white-space: wrap !important;"
                         type="text"
                     >{{ old('mini_description', $product->mini_description) }}</textarea>
 
@@ -522,7 +522,7 @@
                             name="description"
                             required
                             rows="10"
-                            style="white-space: nowrap !important;"
+                            style="white-space: wrap !important;"
                             type="text"
                         >{{ old('description', $product->description) }}</textarea>
 

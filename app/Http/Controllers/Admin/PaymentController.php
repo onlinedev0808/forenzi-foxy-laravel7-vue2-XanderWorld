@@ -63,8 +63,8 @@ class PaymentController extends Controller
     {
         $payment = Payment::findOrFail($id);
         $payment_methods = Payment::select('payment_method')->distinct()->get();
-        $statuss = Payment::select('status')->distinct()->get();
-        return view('admin.payments.edit', compact('payment', 'payment_methods', 'statuss'));
+        $payment_statuss = Payment::select('payment_status')->distinct()->get();
+        return view('admin.payments.edit', compact('payment', 'payment_methods', 'payment_statuss'));
     }
 
     /**
@@ -97,13 +97,12 @@ class PaymentController extends Controller
         $oldData->transaction_id = $data['transaction_id'];
         $oldData->amount = $data['amount'];
         $oldData->payment_method = $data['payment_method'];
-        $oldData->status = $data['status'];
+        $oldData->payment_status = $data['payment_status'];
         $oldData->save();
 
         return redirect()
             ->route('admin.payments.show', ['payment' => $oldData])
             ->with('edited', $data['transaction_id']);
-
     }
 
     /**

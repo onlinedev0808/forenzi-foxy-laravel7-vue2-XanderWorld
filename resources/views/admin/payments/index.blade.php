@@ -25,7 +25,8 @@
                 <table class="table table-dark table-hover text-center">
                     <thead>
                         <tr>
-                            <th scope="col">OrderNumber®</th>
+                            <th scope="col">Utente</th>
+                            <th scope="col">Numero Ordine</th>
                             <th scope="col">Numero Transizione</th>
                             <th scope="col">Metodo Di Pagamento</th>
                             <th scope="col">Stato Pagamento</th>
@@ -36,20 +37,21 @@
                     <tbody>
                         @forelse ($payments as $payment)
                             <tr>
-                                <th scope="row">{{ $payment->order->order_number }}</th>
-                                <td>{{ $payment->transaction_id }}</td>
+                                <th scope="row">{{ $payment->order->user->name }}</th>
+                                <th>{{ $payment->order->order_number }}</th>
+                                <th>{{ $payment->transaction_id }}</th>
                                 <td>{{ $payment->payment_method }}</td>
                                 <td>
                                     <span
                                         class="badge badge-pill py-1"
                                         style="
-                                        @if ($payment->status == 'success') background-color: #005c00;
-                                        @elseif($payment->status == 'failed') 
+                                        @if ($payment->payment_status == 'successo') background-color: #005c00;
+                                        @elseif($payment->payment_status == 'fallito') 
                                             background-color: #8b0000;
-                                        @elseif($payment->status == 'pending') 
+                                        @elseif($payment->payment_status == 'in attesa') 
                                             background-color: #cccc00; @endif"
                                     >
-                                        {{ $payment->status }}
+                                        {{ $payment->payment_status }}
                                     </span>
                                 </td>
                                 <td>€{{ $payment->amount }}</td>

@@ -26,7 +26,7 @@
                             <img
                                 alt="Image Title"
                                 class="postcard__img"
-                                src="https://blog.myurls.bio/wp-content/uploads/2021/05/Artboard-50-300x300.png"
+                                src="https://cdn0.iconfinder.com/data/icons/minimal-shop/256/minimal_shop_11-512.png"
                             />
                         </a>
                         <div class="postcard__text">

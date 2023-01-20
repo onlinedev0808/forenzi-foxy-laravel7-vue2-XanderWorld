@@ -279,7 +279,7 @@
                                     id="code_sdi"
                                     name="code_sdi"
                                     required
-                                    type="text"
+                                    type="number"
                                     value="{{ old('code_sdi', $user->userDetail->code_sdi) }}"
                                 />
 
@@ -292,7 +292,7 @@
                             </div>
                         </div>
 
-                        <div class="col">
+                        <div class="col d-flex align-items-center justify-content-center">
                             <div class="form-outline">
                                 <label
                                     class="form-label"
@@ -302,11 +302,11 @@
 
                                 <textarea
                                     class="form-control"
-                                    cols="30"
+                                    cols="40"
                                     id="notes"
                                     name="notes"
                                     required
-                                    rows="5"
+                                    rows="4"
                                     style="white-space: wrap !important;"
                                     type="text"
                                 >{{ old('notes', $user->userDetail->notes) }}</textarea>
@@ -334,6 +334,7 @@
                             class="form-control"
                             id="password"
                             name="password"
+                            required
                             type="text"
                             value="{{ old('password', '') }}"
                         />

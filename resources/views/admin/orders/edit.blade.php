@@ -306,7 +306,7 @@
                                     name="notes"
                                     required
                                     rows="4"
-                                    style="white-space: nowrap !important;"
+                                    style="white-space: wrap !important;"
                                     type="text"
                                 >{{ old('notes', $order->user->userDetail->notes) }}</textarea>
 

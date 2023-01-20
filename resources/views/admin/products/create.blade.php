@@ -20,7 +20,7 @@
                             id="code"
                             name="code"
                             rquired
-                            type="text"
+                            type="number"
                             value="{{ old('code', '') }}"
                         />
 
@@ -63,14 +63,14 @@
                         <label
                             class="form-label"
                             for="length"
-                        >Lato Lungo(cm)
+                        >Lato Lungo in cm
                         </label>
                         <input
                             class="form-control"
                             id="length"
                             name="length"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('length', '') }}"
                         />
 
@@ -87,14 +87,14 @@
                         <label
                             class="form-label"
                             for="width"
-                        >Lato Corto(cm)
+                        >Lato Corto in cm
                         </label>
                         <input
                             class="form-control"
                             id="width"
                             name="width"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('width', '') }}"
                         />
 
@@ -111,14 +111,14 @@
                         <label
                             class="form-label"
                             for="height"
-                        >Altezza(cm)
+                        >Altezza in cm
                         </label>
                         <input
                             class="form-control"
                             id="height"
                             name="height"
                             required
-                            type="text"
+                            type="number"
                             value="{{ old('height', '') }}"
                         />
 
@@ -492,7 +492,7 @@
                         name="mini_description"
                         required
                         rows="4"
-                        style="white-space: nowrap !important;"
+                        style="white-space: wrap !important;"
                         type="text"
                     >{{ old('mini_description', '') }}</textarea>
 
@@ -520,7 +520,7 @@
                             name="description"
                             required
                             rows="10"
-                            style="white-space: nowrap !important;"
+                            style="white-space: wrap !important;"
                             type="text"
                         >{{ old('description', '') }}</textarea>
 

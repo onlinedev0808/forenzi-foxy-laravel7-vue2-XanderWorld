@@ -104,11 +104,11 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $oldData->id,
-            'password' => 'nullable',
+            'password' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'business_name' => 'string|max:255',
             'address' => 'required|string|max:255',
-            'cap' => 'required|integer',
+            'cap' => 'required|string',
             'city' => 'required|string|max:255',
             'province' => 'required|string|max:255',
             'state' => 'required|string|max:255',
