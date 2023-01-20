@@ -48,16 +48,13 @@
                                 <li
                                     class="tag__item"
                                     style="
-                                        @if ($payment->status == 'success') background-color: #005c00;
-                                        @elseif($payment->status == 'failed') 
+                                        @if ($payment->payment_status == 'successo') background-color: #005c00;
+                                        @elseif($payment->payment_status == 'fallito') 
                                             background-color: #8b0000;
-                                        @elseif($payment->status == 'pending') 
+                                        @elseif($payment->payment_status == 'in attesa') 
                                             background-color: #cccc00; @endif"
-                                ><i class="fas fa-bus-alt mr-2"></i>{{ $payment->status }}</li>
-                                {{-- <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-                                <li class="tag__item play blue">
-                                    <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-                                </li> --}}
+                                ><i class="fas fa-bus-alt mr-2"></i>{{ $payment->payment_status }}</li>
+
                             </ul>
                         </div>
                     </article>

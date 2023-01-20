@@ -47,10 +47,9 @@
                         </label>
                         <input
                             class="form-control"
-                            id="amount"
                             name="amount"
                             required
-                            type="number"
+                            type="text"
                             value="{{ old('amount', $payment->amount) }}"
                         />
                         <small
@@ -112,13 +111,13 @@
                     <div class="form-outline">
                         <label
                             class="form-label"
-                            for="status_payment"
+                            for="payment_status"
                         >Stato Pagamento
                         </label>
                         <select
                             class="form-control"
-                            id="status_payment"
-                            name="status_payment"
+                            id="payment_status"
+                            name="payment_status"
                             required
                         >
 

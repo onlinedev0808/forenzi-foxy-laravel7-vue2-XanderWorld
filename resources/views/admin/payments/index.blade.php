@@ -52,6 +52,7 @@
                                             background-color: #cccc00; @endif"
                                     >
                                         {{ $payment->payment_status }}
+                                        
                                     </span>
                                 </td>
                                 <td>€{{ $payment->amount }}</td>

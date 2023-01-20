@@ -78,6 +78,7 @@ class PaymentController extends Controller
     {
         $oldData = Payment::findOrFail($id);
         $data = $request->all();
+        // dd($data);
 
         $request->validate(
             [
