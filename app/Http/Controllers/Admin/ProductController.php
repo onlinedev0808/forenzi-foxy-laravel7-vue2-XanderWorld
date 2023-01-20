@@ -80,32 +80,36 @@ class ProductController extends Controller
     {
         // $validation = $request->validate($this->validation, $this->validationCustom);
         $data = $request->all();
+        // dd($data);
 
-        // $request->validate(
-        //     [
-        //         'code' => [
-        //             'min:3',
-        //             'max:5',
-        //             'required',
-        //             Rule::unique('products', 'code'),
-        //         ],
-        //         'name' => [
-        //             'min:3',
-        //             'max:20',
-        //             'required',
-        //             Rule::unique('products', 'name'),
-        //         ],
-        //         'length' => 'min:1|numeric|required',
-        //         'width' => 'min:1|numeric|required',
-        //         'height' => 'min:1|numeric|required',
-        //         'color' => 'min:3|required',
-        //         'print' => 'min:3|required',
-        //         'description' => 'max:250',
-        //         'price' => 'min:1|numeric|required',
-        //         'quantity' => 'min:1|numeric|required',
-        //         'img' => 'min:3|active_url|url|required',
-        //     ]
-        // );
+        $validatedData = $request->validate([
+            'code' => [
+                'required',
+                'min:3',
+                'max:10',
+                Rule::unique('products')
+            ],
+            'name' => 'required|min:3|max:255',
+            'length' => 'required|numeric',
+            'height' => 'required|numeric',
+            'width' => 'required|numeric',
+            'color' => 'required|string',
+            'print' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'quantity' => 'required|integer',
+            'img' => 'required|url|max:2048',
+            'mini_description' => 'required|string',
+            'price_saled' => 'nullable|numeric',
+            'weight' => 'required|numeric',
+            'first_price' => 'numeric',
+            'second_price' => 'numeric',
+            'third_price' => 'numeric',
+            'fourth_price' => 'numeric',
+            'purchasable_in_multi_of' => 'required|integer',
+            'category_id' => 'required|integer|exists:categories,id',
+            'subcategory_id' => 'required|integer|exists:subcategories,id',
+        ]);
 
         // dd($data);
 
@@ -196,31 +200,35 @@ class ProductController extends Controller
         // dd($data);
 
         // $validation = $request->validate($this->validation, $this->validationCustom);
-        // $request->validate(
-        //     [
-        //         'code' => [
-        //             'min:3',
-        //             'max:5',
-        //             'required',
-        //             Rule::unique('products')->ignore($product['code'], 'code'),
-        //         ],
-        //         'name' => [
-        //             'min:3',
-        //             'max:20',
-        //             'required',
-        //             Rule::unique('products')->ignore($product['name'], 'name'),
-        //         ],
-        //         'length' => 'min:1|numeric|required',
-        //         'width' => 'min:1|numeric|required',
-        //         'height' => 'min:1|numeric|required',
-        //         'color' => 'min:3|required',
-        //         'print' => 'min:3|required',
-        //         'description' => 'max:250',
-        //         'price' => 'min:1|numeric|required',
-        //         'quantity' => 'min:1|numeric|required',
-        //         'img' => 'min:3|active_url|url|required',
-        //     ]
-        // );
+
+        $validatedData = $request->validate([
+            'code' => [
+                'required',
+                'min:3',
+                'max:10',
+                Rule::unique('products')->ignore($product->id)
+            ],
+            'name' => 'required|min:3|max:255',
+            'length' => 'required|numeric',
+            'height' => 'required|numeric',
+            'width' => 'required|numeric',
+            'color' => 'required|string',
+            'print' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'quantity' => 'required|integer',
+            'img' => 'required|url|max:2048',
+            'mini_description' => 'required|string',
+            'price_saled' => 'nullable|numeric',
+            'weight' => 'required|numeric',
+            'first_price' => 'numeric',
+            'second_price' => 'numeric',
+            'third_price' => 'numeric',
+            'fourth_price' => 'numeric',
+            'purchasable_in_multi_of' => 'required|integer',
+            'category_id' => 'required|integer|exists:categories,id',
+            'subcategory_id' => 'required|integer|exists:subcategories,id',
+        ]);
 
 
         //! non dobbiamo creare un new product ma modificare quello scelto

@@ -98,6 +98,24 @@
                     </tbody>
                 </table>
 
+                <div class="text-center row">
+
+                    <div class="card col-12 my-4 px-5">
+                        <div class="card-body">
+                            <h2 class="text-muted">Descrizione</h2>
+                            <p class="card-text">{{ $product->description }}</p>
+                        </div>
+                    </div>
+
+                    <div class="card col-12 my-4 px-5">
+                        <div class="card-body">
+                            <h2 class="text-muted">Descrizione Breve</h2>
+                            <p class="card-text">{{ $product->mini_description }}</p>
+                        </div>
+                    </div>
+
+                </div>
+
                 <a
                     class="btn btn-sm btn-primary btn-floating rounded-circle"
                     href="{{ route('admin.products.edit', $product->id) }}"

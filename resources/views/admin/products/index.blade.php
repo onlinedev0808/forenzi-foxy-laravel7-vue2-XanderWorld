@@ -25,18 +25,20 @@
                 <table class="table table-dark table-hover">
                     <thead>
                         <tr>
+                            <th scope="col">Categoria</th>
                             <th scope="col">Codice</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Misure</th>
                             <th scope="col">Quantità</th>
                             <th scope="col">Prezzo</th>
-                            <th scope="col">Settings</th>
+                            <th scope="col">Impostazioni</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($products as $product)
                             <tr>
-                                <th scope="row">{{ $product->code }}</th>
+                                <th scope="row">{{ $product->category->name }}</th>
+                                <td>{{ $product->code }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->length }} x {{ $product->width }} x {{ $product->height }}</td>
                                 <td>{{ $product->quantity }}</td>

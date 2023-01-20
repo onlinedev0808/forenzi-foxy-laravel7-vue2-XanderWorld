@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class userDetail extends Model
 {
+    protected $primaryKey = 'id';
     public function user()
     {
         return $this->belongsTo(User::class);

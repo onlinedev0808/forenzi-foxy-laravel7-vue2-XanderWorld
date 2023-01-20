@@ -13,11 +13,13 @@ class CategoryTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 10; $i++) {
-            $category = new Category();
-            $category->name = $faker->word;
-            $category->description = $faker->sentence(10);
-            $category->save();
+        $categories = ['category1', 'category2', 'category3', 'category4', 'category5', 'category6', 'category7', 'category8', 'category9', 'category10'];
+
+        foreach ($categories as $category) {
+            $newCategory = new Category();
+            $newCategory->name = $category;
+            $newCategory->description = $faker->sentence(10);
+            $newCategory->save();
         }
     }
 }

@@ -69,7 +69,6 @@
                     </div>
                 </div>
             </div>
-            <hr />
             <div class="row">
                 <div class="col">
                     <div class="form-outline">
@@ -150,7 +149,6 @@
                     </div>
                 </div>
             </div>
-            <hr>
             <div class="row justify-content-center m-4">
                 <button
                     class="btn btn-primary btn-floating rounded-circle"

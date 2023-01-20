@@ -57,7 +57,6 @@
                     </div>
                 </div>
             </div>
-            <hr />
             <div class="row">
                 <div class="col">
                     <div class="form-outline">
@@ -132,7 +131,8 @@
                     </div>
                 </div>
             </div>
-            <hr />
+            <hr>
+
             <div class="row align-items-center">
                 <div class="col">
                     <div class="form-outline">
@@ -197,6 +197,8 @@
                     </div>
                 </div>
 
+                <hr>
+
                 <div class="col">
                     <div class="form-outline">
                         <label for="category_id">Categoria</label>
@@ -204,10 +206,9 @@
                             class="form-control"
                             name="category_id"
                         >
-
                             @foreach ($categories as $category)
                                 <option
-                                    {{-- {{ $category->id == old('category', $product->category_id) ? 'selected' : '' }} --}}
+                                    {{ $category->id == old('category_id', '') ? 'selected' : '' }}
                                     value="{{ $category->id }}"
                                 >{{ $category->name }}</option>
                             @endforeach
@@ -219,21 +220,20 @@
                             class="form-control"
                             name="subcategory_id"
                         >
-
                             @foreach ($subcategories as $subcategory)
                                 <option
-                                    {{-- {{ $subcategory->subcategory == old('subcategory', '') ? 'selected' : '' }} --}}
+                                    {{ $subcategory->id == old('subcategory_id', '') ? 'selected' : '' }}
                                     value="{{ $subcategory->id }}"
-                                >
-                                    {{ ucwords($subcategory->name) }}
-                                </option>
+                                >{{ $subcategory->name }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
 
             </div>
+
             <hr>
+
             <div class="row">
                 <div class="col">
                     <div class="form-outline">
@@ -333,7 +333,6 @@
                 </div>
 
             </div>
-            <hr>
 
             <div class="row">
                 <div class="col-2">
@@ -369,7 +368,7 @@
                             class="form-control"
                             id="price_saled"
                             name="price_saled"
-                            type="text"
+                            type="number"
                             value="{{ old('price_saled', '') }}"
                         />
 
@@ -381,7 +380,6 @@
 
                     </div>
                 </div>
-
                 <div class="col-2">
                     <div class="form-outline">
                         <label
@@ -433,7 +431,7 @@
                         <label
                             class="form-label"
                             for="purchasable_in_multi_of"
-                        >Acquistabile in multi di
+                        >In Multi Di
                         </label>
                         <select
                             class="form-control"
@@ -479,7 +477,6 @@
                                 {{ $message }}
                             </div>
                         @enderror
-
                     </div>
                 </div>
                 <div class="col form-outline">
@@ -507,7 +504,7 @@
 
                 </div>
             </div>
-            <hr>
+
             <div class="row">
                 <div class="col">
                     <div class="form-outline">
@@ -536,6 +533,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row justify-content-center m-4">
                 <button
                     class="btn btn-primary btn-floating rounded-circle"

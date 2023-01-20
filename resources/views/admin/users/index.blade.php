@@ -25,7 +25,7 @@
                 <table class="table table-dark table-hover text-center">
                     <thead>
                         <tr>
-                            <th scope="col">Role®</th>
+                            <th scope="col">Admin</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Mail</th>
                             <th scope="col">Telefono</th>
@@ -35,7 +35,7 @@
                     <tbody>
                         @forelse ($users as $user)
                             <tr>
-                                <th scope="row">{{ $user->roles->first()->name }}</th>
+                                <th scope="row">{{ $user->userDetail->admin }}</th>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->userDetail->phone }}</td>
@@ -71,6 +71,7 @@
 
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>

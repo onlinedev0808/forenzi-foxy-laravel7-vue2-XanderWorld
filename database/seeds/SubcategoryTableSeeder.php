@@ -15,12 +15,18 @@ class SubcategoryTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         $categories = Category::all();
-        for ($i = 0; $i < 30; $i++) {
-            $subcategory = new Subcategory();
-            $subcategory->name = $faker->unique()->word;
-            $subcategory->description = $faker->paragraph;
-            $subcategory->category_id = $faker->randomElement($categories)->id;
-            $subcategory->save();
+
+        $subcategories = [
+            'subcategory1', 'subcategory2', 'subcategory3', 'subcategory4', 'subcategory5', 'subcategory6', 'subcategory7', 'subcategory8', 'subcategory9', 'subcategory10',
+            'subcategory11', 'subcategory12', 'subcategory13', 'subcategory14', 'subcategory15', 'subcategory16', 'subcategory17', 'subcategory18', 'subcategory19',
+        ];
+
+        foreach ($subcategories as $subcategory) {
+            $newSubcategory = new Subcategory();
+            $newSubcategory->name = $subcategory;
+            $newSubcategory->description = $faker->paragraph;
+            $newSubcategory->category_id = $faker->randomElement($categories)->id;
+            $newSubcategory->save();
         }
     }
 }

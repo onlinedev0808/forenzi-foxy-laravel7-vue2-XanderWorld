@@ -1,0 +1,36 @@
+.form-outline {
+    margin: 1rem 0rem;
+}
+//! h1 effect
+.wonder {
+    /* Base */
+
+    h5 {
+        color: hsl(0, 0%, 28%);
+        font-size: 20px;
+        font-weight: bold;
+        font-family: monospace;
+        letter-spacing: 7px;
+        cursor: pointer;
+    }
+
+    h5 span {
+        transition: 0.5s ease-out;
+    }
+    h5:hover span:nth-child(1) {
+        margin-right: 5px;
+    }
+    h5:hover span:nth-child(1):after {
+        content: " l'ordine";
+    }
+    h5:hover span:nth-child(2) {
+        margin-left: 20px;
+    }
+    h5:hover span:nth-child(2)::before {
+        content: "";
+    }
+    h5:hover span {
+        color: #000;
+        text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 40px #000;
+    }
+}

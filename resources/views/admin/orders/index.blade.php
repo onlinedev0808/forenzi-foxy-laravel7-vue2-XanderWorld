@@ -25,12 +25,13 @@
                 <table class="table table-dark table-hover text-center">
                     <thead>
                         <tr>
-                            <th scope="col">User®</th>
-                            <th scope="col">Numero Ordine</th>
-                            <th scope="col">Data Ordine</th>
-                            <th scope="col">Stato Ordine</th>
-                            <th scope="col">Prezzo Ordine</th>
-                            <th scope="col">Settings</th>
+                            <th scope="col">Utente</th>
+                            <th scope="col">Numero </th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Stato Ordine </th>
+                            <th scope="col">Stato Pagamento </th>
+                            <th scope="col">Totale</th>
+                            <th scope="col">Impostazioni</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,15 +44,28 @@
                                     <span
                                         class="badge badge-pill py-1"
                                         style="
-                                        @if ($order->status == 'delivered') background-color: #005c00;
-                                        @elseif($order->status == 'cancelled') 
+                                        @if ($order->status == 'consegnato') background-color: #005c00;
+                                        @elseif($order->status == 'annullato') 
                                             background-color: #8b0000;
-                                        @elseif($order->status == 'shipped') 
+                                        @elseif($order->status == 'spedito') 
                                             background-color: #000066;
-                                        @elseif($order->status == 'pending') 
+                                        @elseif($order->status == 'in attesa') 
                                             background-color: #cccc00; @endif"
                                     >
                                         {{ $order->status }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span
+                                        class="badge badge-pill py-1"
+                                        style="
+                                        @if ($order->payment->payment_status == 'successo') background-color: #005c00;
+                                        @elseif($order->payment->payment_status == 'fallito') 
+                                            background-color: #8b0000;
+                                        @elseif($order->payment->payment_status == 'in attesa') 
+                                            background-color: #cccc00; @endif"
+                                    >
+                                        {{ $order->payment->payment_status }}
                                     </span>
                                 </td>
                                 <td>€{{ $order->total }}</td>

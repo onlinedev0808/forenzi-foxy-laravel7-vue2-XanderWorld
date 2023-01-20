@@ -20,12 +20,10 @@ class RoleUserTableSeeder extends Seeder
         foreach ($users as $user) {
             if ($user->email === 'alexander.mymails@gmail.com') {
                 $user->roles()->attach(Role::where('name', 'super admin')->first());
-            }else{
+            } else {
                 $randomRole = $roles->random();
                 $user->roles()->attach($randomRole->id);
             }
-           
-
         }
     }
 }

@@ -57,7 +57,6 @@
                     </div>
                 </div>
             </div>
-            <hr />
             <div class="row">
                 <div class="col">
                     <div class="form-outline">
@@ -132,7 +131,8 @@
                     </div>
                 </div>
             </div>
-            <hr />
+            <hr>
+
             <div class="row align-items-center">
                 <div class="col">
                     <div class="form-outline">
@@ -198,7 +198,10 @@
                     </div>
                 </div>
 
+                <hr>
+
                 <div class="col">
+                   
                     <div class="form-outline">
                         <label for="category_id">Categoria</label>
                         <select
@@ -207,7 +210,7 @@
                         >
                             @foreach ($categories as $category)
                                 <option
-                                    {{ $category->id == old('category', $product->category_id) ? 'selected' : '' }}
+                                    {{ $category->id == old('category_id', $product->category_id) ? 'selected' : '' }}
                                     value="{{ $category->id }}"
                                 >{{ $category->name }}</option>
                             @endforeach
@@ -221,7 +224,7 @@
                         >
                             @foreach ($subcategories as $subcategory)
                                 <option
-                                    {{ $subcategory->id == old('subcategory', $product->subcategory_id) ? 'selected' : '' }}
+                                    {{ $subcategory->id == old('subcategory_id', $product->subcategory_id) ? 'selected' : '' }}
                                     value="{{ $subcategory->id }}"
                                 >{{ $subcategory->name }}</option>
                             @endforeach
@@ -231,7 +234,8 @@
 
             </div>
 
-            <hr />
+            <hr>
+
             <div class="row">
                 <div class="col">
                     <div class="form-outline">
@@ -331,7 +335,7 @@
                 </div>
 
             </div>
-            <hr>
+
             <div class="row">
                 <div class="col-2">
                     <div class="form-outline">
@@ -366,7 +370,7 @@
                             class="form-control"
                             id="price_saled"
                             name="price_saled"
-                            type="text"
+                            type="number"
                             value="{{ old('price_saled', $product->price_saled) }}"
                         />
 
@@ -429,7 +433,7 @@
                         <label
                             class="form-label"
                             for="purchasable_in_multi_of"
-                        >Acquistabile In Multi Di
+                        >In Multi Di
                         </label>
                         <select
                             class="form-control"
@@ -502,7 +506,7 @@
 
                 </div>
             </div>
-            <hr>
+
             <div class="row">
                 <div class="col">
                     <div class="form-outline">

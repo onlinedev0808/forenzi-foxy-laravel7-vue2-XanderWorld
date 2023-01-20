@@ -15,14 +15,14 @@ class PaymentsTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         $orders = Order::all();
-        $methods = ['card', 'bank', 'cash'];
-        $status = ['success', 'failed', 'pending'];
+        $methods = ['Bonifico', 'Contrassegno', 'PayPal'];
+        $status = ['successo', 'fallito', 'in attesa'];
         foreach ($orders as $order) {
             $payment = new Payment();
             $payment->transaction_id = $faker->randomNumber(8);
             $payment->amount = $order->total;
             $payment->payment_method = $faker->randomElement($methods);
-            $payment->status = $faker->randomElement($status);
+            $payment->payment_status = $faker->randomElement($status);
             $payment->order_id = $order->id;
             $payment->save();
         }

@@ -12,10 +12,17 @@ class UserDetailsTableSeeder extends Seeder
         //! prendo tutti gli utenti
         $users = User::all();
 
+        $levels = ['admin', 'vip-member',  'registered'];
+
         //! per ogni utente inserisco un dettaglio utente
         foreach ($users as $user) {
             $userDetail = new userDetail();
             $userDetail->user_id = $user->id;
+
+            $userDetail->surname = $faker->lastName();
+            $userDetail->business_name = $faker->domainName();
+            $userDetail->notes = $faker->paragraph();
+
             $userDetail->address = $faker->address();
             $userDetail->phone = $faker->phoneNumber();
             $userDetail->city = $faker->city();
@@ -24,7 +31,13 @@ class UserDetailsTableSeeder extends Seeder
             $userDetail->state = $faker->country();
             $userDetail->pec = $faker->email();
             $userDetail->code_sdi = $faker->randomNumber(8);
-            $userDetail->admin = $faker->boolean();
+
+            if ($user->email === 'alexander.mymails@gmail.com') {
+                $userDetail->admin = 'super admin';
+            } else {
+                $userDetail->admin = $faker->randomElement($levels);
+            }
+
             $userDetail->save();
         }
     }

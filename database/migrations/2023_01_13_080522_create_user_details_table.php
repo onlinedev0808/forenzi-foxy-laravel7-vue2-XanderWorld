@@ -14,7 +14,8 @@ class CreateUserDetailsTable extends Migration
     public function up()
     {
         Schema::create('user_details', function (Blueprint $table) {
-            $table->id('user_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->string('address');
             $table->string('phone');
             $table->string('city');
@@ -23,7 +24,7 @@ class CreateUserDetailsTable extends Migration
             $table->string('state');
             $table->string('pec');
             $table->string('code_sdi');
-            $table->boolean('admin')->default(0);
+            $table->string('admin')->default('registered');
             $table->timestamps();
 
             $table->foreign('user_id')

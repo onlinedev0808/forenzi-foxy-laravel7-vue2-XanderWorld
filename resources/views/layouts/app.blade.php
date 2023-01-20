@@ -71,6 +71,7 @@
                 >
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+
                         @guest
                         @else
                             <li class="nav-item dropdown mx-1">
@@ -83,7 +84,7 @@
                                     id="navbarDropdown"
                                     role="button"
                                 >
-                                    Orders
+                                    Users
                                 </a>
                                 <div
                                     aria-labelledby="navbarDropdown"
@@ -91,15 +92,10 @@
                                 >
                                     <a
                                         class="dropdown-item"
-                                        href="{{ route('admin.orders.index') }}"
-                                    >View All Orders</a>
-                                    <a
-                                        class="dropdown-item"
-                                        href="{{ route('admin.orders.create') }}"
-                                    >Add New Order</a>
+                                        href="{{ route('admin.users.index') }}"
+                                    >View All Users</a>
                                 </div>
                             </li>
-
                             <li class="nav-item dropdown mx-1">
 
                                 <a
@@ -138,6 +134,29 @@
                                     id="navbarDropdown"
                                     role="button"
                                 >
+                                    Orders
+                                </a>
+                                <div
+                                    aria-labelledby="navbarDropdown"
+                                    class="dropdown-menu"
+                                >
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ route('admin.orders.index') }}"
+                                    >View All Orders</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown mx-1">
+                                <a
+                                    aria-expanded="false"
+                                    aria-haspopup="true"
+                                    class="nav-link dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    href="#"
+                                    id="navbarDropdown"
+                                    role="button"
+                                >
                                     Payments
                                 </a>
                                 <div
@@ -155,36 +174,6 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item dropdown mx-1">
-                                <a
-                                    aria-expanded="false"
-                                    aria-haspopup="true"
-                                    class="nav-link dropdown-toggle"
-                                    data-toggle="dropdown"
-                                    href="#"
-                                    id="navbarDropdown"
-                                    role="button"
-                                >
-                                    Users
-                                </a>
-                                <div
-                                    aria-labelledby="navbarDropdown"
-                                    class="dropdown-menu"
-                                >
-                                    <a
-                                        class="dropdown-item"
-                                        href="{{ route('admin.users.index') }}"
-                                    >View All Users</a>
-                                    <a
-                                        class="dropdown-item"
-                                        href="{{ route('admin.users.create') }}"
-                                    >Add New User</a>
-                                    <a
-                                        class="dropdown-item"
-                                        href="{{ route('admin.users.create') }}"
-                                    >Add New User Detail</a>
-                                </div>
-                            </li>
                         @endguest
                     </ul>
 

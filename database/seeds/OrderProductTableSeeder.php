@@ -19,15 +19,16 @@ class OrderProductTableSeeder extends Seeder
 
         foreach ($orders as $order) {
             // Get a random number of products for the order
-            $numberOfProducts = rand(1, count($products));
+            // $numberOfProducts = rand(1, count($products));
+            $numberOfProducts = rand(1, 5);
 
             // Get a random set of products
             $selectedProducts = $products->random($numberOfProducts);
 
             foreach ($selectedProducts as $selectedProduct) {
-                // Attach the products to the order and save the pivot table data
+                
                 $order->products()->attach($selectedProduct->id, [
-                    'quantity' => rand(1, 100),
+                    'quantity' => rand(1, 10),
                     'created_at' => now(),
                     'updated_at' => now()
                 ]);
