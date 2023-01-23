@@ -2,7 +2,12 @@
     <div class="home">
         <div class="container">
             <div class="row">
-                <NavBoxesComponent />
+                <CardCategoryComponent
+                    v-for="category in categories"
+                    :key="category.id"
+                    :category="category"
+                />
+
                 <JumboComponent />
                 <BannerNewsComponent />
                 <BannerTextComponent
@@ -31,6 +36,9 @@
 </template>
 
 <script>
+import axios from "axios";
+import CardCategoryComponent from "../components/CardCategoryComponent.vue";
+
 import BannerNewsComponent from "../components/MainComponents/BannerNewsComponent.vue";
 import BannerTextComponent from "../components/MainComponents/BannerTextComponent.vue";
 import ClassicLeft from "../components/MainComponents/ClassicLeft.vue";
@@ -39,6 +47,7 @@ import ClassicRight from "../components/MainComponents/ClassicRight.vue";
 export default {
     name: "HomeComponent",
     components: {
+        CardCategoryComponent,
         BannerNewsComponent,
         BannerTextComponent,
         ClassicLeft,
@@ -46,6 +55,10 @@ export default {
     },
     data() {
         return {
+            categories: [],
+            currentPage: 1,
+            lastPage: null,
+            loading: false,
             txtbanners: [
                 {
                     title: "FoxyBox - Scatole di tutti i tipi consegnate in tempi record",
@@ -64,6 +77,27 @@ export default {
                 },
             ],
         };
+    },
+    methods: {
+        getCategories(pageCategories = 1) {
+            axios
+                .get("/api/categories", {
+                    page: pageCategories,
+                })
+                .then((response) => {
+                    console.log("categories");
+                    console.log(response.data.results.data);
+                    this.categories = response.data.results.data;
+                    this.currentPage = response.data.results.currentPage;
+                    this.lastPage = response.data.results.lastPage;
+                })
+                .catch((error) => {
+                    console.warn(error.message);
+                });
+        },
+    },
+    created() {
+        this.getCategories();
     },
 };
 </script>
