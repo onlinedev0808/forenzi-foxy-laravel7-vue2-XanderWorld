@@ -4,18 +4,17 @@
             <nav class="d-flex">
                 <div class="container d-flex flex-wrap justify-content-around">
                     <div
-                        class="card d-flex align-items-center position-relative"
-                        :class="category.color"
+                        class="card d-flex align-items-center position-relative gray-box"
                     >
                         <img
                             class="card-img-top"
-                            :src="category.img"
+                            src="https://picsum.photos/200/314"
                             alt="img"
                         />
                         <div class="litlogo position-absolute">
                             <img
                                 class="img-fluid"
-                                :src="category.img2"
+                                src="https://assets.msn.com/weathermapdata/1/static/svg/72/v6/card/SunnyDayV3.svg"
                                 alt="img2"
                             />
                         </div>
@@ -24,7 +23,7 @@
                             <span class="card-title">SCATOLE</span>
                             <br />
                             <span class="card-text font-weight-bold"
-                                >{{ category.name }}
+                                >PERSONALIIZATE
                             </span>
                         </div>
                     </div>
@@ -41,7 +40,6 @@
 
 <script>
 export default {
-    props: ["category"],
     data() {
         return {};
     },

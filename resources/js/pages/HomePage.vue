@@ -2,7 +2,13 @@
     <div class="home">
         <div class="container">
             <div class="row">
-                <NavBoxesComponent />
+                <NavBoxesComponent
+                    v-for="category in categories"
+                    :key="category.id"
+                    :category="category"
+                />
+                <CustomizeBoxesComponent />
+
                 <JumboComponent />
                 <BannerNewsComponent />
                 <BannerTextComponent
@@ -31,21 +37,31 @@
 </template>
 
 <script>
+import axios from "axios";
+import NavBoxesComponent from "../components/MainComponents/NavBoxesComponent.vue";
+
 import BannerNewsComponent from "../components/MainComponents/BannerNewsComponent.vue";
 import BannerTextComponent from "../components/MainComponents/BannerTextComponent.vue";
 import ClassicLeft from "../components/MainComponents/ClassicLeft.vue";
 import ClassicRight from "../components/MainComponents/ClassicRight.vue";
+import CustomizeBoxesComponent from "../components/MainComponents/CustomizeBoxesComponent.vue";
 
 export default {
     name: "HomeComponent",
     components: {
+        NavBoxesComponent,
         BannerNewsComponent,
         BannerTextComponent,
         ClassicLeft,
         ClassicRight,
+        CustomizeBoxesComponent,
     },
     data() {
         return {
+            categories: [],
+            currentPage: 1,
+            lastPage: null,
+            loading: false,
             txtbanners: [
                 {
                     title: "FoxyBox - Scatole di tutti i tipi consegnate in tempi record",
@@ -64,6 +80,27 @@ export default {
                 },
             ],
         };
+    },
+    methods: {
+        getCategories(pageCategories = 1) {
+            axios
+                .get("/api/categories", {
+                    page: pageCategories,
+                })
+                .then((response) => {
+                    console.log("categories");
+                    console.log(response.data.results.data);
+                    this.categories = response.data.results.data;
+                    this.currentPage = response.data.results.currentPage;
+                    this.lastPage = response.data.results.lastPage;
+                })
+                .catch((error) => {
+                    console.warn(error.message);
+                });
+        },
+    },
+    created() {
+        this.getCategories();
     },
 };
 </script>
