@@ -2,7 +2,7 @@
     <div>
         <HeaderTop />
         <HeaderBottom />
-        <MainComponent />
+        <HomePage />
         <FooterTop />
         <FooterBottom />
     </div>
@@ -11,7 +11,7 @@
 <script>
 import HeaderTop from "../components/HeaderComponents/HeaderTop.vue";
 import HeaderBottom from "../components/HeaderComponents/HeaderBottom.vue";
-import MainComponent from "../components/MainComponent.vue";
+import HomePage from "../pages/HomePage.vue";
 import FooterTop from "../components/FooterComponents/FooterTop.vue";
 import FooterBottom from "../components/FooterComponents/FooterBottom.vue";
 export default {
@@ -19,7 +19,7 @@ export default {
     components: {
         HeaderTop,
         HeaderBottom,
-        MainComponent,
+        HomePage,
         FooterTop,
         FooterBottom,
     },
@@ -30,6 +30,6 @@ export default {
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.css";
 body * {
-    font-size: 0.6rem;
+   
 }
 </style>
