@@ -1,0 +1,148 @@
+//! Background colors
+
+$orange: #f68630;
+$yellow: #fdbc48;
+$black: #000;
+$white: #fff;
+$gray: #f1f1f1;
+
+.bg-orange {
+  background-color: $orange;
+  border-radius: 0px;
+}
+.txt-orange {
+  color: $orange;
+}
+
+.bg-yellow {
+  background-color: $yellow;
+  border-radius: 0px;
+  color: white;
+  font-weight: bold;
+}
+
+.bg-gray {
+  background-color: $gray;
+  border-radius: 0px;
+  color: white;
+}
+
+.bg-white * {
+  background-color: $white;
+  color: $black;
+  border-radius: 0px;
+}
+
+//! Button styles
+
+.yellow-button {
+  background-color: #f68630;
+  border: none;
+  border-radius: 0px;
+  color: $white;
+  font-weight: bold;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 10px 0;
+  cursor: pointer;
+  &:hover {
+    filter: invert(100%);
+    transition: 1s;
+  }
+}
+
+.orange {
+  background-color: #f68630;
+  &:hover {
+    background-color: sandybrown;
+  }
+}
+
+//! width
+
+.w-10{
+  width: 10%;
+}
+
+//! Section with fixed height and padding
+
+section.classic {
+  padding: 2rem;
+}
+
+//! Styles for boxes with sale banner, stars, old and current price, header with image, and body with title
+
+.box {
+  position: relative;
+  width: 300px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  margin: 10px;
+  .sale-banner {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: red;
+    color: $white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 2px 10px;
+  }
+  .stars {
+    color: gray;
+    font-size: 14px;
+  }
+  .old-price {
+    color: #6c757d;
+    text-decoration: line-through;
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  .current-price {
+    color: $black;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .card-header {
+    height: 200px;
+    overflow: hidden;
+    padding: 1rem;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .card-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+  }
+}
+//! Unordered list with no list style and no padding
+ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+li {
+  margin-right: 50px;
+  i {
+    font-size: 2rem;
+  }
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}

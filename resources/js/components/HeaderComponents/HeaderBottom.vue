@@ -6,7 +6,7 @@
                     <div class="col-12 col-md-3 logo">
                         <img
                             class="img-fluid p-4"
-                            :src="asset('img/logo.png')"
+                            src="../../../../public/img/logo.png"
                             alt="Logo"
                         />
                     </div>
@@ -71,9 +71,7 @@
     </div>
 </template>
 
-<script>
-import { asset } from "vue-asset";
-</script>
+<script></script>
 
 errors: 1-Inserting lang=scss in the
 <style lang="scss">
@@ -82,25 +80,37 @@ input {
     border: 1px solid white;
     background-color: rgb(241, 241, 241);
     border-radius: 0px;
+    padding: 0px;
+    box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
     &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0px 15px 25px -5px rgba(0, 0, 0, 0.5);
     }
 }
 input::placeholder {
     font-weight: bold;
-    font-size: 0.8rem;
+    font-size: 0.5rem;
+    padding: 0.4rem;
 }
-button {
+button.btn.btn-outline-secondary {
     background-color: rgb(253, 188, 72);
-    color: white;
+    color: black;
     font-weight: bold;
     border: 0px;
-    border-radius: 0px;
-    padding: 0.8rem 1.2rem;
 
     &:hover {
         border-radius: 0px;
         transform: scale(0.9);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
     }
+}
+.logo img {
+    transition: transform 0.2s ease-in-out;
+}
+
+.logo img:hover {
+    filter: drop-shadow(8px 8px 10px rgba(0, 0, 0, 0.5));
 }
 </style>
 
