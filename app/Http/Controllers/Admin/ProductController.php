@@ -218,7 +218,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
-            'img' => 'required|max:256',
+            'img' => 'required|max:5000',
             'mini_description' => 'required|string',
             'price_saled' => 'nullable|numeric',
             'weight' => 'required|numeric',
@@ -232,7 +232,7 @@ class ProductController extends Controller
         ]);
 
 
-        $data['img'] = Storage::put('uploads', $data['img']);
+        $data['img'] = Storage::put('uploadedProducts', $data['img']);
 
         //! non dobbiamo creare un new product ma modificare quello scelto
         $product->category_id = $data['category_id'];

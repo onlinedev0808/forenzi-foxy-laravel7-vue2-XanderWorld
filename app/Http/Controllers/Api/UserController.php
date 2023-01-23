@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('userDetail')->get();
+        $users = User::with('userDetail')->with('order')->paginate(5);
         return response()->json([
             "response" => true,
             "count" => count($users),
@@ -52,7 +52,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::with('userDetail')->findOrFail($id);
+        $user = User::with('userDetail')->with('order')->findOrFail($id);
         return response()->json([
             "response" => true,
             "results" => $user

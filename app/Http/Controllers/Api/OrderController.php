@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::with('products')->paginate(5);
+        $orders = Order::with('products.category')->paginate(5);
         return response()->json([
             "response" => true,
             "count" => count($orders),
@@ -52,7 +52,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::with('products')->findOrFail($id);
+        $order = Order::with('products.category')->findOrFail($id);
         return response()->json([
             "response" => true,
             "results" => $order

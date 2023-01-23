@@ -21,24 +21,18 @@
                     <article class="postcard dark blue">
 
                         @if (filter_var($product->img, FILTER_VALIDATE_URL))
-                            {{-- <img
+                            <img
                                 alt="standard"
                                 class="postcard__img"
                                 src="{{ $product->img }} "
-                            /> --}}
+                            />
                         @else
                             <img
                                 alt="local"
                                 class="postcard__img"
-                                src="{{ asset('storage/' . $product->img) }} "
+                                src="{{ Storage::url($product->img) }}"
                             />
                         @endif
-
-                        <img
-                            alt="Image Title"
-                            class="postcard__img"
-                            src="{{ asset('storage/' . $product->img) }} "
-                        />
 
                         <div class="postcard__text">
                             <h1 class="postcard__title blue"><a href="{{-- {{ route('admin.products.show', $product->user->id) }} --}}">{{ $product->name }}</a>
