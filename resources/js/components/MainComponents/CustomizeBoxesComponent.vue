@@ -58,6 +58,8 @@ export default {
         border: 0px;
         transition: transform 0.2s;
         padding: 0px;
+        min-height: 180px;
+        max-height: 180px;
 
         &:hover {
             transform: scale(0.95);

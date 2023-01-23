@@ -2872,30 +2872,26 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "card-img-top",
     attrs: {
-      src: "https://picsum.photos/200/314",
+      src: _vm.category.img,
       alt: "img"
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("div", {
+    staticClass: "litlogo position-absolute"
+  }, [_c("img", {
+    staticClass: "img-fluid",
+    attrs: {
+      src: _vm.category.img2,
+      alt: "img2"
+    }
+  })]), _vm._v(" "), _c("div", {
     staticClass: "card-body text-center p-1"
   }, [_c("span", {
     staticClass: "card-title"
   }, [_vm._v("SCATOLE")]), _vm._v(" "), _c("br"), _vm._v(" "), _c("span", {
     staticClass: "card-text font-weight-bold"
-  }, [_vm._v(_vm._s(_vm.category.name) + "\n                        ")])])])])])]), _vm._v(" "), _vm._m(1)]);
+  }, [_vm._v(_vm._s(_vm.category.name) + "\n                        ")])])])])])]), _vm._v(" "), _vm._m(0)]);
 };
 var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "litlogo position-absolute"
-  }, [_c("img", {
-    staticClass: "img-fluid",
-    attrs: {
-      src: "https://assets.msn.com/weathermapdata/1/static/svg/72/v6/card/SunnyDayV3.svg",
-      alt: "img2"
-    }
-  })]);
-}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
@@ -3096,7 +3092,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".news-banner .new[data-v-6ac7586e] {\n  display: flex;\n  align-items: center;\n  padding: 4rem 0px;\n  font-size: 0.8rem;\n  height: 300px;\n  width: 33.33%;\n  background-color: lightgrey;\n  margin: 50px 2px;\n}\n.news-banner .new img[data-v-6ac7586e] {\n  height: 300px;\n}\n.news-banner .new .new-text[data-v-6ac7586e] {\n  padding: 10px;\n}\n.news-banner .new .new-text h1[data-v-6ac7586e],\n.news-banner .new .new-text h4[data-v-6ac7586e] {\n  color: rgb(246, 134, 48);\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".news-banner .new[data-v-6ac7586e] {\n  display: flex;\n  align-items: center;\n  padding: 4rem 0px;\n  font-size: 0.8rem;\n  height: 160px;\n  width: 33.33%;\n  background-color: lightgrey;\n  margin: 50px 2px;\n}\n.news-banner .new img[data-v-6ac7586e] {\n  height: 160px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.news-banner .new .new-text[data-v-6ac7586e] {\n  padding: 10px;\n}\n.news-banner .new .new-text h1[data-v-6ac7586e],\n.news-banner .new .new-text h4[data-v-6ac7586e] {\n  color: rgb(246, 134, 48);\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -3172,7 +3168,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".HeaderBoxes .container[data-v-5000c2dc] {\n  padding: 0px 5px;\n}\n.HeaderBoxes .card[data-v-5000c2dc] {\n  width: 8rem;\n  margin: 8px 0px;\n  border-radius: 0px;\n  border: 0px;\n  transition: transform 0.2s;\n  padding: 0px;\n}\n.HeaderBoxes .card[data-v-5000c2dc]:hover {\n  transform: scale(0.95);\n  cursor: pointer;\n}\n.HeaderBoxes .card span[data-v-5000c2dc] {\n  font-size: 0.8rem;\n}\n.HeaderBoxes .card img[data-v-5000c2dc] {\n  padding: 10px;\n  max-height: 120px;\n}\n.HeaderBoxes .card .litlogo[data-v-5000c2dc] {\n  bottom: 60px;\n  right: 0px;\n  height: 60px;\n  width: 60px;\n}\n.HeaderBoxes .orange-box[data-v-5000c2dc] {\n  background-color: rgb(245, 134, 47);\n}\n.HeaderBoxes .yellow-box[data-v-5000c2dc] {\n  background-color: rgb(253, 188, 72);\n}\n.HeaderBoxes .gray-box[data-v-5000c2dc] {\n  background-color: rgb(244, 244, 244);\n}", ""]);
+exports.push([module.i, ".HeaderBoxes .container[data-v-5000c2dc] {\n  padding: 0px 5px;\n}\n.HeaderBoxes .card[data-v-5000c2dc] {\n  width: 8rem;\n  margin: 8px 0px;\n  border-radius: 0px;\n  border: 0px;\n  transition: transform 0.2s;\n  padding: 0px;\n  min-height: 180px;\n  max-height: 180px;\n}\n.HeaderBoxes .card[data-v-5000c2dc]:hover {\n  transform: scale(0.95);\n  cursor: pointer;\n}\n.HeaderBoxes .card span[data-v-5000c2dc] {\n  font-size: 0.8rem;\n}\n.HeaderBoxes .card img[data-v-5000c2dc] {\n  padding: 10px;\n  max-height: 120px;\n}\n.HeaderBoxes .card .litlogo[data-v-5000c2dc] {\n  bottom: 60px;\n  right: 0px;\n  height: 60px;\n  width: 60px;\n}\n.HeaderBoxes .orange-box[data-v-5000c2dc] {\n  background-color: rgb(245, 134, 47);\n}\n.HeaderBoxes .yellow-box[data-v-5000c2dc] {\n  background-color: rgb(253, 188, 72);\n}\n.HeaderBoxes .gray-box[data-v-5000c2dc] {\n  background-color: rgb(244, 244, 244);\n}", ""]);
 
 // exports
 
@@ -3191,7 +3187,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".HeaderBoxes .container[data-v-e32e649c] {\n  padding: 0px 5px;\n}\n.HeaderBoxes .card[data-v-e32e649c] {\n  width: 8rem;\n  margin: 8px 0px;\n  border-radius: 0px;\n  border: 0px;\n  transition: transform 0.2s;\n  padding: 0px;\n}\n.HeaderBoxes .card[data-v-e32e649c]:hover {\n  transform: scale(0.95);\n  cursor: pointer;\n}\n.HeaderBoxes .card span[data-v-e32e649c] {\n  font-size: 0.8rem;\n}\n.HeaderBoxes .card img[data-v-e32e649c] {\n  padding: 10px;\n  max-height: 120px;\n}\n.HeaderBoxes .card .litlogo[data-v-e32e649c] {\n  bottom: 60px;\n  right: 0px;\n  height: 60px;\n  width: 60px;\n}\n.HeaderBoxes .orange-box[data-v-e32e649c] {\n  background-color: rgb(245, 134, 47);\n}\n.HeaderBoxes .yellow-box[data-v-e32e649c] {\n  background-color: rgb(253, 188, 72);\n}\n.HeaderBoxes .gray-box[data-v-e32e649c] {\n  background-color: rgb(244, 244, 244);\n}", ""]);
+exports.push([module.i, ".HeaderBoxes .container[data-v-e32e649c] {\n  padding: 0px 5px;\n}\n.HeaderBoxes .card[data-v-e32e649c] {\n  width: 8rem;\n  margin: 8px 0px;\n  border-radius: 0px;\n  border: 0px;\n  transition: transform 0.2s;\n  padding: 0px;\n  min-height: 180px;\n  max-height: 180px;\n}\n.HeaderBoxes .card[data-v-e32e649c]:hover {\n  transform: scale(0.95);\n  cursor: pointer;\n}\n.HeaderBoxes .card span[data-v-e32e649c] {\n  font-size: 0.8rem;\n}\n.HeaderBoxes .card img[data-v-e32e649c] {\n  padding: 10px;\n  max-height: 120px;\n}\n.HeaderBoxes .card .litlogo[data-v-e32e649c] {\n  bottom: 60px;\n  right: 0px;\n  height: 60px;\n  width: 60px;\n}\n.HeaderBoxes .orange-box[data-v-e32e649c] {\n  background-color: rgb(245, 134, 47);\n}\n.HeaderBoxes .yellow-box[data-v-e32e649c] {\n  background-color: rgb(253, 188, 72);\n}\n.HeaderBoxes .gray-box[data-v-e32e649c] {\n  background-color: rgb(244, 244, 244);\n}", ""]);
 
 // exports
 

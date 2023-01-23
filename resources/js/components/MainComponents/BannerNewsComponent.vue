@@ -69,13 +69,14 @@ export default {
 
         font-size: 0.8rem;
 
-        height: 300px;
+        height: 160px;
         width: 33.33%;
         background-color: lightgrey;
         margin: 50px 2px;
 
         img {
-            height: 300px;
+          height: 160px;
+            object-fit: cover;
         }
         .new-text {
             padding: 10px;

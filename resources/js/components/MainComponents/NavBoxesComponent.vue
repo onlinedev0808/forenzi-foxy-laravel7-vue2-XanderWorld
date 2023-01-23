@@ -9,13 +9,13 @@
                     >
                         <img
                             class="card-img-top"
-                            src="https://picsum.photos/200/314"
+                            :src="category.img"
                             alt="img"
                         />
                         <div class="litlogo position-absolute">
                             <img
                                 class="img-fluid"
-                                src="https://assets.msn.com/weathermapdata/1/static/svg/72/v6/card/SunnyDayV3.svg"
+                                :src="category.img2"
                                 alt="img2"
                             />
                         </div>
@@ -50,9 +50,9 @@ export default {
 
 <style lang="scss" scoped>
 .HeaderBoxes {
-  .container{
-    padding: 0px 5px;
-  }
+    .container {
+        padding: 0px 5px;
+    }
     .card {
         width: 8rem;
         margin: 8px 0px;
@@ -60,6 +60,8 @@ export default {
         border: 0px;
         transition: transform 0.2s;
         padding: 0px;
+        min-height: 180px;
+        max-height: 180px;
 
         &:hover {
             transform: scale(0.95);
