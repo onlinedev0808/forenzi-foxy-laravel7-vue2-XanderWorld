@@ -2,7 +2,7 @@
     <div class="home">
         <div class="container">
             <div class="row">
-                <CardCategoryComponent
+                <NavBoxesComponent
                     v-for="category in categories"
                     :key="category.id"
                     :category="category"
@@ -37,7 +37,7 @@
 
 <script>
 import axios from "axios";
-import CardCategoryComponent from "../components/CardCategoryComponent.vue";
+import NavBoxesComponent from "../components/MainComponents/NavBoxesComponent.vue";
 
 import BannerNewsComponent from "../components/MainComponents/BannerNewsComponent.vue";
 import BannerTextComponent from "../components/MainComponents/BannerTextComponent.vue";
@@ -47,7 +47,7 @@ import ClassicRight from "../components/MainComponents/ClassicRight.vue";
 export default {
     name: "HomeComponent",
     components: {
-        CardCategoryComponent,
+        NavBoxesComponent,
         BannerNewsComponent,
         BannerTextComponent,
         ClassicLeft,
