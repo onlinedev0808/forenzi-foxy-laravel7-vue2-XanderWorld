@@ -4,8 +4,7 @@
             <nav class="d-flex">
                 <div class="container d-flex flex-wrap justify-content-around">
                     <div
-                        class="card d-flex align-items-center position-relative"
-                        :class="category.color"
+                        class="card d-flex align-items-center position-relative gray-box"
                     >
                         <img
                             class="card-img-top"
@@ -24,7 +23,7 @@
                             <span class="card-title">SCATOLE</span>
                             <br />
                             <span class="card-text font-weight-bold"
-                                >{{ category.name }}
+                                >PERSONALIIZATE
                             </span>
                         </div>
                     </div>
@@ -41,7 +40,6 @@
 
 <script>
 export default {
-    props: ["category"],
     data() {
         return {};
     },
@@ -50,9 +48,9 @@ export default {
 
 <style lang="scss" scoped>
 .HeaderBoxes {
-  .container{
-    padding: 0px 5px;
-  }
+    .container {
+        padding: 0px 5px;
+    }
     .card {
         width: 8rem;
         margin: 8px 0px;

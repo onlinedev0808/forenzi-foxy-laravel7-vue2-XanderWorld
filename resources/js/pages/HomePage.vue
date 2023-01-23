@@ -7,6 +7,7 @@
                     :key="category.id"
                     :category="category"
                 />
+                <CustomizeBoxesComponent />
 
                 <JumboComponent />
                 <BannerNewsComponent />
@@ -43,6 +44,7 @@ import BannerNewsComponent from "../components/MainComponents/BannerNewsComponen
 import BannerTextComponent from "../components/MainComponents/BannerTextComponent.vue";
 import ClassicLeft from "../components/MainComponents/ClassicLeft.vue";
 import ClassicRight from "../components/MainComponents/ClassicRight.vue";
+import CustomizeBoxesComponent from "../components/MainComponents/CustomizeBoxesComponent.vue";
 
 export default {
     name: "HomeComponent",
@@ -52,6 +54,7 @@ export default {
         BannerTextComponent,
         ClassicLeft,
         ClassicRight,
+        CustomizeBoxesComponent,
     },
     data() {
         return {

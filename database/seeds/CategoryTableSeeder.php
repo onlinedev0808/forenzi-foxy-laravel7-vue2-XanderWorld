@@ -13,12 +13,16 @@ class CategoryTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $categories = ['category1', 'category2', 'category3', 'category4', 'category5', 'category6', 'category7', 'category8', 'category9', 'category10'];
+        $categories = ['category1', 'category2', 'category3', 'category4', 'category5', 'category6', 'category7'];
+        $colors = ['orange-box', 'yellow-box', 'gray-box'];
 
         foreach ($categories as $category) {
             $newCategory = new Category();
             $newCategory->name = $category;
             $newCategory->description = $faker->sentence(10);
+            $newCategory->color = $faker->randomElement($colors);
+            $newCategory->img = $faker->imageUrl(800, 600, 'cats');
+            $newCategory->img2 = $faker->imageUrl(800, 600, 'cats');
             $newCategory->save();
         }
     }
