@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
@@ -98,7 +99,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
-            'img' => 'required|url|max:255',
+            'img' => 'required|max:256',
             'mini_description' => 'required|string|max:255',
             'price_saled' => 'nullable|numeric',
             'weight' => 'required|numeric',
@@ -217,7 +218,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
-            'img' => 'required|url|max:2048',
+            'img' => 'required|max:256',
             'mini_description' => 'required|string',
             'price_saled' => 'nullable|numeric',
             'weight' => 'required|numeric',
@@ -230,6 +231,8 @@ class ProductController extends Controller
             'subcategory_id' => 'required|integer|exists:subcategories,id',
         ]);
 
+
+        $data['img'] = Storage::put('uploads', $data['img']);
 
         //! non dobbiamo creare un new product ma modificare quello scelto
         $product->category_id = $data['category_id'];

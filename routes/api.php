@@ -22,6 +22,10 @@ Route::namespace('Api')->group(function () {
     Route::get('/products', 'ProductController@index');
     Route::get('/products/{id}', 'ProductController@show');
     // Route::get('/products/{id}', 'ProductController@destroy');
+
     Route::get('/categories', 'CategoryController@index');
     Route::get('/categories/{id}', 'CategoryController@show');
+
+    Route::get('/orders', 'OrderController@index');
+    Route::get('/orders/{id}', 'OrderController@show');
 });

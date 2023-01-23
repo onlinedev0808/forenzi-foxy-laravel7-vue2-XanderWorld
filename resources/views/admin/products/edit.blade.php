@@ -3,6 +3,7 @@
 @section('content')
     <form
         action="{{ route('admin.products.update', $product->id) }}"
+        enctype="multipart/form-data"
         method="post"
     > @csrf @method('PUT')
 
@@ -470,7 +471,7 @@
                             id="img"
                             name="img"
                             required
-                            type="text"
+                            type="file"
                             value="{{ old('img', $product->img) }}"
                         />
 

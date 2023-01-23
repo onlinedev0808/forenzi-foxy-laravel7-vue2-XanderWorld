@@ -37,7 +37,7 @@
                     <tbody>
                         @forelse ($orders as $order)
                             <tr>
-                                <th scope="row">{{ $order->user->name }}</th>
+                                <th scope="row">{{ $order->user->email }}</th>
                                 <td>{{ $order->order_number }}</td>
                                 <td>{{ $order->order_date }}</td>
                                 <td>

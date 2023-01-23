@@ -3,6 +3,7 @@
 @section('content')
     <form
         action="{{ route('admin.products.store') }}"
+        enctype="multipart/form-data"
         method="post"
     > @csrf @method('POST')
 

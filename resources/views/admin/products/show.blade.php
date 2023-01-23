@@ -19,16 +19,27 @@
                 <section class="dark">
 
                     <article class="postcard dark blue">
-                        <a
-                            class="postcard__img_link"
-                            href="#"
-                        >
-                            <img
-                                alt="Image Title"
+
+                        @if (filter_var($product->img, FILTER_VALIDATE_URL))
+                            {{-- <img
+                                alt="standard"
                                 class="postcard__img"
-                                src="https://blog.myurls.bio/wp-content/uploads/2021/05/Artboard-50-300x300.png"
+                                src="{{ $product->img }} "
+                            /> --}}
+                        @else
+                            <img
+                                alt="local"
+                                class="postcard__img"
+                                src="{{ asset('storage/' . $product->img) }} "
                             />
-                        </a>
+                        @endif
+
+                        <img
+                            alt="Image Title"
+                            class="postcard__img"
+                            src="{{ asset('storage/' . $product->img) }} "
+                        />
+
                         <div class="postcard__text">
                             <h1 class="postcard__title blue"><a href="{{-- {{ route('admin.products.show', $product->user->id) }} --}}">{{ $product->name }}</a>
                             </h1>
