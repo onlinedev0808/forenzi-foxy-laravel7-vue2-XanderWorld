@@ -1,123 +1,157 @@
 <template>
-        <section class="boxes d-flex flex-wrap justify-content-center">
-                <div class="box" v-for="box in boxes" :key="box.title">
-                        <div class="card-header">
-                                <img class="img-fluid" src="../../../public/Links/scatole-di-cartone-2-onde.jpg"
-                                        :alt="box.title" />
-                        </div>
+    <section class="boxes d-flex flex-wrap justify-content-center">
+        <div class="box">
+            <div class="card-header">
+                <img
+                    class="img-fluid"
+                    src="https://static.wixstatic.com/media/2cd43b_0fe4090271224c51a780c0cccb961b83~mv2_d_2132_2400_s_2.png/v1/fill/w_320,h_360,q_90/2cd43b_0fe4090271224c51a780c0cccb961b83~mv2_d_2132_2400_s_2.png"
+                    :alt="product.name"
+                />
+            </div>
 
-                        <div class="card-body">
-                                <h5 class="card-title">{{ box . title }}</h5>
-                                <div class="stars">
-                                        <i v-for="n in box.stars" :key="n" class="fas fa-star"></i>
-                                        <i v-for="n in 5 - box.stars" :key="n" class="far fa-star"></i>
-                                </div>
-                                <div class="price d-flex align-items-center">
-                                        <div v-if="box.sale" class="sale-banner">Sale</div>
-                                        <p v-if="box.sale" class="old-price">{{ box . oldPrice }} €</p>
-                                        <p class="current-price">{{ box . currentPrice }} €</p>
-                                </div>
-                        </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <div class="price d-flex align-items-center">
+                    <div v-if="product.price_saled" class="sale-banner">
+                        Sale
+                    </div>
+                    <p v-if="product.price_saled" class="old-price">
+                        {{ product.price }} €
+                    </p>
+                    <p class="current-price">{{ product.price_saled }} €</p>
                 </div>
-        </section>
+                <div class="add-to-cart">
+                    <div class="quantity-input">
+                        <button @click="decrementQuantity" id="minus-button">
+                            -
+                        </button>
+                        <input
+                            class="font-weight-bold"
+                            v-model="quantity"
+                            type="number"
+                            readonly
+                            id="quantity-input"
+                        />
+                        <button @click="incrementQuantity" id="plus-button">
+                            +
+                        </button>
+                    </div>
+                    <button @click="addToCart" id="add-to-cart-button">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
-        export default {
-                data() {
-                        return {
-                                boxes: [{
-                                                sale: true,
-                                                image: "https://picsum.photos/200/300",
-                                                title: "Prodotto 1",
-                                                stars: 4,
-                                                oldPrice: 50,
-                                                currentPrice: 35,
-                                        },
-                                        {
-                                                sale: false,
-                                                image: "https://picsum.photos/200/300",
-                                                title: "Prodotto 2",
-                                                stars: 3,
-                                                oldPrice: null,
-                                                currentPrice: 40,
-                                        },
-                                        {
-                                                sale: true,
-                                                image: "https://picsum.photos/200/300",
-                                                title: "Prodotto 3",
-                                                stars: 5,
-                                                oldPrice: 60,
-                                                currentPrice: 45,
-                                        },
-                                        {
-                                                sale: false,
-                                                image: "https://picsum.photos/200/300",
-                                                title: "Prodotto 4",
-                                                stars: 3,
-                                                oldPrice: null,
-                                                currentPrice: 50,
-                                        },
-                                        {
-                                                sale: true,
-                                                image: "https://picsum.photos/200/300",
-                                                title: "Prodotto 5",
-                                                stars: 5,
-                                                oldPrice: 70,
-                                                currentPrice: 60,
-                                        },
-                                        {
-                                                sale: false,
-                                                image: "https://picsum.photos/200/300",
-                                                title: "Prodotto 6",
-                                                stars: 3,
-                                                oldPrice: null,
-                                                currentPrice: 40,
-                                        },
-                                        {
-                                                sale: true,
-                                                image: "https://picsum.photos/200/300",
-                                                title: "Prodotto 7",
-                                                stars: 4,
-                                                oldPrice: 60,
-                                                currentPrice: 45,
-                                        },
-                                        {
-                                                sale: false,
-                                                image: "https://picsum.photos/200/300",
-                                                title: "Prodotto 8",
-                                                stars: 3,
-                                                oldPrice: null,
-                                                currentPrice: 50,
-                                        },
-                                        {
-                                                sale: true,
-                                                image: "https://picsum.photos/200/300",
-                                                title: "Prodotto 9",
-                                                stars: 5,
-                                                oldPrice: 70,
-                                                currentPrice: 60,
-                                        },
-                                        {
-                                                sale: false,
-                                                image: "https://picsum.photos/200/300",
-                                                title: "Prodotto 10",
-                                                stars: 3,
-                                                oldPrice: null,
-                                                currentPrice: 40,
-                                        },
-                                        {
-                                                sale: true,
-                                                image: "https://picsum.photos/200/300",
-                                                title: "Prodotto 11",
-                                                stars: 4,
-                                                oldPrice: 60,
-                                                currentPrice: 45,
-                                        },
-                                ],
-                        };
-                },
+export default {
+    props: ["product"],
+    data() {
+        return {
+            quantity: this.product.purchasable_in_multi_of || 1,
         };
+    },
+    methods: {
+        addToCart() {
+            // code to add item to cart, for example
+            // using this.product and this.quantity to add the product to the cart
+        },
+        incrementQuantity() {
+            this.quantity += this.product.purchasable_in_multi_of || 1;
+        },
+        decrementQuantity() {
+            if (this.quantity >= (this.product.purchasable_in_multi_of || 1)) {
+                this.quantity -= this.product.purchasable_in_multi_of || 1;
+            }
+        },
+    },
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.box {
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+        transform: scale(1.05);
+    }
+
+    img {
+        object-fit: contain;
+    }
+
+    .card-body {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .card-title {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        .current-price,
+        .old-price {
+            font-size: 0.8rem;
+        }
+
+        .add-to-cart {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #add-to-cart-button {
+            background-color: black;
+            margin: 0.5rem 0;
+            color: white;
+            padding: 2px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #add-to-cart-button:hover {
+            background-color: #3e8e41;
+        }
+
+        .quantity-input {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        #minus-button,
+        #plus-button {
+            background-color: #ddd;
+            border: none;
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #minus-button:hover,
+        #plus-button:hover {
+            background-color: #ccc;
+        }
+
+        #quantity-input {
+            width: 60px;
+            text-align: center;
+            margin: 0px 10px;
+        }
+    }
+}
+</style>

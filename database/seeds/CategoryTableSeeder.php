@@ -13,16 +13,18 @@ class CategoryTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $categories = ['category1', 'category2', 'category3', 'category4', 'category5', 'category6', 'category7'];
+        $categories = ['1 ONDA', '2 ONDE', 'ECOLOGICHE', 'ECOMMERCE', 'NATALIZIE', 'CONFEZIONI', 'IMBALLAGGIO'];
         $colors = ['orange-box', 'yellow-box', 'gray-box'];
+        $image = ['https://www.freepnglogos.com/uploads/box-png/box-new-used-gaylord-boxes-for-sale-reliable-industries-llc-22.png'];
+        $logo = ['https://assets.msn.com/weathermapdata/1/static/svg/72/v6/card/SunnyDayV3.svg'];
 
         foreach ($categories as $category) {
             $newCategory = new Category();
             $newCategory->name = $category;
             $newCategory->description = $faker->sentence(10);
             $newCategory->color = $faker->randomElement($colors);
-            $newCategory->img = $faker->imageUrl(800, 600, 'cats');
-            $newCategory->img2 = $faker->imageUrl(800, 600, 'cats');
+            $newCategory->img = $faker->randomElement($image);
+            $newCategory->img2 = $faker->randomElement($logo);
             $newCategory->save();
         }
     }

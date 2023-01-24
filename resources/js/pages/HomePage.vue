@@ -18,7 +18,11 @@
                     :description="element.description"
                     :descriptionBold="element.descriptionBold"
                 />
-                <BoxesComponent />
+                <BoxesComponent
+                    v-for="product in products"
+                    :key="product.id"
+                    :product="product"
+                />
                 <HolidayComponent />
             </div>
         </div>
@@ -42,6 +46,7 @@ import NavBoxesComponent from "../components/MainComponents/NavBoxesComponent.vu
 
 import BannerNewsComponent from "../components/MainComponents/BannerNewsComponent.vue";
 import BannerTextComponent from "../components/MainComponents/BannerTextComponent.vue";
+import BoxesComponent from "../components/MainComponents/BoxesComponent.vue";
 import ClassicLeft from "../components/MainComponents/ClassicLeft.vue";
 import ClassicRight from "../components/MainComponents/ClassicRight.vue";
 import CustomizeBoxesComponent from "../components/MainComponents/CustomizeBoxesComponent.vue";
@@ -52,12 +57,14 @@ export default {
         NavBoxesComponent,
         BannerNewsComponent,
         BannerTextComponent,
+        BoxesComponent,
         ClassicLeft,
         ClassicRight,
         CustomizeBoxesComponent,
     },
     data() {
         return {
+            products: [],
             categories: [],
             currentPage: 1,
             lastPage: null,
@@ -98,9 +105,22 @@ export default {
                     console.warn(error.message);
                 });
         },
+        getProducts() {
+            axios
+                .get("/api/products", {})
+                .then((response) => {
+                    console.log("products");
+                    console.log(response.data.results);
+                    this.products = response.data.results;
+                })
+                .catch((error) => {
+                    console.warn(error.message);
+                });
+        },
     },
     created() {
         this.getCategories();
+        this.getProducts();
     },
 };
 </script>

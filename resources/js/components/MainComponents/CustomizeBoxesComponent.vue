@@ -8,7 +8,7 @@
                     >
                         <img
                             class="card-img-top"
-                            src="https://picsum.photos/200/314"
+                            src="https://static.wixstatic.com/media/2cd43b_0fe4090271224c51a780c0cccb961b83~mv2_d_2132_2400_s_2.png/v1/fill/w_320,h_360,q_90/2cd43b_0fe4090271224c51a780c0cccb961b83~mv2_d_2132_2400_s_2.png"
                             alt="img"
                         />
                         <div class="litlogo position-absolute">

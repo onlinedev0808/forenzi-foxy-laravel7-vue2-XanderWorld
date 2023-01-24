@@ -60,7 +60,7 @@ export default {};
 
 <style lang="scss" scoped>
 .HeaderTop {
-    width: 100vw;
+    width: 100%;
     height: fit-content;
     background-color: rgb(245, 133, 47);
     color: white;
