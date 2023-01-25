@@ -11,6 +11,8 @@
 
             <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
+                <h6 class="text-muted small">{{ product.category.name }}</h6>
+
                 <div class="price d-flex align-items-center">
                     <div v-if="product.price_saled" class="sale-banner">
                         Sale
@@ -36,7 +38,7 @@
                             +
                         </button>
                     </div>
-                    <button @click="addToCart" id="add-to-cart-button">
+                    <button @click="addToCart" class="yellow-button">
                         Add to Cart
                     </button>
                 </div>

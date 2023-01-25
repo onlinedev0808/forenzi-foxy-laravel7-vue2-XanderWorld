@@ -8111,6 +8111,8 @@ section.dark .blue:nth-child(2n)::before {
 
 .form-outline {
   margin: 1rem 0rem;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .wonder {

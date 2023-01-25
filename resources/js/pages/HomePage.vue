@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 <NavBoxesComponent
                     v-for="category in categories"
                     :key="category.id"
@@ -43,7 +43,6 @@
 <script>
 import axios from "axios";
 import NavBoxesComponent from "../components/MainComponents/NavBoxesComponent.vue";
-
 import BannerNewsComponent from "../components/MainComponents/BannerNewsComponent.vue";
 import BannerTextComponent from "../components/MainComponents/BannerTextComponent.vue";
 import BoxesComponent from "../components/MainComponents/BoxesComponent.vue";
@@ -83,7 +82,7 @@ export default {
                     description:
                         "Semplifica il tuo rifornimento di scatole, sono tutte in pronta consegna e le acquisti in pochi e semplici click!",
                     subdescription: "In più, la spedizione è sempre gratuita!",
-                    button: "",
+                    button: "SCOPRI IL PRODOTTO",
                 },
             ],
         };

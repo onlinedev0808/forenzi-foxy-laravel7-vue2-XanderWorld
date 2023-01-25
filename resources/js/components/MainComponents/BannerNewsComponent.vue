@@ -1,14 +1,14 @@
 <template>
     <section class="news-banner d-flex">
         <div class="new">
-            <div class="w-50">
+            <div class="w-25">
                 <img
                     class="img-fluid"
                     src="../../../../public/Links/side-view-of-smiling-curly-woman-pointing-away-pucho.jpg"
                     alt=""
                 />
             </div>
-            <div class="w-50">
+            <div class="w-75">
                 <div style="font-weight: bold" class="new-text">
                     <h1>NOVITÀ!!</h1>
                     <span>
@@ -75,7 +75,7 @@ export default {
         margin: 50px 2px;
 
         img {
-          height: 160px;
+            height: 160px;
             object-fit: cover;
         }
         .new-text {

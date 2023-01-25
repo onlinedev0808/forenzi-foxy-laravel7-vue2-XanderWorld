@@ -30,7 +30,7 @@ export default {};
     }
     .policy {
         display: contents;
-        font-size: .6rem;
+        font-size: 0.6rem;
     }
 }
 </style>

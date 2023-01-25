@@ -46,14 +46,12 @@
     </div>
 </template>
 
-<script>
-export default {};
-</script>
+<script></script>
 
 <style lang="scss" scoped>
 .FooterTop {
     padding: 3rem 0;
-
+    background-color: #f5f5f5;
     .footer-section {
         margin: 0px 50px;
         h3 {
@@ -69,11 +67,22 @@ export default {};
             color: white;
             padding: 0.1rem 1.5rem;
             margin: 0.5rem 0px;
-
-            transition: 1s;
+            border-radius: 4px;
+            transition: background-color 0.2s ease-in-out;
             &:hover {
-                filter: invert(2);
+                background-color: #3e8e41;
+                cursor: pointer;
             }
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            li {
+                margin: 0.5rem 0;
+            }
+        }
+        @media (max-width: 991px) {
+            margin: 0px 20px;
         }
     }
 }

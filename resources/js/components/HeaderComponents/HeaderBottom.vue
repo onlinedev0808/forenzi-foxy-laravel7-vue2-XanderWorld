@@ -5,7 +5,7 @@
                 <div class="row d-flex">
                     <div class="col-12 col-md-3 logo">
                         <img
-                            class="img-fluid p-4"
+                            class="img-fluid p-5 mb-2"
                             src="../../../../public/img/logo.png"
                             alt="Logo"
                         />
@@ -105,12 +105,45 @@ button.btn.btn-outline-secondary {
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
     }
 }
-.logo img {
-    transition: transform 0.2s ease-in-out;
-}
-
-.logo img:hover {
-    filter: drop-shadow(8px 8px 10px rgba(0, 0, 0, 0.5));
+.HeaderBottom {
+    background-color: #f5f5f5;
+    .HeaderSearch {
+        .container-lg {
+            .row {
+                .logo {
+                    img {
+                        width: 100%;
+                    }
+                }
+                .inputs {
+                    .input-group {
+                        input {
+                            border: none;
+                            background-color: transparent;
+                            padding: 0.5rem;
+                            font-size: 1rem;
+                            transition: all 0.3s ease-in-out;
+                            &:hover {
+                                box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.3);
+                            }
+                        }
+                        .input-group-append {
+                            button {
+                                background-color: #fda73c;
+                                color: #000;
+                                font-weight: bold;
+                                border: none;
+                                transition: all 0.3s ease-in-out;
+                                &:hover {
+                                    transform: scale(0.9);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 </style>
 
