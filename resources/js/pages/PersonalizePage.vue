@@ -1,12 +1,11 @@
 <template>
-    <div class="">
+    <div>
         <div class="d-flex flex-column align-items-center p-2">
             <h1 class="display-5 text-center font-weight-bold my-5">
                 CONFIGURA LA TUA SCATOLA SU MISURA IN MENO DI UN MINUTO!
             </h1>
             <hr class="w-10" />
         </div>
-
         <div class="bg-gray">
             <div class="container-lg">
                 <div class="row">
@@ -22,9 +21,7 @@
                                 :src="image.src"
                             />
                         </div>
-                    </div
-
-                    <div></div>
+                    </div>
 
                     <div>
                         <div class="row flex-wrap justify-content-center">
@@ -105,7 +102,9 @@
                                         <form>
                                             <div class="row">
                                                 <div class="d-flex col-lg-12">
-                                                    <div class="form-group col-6">
+                                                    <div
+                                                        class="form-group col-6"
+                                                    >
                                                         <label class=""
                                                             >NOME</label
                                                         >
@@ -118,7 +117,9 @@
                                                             />
                                                         </div>
                                                     </div>
-                                                     <div class="form-group col-6">
+                                                    <div
+                                                        class="form-group col-6"
+                                                    >
                                                         <label class=""
                                                             >COGNOME</label
                                                         >
@@ -132,8 +133,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                               
-                                           
                                             </div>
 
                                             <div class="form-group col-lg-12">
@@ -210,7 +209,6 @@
 </template>
 
 <script>
-
 import StepFirstDynamic from "../components/MainComponents/StepFirstDynamic.vue";
 import StepSecondDynamic from "../components/MainComponents/StepSecondDynamic.vue";
 import StepThirdDynamic from "../components/MainComponents/StepThirdDynamic.vue";

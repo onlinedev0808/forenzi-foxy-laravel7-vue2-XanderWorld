@@ -3,7 +3,7 @@
         <HeaderTop />
         <HeaderBottom />
 
-        <HomePage />
+        <router-view></router-view>
 
         <FooterTop />
         <FooterBottom />
@@ -15,7 +15,7 @@ import HeaderTop from "../components/HeaderComponents/HeaderTop.vue";
 import HeaderBottom from "../components/HeaderComponents/HeaderBottom.vue";
 
 import HomePage from "../pages/HomePage.vue";
-import PersonalizePage from "../pages/PerosonalizePage.vue";
+import PersonalizePage from "../pages/PersonalizePage.vue";
 
 import FooterTop from "../components/FooterComponents/FooterTop.vue";
 import FooterBottom from "../components/FooterComponents/FooterBottom.vue";

@@ -5,12 +5,13 @@ Vue.use(VueRouter);
 import AboutPage from "./pages/AboutPage";
 import HomePage from "./pages/HomePage";
 import ContactsPage from "./pages/ContactsPage";
+import PersonalizePage from "./pages/PersonalizePage";
 
 const router = new VueRouter({
     mode: "history",
     routes: [
         {
-            path: "/",
+            path: "/home",
             name: "home",
             component: HomePage,
         },
@@ -23,6 +24,11 @@ const router = new VueRouter({
             path: "/contacts",
             name: "contacts",
             component: ContactsPage,
+        },
+        {
+            path: "/personalize",
+            name: "personalize",
+            component: PersonalizePage,
         },
     ],
 });
