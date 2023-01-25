@@ -2,10 +2,10 @@ import VueRouter from "vue-router";
 import Vue from "vue";
 Vue.use(VueRouter);
 
-import AboutPage from "./pages/AboutPage";
 import HomePage from "./pages/HomePage";
-import ContactsPage from "./pages/ContactsPage";
 import PersonalizePage from "./pages/PersonalizePage";
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 const router = new VueRouter({
     mode: "history",
@@ -16,19 +16,19 @@ const router = new VueRouter({
             component: HomePage,
         },
         {
-            path: "/about",
-            name: "about",
-            component: AboutPage,
-        },
-        {
-            path: "/contacts",
-            name: "contacts",
-            component: ContactsPage,
-        },
-        {
             path: "/personalize",
             name: "personalize",
             component: PersonalizePage,
+        },
+        {
+            path: "/cart",
+            name: "cart",
+            component: CartPage,
+        },
+        {
+            path: "/checkout",
+            name: "checkout",
+            component: CheckoutPage,
         },
     ],
 });
