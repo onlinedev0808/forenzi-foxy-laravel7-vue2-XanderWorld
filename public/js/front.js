@@ -3509,9 +3509,25 @@ var render = function render() {
   }, [_vm.letterOne ? _c("div", {
     staticClass: "bg-yellow"
   }, [_vm._v("\n                                    " + _vm._s(_vm.letterOne) + "\n                                ")]) : _vm._e(), _vm._v(" "), _vm.letterOne ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputL,
+      expression: "inputL"
+    }],
     attrs: {
       type: "number",
-      min: "1"
+      min: "1",
+      placeholder: "inserisci il lato lungo"
+    },
+    domProps: {
+      value: _vm.inputL
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.inputL = $event.target.value;
+      }
     }
   }) : _vm._e(), _vm._v(" "), _vm.txtOne ? _c("h2", {
     staticClass: "mx-2"
@@ -3520,9 +3536,25 @@ var render = function render() {
   }, [_vm.letterTwo ? _c("div", {
     staticClass: "bg-yellow"
   }, [_vm._v("\n                                    " + _vm._s(_vm.letterTwo) + "\n                                ")]) : _vm._e(), _vm._v(" "), _vm.letterTwo ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputL,
+      expression: "inputL"
+    }],
     attrs: {
       type: "number",
-      min: "1"
+      min: "1",
+      placeholder: "inserisci il lato corto"
+    },
+    domProps: {
+      value: _vm.inputL
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.inputL = $event.target.value;
+      }
     }
   }) : _vm._e(), _vm._v(" "), _vm.txtTwo ? _c("h2", {
     staticClass: "mx-2"
@@ -3533,7 +3565,8 @@ var render = function render() {
   }, [_vm._v("\n                                    " + _vm._s(_vm.letterThree) + "\n                                ")]) : _vm._e(), _vm._v(" "), _vm.letterThree ? _c("input", {
     attrs: {
       type: "number",
-      min: "1"
+      min: "1",
+      placeholder: "inserisci l'altezza"
     }
   }) : _vm._e(), _vm._v(" "), _vm.txtThree ? _c("h2", {
     staticClass: "mx-2"
@@ -4731,7 +4764,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg-orange[data-v-1ee39dc0] {\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-1ee39dc0] {\n  color: #f68630;\n}\n.bg-yellow[data-v-1ee39dc0] {\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-1ee39dc0] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-1ee39dc0] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-1ee39dc0] {\n  background-color: #f68630;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 15px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 12px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-1ee39dc0]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-1ee39dc0] {\n  background-color: #f68630;\n}\n.orange[data-v-1ee39dc0]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-1ee39dc0] {\n  width: 10%;\n}\nsection.classic[data-v-1ee39dc0] {\n  padding: 2rem;\n}\n.box[data-v-1ee39dc0] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-1ee39dc0] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: red;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-1ee39dc0] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-1ee39dc0] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-1ee39dc0] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-1ee39dc0] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-1ee39dc0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-1ee39dc0] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-1ee39dc0] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-1ee39dc0] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-1ee39dc0] {\n  margin-right: 50px;\n}\nli i[data-v-1ee39dc0] {\n  font-size: 2rem;\n}\na[data-v-1ee39dc0] {\n  color: black;\n  text-decoration: none;\n}\n.bg-yellow[data-v-1ee39dc0] {\n  background-color: #f68630;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n}\nh2[data-v-1ee39dc0] {\n  font-size: 1.5rem;\n}\n.inputs[data-v-1ee39dc0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.inputs .d-flex[data-v-1ee39dc0] {\n  align-items: center;\n  justify-content: start;\n}\n.inputs .bg-yellow[data-v-1ee39dc0] {\n  background-color: #f68630;\n  color: white;\n  display: flex;\n  height: 60px;\n  justify-content: center;\n  align-items: center;\n  width: 60px;\n}\n.inputs input[data-v-1ee39dc0] {\n  height: 60px;\n  width: 30%;\n  margin: 1rem 0px;\n  font-size: 1.5rem;\n  border: none;\n  background-color: #f1f1f1;\n}\n.image[data-v-1ee39dc0] {\n  display: flex;\n  flex-direction: column;\n}\n.image img[data-v-1ee39dc0] {\n  width: 60%;\n}\n.step[data-v-1ee39dc0] {\n  margin-bottom: 5rem;\n  display: flex;\n  border: 1px solid lightgray;\n  padding: 1rem;\n  background-color: white;\n  color: black;\n}\n.title-create[data-v-1ee39dc0] {\n  font-weight: bold;\n  font-size: 1.5rem;\n}", ""]);
+exports.push([module.i, ".bg-orange[data-v-1ee39dc0] {\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-1ee39dc0] {\n  color: #f68630;\n}\n.bg-yellow[data-v-1ee39dc0] {\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-1ee39dc0] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-1ee39dc0] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-1ee39dc0] {\n  background-color: #f68630;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 15px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 12px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-1ee39dc0]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-1ee39dc0] {\n  background-color: #f68630;\n}\n.orange[data-v-1ee39dc0]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-1ee39dc0] {\n  width: 10%;\n}\nsection.classic[data-v-1ee39dc0] {\n  padding: 2rem;\n}\n.box[data-v-1ee39dc0] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-1ee39dc0] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: red;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-1ee39dc0] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-1ee39dc0] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-1ee39dc0] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-1ee39dc0] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-1ee39dc0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-1ee39dc0] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-1ee39dc0] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-1ee39dc0] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-1ee39dc0] {\n  margin-right: 50px;\n}\nli i[data-v-1ee39dc0] {\n  font-size: 2rem;\n}\na[data-v-1ee39dc0] {\n  color: black;\n  text-decoration: none;\n}\n.bg-yellow[data-v-1ee39dc0] {\n  background-color: #f68630;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n}\nh2[data-v-1ee39dc0] {\n  font-size: 1.5rem;\n}\n.inputs[data-v-1ee39dc0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.inputs .d-flex[data-v-1ee39dc0] {\n  align-items: center;\n  justify-content: start;\n}\n.inputs .bg-yellow[data-v-1ee39dc0] {\n  background-color: #f68630;\n  color: white;\n  display: flex;\n  height: 60px;\n  justify-content: center;\n  align-items: center;\n  width: 60px;\n}\n.inputs input[data-v-1ee39dc0] {\n  height: 60px;\n  width: 30%;\n  margin: 1rem 0px;\n  font-size: 1.5rem;\n  border: none;\n  background-color: #f1f1f1;\n}\n.inputs input[data-v-1ee39dc0]::-moz-placeholder {\n  font-size: 0.5rem;\n}\n.inputs input[data-v-1ee39dc0]::placeholder {\n  font-size: 0.5rem;\n}\n.image[data-v-1ee39dc0] {\n  display: flex;\n  flex-direction: column;\n}\n.image img[data-v-1ee39dc0] {\n  width: 60%;\n}\n.step[data-v-1ee39dc0] {\n  margin-bottom: 5rem;\n  display: flex;\n  border: 1px solid lightgray;\n  padding: 1rem;\n  background-color: white;\n  color: black;\n}\n.title-create[data-v-1ee39dc0] {\n  font-weight: bold;\n  font-size: 1.5rem;\n}", ""]);
 
 // exports
 
