@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import PersonalizePage from "./pages/PersonalizePage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import ShowVonePage from "./pages/ShowVonePage";
 
 const router = new VueRouter({
     mode: "history",
@@ -29,6 +30,11 @@ const router = new VueRouter({
             path: "/checkout",
             name: "checkout",
             component: CheckoutPage,
+        },
+        {
+            path: "/showvone",
+            name: "showvone",
+            component: ShowVonePage,
         },
     ],
 });
