@@ -2729,15 +2729,15 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "row d-flex"
   }, [_c("div", {
-    staticClass: "col-12 col-md-3 logo"
+    staticClass: "col-12 col-md-4 logo"
   }, [_c("img", {
-    staticClass: "img-fluid p-5 mb-2",
+    staticClass: "img-fluid p-5 mb-4",
     attrs: {
       src: __webpack_require__(/*! ../../../../public/img/logo.png */ "./public/img/logo.png"),
       alt: "Logo"
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "col-12 col-md-9 d-flex align-items-center justify-content-end"
+    staticClass: "col-12 col-md-8 d-flex align-items-center justify-content-end"
   }, [_c("div", {
     staticClass: "inputs d-flex flex-sm-row"
   }, [_c("div", {
@@ -2748,8 +2748,9 @@ var staticRenderFns = [function () {
       width: "60px"
     },
     attrs: {
-      type: "text",
-      placeholder: "LATO LUNGO"
+      type: "number",
+      placeholder: "LATO LUNGO cm",
+      max: "99"
     }
   }), _vm._v(" "), _c("input", {
     staticClass: "form-control",
@@ -2757,20 +2758,16 @@ var staticRenderFns = [function () {
       width: "60px"
     },
     attrs: {
-      type: "text",
-      placeholder: "LATO CORTO"
+      type: "number",
+      placeholder: "LATO CORTO cm",
+      max: "99"
     }
   }), _vm._v(" "), _c("input", {
     staticClass: "form-control",
     attrs: {
-      type: "text",
-      placeholder: "ALTEZZA"
-    }
-  }), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text",
-      placeholder: "CM"
+      type: "number",
+      placeholder: "ALTEZZA cm",
+      max: "99"
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "input-group-append"
@@ -4544,7 +4541,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "input {\n  border-radius: 0px;\n  border: 1px solid white;\n  background-color: rgb(241, 241, 241);\n  border-radius: 0px;\n  padding: 0px;\n  box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.3);\n  transition: all 0.3s ease-in-out;\n}\ninput:hover {\n  transform: translateY(-2px);\n  box-shadow: 0px 15px 25px -5px rgba(0, 0, 0, 0.5);\n}\ninput::-moz-placeholder {\n  font-weight: bold;\n  font-size: 0.5rem;\n  padding: 0.4rem;\n}\ninput::placeholder {\n  font-weight: bold;\n  font-size: 0.5rem;\n  padding: 0.4rem;\n}\nbutton.btn.btn-outline-secondary {\n  background-color: rgb(253, 188, 72);\n  color: black;\n  font-weight: bold;\n  border: 0px;\n}\nbutton.btn.btn-outline-secondary:hover {\n  border-radius: 0px;\n  transform: scale(0.9);\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);\n}\n.HeaderBottom {\n  background-color: #f5f5f5;\n}\n.HeaderBottom .HeaderSearch .container-lg .row .logo img {\n  width: 100%;\n}\n.HeaderBottom .HeaderSearch .container-lg .row .inputs .input-group input {\n  border: none;\n  background-color: transparent;\n  padding: 0.5rem;\n  font-size: 1rem;\n  transition: all 0.3s ease-in-out;\n}\n.HeaderBottom .HeaderSearch .container-lg .row .inputs .input-group input:hover {\n  box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.3);\n}\n.HeaderBottom .HeaderSearch .container-lg .row .inputs .input-group .input-group-append button {\n  background-color: #fda73c;\n  color: #000;\n  font-weight: bold;\n  border: none;\n  transition: all 0.3s ease-in-out;\n}\n.HeaderBottom .HeaderSearch .container-lg .row .inputs .input-group .input-group-append button:hover {\n  transform: scale(0.9);\n}", ""]);
+exports.push([module.i, "input {\n  border-radius: 0px;\n  border: 1px solid white;\n  background-color: rgb(241, 241, 241);\n  border-radius: 0px;\n  padding: 0px;\n  box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.3);\n  transition: all 1s;\n}\ninput:hover {\n  transform: translateY(-2px);\n  box-shadow: 0px 15px 25px -5px rgba(0, 0, 0, 0.5);\n}\ninput::-moz-placeholder {\n  font-weight: bold;\n  font-size: 0.4rem;\n  padding: 0.4rem;\n}\ninput::placeholder {\n  font-weight: bold;\n  font-size: 0.4rem;\n  padding: 0.4rem;\n}\nbutton.btn.btn-outline-secondary {\n  background-color: rgb(253, 188, 72);\n  color: black;\n  font-weight: bold;\n  border: 0px;\n}\nbutton.btn.btn-outline-secondary:hover {\n  border-radius: 0px;\n  transform: scale(0.9);\n  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);\n}\n.HeaderBottom {\n  background-color: #ffffff;\n}\n.HeaderBottom .HeaderSearch .container-lg .row .logo img {\n  width: 100%;\n}\n.HeaderBottom .HeaderSearch .container-lg .row .inputs .input-group input {\n  font-weight: bold;\n  min-width: 80px;\n  border: none;\n  background-color: transparent;\n  padding: 0.5rem;\n  font-size: 1rem;\n  transition: all 0.3s ease-in-out;\n}\n.HeaderBottom .HeaderSearch .container-lg .row .inputs .input-group input:hover {\n  box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.3);\n}\n.HeaderBottom .HeaderSearch .container-lg .row .inputs .input-group .input-group-append button {\n  background-color: #fda73c;\n  color: #000;\n  font-weight: bold;\n  border: none;\n  transition: all 0.3s ease-in-out;\n}\n.HeaderBottom .HeaderSearch .container-lg .row .inputs .input-group .input-group-append button:hover {\n  transform: scale(0.9);\n}", ""]);
 
 // exports
 
