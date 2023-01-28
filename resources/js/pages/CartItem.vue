@@ -3,13 +3,17 @@
 		<div class="product">
 			<div class="row">
 				<div class="col-md-3">
-					<img class="img-fluid mx-auto d-block image"
-						src="../../../public/Links/cat-scatole-maniglie-aperte.jpg" />
+					<img
+						class="img-fluid mx-auto d-block image"
+						src="../../../public/Links/cat-scatole-maniglie-aperte.jpg"
+					/>
 				</div>
 				<div class="col-md-8">
 					<div class="info">
 						<div class="row">
-							<div class="col-md-5 product-name">
+							<div
+								class="col-md-5 product-name"
+							>
 								<div class="product-name">
 									<a href="#">{{ detail.name }}</a>
 									<div class="product-info">
@@ -28,7 +32,7 @@
 								<label class="fw-bold" for="quantity">
 									Quantity:
 								</label>
-								<input class="form-control quantity-input" id='quantity' type="number" v-model="quantity"/>
+								<input class="form-control quantity-input" id='quantity' type="number" @change="test" v-model="quantity"/>
 							</div>
 							<div class="col-md-3 price">
 								<div style="white-space:nowrap">
@@ -59,6 +63,7 @@ export default {
 	watch: {
 		quantity() {
 			this.computedPrice = this.detail.price * this.quantity
+
 		}
 	},
 	methods: {
