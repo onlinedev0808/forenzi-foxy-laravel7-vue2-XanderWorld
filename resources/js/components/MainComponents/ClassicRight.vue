@@ -4,7 +4,7 @@
             <div class="classic-image w-50 d-flex justify-content-center">
                 <img
                     alt=""
-                    class="img-fluid w-75"
+                    class="img-fluid w-50"
                     src="https://pngimg.com/uploads/box/box_PNG140.png"
                 />
             </div>

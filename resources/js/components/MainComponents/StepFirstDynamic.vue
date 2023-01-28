@@ -21,8 +21,9 @@
                                         {{ letterOne }}
                                     </div>
                                     <input
-                                        v-model="inputL"
                                         v-if="letterOne"
+                                        v-model="inputL"
+                                        @input="emitInputValues"
                                         type="number"
                                         min="1"
                                         placeholder="inserisci il lato lungo"
@@ -40,6 +41,7 @@
                                     </div>
                                     <input
                                         v-model="inputP"
+                                        @input="emitInputValues"
                                         v-if="letterTwo"
                                         type="number"
                                         min="1"
@@ -58,6 +60,7 @@
                                     </div>
                                     <input
                                         v-model="inputH"
+                                        @input="emitInputValues"
                                         v-if="letterThree"
                                         type="number"
                                         min="1"
@@ -100,6 +103,22 @@ export default {
         txtThree: String,
         txtBanner: String,
         img: String,
+    },
+    data() {
+        return {
+            inputL: "",
+            inputH: "",
+            inputP: "",
+        };
+    },
+    methods: {
+        emitInputValues() {
+            this.$emit("inputValuesChanged", {
+                inputL: this.inputL,
+                inputH: this.inputH,
+                inputP: this.inputP,
+            });
+        },
     },
 };
 </script>
