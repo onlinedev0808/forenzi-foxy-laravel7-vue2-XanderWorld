@@ -18,11 +18,10 @@ import HomePage from "../pages/HomePage.vue";
 import PersonalizePage from "../pages/PersonalizePage.vue";
 import CartPage from "../pages/CartPage.vue";
 import CheckoutPage from "../pages/CheckoutPage.vue";
-import ShowVonePage from "../pages/ShowVonePage.vue";
-
 
 import FooterTop from "../components/FooterComponents/FooterTop.vue";
 import FooterBottom from "../components/FooterComponents/FooterBottom.vue";
+
 export default {
     name: "App",
     components: {
@@ -33,12 +32,11 @@ export default {
         PersonalizePage,
         CartPage,
         CheckoutPage,
-        ShowVonePage,
 
         FooterTop,
         FooterBottom,
     },
-};
+}
 </script>
 
 <style lang="scss">

@@ -28,26 +28,30 @@
                     <!-- empty -->
                 </div>
                 <section class="col-2">
-                    <div id="login" class="d-flex align-items-center">
-                        <i class="fa fa-user-alt"></i>
-                        <div class="d-none d-lg-inline">
-                            <strong>
-                                <p>ACCEDI O</p>
-                            </strong>
-                            <p>REGISTRATI</p>
+                    <a href="/login">
+                        <div id="login" class="d-flex align-items-center" @click="goTo('login')">
+                            <i class="fa fa-user-alt"></i>
+                            <div class="d-none d-lg-inline">
+                                <strong>
+                                    <p>ACCEDI O</p>
+                                </strong>
+                                <p>REGISTRATI</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </section>
                 <section class="col-2">
-                    <div id="carriage" class="d-flex align-items-center">
-                        <i class="fa fa-bus-alt"></i>
-                        <div class="d-none d-lg-inline">
-                            <strong>
-                                <p>CARRELLO</p>
-                            </strong>
-                            <p>54,00 $ / 2 PRODOTTI</p>
+                    <a href="/cart">
+                        <div id="carriage" class="d-flex align-items-center">
+                            <router-link to="/cart"><i class="fa fa-bus-alt"></i></router-link>
+                            <div class="d-none d-lg-inline">
+                                <strong>
+                                    <p>CARRELLO</p>
+                                </strong>
+                                <p>54,00 $ / 2 PRODOTTI</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </section>
             </div>
         </div>
@@ -55,7 +59,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+    methods:{
+        goTo(url) {
+            this.$router.path(url);
+            this.$router.go();
+        }
+    }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -83,6 +94,7 @@ export default {};
             margin: 0px;
             font-size: 0.5rem;
         }
+
     }
 }
 </style>
