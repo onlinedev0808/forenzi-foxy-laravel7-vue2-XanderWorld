@@ -3,39 +3,37 @@
         <div class="HeaderSearch">
             <div class="container-lg">
                 <div class="row d-flex">
-                    <div class="col-12 col-md-3 logo">
+                    <div class="col-12 col-md-4 logo">
                         <img
-                            class="img-fluid p-5 mb-2"
+                            class="img-fluid p-5 mb-4"
                             src="../../../../public/img/logo.png"
                             alt="Logo"
                         />
                     </div>
                     <div
-                        class="col-12 col-md-9 d-flex align-items-center justify-content-end"
+                        class="col-12 col-md-8 d-flex align-items-center justify-content-end"
                     >
                         <div class="inputs d-flex flex-sm-row">
                             <div class="input-group mb-3 mx-2">
                                 <input
                                     style="width: 60px"
-                                    type="text"
+                                    type="number"
                                     class="form-control"
-                                    placeholder="LATO LUNGO"
+                                    placeholder="LATO LUNGO cm"
+                                    max="99"
                                 />
                                 <input
                                     style="width: 60px"
-                                    type="text"
+                                    type="number"
                                     class="form-control"
-                                    placeholder="LATO CORTO"
+                                    placeholder="LATO CORTO cm"
+                                    max="99"
                                 />
                                 <input
-                                    type="text"
+                                    type="number"
                                     class="form-control"
-                                    placeholder="ALTEZZA"
-                                />
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="CM"
+                                    placeholder="ALTEZZA cm"
+                                    max="99"
                                 />
 
                                 <div class="input-group-append">
@@ -82,7 +80,7 @@ input {
     border-radius: 0px;
     padding: 0px;
     box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease-in-out;
+    transition: all 1s;
     &:hover {
         transform: translateY(-2px);
         box-shadow: 0px 15px 25px -5px rgba(0, 0, 0, 0.5);
@@ -90,7 +88,7 @@ input {
 }
 input::placeholder {
     font-weight: bold;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     padding: 0.4rem;
 }
 button.btn.btn-outline-secondary {
@@ -106,7 +104,7 @@ button.btn.btn-outline-secondary {
     }
 }
 .HeaderBottom {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     .HeaderSearch {
         .container-lg {
             .row {
@@ -118,6 +116,8 @@ button.btn.btn-outline-secondary {
                 .inputs {
                     .input-group {
                         input {
+                            font-weight: bold;
+                            min-width: 80px;
                             border: none;
                             background-color: transparent;
                             padding: 0.5rem;
