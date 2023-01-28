@@ -21,9 +21,11 @@
                                         {{ letterOne }}
                                     </div>
                                     <input
+                                        v-model="inputL"
                                         v-if="letterOne"
                                         type="number"
                                         min="1"
+                                        placeholder="inserisci il lato lungo"
                                     />
                                     <h2 v-if="txtOne" class="mx-2">
                                         {{ txtOne }}
@@ -37,9 +39,11 @@
                                         {{ letterTwo }}
                                     </div>
                                     <input
+                                        v-model="inputP"
                                         v-if="letterTwo"
                                         type="number"
                                         min="1"
+                                        placeholder="inserisci il lato corto"
                                     />
                                     <h2 v-if="txtTwo" class="mx-2">
                                         {{ txtTwo }}
@@ -53,9 +57,11 @@
                                         {{ letterThree }}
                                     </div>
                                     <input
+                                        v-model="inputH"
                                         v-if="letterThree"
                                         type="number"
                                         min="1"
+                                        placeholder="inserisci l'altezza"
                                     />
                                     <h2 v-if="txtThree" class="mx-2">
                                         {{ txtThree }}
@@ -138,6 +144,9 @@ h2 {
     font-size: 1.5rem;
     border: none;
     background-color: #f1f1f1;
+}
+.inputs input::placeholder {
+    font-size: 0.5rem;
 }
 
 .image {

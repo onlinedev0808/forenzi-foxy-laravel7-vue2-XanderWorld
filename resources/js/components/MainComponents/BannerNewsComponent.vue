@@ -4,7 +4,7 @@
             <div class="w-25">
                 <img
                     class="img-fluid"
-                    src="../../../../public/Links/side-view-of-smiling-curly-woman-pointing-away-pucho.jpg"
+                    src="https://www.pngmart.com/files/7/Box-PNG-Free-Download.png"
                     alt=""
                 />
             </div>

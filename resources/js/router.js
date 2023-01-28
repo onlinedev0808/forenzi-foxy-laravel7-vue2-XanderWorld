@@ -6,8 +6,7 @@ import HomePage from "./pages/HomePage";
 import PersonalizePage from "./pages/PersonalizePage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
-import LoginPage from "./pages/LoginPage.vue";
-import RegisterPage from "./pages/RegisterPage.vue";
+import ShowVonePage from "./pages/ShowVonePage";
 
 const router = new VueRouter({
     mode: "history",
@@ -18,19 +17,24 @@ const router = new VueRouter({
             component: HomePage,
         },
         {
-            path: "/login",
-            name: "login",
-            component: LoginPage,
-        },
-        {
-            path: "/register",
-            name: "register",
-            component: RegisterPage,
-        },
-        {
             path: "/personalize",
             name: "personalize",
             component: PersonalizePage,
+        },
+        {
+            path: "/cart",
+            name: "cart",
+            component: CartPage,
+        },
+        {
+            path: "/checkout",
+            name: "checkout",
+            component: CheckoutPage,
+        },
+        {
+            path: "/showvone",
+            name: "showvone",
+            component: ShowVonePage,
         },
         {
             path: "/cart",
