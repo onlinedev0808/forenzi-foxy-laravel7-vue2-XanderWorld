@@ -11,21 +11,24 @@
                     <div class="mt-5 d-flex flex-column justify-content-center">
                         <div class="">
                             <input
-                                checked
+                                v-bind:checked="radioValue === 'huey'"
                                 id="huey"
                                 name="drone"
                                 type="radio"
                                 value="huey"
+                                @change="emitRadioValue"
                             />
                             <label for="huey">Huey</label>
                         </div>
 
                         <div>
                             <input
+                                v-bind:checked="radioValue === 'dewey'"
                                 id="dewey"
                                 name="drone"
                                 type="radio"
                                 value="dewey"
+                                @change="emitRadioValue"
                             />
                             <label for="dewey">Dewey</label>
                         </div>
@@ -37,11 +40,23 @@
 </template>
 
 <script>
-export default {};
+export default {
+ 
+    data() {
+        return {
+            radioValue: "",
+        };
+    },
+    methods: {
+        emitRadioValue(event) {
+            this.radioValue = event.target.value;
+            this.$emit("printSelected", this.radioValue);
+        },
+    },
+};
 </script>
 
 <style lang="scss" scoped>
-
 label {
     font-size: 1rem;
 }
@@ -117,8 +132,6 @@ i {
     background-color: white;
     color: black;
 }
-
-
 
 .form-group input {
     width: 100%;

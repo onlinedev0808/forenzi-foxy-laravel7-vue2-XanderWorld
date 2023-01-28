@@ -30,15 +30,18 @@
                             >
                                 <!-- Left side content goes here -->
                                 <StepFirstDynamic
-                                    @inputValuesChanged="setInputValues"
-                                    class="step"
                                     v-for="(element, index) in boxone"
-                                    :key="index"
+                                    @inputValuesChanged="setInputValues"
+                                    @inputQuantityChanged="setInputQuantity"
+                                    class="step"
+                                    :key="element.id"
                                     :step="element.step"
                                     :title="element.title"
+                                    :letter-q="element.letterQ"
                                     :letter-one="element.letterOne"
                                     :letter-two="element.letterTwo"
                                     :letter-three="element.letterThree"
+                                    :txt-q="element.txtQ"
                                     :txt-one="element.txtOne"
                                     :txt-two="element.txtTwo"
                                     :txt-three="element.txtThree"
@@ -47,7 +50,8 @@
                                 />
                                 <StepSecondDynamic
                                     v-for="(element, index) in boxtwo"
-                                    :key="index"
+                                    @imageSelected="setSelectedImage"
+                                    :key="element.id"
                                     :step="element.step"
                                     :title="element.title"
                                     :title-one="element.titleOne"
@@ -57,12 +61,19 @@
                                     :img-one="element.imgOne"
                                     :img-two="element.imgTwo"
                                 />
-                                <StepThirdDynamic />
+
+                                <StepThirdDynamic
+                                    @printSelected="setPrintValue"
+                                    :radio-value="radioValue"
+                                />
                             </div>
                             <SummaryPersonalize
                                 :inputH="inputH"
                                 :inputP="inputP"
                                 :inputL="inputL"
+                                :inputQ="inputQ"
+                                :selectedImage="selectedImage"
+                                :radioValue="radioValue"
                             />
                         </div>
                     </div>
@@ -89,6 +100,9 @@ export default {
             inputH: "",
             inputP: "",
             inputL: "",
+            inputQ: "",
+            radioValue: "",
+            selectedImage: "",
 
             boxone: [
                 {
@@ -106,10 +120,12 @@ export default {
                 {
                     step: "2",
                     title: "INSERISCI LA QUANTITÀ",
-                    letterOne: "Q",
+                    letterQ: "Q",
+                    letterOne: "",
                     letterTwo: "",
                     letterThree: "",
-                    txtOne: "PEZZI",
+                    txtQ: "PEZZI",
+                    txtOne: "",
                     txtTwo: "",
                     txtThree: "",
                     txtBanner:
@@ -157,23 +173,37 @@ export default {
                     src: require("../../../public/Links/04.png"),
                 },
             ],
-            selectedImage: "",
         };
     },
     methods: {
+        setPrintValue(print) {
+            this.radioValue = print;
+            console.log(this.radioValue);
+        },
+
         setInputValues(inputValues) {
             this.inputL = inputValues.inputL;
             this.inputH = inputValues.inputH;
             this.inputP = inputValues.inputP;
+            this.inputQ = inputValues.inputQ;
         },
-    },
-    computed: {
-        isActiveFirst() {
-            return this.selectedImage === "AVANA";
+        setInputQuantity(inputQuantity) {
+            this.inputQ = inputQuantity.inputQ;
         },
-        isActiveSecond() {
-            return this.selectedImage === "BIANCA";
+
+        setSelectedImage(image) {
+            this.selectedImage = image;
+            console.log(this.selectedImage.value);
         },
+
+        // setSelectedColor(color) {
+        //     this.selectedColor = color;
+        //     console.log(this.selectedColor);
+        // },
+        // setSelectedCategory(category) {
+        //     this.selectedCategory = category;
+        //     console.log(this.selectedCategory);
+        // },
     },
 };
 </script>

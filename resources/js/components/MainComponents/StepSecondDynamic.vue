@@ -10,8 +10,10 @@
                     <div class="left-right col-12">
                         <div
                             class="left col-6"
-                            @click="selectedImage = 'AVANA'"
-                            :class="{ active: selectedImage === 'AVANA' }"
+                            @click="selectLeft"
+                            :class="{
+                                active: selectedImage.value === titleOne,
+                            }"
                         >
                             <div
                                 class="box d-flex flex-column align-items-center"
@@ -21,11 +23,11 @@
                                     alt="Image"
                                     :src="imgOne"
                                 />
-                                <i
+                                <!-- <i
                                     v-if="isActiveFirst"
                                     class="fa-sharp fa-solid fa-check"
                                 >
-                                </i>
+                                </i> -->
 
                                 <h4 class="titlebox">{{ titleOne }}</h4>
                                 <span class="textbox">{{ txtOne }}</span>
@@ -34,19 +36,21 @@
 
                         <div
                             class="right col-6"
-                            @click="selectedImage = 'BIANCA'"
-                            :class="{ active: selectedImage === 'BIANCA' }"
+                            @click="selectRight"
+                            :class="{
+                                active: selectedImage.value === titleTwo,
+                            }"
                         >
                             <div
                                 class="box d-flex flex-column align-items-center"
                             >
                                 <img alt="Image" :src="imgTwo" />
 
-                                <i
+                                <!-- <i
                                     v-if="isActiveSecond"
                                     class="fa-sharp fa-solid fa-check"
                                 >
-                                </i>
+                                </i> -->
 
                                 <h4 class="titlebox">{{ titleTwo }}</h4>
                                 <span class="textbox">{{ txtTwo }}</span>
@@ -73,18 +77,64 @@ export default {
     },
     data() {
         return {
-            selectedImage: "",
+            selectedImage: {
+                id: "",
+                value: "",
+            },
+            // selectedCategory: {
+            //     id: "",
+            //     value: "",
+            // },
+            // selectedColor: {
+            //     id: "",
+            //     value: "",
+            // },
         };
     },
 
-    computed: {
-        isActiveFirst() {
-            return this.selectedImage === "AVANA";
+    methods: {
+        // sendSelectedColor() {
+        //     this.$emit("colorSelected", this.selectedColor);
+        // },
+        // sendSelectedCategory() {
+        //     this.$emit("categorySelected", this.selectedCategory);
+        // },
+        selectLeft() {
+            this.selectedImage.value = this.titleOne;
+
+            this.$emit("imageSelected", this.selectedImage);
         },
-        isActiveSecond() {
-            return this.selectedImage === "BIANCA";
+        selectRight() {
+            this.selectedImage.value = this.titleTwo;
+
+            this.$emit("imageSelected", this.selectedImage);
         },
     },
+
+    created() {
+        // this.selectedCategory.id = this.componentId;
+        // this.selectedColor.id = this.componentId;
+    },
+    // computed: {
+    //     isActiveFirst() {
+    //         if (this.isActiveSecond) {
+    //             return false;
+    //         }
+    //         return (
+    //             this.selectedColor === this.titleOne ||
+    //             this.selectedCategory === this.titleOne
+    //         );
+    //     },
+    //     isActiveSecond() {
+    //         if (this.isActiveFirst) {
+    //             return false;
+    //         }
+    //         return (
+    //             this.selectedColor === this.titleTwo ||
+    //             this.selectedCategory === this.titleTwo
+    //         );
+    //     },
+    // },
 };
 </script>
 
@@ -137,7 +187,7 @@ h2 {
 }
 .active {
     transition: 1s;
-    transform:scaleY(.9);
+    transform: scaleY(0.9);
 }
 
 .box {

@@ -7,24 +7,28 @@
             <div class="summary-item">
                 <span class="text">MISURE</span>
                 <span class="price"
-                    >{{ inputL }} L x {{ inputP }} P x {{ inputH }} H</span
+                    ><strong>{{ inputL }}</strong> L x
+                    <strong>{{ inputP }}</strong> P x
+                    <strong>{{ inputH }}</strong> H</span
                 >
             </div>
             <div class="summary-item">
                 <span class="text">QUANTITÀ</span>
-                <span class="price">500 PEZZI</span>
+                <span class="price"
+                    ><strong>{{ inputQ }}</strong> PEZZI</span
+                >
             </div>
             <div class="summary-item">
                 <span class="text">COLORE SCATOLA</span>
-                <span class="price">AVANA</span>
+                <span class="price">{{ selectedImage.value }}</span>
             </div>
             <div class="summary-item">
                 <span class="text">TIPO DI CARTONE</span>
-                <span class="price">SCATOLA A 1 ONDA</span>
+                <span class="price">{{ selectedImage.value }}</span>
             </div>
             <div class="summary-item">
                 <span class="text">STAMPA</span>
-                <span class="price">NEUTRA</span>
+                <span class="price">{{ radioValue }}</span>
             </div>
 
             <div class="summary-item">
@@ -109,10 +113,18 @@
 <script>
 export default {
     components: {},
-    props: ["inputH", "inputL", "inputP"],
+    props: [
+        "inputH",
+        "inputL",
+        "inputP",
+        "inputQ",
+        "selectedImage",
+        "radioValue",
+    ],
     data() {
         return {};
     },
+
     computed: {},
 };
 </script>

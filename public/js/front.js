@@ -2225,9 +2225,11 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     step: String,
     title: String,
+    letterQ: String,
     letterOne: String,
     letterTwo: String,
     letterThree: String,
+    txtQ: String,
     txtOne: String,
     txtTwo: String,
     txtThree: String,
@@ -2238,7 +2240,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       inputL: "",
       inputH: "",
-      inputP: ""
+      inputP: "",
+      inputQ: ""
     };
   },
   methods: {
@@ -2247,6 +2250,11 @@ __webpack_require__.r(__webpack_exports__);
         inputL: this.inputL,
         inputH: this.inputH,
         inputP: this.inputP
+      });
+    },
+    emitQuantity: function emitQuantity() {
+      this.$emit("inputQuantityChanged", {
+        inputQ: this.inputQ
       });
     }
   }
@@ -2276,17 +2284,60 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      selectedImage: ""
+      selectedImage: {
+        id: "",
+        value: ""
+      }
+      // selectedCategory: {
+      //     id: "",
+      //     value: "",
+      // },
+      // selectedColor: {
+      //     id: "",
+      //     value: "",
+      // },
     };
   },
-  computed: {
-    isActiveFirst: function isActiveFirst() {
-      return this.selectedImage === "AVANA";
+
+  methods: {
+    // sendSelectedColor() {
+    //     this.$emit("colorSelected", this.selectedColor);
+    // },
+    // sendSelectedCategory() {
+    //     this.$emit("categorySelected", this.selectedCategory);
+    // },
+    selectLeft: function selectLeft() {
+      this.selectedImage.value = this.titleOne;
+      this.$emit("imageSelected", this.selectedImage);
     },
-    isActiveSecond: function isActiveSecond() {
-      return this.selectedImage === "BIANCA";
+    selectRight: function selectRight() {
+      this.selectedImage.value = this.titleTwo;
+      this.$emit("imageSelected", this.selectedImage);
     }
-  }
+  },
+  created: function created() {
+    // this.selectedCategory.id = this.componentId;
+    // this.selectedColor.id = this.componentId;
+  } // computed: {
+  //     isActiveFirst() {
+  //         if (this.isActiveSecond) {
+  //             return false;
+  //         }
+  //         return (
+  //             this.selectedColor === this.titleOne ||
+  //             this.selectedCategory === this.titleOne
+  //         );
+  //     },
+  //     isActiveSecond() {
+  //         if (this.isActiveFirst) {
+  //             return false;
+  //         }
+  //         return (
+  //             this.selectedColor === this.titleTwo ||
+  //             this.selectedCategory === this.titleTwo
+  //         );
+  //     },
+  // },
 });
 
 /***/ }),
@@ -2300,7 +2351,19 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      radioValue: ""
+    };
+  },
+  methods: {
+    emitRadioValue: function emitRadioValue(event) {
+      this.radioValue = event.target.value;
+      this.$emit("printSelected", this.radioValue);
+    }
+  }
+});
 
 /***/ }),
 
@@ -2315,7 +2378,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
-  props: ["inputH", "inputL", "inputP"],
+  props: ["inputH", "inputL", "inputP", "inputQ", "selectedImage", "radioValue"],
   data: function data() {
     return {};
   },
@@ -2471,6 +2534,9 @@ __webpack_require__.r(__webpack_exports__);
       inputH: "",
       inputP: "",
       inputL: "",
+      inputQ: "",
+      radioValue: "",
+      selectedImage: "",
       boxone: [{
         step: "1",
         title: "INSERISCI LE MISURE DELLA SCATOLA",
@@ -2485,10 +2551,12 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         step: "2",
         title: "INSERISCI LA QUANTITÀ",
-        letterOne: "Q",
+        letterQ: "Q",
+        letterOne: "",
         letterTwo: "",
         letterThree: "",
-        txtOne: "PEZZI",
+        txtQ: "PEZZI",
+        txtOne: "",
         txtTwo: "",
         txtThree: "",
         txtBanner: "500 è la quantità minima che puoi richiedere per le misure che hai scelto",
@@ -2525,24 +2593,34 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         title: "Fish swimming in a tank",
         src: __webpack_require__(/*! ../../../public/Links/04.png */ "./public/Links/04.png")
-      }],
-      selectedImage: ""
+      }]
     };
   },
   methods: {
+    setPrintValue: function setPrintValue(print) {
+      this.radioValue = print;
+      console.log(this.radioValue);
+    },
     setInputValues: function setInputValues(inputValues) {
       this.inputL = inputValues.inputL;
       this.inputH = inputValues.inputH;
       this.inputP = inputValues.inputP;
-    }
-  },
-  computed: {
-    isActiveFirst: function isActiveFirst() {
-      return this.selectedImage === "AVANA";
+      this.inputQ = inputValues.inputQ;
     },
-    isActiveSecond: function isActiveSecond() {
-      return this.selectedImage === "BIANCA";
-    }
+    setInputQuantity: function setInputQuantity(inputQuantity) {
+      this.inputQ = inputQuantity.inputQ;
+    },
+    setSelectedImage: function setSelectedImage(image) {
+      this.selectedImage = image;
+      console.log(this.selectedImage.value);
+    } // setSelectedColor(color) {
+    //     this.selectedColor = color;
+    //     console.log(this.selectedColor);
+    // },
+    // setSelectedCategory(category) {
+    //     this.selectedCategory = category;
+    //     console.log(this.selectedCategory);
+    // },
   }
 });
 
@@ -3555,6 +3633,33 @@ var render = function render() {
     staticClass: "inputs"
   }, [_c("div", {
     staticClass: "d-flex align-items-center justify-content-start"
+  }, [_vm.letterQ ? _c("div", {
+    staticClass: "bg-yellow"
+  }, [_vm._v("\n                                    " + _vm._s(_vm.letterQ) + "\n                                ")]) : _vm._e(), _vm._v(" "), _vm.letterQ ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputQ,
+      expression: "inputQ"
+    }],
+    attrs: {
+      type: "number",
+      min: "1",
+      placeholder: "inserisci la quantità"
+    },
+    domProps: {
+      value: _vm.inputQ
+    },
+    on: {
+      input: [function ($event) {
+        if ($event.target.composing) return;
+        _vm.inputQ = $event.target.value;
+      }, _vm.emitQuantity]
+    }
+  }) : _vm._e(), _vm._v(" "), _vm.txtQ ? _c("h2", {
+    staticClass: "mx-2"
+  }, [_vm._v("\n                                    " + _vm._s(_vm.txtQ) + "\n                                ")]) : _vm._e()]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center justify-content-start"
   }, [_vm.letterOne ? _c("div", {
     staticClass: "bg-yellow"
   }, [_vm._v("\n                                    " + _vm._s(_vm.letterOne) + "\n                                ")]) : _vm._e(), _vm._v(" "), _vm.letterOne ? _c("input", {
@@ -3679,12 +3784,10 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "left col-6",
     "class": {
-      active: _vm.selectedImage === "AVANA"
+      active: _vm.selectedImage.value === _vm.titleOne
     },
     on: {
-      click: function click($event) {
-        _vm.selectedImage = "AVANA";
-      }
+      click: _vm.selectLeft
     }
   }, [_c("div", {
     staticClass: "box d-flex flex-column align-items-center"
@@ -3694,21 +3797,17 @@ var render = function render() {
       alt: "Image",
       src: _vm.imgOne
     }
-  }), _vm._v(" "), _vm.isActiveFirst ? _c("i", {
-    staticClass: "fa-sharp fa-solid fa-check"
-  }) : _vm._e(), _vm._v(" "), _c("h4", {
+  }), _vm._v(" "), _c("h4", {
     staticClass: "titlebox"
   }, [_vm._v(_vm._s(_vm.titleOne))]), _vm._v(" "), _c("span", {
     staticClass: "textbox"
   }, [_vm._v(_vm._s(_vm.txtOne))])])]), _vm._v(" "), _c("div", {
     staticClass: "right col-6",
     "class": {
-      active: _vm.selectedImage === "BIANCA"
+      active: _vm.selectedImage.value === _vm.titleTwo
     },
     on: {
-      click: function click($event) {
-        _vm.selectedImage = "BIANCA";
-      }
+      click: _vm.selectRight
     }
   }, [_c("div", {
     staticClass: "box d-flex flex-column align-items-center"
@@ -3717,9 +3816,7 @@ var render = function render() {
       alt: "Image",
       src: _vm.imgTwo
     }
-  }), _vm._v(" "), _vm.isActiveSecond ? _c("i", {
-    staticClass: "fa-sharp fa-solid fa-check"
-  }) : _vm._e(), _vm._v(" "), _c("h4", {
+  }), _vm._v(" "), _c("h4", {
     staticClass: "titlebox"
   }, [_vm._v(_vm._s(_vm.titleTwo))]), _vm._v(" "), _c("span", {
     staticClass: "textbox"
@@ -3745,11 +3842,6 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
   return _c("div", {
     staticClass: "step"
   }, [_c("fieldset", [_c("div", {
@@ -3764,11 +3856,16 @@ var staticRenderFns = [function () {
     staticClass: "mt-5 d-flex flex-column justify-content-center"
   }, [_c("div", {}, [_c("input", {
     attrs: {
-      checked: "",
       id: "huey",
       name: "drone",
       type: "radio",
       value: "huey"
+    },
+    domProps: {
+      checked: _vm.radioValue === "huey"
+    },
+    on: {
+      change: _vm.emitRadioValue
     }
   }), _vm._v(" "), _c("label", {
     attrs: {
@@ -3780,13 +3877,20 @@ var staticRenderFns = [function () {
       name: "drone",
       type: "radio",
       value: "dewey"
+    },
+    domProps: {
+      checked: _vm.radioValue === "dewey"
+    },
+    on: {
+      change: _vm.emitRadioValue
     }
   }), _vm._v(" "), _c("label", {
     attrs: {
       "for": "dewey"
     }
   }, [_vm._v("Dewey")])])])])])])]);
-}];
+};
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -3816,7 +3920,31 @@ var render = function render() {
     staticClass: "text"
   }, [_vm._v("MISURE")]), _vm._v(" "), _c("span", {
     staticClass: "price"
-  }, [_vm._v(_vm._s(_vm.inputL) + " L x " + _vm._s(_vm.inputP) + " P x " + _vm._s(_vm.inputH) + " H")])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _c("button", {
+  }, [_c("strong", [_vm._v(_vm._s(_vm.inputL))]), _vm._v(" L x\n                "), _c("strong", [_vm._v(_vm._s(_vm.inputP))]), _vm._v(" P x\n                "), _c("strong", [_vm._v(_vm._s(_vm.inputH))]), _vm._v(" H")])]), _vm._v(" "), _c("div", {
+    staticClass: "summary-item"
+  }, [_c("span", {
+    staticClass: "text"
+  }, [_vm._v("QUANTITÀ")]), _vm._v(" "), _c("span", {
+    staticClass: "price"
+  }, [_c("strong", [_vm._v(_vm._s(_vm.inputQ))]), _vm._v(" PEZZI")])]), _vm._v(" "), _c("div", {
+    staticClass: "summary-item"
+  }, [_c("span", {
+    staticClass: "text"
+  }, [_vm._v("COLORE SCATOLA")]), _vm._v(" "), _c("span", {
+    staticClass: "price"
+  }, [_vm._v(_vm._s(_vm.selectedImage.value))])]), _vm._v(" "), _c("div", {
+    staticClass: "summary-item"
+  }, [_c("span", {
+    staticClass: "text"
+  }, [_vm._v("TIPO DI CARTONE")]), _vm._v(" "), _c("span", {
+    staticClass: "price"
+  }, [_vm._v(_vm._s(_vm.selectedImage.value))])]), _vm._v(" "), _c("div", {
+    staticClass: "summary-item"
+  }, [_c("span", {
+    staticClass: "text"
+  }, [_vm._v("STAMPA")]), _vm._v(" "), _c("span", {
+    staticClass: "price"
+  }, [_vm._v(_vm._s(_vm.radioValue))])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("button", {
     staticClass: "btn bg-yellow fw-bold btn-lg btn-block",
     attrs: {
       type: "button"
@@ -3824,46 +3952,6 @@ var render = function render() {
   }, [_vm._v("\n            PROCEDI AL CHECKOUT\n        ")])])]);
 };
 var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "summary-item"
-  }, [_c("span", {
-    staticClass: "text"
-  }, [_vm._v("QUANTITÀ")]), _vm._v(" "), _c("span", {
-    staticClass: "price"
-  }, [_vm._v("500 PEZZI")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "summary-item"
-  }, [_c("span", {
-    staticClass: "text"
-  }, [_vm._v("COLORE SCATOLA")]), _vm._v(" "), _c("span", {
-    staticClass: "price"
-  }, [_vm._v("AVANA")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "summary-item"
-  }, [_c("span", {
-    staticClass: "text"
-  }, [_vm._v("TIPO DI CARTONE")]), _vm._v(" "), _c("span", {
-    staticClass: "price"
-  }, [_vm._v("SCATOLA A 1 ONDA")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "summary-item"
-  }, [_c("span", {
-    staticClass: "text"
-  }, [_vm._v("STAMPA")]), _vm._v(" "), _c("span", {
-    staticClass: "price"
-  }, [_vm._v("NEUTRA")])]);
-}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
@@ -4513,14 +4601,16 @@ var render = function render() {
     staticClass: "steps col-xl-7 col-lg-* col-md-* col-sm-*"
   }, [_vm._l(_vm.boxone, function (element, index) {
     return _c("StepFirstDynamic", {
-      key: index,
+      key: element.id,
       staticClass: "step",
       attrs: {
         step: element.step,
         title: element.title,
+        "letter-q": element.letterQ,
         "letter-one": element.letterOne,
         "letter-two": element.letterTwo,
         "letter-three": element.letterThree,
+        "txt-q": element.txtQ,
         "txt-one": element.txtOne,
         "txt-two": element.txtTwo,
         "txt-three": element.txtThree,
@@ -4528,12 +4618,13 @@ var render = function render() {
         img: element.img
       },
       on: {
-        inputValuesChanged: _vm.setInputValues
+        inputValuesChanged: _vm.setInputValues,
+        inputQuantityChanged: _vm.setInputQuantity
       }
     });
   }), _vm._v(" "), _vm._l(_vm.boxtwo, function (element, index) {
     return _c("StepSecondDynamic", {
-      key: index,
+      key: element.id,
       attrs: {
         step: element.step,
         title: element.title,
@@ -4543,13 +4634,26 @@ var render = function render() {
         "txt-two": element.txtTwo,
         "img-one": element.imgOne,
         "img-two": element.imgTwo
+      },
+      on: {
+        imageSelected: _vm.setSelectedImage
       }
     });
-  }), _vm._v(" "), _c("StepThirdDynamic")], 2), _vm._v(" "), _c("SummaryPersonalize", {
+  }), _vm._v(" "), _c("StepThirdDynamic", {
+    attrs: {
+      "radio-value": _vm.radioValue
+    },
+    on: {
+      printSelected: _vm.setPrintValue
+    }
+  })], 2), _vm._v(" "), _c("SummaryPersonalize", {
     attrs: {
       inputH: _vm.inputH,
       inputP: _vm.inputP,
-      inputL: _vm.inputL
+      inputL: _vm.inputL,
+      inputQ: _vm.inputQ,
+      selectedImage: _vm.selectedImage,
+      radioValue: _vm.radioValue
     }
   })], 1)])])])])]);
 };
@@ -4879,7 +4983,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg-orange[data-v-1ee39dc0] {\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-1ee39dc0] {\n  color: #f68630;\n}\n.bg-yellow[data-v-1ee39dc0] {\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-1ee39dc0] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-1ee39dc0] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-1ee39dc0] {\n  background-color: #f68630;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 15px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 12px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-1ee39dc0]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-1ee39dc0] {\n  background-color: #f68630;\n}\n.orange[data-v-1ee39dc0]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-1ee39dc0] {\n  width: 10%;\n}\nsection.classic[data-v-1ee39dc0] {\n  padding: 2rem;\n}\n.box[data-v-1ee39dc0] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-1ee39dc0] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: red;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-1ee39dc0] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-1ee39dc0] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-1ee39dc0] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-1ee39dc0] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-1ee39dc0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-1ee39dc0] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-1ee39dc0] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-1ee39dc0] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-1ee39dc0] {\n  margin-right: 50px;\n}\nli i[data-v-1ee39dc0] {\n  font-size: 2rem;\n}\na[data-v-1ee39dc0] {\n  color: black;\n  text-decoration: none;\n}\n.bg-yellow[data-v-1ee39dc0] {\n  background-color: #f68630;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n}\nh2[data-v-1ee39dc0] {\n  font-size: 1.5rem;\n}\n.inputs[data-v-1ee39dc0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.inputs .d-flex[data-v-1ee39dc0] {\n  align-items: center;\n  justify-content: start;\n}\n.inputs .bg-yellow[data-v-1ee39dc0] {\n  background-color: #f68630;\n  color: white;\n  display: flex;\n  height: 60px;\n  justify-content: center;\n  align-items: center;\n  width: 60px;\n}\n.inputs input[data-v-1ee39dc0] {\n  height: 60px;\n  width: 30%;\n  margin: 1rem 0px;\n  font-size: 1.5rem;\n  border: none;\n  background-color: #f1f1f1;\n}\n.inputs input[data-v-1ee39dc0]::-moz-placeholder {\n  font-size: 0.5rem;\n}\n.inputs input[data-v-1ee39dc0]::placeholder {\n  font-size: 0.5rem;\n}\n.image[data-v-1ee39dc0] {\n  display: flex;\n  flex-direction: column;\n}\n.image img[data-v-1ee39dc0] {\n  width: 60%;\n}\n.step[data-v-1ee39dc0] {\n  margin-bottom: 5rem;\n  display: flex;\n  border: 1px solid lightgray;\n  padding: 1rem;\n  background-color: white;\n  color: black;\n}\n.title-create[data-v-1ee39dc0] {\n  font-weight: bold;\n  font-size: 1.5rem;\n}", ""]);
+exports.push([module.i, ".bg-orange[data-v-1ee39dc0] {\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-1ee39dc0] {\n  color: #f68630;\n}\n.bg-yellow[data-v-1ee39dc0] {\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-1ee39dc0] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-1ee39dc0] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-1ee39dc0] {\n  background-color: #f68630;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 15px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 12px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-1ee39dc0]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-1ee39dc0] {\n  background-color: #f68630;\n}\n.orange[data-v-1ee39dc0]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-1ee39dc0] {\n  width: 10%;\n}\nsection.classic[data-v-1ee39dc0] {\n  padding: 2rem;\n}\n.box[data-v-1ee39dc0] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-1ee39dc0] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: red;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-1ee39dc0] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-1ee39dc0] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-1ee39dc0] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-1ee39dc0] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-1ee39dc0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-1ee39dc0] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-1ee39dc0] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-1ee39dc0] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-1ee39dc0] {\n  margin-right: 50px;\n}\nli i[data-v-1ee39dc0] {\n  font-size: 2rem;\n}\na[data-v-1ee39dc0] {\n  color: black;\n  text-decoration: none;\n}\n.bg-yellow[data-v-1ee39dc0] {\n  background-color: #f68630;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n}\nh2[data-v-1ee39dc0] {\n  font-size: 1.5rem;\n}\n.inputs[data-v-1ee39dc0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.inputs .d-flex[data-v-1ee39dc0] {\n  align-items: center;\n  justify-content: start;\n}\n.inputs .bg-yellow[data-v-1ee39dc0] {\n  background-color: #f68630;\n  color: white;\n  display: flex;\n  height: 60px;\n  justify-content: center;\n  align-items: center;\n  width: 60px;\n}\n.inputs input[data-v-1ee39dc0] {\n  padding: 1rem 0.5rem;\n  font-weight: bold;\n  height: 60px;\n  width: 30%;\n  margin: 1rem 0px;\n  font-size: 1.5rem;\n  border: none;\n  background-color: #f1f1f1;\n}\n.inputs input[data-v-1ee39dc0]::-moz-placeholder {\n  font-size: 0.5rem;\n}\n.inputs input[data-v-1ee39dc0]::placeholder {\n  font-size: 0.5rem;\n}\n.image[data-v-1ee39dc0] {\n  display: flex;\n  flex-direction: column;\n}\n.image img[data-v-1ee39dc0] {\n  width: 60%;\n}\n.step[data-v-1ee39dc0] {\n  margin-bottom: 5rem;\n  display: flex;\n  border: 1px solid lightgray;\n  padding: 1rem;\n  background-color: white;\n  color: black;\n}\n.title-create[data-v-1ee39dc0] {\n  font-weight: bold;\n  font-size: 1.5rem;\n}", ""]);
 
 // exports
 
