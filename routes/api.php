@@ -28,6 +28,9 @@ Route::namespace('Api')->group(function () {
 
     Route::get('/orders', 'OrderController@index');
     Route::get('/orders/{id}', 'OrderController@show');
+    Route::post('/orders', 'OrderController@create');
+    
+    Route::get('/cart/{id}', 'OrderController@create');
 
     Route::get('/users', 'UserController@index');
     Route::get('/users/{id}', 'UserController@show');

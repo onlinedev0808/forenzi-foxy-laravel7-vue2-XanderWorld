@@ -1,147 +1,123 @@
 <template>
-    <section class="shopping-cart">
-        <div class="container">
-            <div class="block-heading">
-                <h2 class="display-5 fw-bold">IL TUO CARRELLO</h2>
-            </div>
+	<section class="shopping-cart">
+		<div class="container">
+			<div class="block-heading">
+				<h2 class="display-5 fw-bold">IL TUO CARRELLO</h2>
+			</div>
 
-            <div class="content">
-                <div class="row">
-                    <div class="col-md-12 col-lg-8">
-                        <div class="items">
-                            <div class="product">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <img
-                                            class="img-fluid mx-auto d-block image"
-                                            src="../../../public/Links/cat-scatole-maniglie-aperte.jpg"
-                                        />
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="info">
-                                            <div class="row">
-                                                <div
-                                                    class="col-md-5 product-name"
-                                                >
-                                                    <div class="product-name">
-                                                        <a href="#"
-                                                            >Scatole a 1 onda</a
-                                                        >
-                                                        <div
-                                                            class="product-info"
-                                                        >
-                                                            <div>
-                                                                Dimensioni:
-                                                                <span
-                                                                    class="value"
-                                                                    >14 x 14 x
-                                                                    10</span
-                                                                >
-                                                            </div>
-                                                            <div>
-                                                                Codice:
-                                                                <span
-                                                                    class="value"
-                                                                    >PT014</span
-                                                                >
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 quantity">
-                                                    <label
-                                                        class="fw-bold"
-                                                        for="quantity"
-                                                    >
-                                                        Quantity:
-                                                    </label>
-                                                    <input
-                                                        class="form-control quantity-input"
-                                                        id="quantity"
-                                                        type="number"
-                                                        value="1"
-                                                    />
-                                                </div>
-                                                <div class="col-md-3 price">
-                                                    <span>$120</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr />
-                        </div>
-
-                        <!-- <div class="d-flex justify-content-between">
-                            <form class="coupon d-flex">
-                                <input
-                                    placeholder="Codice Coupon"
-                                    type="text"
-                                />
-                                <button class="btn bg-yellow" type="submit">
-                                    APPLICA COUPON
-                                </button>
-                            </form>
-                            <form class="coupon d-flex">
-                                <button class="btn bg-yellow" type="submit">
-                                    AGGIORNA IL CARRELLO
-                                </button>
-                            </form>
-                        </div> -->
-                    </div>
-                    <div class="col-md-12 col-lg-4">
-                        <div class="summary d-flex flex-column">
-                            <h3>TOTALE A CARRELLO</h3>
-                            <div class="summary-item">
-                                <span class="text">SUBTOTALE</span>
-                                <span class="price">$360</span>
-                            </div>
-                            <!-- <div class="summary-item">
-                                <span class="text">FOXTOP - SCONTO 5%</span>
-                                <span class="price">$0</span>
-                            </div> -->
-                            <!-- <div class="summary-item">
-                                <span class="text"
-                                    >ABBONAMENTO FOXTOP - VALIDO 1 ANNO</span
-                                >
-                                <span class="price">$0</span>
-                            </div> -->
-                            <div class="summary-item">
-                                <span class="text">SPEDIZIONE GRATUITA</span>
-                                <span class="price">$0</span>
-                            </div>
-                            <div class="summary-item">
-                                <span class="text">CONTRIBUTO CONAI</span>
-                                <span class="price">$0</span>
-                            </div>
-                            <div class="summary-item">
-                                <span class="text">IVA</span>
-                                <span class="price">$0</span>
-                            </div>
-                            <div
-                                class="summary-item txt-orange d-flex align-items-center justify-content-between"
-                            >
-                                <span class="text">TOTALE ORDINE</span>
-                                <span class="price">$945</span>
-                            </div>
-                            <hr />
-                            <button
-                                class="btn bg-yellow fw-bold btn-lg btn-block"
-                                type="button"
-                            >
-                                PROCEDI AL CHECKOUT
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+			<div class="content">
+				<div class="row">
+					<div class="col-md-12 col-lg-8">
+						<div class="items" v-for="item in order.products">
+							<CartItem :detail="item"/>
+							<hr />
+						</div>
+						<!-- <div class="d-flex justify-content-between">
+																		<form class="coupon d-flex">
+																						<input
+																										placeholder="Codice Coupon"
+																										type="text"
+																						/>
+																						<button class="btn bg-yellow" type="submit">
+																										APPLICA COUPON
+																						</button>
+																		</form>
+																		<form class="coupon d-flex">
+																						<button class="btn bg-yellow" type="submit">
+																										AGGIORNA IL CARRELLO
+																						</button>
+																		</form>
+														</div> -->
+					</div>
+					<div class="col-md-12 col-lg-4">
+						<div class="summary d-flex flex-column">
+							<h3>TOTALE A CARRELLO</h3>
+							<div class="summary-item">
+								<span class="text">SUBTOTALE</span>
+								<span class="price">${{ order.subtotal.toString() }}</span>
+							</div>
+							<!-- <div class="summary-item">
+																						<span class="text">FOXTOP - SCONTO 5%</span>
+																						<span class="price">$0</span>
+																		</div> -->
+							<!-- <div class="summary-item">
+																						<span class="text"
+																										>ABBONAMENTO FOXTOP - VALIDO 1 ANNO</span
+																						>
+																						<span class="price">$0</span>
+																		</div> -->
+							<div class="summary-item">
+								<span class="text">SPEDIZIONE GRATUITA</span>
+								<span class="price">${{ order.shipping_cost }}</span>
+							</div>
+							<div class="summary-item">
+								<span class="text">CONTRIBUTO CONAI</span>
+								<span class="price">${{ order.conai }}</span>
+							</div>
+							<div class="summary-item">
+								<span class="text">IVA</span>
+								<span class="price">${{ order.iva }}</span>
+							</div>
+							<div class="summary-item txt-orange d-flex align-items-center justify-content-between">
+								<span class="text">TOTALE ORDINE</span>
+								<span class="price">${{ order.total }}</span>
+							</div>
+							<hr />
+							<a type="button" class="btn bg-yellow fw-bold btn-lg btn-block" href="/checkout">
+								PROCEDI AL CHECKOUT
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </template>
 
 <script>
-export default {};
+import CartItem from './CartItem';
+
+export default {
+	components: {
+        CartItem,
+    },
+	data() {
+		return {
+			products: [],
+            order: {},
+            order_products: [],
+		}
+	},
+	computed: {
+		price() {
+			return item.quantity * item.price
+		}
+	},
+	methods: {
+        getOrders() {
+            axios.get('/api/orders/2')
+            .then(response => {
+                this.order = response.data.results;
+                this.order_products = response.data.results.products;
+            })
+            .catch(error => {
+                console.log(error.message);
+            });
+        },
+		test() {
+			this.$forceUpdate();
+		},	
+
+	},
+  mounted() {
+    // console.log(cookie);
+    axios.get('/api/users')
+    .then(res => {
+      console.log(res);
+    });
+    this.getOrders();
+  },
+};
 </script>
 
 <style lang="scss" scoped>

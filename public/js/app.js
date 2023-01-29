@@ -37417,6 +37417,7 @@ try {
  */
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.baseURL = 'http://localhost:8000';
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
@@ -37456,8 +37457,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\mymai\OneDrive\Desktop\Projects\forenzi-foxy-laravel7-vue2-XanderWorld\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\mymai\OneDrive\Desktop\Projects\forenzi-foxy-laravel7-vue2-XanderWorld\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\XanderWorld\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\XanderWorld\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

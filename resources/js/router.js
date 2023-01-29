@@ -36,6 +36,16 @@ const router = new VueRouter({
             name: "showvone",
             component: ShowVonePage,
         },
+        {
+            path: "/cart",
+            name: "cart",
+            component: CartPage,
+        },
+        {
+            path: "/checkout",
+            name: "checkout",
+            component: CheckoutPage,
+        },
     ],
 });
 export default router;

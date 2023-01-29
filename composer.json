@@ -10,7 +10,7 @@
     "require": {
         "php": "^7.2.5",
         "doctrine/dbal": "2.*",
-        "fakerphp/faker": "^1.21",
+        "fakerphp/faker": "^1.15",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",

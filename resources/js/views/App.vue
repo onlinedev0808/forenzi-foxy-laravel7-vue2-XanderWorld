@@ -6,7 +6,7 @@
         <router-view></router-view>
 
         <FooterTop />
-        <FooterBottom />
+        <!-- <FooterBottom /> -->
     </div>
 </template>
 
@@ -23,6 +23,7 @@ import ShowVonePage from "../pages/ShowVonePage.vue";
 
 import FooterTop from "../components/FooterComponents/FooterTop.vue";
 import FooterBottom from "../components/FooterComponents/FooterBottom.vue";
+
 export default {
     name: "App",
     components: {
@@ -38,7 +39,7 @@ export default {
         FooterTop,
         FooterBottom,
     },
-};
+}
 </script>
 
 <style lang="scss">
