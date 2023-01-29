@@ -185,7 +185,6 @@ export default {
             this.inputL = inputValues.inputL;
             this.inputH = inputValues.inputH;
             this.inputP = inputValues.inputP;
-            this.inputQ = inputValues.inputQ;
         },
         setInputQuantity(inputQuantity) {
             this.inputQ = inputQuantity.inputQ;

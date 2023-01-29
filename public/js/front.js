@@ -2605,7 +2605,6 @@ __webpack_require__.r(__webpack_exports__);
       this.inputL = inputValues.inputL;
       this.inputH = inputValues.inputH;
       this.inputP = inputValues.inputP;
-      this.inputQ = inputValues.inputQ;
     },
     setInputQuantity: function setInputQuantity(inputQuantity) {
       this.inputQ = inputQuantity.inputQ;
@@ -3856,10 +3855,10 @@ var render = function render() {
     staticClass: "mt-5 d-flex flex-column justify-content-center"
   }, [_c("div", {}, [_c("input", {
     attrs: {
-      id: "huey",
+      id: "NEUTRA",
       name: "drone",
       type: "radio",
-      value: "huey"
+      value: "NEUTRA"
     },
     domProps: {
       checked: _vm.radioValue === "huey"
@@ -3871,12 +3870,12 @@ var render = function render() {
     attrs: {
       "for": "huey"
     }
-  }, [_vm._v("Huey")])]), _vm._v(" "), _c("div", [_c("input", {
+  }, [_vm._v("NEUTRA")])]), _vm._v(" "), _c("div", [_c("input", {
     attrs: {
-      id: "dewey",
+      id: "PERSONALIZZATA",
       name: "drone",
       type: "radio",
-      value: "dewey"
+      value: "PERSONALIZZATA"
     },
     domProps: {
       checked: _vm.radioValue === "dewey"
@@ -3888,7 +3887,7 @@ var render = function render() {
     attrs: {
       "for": "dewey"
     }
-  }, [_vm._v("Dewey")])])])])])])]);
+  }, [_vm._v("PERSONALIZZATA")])])])])])])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -3955,12 +3954,10 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "summary-item"
+    staticClass: "summary-item py-3"
   }, [_c("span", {
-    staticClass: "title-create py-3"
-  }, [_vm._v("INSERISCI I DATI")]), _vm._v(" "), _c("span", {
-    staticClass: "price"
-  }, [_vm._v("$945")])]);
+    staticClass: "title-create"
+  }, [_vm._v("INSERISCI I DATI")])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;

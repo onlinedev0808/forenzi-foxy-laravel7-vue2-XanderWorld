@@ -31,9 +31,8 @@
                 <span class="price">{{ radioValue }}</span>
             </div>
 
-            <div class="summary-item">
-                <span class="title-create py-3">INSERISCI I DATI</span>
-                <span class="price">$945</span>
+            <div class="summary-item py-3">
+                <span class="title-create">INSERISCI I DATI</span>
             </div>
 
             <div class="summary-item">

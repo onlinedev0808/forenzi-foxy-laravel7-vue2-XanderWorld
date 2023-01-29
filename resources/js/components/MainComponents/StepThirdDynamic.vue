@@ -12,25 +12,25 @@
                         <div class="">
                             <input
                                 v-bind:checked="radioValue === 'huey'"
-                                id="huey"
+                                id="NEUTRA"
                                 name="drone"
                                 type="radio"
-                                value="huey"
+                                value="NEUTRA"
                                 @change="emitRadioValue"
                             />
-                            <label for="huey">Huey</label>
+                            <label for="huey">NEUTRA</label>
                         </div>
 
                         <div>
                             <input
                                 v-bind:checked="radioValue === 'dewey'"
-                                id="dewey"
+                                id="PERSONALIZZATA"
                                 name="drone"
                                 type="radio"
-                                value="dewey"
+                                value="PERSONALIZZATA"
                                 @change="emitRadioValue"
                             />
-                            <label for="dewey">Dewey</label>
+                            <label for="dewey">PERSONALIZZATA</label>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,6 @@
 
 <script>
 export default {
- 
     data() {
         return {
             radioValue: "",
