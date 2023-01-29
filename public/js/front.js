@@ -2372,6 +2372,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    goToPersonalizePage: function goToPersonalizePage() {
+      this.$router.push({
+        path: "/personalize"
+      });
+    },
     getCategories: function getCategories() {
       var _this = this;
       var pageCategories = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
@@ -4237,7 +4242,11 @@ var render = function render() {
         category: category
       }
     });
-  }), _vm._v(" "), _c("CustomizeBoxesComponent"), _vm._v(" "), _c("JumboComponent"), _vm._v(" "), _c("BannerNewsComponent"), _vm._v(" "), _vm._l(_vm.txtbanners, function (element, index) {
+  }), _vm._v(" "), _c("div", {
+    on: {
+      click: _vm.goToPersonalizePage
+    }
+  }, [_c("CustomizeBoxesComponent")], 1), _vm._v(" "), _c("JumboComponent"), _vm._v(" "), _c("BannerNewsComponent"), _vm._v(" "), _vm._l(_vm.txtbanners, function (element, index) {
     return _c("BannerTextComponent", {
       key: index,
       attrs: {
