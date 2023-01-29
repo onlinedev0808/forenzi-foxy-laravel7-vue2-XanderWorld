@@ -11,23 +11,26 @@
                     <div class="mt-5 d-flex flex-column justify-content-center">
                         <div class="">
                             <input
-                                checked
-                                id="huey"
+                                v-bind:checked="radioValue === 'huey'"
+                                id="NEUTRA"
                                 name="drone"
                                 type="radio"
-                                value="huey"
+                                value="NEUTRA"
+                                @change="emitRadioValue"
                             />
-                            <label for="huey">Huey</label>
+                            <label for="huey">NEUTRA</label>
                         </div>
 
                         <div>
                             <input
-                                id="dewey"
+                                v-bind:checked="radioValue === 'dewey'"
+                                id="PERSONALIZZATA"
                                 name="drone"
                                 type="radio"
-                                value="dewey"
+                                value="PERSONALIZZATA"
+                                @change="emitRadioValue"
                             />
-                            <label for="dewey">Dewey</label>
+                            <label for="dewey">PERSONALIZZATA</label>
                         </div>
                     </div>
                 </div>
@@ -37,11 +40,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            radioValue: "",
+        };
+    },
+    methods: {
+        emitRadioValue(event) {
+            this.radioValue = event.target.value;
+            this.$emit("printSelected", this.radioValue);
+        },
+    },
+};
 </script>
 
 <style lang="scss" scoped>
-
 label {
     font-size: 1rem;
 }
@@ -117,8 +131,6 @@ i {
     background-color: white;
     color: black;
 }
-
-
 
 .form-group input {
     width: 100%;

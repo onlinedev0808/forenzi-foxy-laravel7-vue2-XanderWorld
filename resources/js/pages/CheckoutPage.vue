@@ -5,7 +5,7 @@
                 <div class="col-lg-12">
                     <div class="h5 mx-4 large font-weight-bold">
                         <h1>CHECKOUT</h1>
-                        <hr>
+                        <hr />
                         <span> DETTAGLI DI FATTURAZIONE </span>
                     </div>
                 </div>

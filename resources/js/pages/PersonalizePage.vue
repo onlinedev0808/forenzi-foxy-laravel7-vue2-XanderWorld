@@ -30,14 +30,18 @@
                             >
                                 <!-- Left side content goes here -->
                                 <StepFirstDynamic
-                                    class="step"
                                     v-for="(element, index) in boxone"
-                                    :key="index"
+                                    @inputValuesChanged="setInputValues"
+                                    @inputQuantityChanged="setInputQuantity"
+                                    class="step"
+                                    :key="element.id"
                                     :step="element.step"
                                     :title="element.title"
+                                    :letter-q="element.letterQ"
                                     :letter-one="element.letterOne"
                                     :letter-two="element.letterTwo"
                                     :letter-three="element.letterThree"
+                                    :txt-q="element.txtQ"
                                     :txt-one="element.txtOne"
                                     :txt-two="element.txtTwo"
                                     :txt-three="element.txtThree"
@@ -46,7 +50,8 @@
                                 />
                                 <StepSecondDynamic
                                     v-for="(element, index) in boxtwo"
-                                    :key="index"
+                                    @imageSelected="setSelectedImage"
+                                    :key="element.id"
                                     :step="element.step"
                                     :title="element.title"
                                     :title-one="element.titleOne"
@@ -56,150 +61,20 @@
                                     :img-one="element.imgOne"
                                     :img-two="element.imgTwo"
                                 />
-                                <StepThirdDynamic />
+
+                                <StepThirdDynamic
+                                    @printSelected="setPrintValue"
+                                    :radio-value="radioValue"
+                                />
                             </div>
-
-                            <div
-                                class="shopping-cart d-flex align-items-start col-xl-5 col-md-12 col-lg-5"
-                            >
-                                <div class="summary d-flex flex-column">
-                                    <h3>RIEPILOGO</h3>
-                                    <div class="summary-item">
-                                        <span class="text">MISURE</span>
-                                        <span class="price"
-                                            >20 L x 50 P x 40 H</span
-                                        >
-                                    </div>
-                                    <div class="summary-item">
-                                        <span class="text">QUANTITÀ</span>
-                                        <span class="price">500 PEZZI</span>
-                                    </div>
-                                    <div class="summary-item">
-                                        <span class="text">COLORE SCATOLA</span>
-                                        <span class="price">AVANA</span>
-                                    </div>
-                                    <div class="summary-item">
-                                        <span class="text"
-                                            >TIPO DI CARTONE</span
-                                        >
-                                        <span class="price"
-                                            >SCATOLA A 1 ONDA</span
-                                        >
-                                    </div>
-                                    <div class="summary-item">
-                                        <span class="text">STAMPA</span>
-                                        <span class="price">NEUTRA</span>
-                                    </div>
-
-                                    <div class="summary-item">
-                                        <span class="title-create py-3"
-                                            >INSERISCI I DATI</span
-                                        >
-                                        <span class="price">$945</span>
-                                    </div>
-
-                                    <div class="summary-item">
-                                        <form>
-                                            <div class="row">
-                                                <div class="d-flex col-lg-12">
-                                                    <div
-                                                        class="form-group col-6"
-                                                    >
-                                                        <label class=""
-                                                            >NOME</label
-                                                        >
-                                                        <div
-                                                            class="d-flex jusify-content-start align-items-center p-2"
-                                                        >
-                                                            <input
-                                                                type="text"
-                                                                value=""
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="form-group col-6"
-                                                    >
-                                                        <label class=""
-                                                            >COGNOME</label
-                                                        >
-                                                        <div
-                                                            class="d-flex jusify-content-start align-items-center p-2"
-                                                        >
-                                                            <input
-                                                                type="text"
-                                                                value=""
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group col-lg-12">
-                                                <label class=""
-                                                    >RAGIONE SOCIALE</label
-                                                >
-                                                <div
-                                                    class="d-flex jusify-content-start align-items-center p-2"
-                                                >
-                                                    <input
-                                                        type="text"
-                                                        value=""
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group col-lg-12">
-                                                <label class="">CITTÀ</label>
-                                                <div
-                                                    class="d-flex jusify-content-start align-items-center p-2"
-                                                >
-                                                    <input
-                                                        type="text"
-                                                        value=""
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <label class=""
-                                                        >TELEFONO</label
-                                                    >
-                                                    <div
-                                                        class="d-flex jusify-content-start align-items-center p-2"
-                                                    >
-                                                        <input
-                                                            type="text"
-                                                            value=""
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <label class="">MAIL</label>
-                                                    <div
-                                                        class="d-flex jusify-content-start align-items-center p-2"
-                                                    >
-                                                        <input
-                                                            type="text"
-                                                            value=""
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                    <button
-                                        class="btn bg-yellow fw-bold btn-lg btn-block"
-                                        type="button"
-                                    >
-                                        PROCEDI AL CHECKOUT
-                                    </button>
-                                </div>
-                            </div>
+                            <SummaryPersonalize
+                                :inputH="inputH"
+                                :inputP="inputP"
+                                :inputL="inputL"
+                                :inputQ="inputQ"
+                                :selectedImage="selectedImage"
+                                :radioValue="radioValue"
+                            />
                         </div>
                     </div>
                 </div>
@@ -212,14 +87,23 @@
 import StepFirstDynamic from "../components/MainComponents/StepFirstDynamic.vue";
 import StepSecondDynamic from "../components/MainComponents/StepSecondDynamic.vue";
 import StepThirdDynamic from "../components/MainComponents/StepThirdDynamic.vue";
+import SummaryPersonalize from "../components/MainComponents/SummaryPersonalize.vue";
 export default {
     components: {
         StepFirstDynamic,
         StepSecondDynamic,
         StepThirdDynamic,
+        SummaryPersonalize,
     },
     data() {
         return {
+            inputH: "",
+            inputP: "",
+            inputL: "",
+            inputQ: "",
+            radioValue: "",
+            selectedImage: "",
+
             boxone: [
                 {
                     step: "1",
@@ -236,10 +120,12 @@ export default {
                 {
                     step: "2",
                     title: "INSERISCI LA QUANTITÀ",
-                    letterOne: "Q",
+                    letterQ: "Q",
+                    letterOne: "",
                     letterTwo: "",
                     letterThree: "",
-                    txtOne: "PEZZI",
+                    txtQ: "PEZZI",
+                    txtOne: "",
                     txtTwo: "",
                     txtThree: "",
                     txtBanner:
@@ -287,16 +173,36 @@ export default {
                     src: require("../../../public/Links/04.png"),
                 },
             ],
-            selectedImage: "",
         };
     },
-    computed: {
-        isActiveFirst() {
-            return this.selectedImage === "AVANA";
+    methods: {
+        setPrintValue(print) {
+            this.radioValue = print;
+            console.log(this.radioValue);
         },
-        isActiveSecond() {
-            return this.selectedImage === "BIANCA";
+
+        setInputValues(inputValues) {
+            this.inputL = inputValues.inputL;
+            this.inputH = inputValues.inputH;
+            this.inputP = inputValues.inputP;
         },
+        setInputQuantity(inputQuantity) {
+            this.inputQ = inputQuantity.inputQ;
+        },
+
+        setSelectedImage(image) {
+            this.selectedImage = image;
+            console.log(this.selectedImage.value);
+        },
+
+        // setSelectedColor(color) {
+        //     this.selectedColor = color;
+        //     console.log(this.selectedColor);
+        // },
+        // setSelectedCategory(category) {
+        //     this.selectedCategory = category;
+        //     console.log(this.selectedCategory);
+        // },
     },
 };
 </script>
@@ -307,40 +213,7 @@ export default {
 h2 {
     font-size: 1.5rem;
 }
-.shopping-cart .summary {
-    border: 1px solid lightgray;
-    background-color: white;
-    padding: 30px;
-    color: black;
-    width: 100%;
-}
 
-.shopping-cart .summary h3 {
-    text-align: start;
-    font-size: 1.3em;
-    font-weight: 600;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-.shopping-cart .summary .summary-item:not(:last-of-type) {
-    padding-bottom: 10px;
-    padding-top: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.shopping-cart .summary .text {
-    font-size: 1em;
-    font-weight: 600;
-}
-
-.shopping-cart .summary .price {
-    float: right;
-}
-
-.shopping-cart .summary button {
-    margin-top: 20px;
-}
 .active {
     transition: 1s;
     transform: scale(0.9);
