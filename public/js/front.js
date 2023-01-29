@@ -3539,8 +3539,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.inputL,
-      expression: "inputL"
+      value: _vm.inputP,
+      expression: "inputP"
     }],
     attrs: {
       type: "number",
@@ -3548,12 +3548,12 @@ var render = function render() {
       placeholder: "inserisci il lato corto"
     },
     domProps: {
-      value: _vm.inputL
+      value: _vm.inputP
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.inputL = $event.target.value;
+        _vm.inputP = $event.target.value;
       }
     }
   }) : _vm._e(), _vm._v(" "), _vm.txtTwo ? _c("h2", {
@@ -3563,10 +3563,25 @@ var render = function render() {
   }, [_vm.letterThree ? _c("div", {
     staticClass: "bg-yellow"
   }, [_vm._v("\n                                    " + _vm._s(_vm.letterThree) + "\n                                ")]) : _vm._e(), _vm._v(" "), _vm.letterThree ? _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.inputH,
+      expression: "inputH"
+    }],
     attrs: {
       type: "number",
       min: "1",
       placeholder: "inserisci l'altezza"
+    },
+    domProps: {
+      value: _vm.inputH
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.inputH = $event.target.value;
+      }
     }
   }) : _vm._e(), _vm._v(" "), _vm.txtThree ? _c("h2", {
     staticClass: "mx-2"
