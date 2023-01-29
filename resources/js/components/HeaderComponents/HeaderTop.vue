@@ -95,6 +95,11 @@ export default {
             font-size: 0.5rem;
         }
 
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
     }
 }
 </style>

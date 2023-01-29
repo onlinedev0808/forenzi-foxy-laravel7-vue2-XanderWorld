@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Order;
 use App\Models\Role;
+use App\Models\UserRole;
 use App\Models\userDetail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,7 +49,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
-
+    public function userroles()
+    {
+        return $this->hasMany(UserRole::class);
+    }
+    
     public function roles()
     {
         return $this->belongsToMany(Role::class);
