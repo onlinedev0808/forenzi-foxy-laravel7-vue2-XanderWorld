@@ -58,12 +58,11 @@ export default {
 		}
 	},
 	mounted() {
-		this.quantity = this.detail.quantity
+		this.quantity = this.detail.pivot.quantity
 	},
 	watch: {
 		quantity() {
-			this.computedPrice = this.detail.price * this.quantity
-
+			this.computedPrice = (this.detail.price * this.quantity).toFixed(2);
 		}
 	},
 	methods: {

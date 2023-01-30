@@ -33,8 +33,9 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $id = Auth::id();
         //
         Log::debug(json_encode($request->user()));
         $id = 149;//Session::get('id');
@@ -59,6 +60,7 @@ class OrderController extends Controller
                     'updated_at' => now(),
                     'quantity' => $order_product['quantity']
                 ]);
+                
             } else {
                 DB::table('order_product')->insert([
                     'product_id' => $order_product['id'],
@@ -113,11 +115,11 @@ class OrderController extends Controller
         }
 // conai, iva shipping_cost random value must be setted
         Order::where('id', $oid->id)->update([
-            'total' => $total,
-            'subtotal' => 0,
+            'subtotal' => $total,
             'shipping_cost' => 0,
-            'conai' => 0,
-            'iva' => 0,
+            'conai' => $total * 100.00 / 22,
+            'iva' => 4.35,
+            'total' => $subtotal  + $total * 100.00 / 22 + 4.35,
             'updated_at' => now()
         ]);
 
@@ -145,11 +147,12 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $order = Order::with('products.category')->findOrFail($id);
+        $order = Order::with('products.category')->where('user_id', Auth::id())->first();
         return response()->json([
             "response" => true,
+            "hhh" => Auth::id(),
             "results" => $order
         ]);
     }
@@ -174,7 +177,42 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Log::debug(json_encode($request->user()));
+
+        $params = $request->all();
+        $id = Auth::id();
+
+        $total = 0.00;
+        $subtotal = 0.00;
+        $shipping_cost = 0.00;
+        $conai = 0.00;
+        $iva = 0.00;
+        
+        foreach($params as $op) {
+            $tmp = Product::select(['quantity', 'price'])->where('id', $op["id"])->first();
+            if ($tmp->attributes['quantity'] < $op['quantity']) {
+                $subtotal += $tmp->price * $op['quantity'];
+            }
+            $shipping_cost = 0.00;
+            $conai = $subtotal * 100.00 / 22;
+            $iva = 4.35;
+        }
+
+        $total = $subtotal + $shipping_cost + $conai + $iva;
+
+        Order::where('user_id', $id)->update([
+            'total' => $total,
+            'subtotal' => $subtotal,
+            'shipping_cost' => $shipping_cost,
+            'conai' => $conai,
+            'iva' => $iva,
+            'order_number' => rand(10000000, 99999999),
+            'updated_at' => now()
+        ]);
+
+        return response() -> json([
+            "response"=> true,
+        ]);
     }
 
     /**
@@ -187,4 +225,5 @@ class OrderController extends Controller
     {
         //
     }
+
 }
