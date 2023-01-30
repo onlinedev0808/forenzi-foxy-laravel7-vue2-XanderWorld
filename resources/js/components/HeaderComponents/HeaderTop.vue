@@ -33,7 +33,13 @@
                             <i class="fa fa-user-alt"></i>
                             <div class="d-none d-lg-inline">
                                 <strong>
-                                    <p>{{ this.$store.state.isAuth ? 'DISCONNETTERSI' : 'ACCEDI O' }}</p>
+                                    <p>
+                                        {{
+                                            this.$store.state.isAuth
+                                                ? "DISCONNETTERSI"
+                                                : "ACCEDI O"
+                                        }}
+                                    </p>
                                 </strong>
                                 <p>{{ this.$store.state.name }}</p>
                             </div>
@@ -43,12 +49,18 @@
                 <section class="col-2">
                     <a href="/cart">
                         <div id="carriage" class="d-flex align-items-center">
-                            <router-link to="/cart"><i class="fa fa-bus-alt"></i></router-link>
+                            <router-link to="/cart"
+                                ><i class="fas fa-shopping-cart"></i
+                            ></router-link>
                             <div class="d-none d-lg-inline">
                                 <strong>
                                     <p>CARRELLO</p>
                                 </strong>
-                                <p>{{ this.$store.state.total }}$ / {{ this.$store.state.productCount }} PRODOTTI</p>
+                                <p>
+                                    {{ this.$store.state.total }}$ /
+                                    {{ this.$store.state.productCount }}
+                                    PRODOTTI
+                                </p>
                             </div>
                         </div>
                     </a>
@@ -59,47 +71,43 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
     data() {
         return {
             isLogin: false,
-            text: 'REGISTRATI'
-        }
+            text: "REGISTRATI",
+        };
     },
-    methods:{
+    methods: {
         getUserInfo() {
             axios
-                .get('api/user', {})
-                .then( (response) => {
-                    this.$store.commit('updateUser', {
+                .get("api/user", {})
+                .then((response) => {
+                    this.$store.commit("updateUser", {
                         isAuth: true,
-                        name: response.data.name
+                        name: response.data.name,
                     });
                 })
-                .catch( (error) => {
-
-                });
+                .catch((error) => {});
         },
         getCartInfo() {
             axios
-                .put('api/orders', {})
-                .then( (response) => {
-                    this.$store.commit('updateCart', {
+                .put("api/orders", {})
+                .then((response) => {
+                    this.$store.commit("updateCart", {
                         productCount: response.data.results.products.length,
-                        total: parseFloat(response.data.results.total)
+                        total: parseFloat(response.data.results.total),
                     });
                 })
-                .catch( (error) => {
-
-                });
-        }
+                .catch((error) => {});
+        },
     },
     created() {
         this.getUserInfo();
         this.getCartInfo();
-    }
+    },
 };
 </script>
 
@@ -113,10 +121,6 @@ export default {
     section {
         cursor: pointer;
         transition: 1s;
-
-        &:hover {
-            // filter: invert(2);
-        }
 
         i {
             font-size: 20px;
@@ -133,7 +137,6 @@ export default {
             text-decoration: none;
             color: white;
         }
-
     }
 }
 </style>
