@@ -82,17 +82,18 @@ class OrderController extends Controller
         else
         {
             
-            $orderLog = Order::create([
-                'user_id' => $id,
-                'order_number' => random_int(1, 23234342),
-                'status' => 'in attesa',
-                'total' => 0,
-                'subtotal' => 0,
-                'shipping_cost' => 0,
-                'conai' => 0,
-                'iva' => 0,
-                'created_at' => now()
-            ]);
+            $orderLog = new Order();
+            $orderLog->user_id = $id;
+            $orderLog->order_number = random_int(1, 23234342);
+            $orderLog->status = 'in attesa';
+            $orderLog->total = 0;
+            $orderLog->subtotal = 0;
+            $orderLog->shipping_cost = 0;
+            $orderLog->conai = 0;
+            $orderLog->iva = 0;
+            $orderLog->created_at = now();
+            
+            $orderLog->save();
 
             if($orderLog == true) {
                 $order_id = Order::where([
@@ -239,7 +240,7 @@ class OrderController extends Controller
         $old_order->shipping_cost = $shipping_cost;
         $old_order->conai = $conai;
         $old_order->iva = $iva;
-        $old_order->order_number = rand(10000000, 99999999);
+        $old_order->order_number = random_int(1, 23234342);
         $old_order->updated_at = now();
         $old_order->save();
 

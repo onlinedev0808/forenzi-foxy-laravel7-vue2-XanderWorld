@@ -90,6 +90,7 @@ export default {
                 })
                 .then((response) => {
                     if (response.data.productCount)
+                        alert("Added to Cart");
                         this.$store.commit("updateCart", {
                             productCount: response.data.productCount,
                             total: response.data.result,
