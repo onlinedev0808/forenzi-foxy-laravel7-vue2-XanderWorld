@@ -233,15 +233,15 @@ class OrderController extends Controller
         $total = $subtotal + $shipping_cost + $conai + $iva;
 
         $old_order = Order::where('user_id', Auth::id())->first();
-        $old_order->update(
-            ['total' => $total],
-            ['subtotal' => $subtotal],
-            ['shipping_cost' => $shipping_cost],
-            ['conai' => $conai],
-            ['iva' => $iva],
-            ['order_number' => rand(10000000, 99999999)],
-            ['updated_at' => now()]
-        );
+        
+        $old_order->total = $total;
+        $old_order->subtotal = $subtotal;
+        $old_order->shipping_cost = $shipping_cost;
+        $old_order->conai = $conai;
+        $old_order->iva = $iva;
+        $old_order->order_number = rand(10000000, 99999999);
+        $old_order->updated_at = now();
+        $old_order->save();
 
         return response() -> json([
             "response"=> true,
