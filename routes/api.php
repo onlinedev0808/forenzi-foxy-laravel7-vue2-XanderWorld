@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return response()->json(Auth::user());
 });
 
-Route::middleware('auth')->namespace('api')->group(function () {
+Route::namespace('api')->group(function () {
     Route::get('/products', 'ProductController@index');
     Route::get('/products/{id}', 'ProductController@show');
     // Route::get('/products/{id}', 'ProductController@destroy');
