@@ -19,7 +19,10 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+            Auth::guard('web')->logout();
+            session()->forget('setredirectroute');
+            session()->forget('affilate');
+            return redirect('/');
         }
 
         return $next($request);

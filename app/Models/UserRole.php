@@ -9,6 +9,7 @@ class UserRole extends Model
 {
     protected $primaryKey = 'user_id';
     protected $table = 'role_user';
+    protected $fillable = ['user_id'];
     
     public function user()
     {
