@@ -25,7 +25,7 @@
 
                 <div class="add-to-cart d-flex">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 mx-4">
                             <div class="">
                                 <button
                                     @click="addToCart"
@@ -34,7 +34,7 @@
                                     AGGIUNGI AL CARRELLO
                                 </button>
                             </div>
-                            <div class="col-6 quantity-input">
+                            <div class="col-10 quantity-input">
                                 <button
                                     @click="decrementQuantity"
                                     id="minus-button"
