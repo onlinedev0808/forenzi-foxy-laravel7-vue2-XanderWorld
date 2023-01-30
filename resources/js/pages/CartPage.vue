@@ -44,12 +44,12 @@
 													<label class="fw-bold" for="quantity">
 														Quantity:
 													</label>
-													<input class="form-control quantity-input" :id='item.id' type="number" @change="test(item)" ref="totalQuantity" v-model="item.pivot.quantity"/>
+													<input class="form-control quantity-input" :id='item.id' type="number" min="0" @change="test(item)" ref="totalQuantity" v-model="item.pivot.quantity"/>
 												</div>
 												<div class="col-md-3 price">
 													<div style="white-space:nowrap">
 														<label for="id1">$</label>
-														<input type="text" id="id1" class="priceLabel" style="border: none; box-shadow: none; background-color: white; pointer-events: none;" :value="(item.pivot.quantity * item.price).toFixed(2)" readonly />
+														<input type="text" id="id1" class="priceLabel" ref="subTotalPrice" style="border: none; box-shadow: none; background-color: white; pointer-events: none;" :value="(item.pivot.quantity * item.price).toFixed(2)" readonly />
 													</div>
 												</div>
 											</div>
@@ -81,7 +81,7 @@
 							<h3>TOTALE A CARRELLO</h3>
 							<div class="summary-item">
 								<span class="text">SUBTOTALE</span>
-								<span class="price">${{ this.subtotal.toFixed(2) }}</span>
+								<span class="price">${{ parseFloat(this.subtotal).toFixed(2) }}</span>
 							</div>
 							<!-- <div class="summary-item">
 																						<span class="text">FOXTOP - SCONTO 5%</span>
@@ -95,22 +95,22 @@
 																		</div> -->
 							<div class="summary-item">
 								<span class="text">SPEDIZIONE GRATUITA</span>
-								<span class="price">${{ this.shipping_cost.toFixed(2) }}</span>
+								<span class="price">${{ parseFloat(this.shipping_cost).toFixed(2) }}</span>
 							</div>
 							<div class="summary-item">
 								<span class="text">CONTRIBUTO CONAI</span>
-								<span class="price">${{ this.conai.toFixed(2) }}</span>
+								<span class="price">${{ parseFloat(this.conai).toFixed(2) }}</span>
 							</div>
 							<div class="summary-item">
 								<span class="text">IVA</span>
-								<span class="price">${{ this.iva.toFixed(2) }}</span>
+								<span class="price">${{ parseFloat(this.iva).toFixed(2) }}</span>
 							</div>
 							<div class="summary-item txt-orange d-flex align-items-center justify-content-between">
 								<span class="text">TOTALE ORDINE</span>
-								<span class="price">${{ this.total.toFixed(2) }}</span>
+								<span class="price">${{ parseFloat(this.total).toFixed(2) }}</span>
 							</div>
 							<hr />
-							<a type="button" class="btn bg-yellow fw-bold btn-lg btn-block" @click="checkout()" href="/checkout">
+							<a type="button" class="btn bg-yellow fw-bold btn-lg btn-block" @click="checkout()">
 								PROCEDI AL CHECKOUT
 							</a>
 						</div>
@@ -123,6 +123,7 @@
 
 <script>
 import CartItem from './CartItem';
+import axios from "axios";
 
 export default {
 	components: {
@@ -147,10 +148,9 @@ export default {
         getOrders() {
             axios.put('/api/orders')
             .then(response => {
-				console.log(response);
                 this.order = response.data.results;
 				this.subtotal = parseFloat(this.order.subtotal);
-				this.shipping_cost = parseFloat(this.order.shipping_cost);
+				// this.shipping_cost = parseFloat(this.order.shipping_cost);
 				this.conai = parseFloat(this.order.conai);
 				this.iva = parseFloat(this.order.iva);
 				this.total = parseFloat(this.order.total);
@@ -161,25 +161,32 @@ export default {
         },
 		test(item) {
 			this.subtotal += item.pivot.quantity * parseFloat(item.price);
-			this.shipping_cost += item.pivot.quantity * parseFloat(this.order.shipping_cost);
-			this.conai += item.pivot.quantity * parseFloat(this.order.conai);
-			this.iva += item.pivot.quantity * parseFloat(this.order.iva);
-			this.total += item.pivot.quantity * parseFloat(this.order.total);
+
+			this.subtotal = 0;
+			this.iva = 0;
+			this.$refs.subTotalPrice.map(sub => {
+				this.subtotal += parseFloat(sub.value);
+			});
+
 			this.$refs.totalQuantity.map(quantity => {
+				this.iva += quantity.value * 4.35;
+
 				this.params.push({
 					id: quantity.id,
 					quantity: quantity.value
 				});
 			});
-			
+
+			this.conai = (this.subtotal * 22 / 100.00).toFixed(2);
+			this.total = this.subtotal + this.conai + this.iva;
 		},	
 		checkout() {
-			axios.delete('/api/orders', this.params)
+			axios.post('/api/orders/id', this.params)
 			.then(res => {
 				console.log(res);
-				if( res.response ) {
+				if( res.data.response ) {
 					alert('Añadida al carrito');// show alert
-					// this.$router.push({ name: '/checkout' })
+					this.$router.replace({path: '/checkout'});
 				}
 			});
 		},

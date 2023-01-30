@@ -29,7 +29,7 @@ Route::middleware('auth')->namespace('api')->group(function () {
     Route::get('/orders', 'OrderController@index');
     Route::put('/orders', 'OrderController@show');
     Route::post('/orders', 'OrderController@create');
-    Route::delete('/orders', 'OrderController@update');
+    Route::post('/orders/{id}', 'OrderController@update');
     
     Route::get('/cart/{id}', 'OrderController@create');
 
