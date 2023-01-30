@@ -29,13 +29,13 @@
                 </div>
                 <section class="col-2">
                     <a href="/login">
-                        <div id="login" class="d-flex align-items-center" @click="goTo('login')">
+                        <div id="login" class="d-flex align-items-center">
                             <i class="fa fa-user-alt"></i>
                             <div class="d-none d-lg-inline">
                                 <strong>
-                                    <p>ACCEDI O</p>
+                                    <p>{{ this.$store.state.isAuth ? 'DISCONNETTERSI' : 'ACCEDI O' }}</p>
                                 </strong>
-                                <p>REGISTRATI</p>
+                                <p>{{ this.$store.state.name }}</p>
                             </div>
                         </div>
                     </a>
@@ -48,7 +48,7 @@
                                 <strong>
                                     <p>CARRELLO</p>
                                 </strong>
-                                <p>54,00 $ / 2 PRODOTTI</p>
+                                <p>{{ this.$store.state.total }}$ / {{ this.$store.state.productCount }} PRODOTTI</p>
                             </div>
                         </div>
                     </a>
@@ -59,12 +59,46 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-    methods:{
-        goTo(url) {
-            this.$router.path(url);
-            this.$router.go();
+    data() {
+        return {
+            isLogin: false,
+            text: 'REGISTRATI'
         }
+    },
+    methods:{
+        getUserInfo() {
+            axios
+                .get('api/user', {})
+                .then( (response) => {
+                    this.$store.commit('updateUser', {
+                        isAuth: true,
+                        name: response.data.name
+                    });
+                })
+                .catch( (error) => {
+
+                });
+        },
+        getCartInfo() {
+            axios
+                .put('api/orders', {})
+                .then( (response) => {
+                    this.$store.commit('updateCart', {
+                        productCount: response.data.results.products.length,
+                        total: parseFloat(response.data.results.total)
+                    });
+                })
+                .catch( (error) => {
+
+                });
+        }
+    },
+    created() {
+        this.getUserInfo();
+        this.getCartInfo();
     }
 };
 </script>

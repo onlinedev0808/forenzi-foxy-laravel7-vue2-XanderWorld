@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return response()->json(Auth::user());
+});
 
 Route::middleware('auth')->namespace('api')->group(function () {
     Route::get('/products', 'ProductController@index');
@@ -35,4 +35,8 @@ Route::middleware('auth')->namespace('api')->group(function () {
 
     Route::get('/users', 'UserController@index');
     Route::get('/users/{id}', 'UserController@show');
+
+    Route::get('/user', function(Request $request) {
+        return response()->json(['name' => Auth::user()->name]);
+    });
 });

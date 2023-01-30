@@ -76,16 +76,25 @@ class LoginController extends Controller
           $user->update(['verified'=>1]);
 
           $role = User::with('userroles')->where('id', $user->id)->first();
+
           foreach($role->userroles as $role) {
             if($role->role_id == 1)//is admin
                 return redirect('/admin/home');
             else if($role->role_id == 2)//is user
-                return redirect('/home');
+                return redirect('/');
           }
           
           return view('guest.home');//is guest
       }
 
-      return response()->json(array('errors' => [ 0 => 'Credentials Doesn\'t Match !' ]));   
+      return view('auth.login')->with('message', 'Don\'t match');   
+    }
+
+    public function logout()
+    {
+        Auth::guard('web')->logout();
+        session()->forget('setredirectroute');
+        session()->forget('affilate');
+        return redirect('/');
     }
 }

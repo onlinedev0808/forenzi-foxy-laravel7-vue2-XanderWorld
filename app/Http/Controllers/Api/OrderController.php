@@ -38,14 +38,13 @@ class OrderController extends Controller
         $id = Auth::id();
         //
         Log::debug(json_encode($request->user()));
-        $id = 149;//Session::get('id');
         $order_exist = Order::where([
             ['user_id','=', $id],
             ['status', '=', 'in attesa']
         ])->first();
-
+    
         $order_product = $request->all();
-
+        
         if ($order_exist != null) {
             $order_product_exist = DB::table('order_product')->where([
                 ['product_id', '=', $order_product['id']],
@@ -53,14 +52,23 @@ class OrderController extends Controller
             ])->first();
 
             if ($order_product_exist != null) {
+                $product = DB::table('products')->select('quantity')->where('id', $order_product_exist->product_id)->first();//in product: original qu
+                $order_pro = DB::table('order_product')->select('quantity')->where([
+                    ['product_id', '=', $order_product_exist->product_id],
+                    ['order_id', '=', $order_exist->id]
+                ])->first();//in order_product, qu
+                   
+                if ($product->quantity < $order_product['quantity'] + $order_pro->quantity)
+                    return response() -> json([
+                        "response"=> true,
+                        "result"=> 'over quantity'
+                    ]);
+
                 DB::table('order_product')->where([
                     ['product_id', '=', $order_product_exist->product_id],
                     ['order_id', '=', $order_exist->id]
-                ])->update([
-                    'updated_at' => now(),
-                    'quantity' => $order_product['quantity']
-                ]);
-                
+                ])->increment('quantity', $order_product['quantity'], ['updated_at' => now()]);
+
             } else {
                 DB::table('order_product')->insert([
                     'product_id' => $order_product['id'],
@@ -73,7 +81,8 @@ class OrderController extends Controller
         }
         else
         {
-            $orderLog = Order::insert([
+            
+            $orderLog = Order::create([
                 'user_id' => $id,
                 'order_number' => random_int(1, 23234342),
                 'status' => 'in attesa',
@@ -85,13 +94,25 @@ class OrderController extends Controller
                 'created_at' => now()
             ]);
 
-            DB::table('order_product')->insert([
-                'product_id' => $order_product['id'],
-                'quantity' => $order_product['quantity'],
-                'order_id' => $order_exist['id'],
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
+            if($orderLog == true) {
+                $order_id = Order::where([
+                    ['user_id','=', $id],
+                    ['status', '=', 'in attesa']
+                ])->first()['id'];
+
+                DB::table('order_product')->create([
+                    'product_id' => $order_product['id'],
+                    'quantity' => $order_product['quantity'],
+                    'order_id' => $order_id,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            } else {
+                return response() -> json([
+                    "response"=> true,
+                    "result" => "order creat error"
+                ]);
+            }
         }
 
         $oid = DB::table('orders')->where([
@@ -106,26 +127,29 @@ class OrderController extends Controller
         $total = 0.00;
         $rejectedList = [];
         foreach ($order_products as $op) {
-            $tmp = Product::select(['quantity', 'price'])->where('id', $op->product_id)->first();
-            if ($tmp->attributes['quantity'] < $op->quantity) {
+            $tmp = DB::table('products')->select(['quantity', 'price'])->where('id', $op->product_id)->first();
+            
+            if ($tmp->quantity > $op->quantity) {
                 $total += $tmp->price * $op->quantity;
             } else {
-                array_push($rejectedList, $op->order_id.'/'.$op->product_id);
+                $total += $tmp->price * $tmp->quantity;
+                array_push($rejectedList, $op->order_id.'->'.$op->product_id);
             }
         }
 // conai, iva shipping_cost random value must be setted
         Order::where('id', $oid->id)->update([
             'subtotal' => $total,
             'shipping_cost' => 0,
-            'conai' => $total * 100.00 / 22,
+            'conai' => $total * 22.00 / 100,
             'iva' => 4.35,
-            'total' => $subtotal  + $total * 100.00 / 22 + 4.35,
+            'total' => $total  + $total * 22.00 / 100 + 4.35,
             'updated_at' => now()
         ]);
 
         return response() -> json([
             "response"=> true,
             "result"=> $total,
+            "productCount" => count($order_products),
             "rejected" => $rejectedList
         ]);
     }
@@ -152,7 +176,6 @@ class OrderController extends Controller
         $order = Order::with('products.category')->where('user_id', Auth::id())->first();
         return response()->json([
             "response" => true,
-            "hhh" => Auth::id(),
             "results" => $order
         ]);
     }
