@@ -5,7 +5,7 @@
                 <div class="col-lg-12">
                     <div class="h5 mx-4 large font-weight-bold">
                         <h1>CHECKOUT</h1>
-                        <hr>
+                        <hr />
                         <span> DETTAGLI DI FATTURAZIONE </span>
                     </div>
                 </div>
@@ -180,9 +180,50 @@
                                 class="d-flex justify-content-between align-items-center"
                             >
                                 <div class="h6">RIEPILOGO ORDINE</div>
-                                <div class="h6"><a href="#">Back</a></div>
+                                <div class="h6"><a href="/cart">Back</a></div>
                             </div>
-                            <div
+                            <div v-for="item in order.products">
+                                <div class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom">
+                                    <div class="item pr-2">
+                                        <img
+                                            alt=""
+                                            height="80"
+                                            src="../../../public/Links/cat-scatole-cartone-1-onda.jpg"
+                                            width="80"
+                                        />
+                                        <div class="number">{{ item.pivot.quantity }}</div>
+                                    </div>
+
+                                    <div class="d-flex flex-column px-3">
+                                        <b class="">{{ item.name }}</b>
+                                        <strong
+                                            >CODICE:
+                                            <span> </span>
+                                            <a class="text-primary" href="#">
+                                                {{ item.code }}
+                                            </a>
+                                        </strong>
+                                        <strong
+                                            >DIMENSIONI:
+                                            <span> </span>
+                                            <a class="text-primary" href="#">
+                                                <strong
+                                                    >CODICE:
+                                                    <span> </span>
+                                                    <a
+                                                        class="text-primary"
+                                                        href="#"
+                                                    >
+                                                    {{ item.length }} x {{ item.height }} x {{ item.width }}
+                                                    </a>
+                                                </strong>
+                                            </a>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- <div
                                 class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom"
                             >
                                 <div class="item pr-2">
@@ -221,47 +262,7 @@
                                         </a>
                                     </strong>
                                 </div>
-                            </div>
-                            <div
-                                class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom"
-                            >
-                                <div class="item pr-2">
-                                    <img
-                                        alt=""
-                                        height="80"
-                                        src="../../../public/Links/cat-scatole-cartone-1-onda.jpg"
-                                        width="80"
-                                    />
-                                    <div class="number">2</div>
-                                </div>
-
-                                <div class="d-flex flex-column px-3">
-                                    <b class="">Scatole 2 onde</b>
-                                    <strong
-                                        >CODICE:
-                                        <span> </span>
-                                        <a class="text-primary" href="#">
-                                            PT1014
-                                        </a>
-                                    </strong>
-                                    <strong
-                                        >DIMENSIONI:
-                                        <span> </span>
-                                        <a class="text-primary" href="#">
-                                            <strong
-                                                >CODICE:
-                                                <span> </span>
-                                                <a
-                                                    class="text-primary"
-                                                    href="#"
-                                                >
-                                                    14 x 14 x 10
-                                                </a>
-                                            </strong>
-                                        </a>
-                                    </strong>
-                                </div>
-                            </div>
+                            </div> -->
 
                             <div class="py-5">
                                 <div
@@ -269,7 +270,7 @@
                                 >
                                     <div class="display-5">SUBTOTALE</div>
                                     <div class="ml-auto font-weight-bold">
-                                        $80.9
+                                        ${{ this.subtotal.toFixed(2) }}
                                     </div>
                                 </div>
                                 <!-- <div
@@ -295,7 +296,7 @@
                                         SPEDIZIONE GRATUITA
                                     </div>
                                     <div class="ml-auto font-weight-bold">
-                                        $80.9
+                                        ${{ this.shipping_cost.toFixed(2) }}
                                     </div>
                                 </div>
                                 <div
@@ -305,7 +306,7 @@
                                         CONTRIBUTO CONAI
                                     </div>
                                     <div class="ml-auto font-weight-bold">
-                                        $80.9
+                                        ${{ this.conai.toFixed(2) }}
                                     </div>
                                 </div>
                                 <div
@@ -313,14 +314,14 @@
                                 >
                                     <div class="display-5">IVA</div>
                                     <div class="ml-auto font-weight-bold">
-                                        $80.9
+                                        ${{ this.iva.toFixed(2) }}
                                     </div>
                                 </div>
                                 <div
                                     class="total border-top d-flex justify-content-between align-items-center ml-2 font-weight-bold"
                                 >
                                     <div>Total</div>
-                                    <div class="px-2">$92.98</div>
+                                    <div class="px-2">${{ this.total.toFixed(2) }}</div>
                                 </div>
                             </div>
                             <div class="pay">
@@ -393,7 +394,41 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+		return {
+			products: [],
+            order: {},
+            order_products: [],
+			computedPrice: 0,
+			quantity: 0,
+			subtotal: 0,
+			shipping_cost: 0,
+			conai: 0,
+			iva: 0,
+			total: 0,
+		}
+	},
+    methods: {
+        getOrders() {
+            axios.put('/api/orders')
+            .then(response => {
+                this.order = response.data.results;
+				this.subtotal = parseFloat(this.order.subtotal);
+				this.shipping_cost = parseFloat(this.order.shipping_cost);
+				this.conai = parseFloat(this.order.conai);
+				this.iva = parseFloat(this.order.iva);
+				this.total = parseFloat(this.order.total);
+            })
+            .catch(error => {
+                console.log(error.message);
+            });
+        },
+    },
+    mounted() {
+        this.getOrders();
+    }
+};
 </script>
 
 <style lang="scss" scoped>

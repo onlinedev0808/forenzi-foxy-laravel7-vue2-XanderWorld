@@ -44,7 +44,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar shadow-sm">
+        <nav class="HeaderTop navbar navbar-expand-md navbar shadow-sm">
             <div class="container">
                 <a
                     class="navbar-brand"
@@ -134,16 +134,17 @@
                                     id="navbarDropdown"
                                     role="button"
                                 >
-                                    Orders
+                                    Categories
                                 </a>
+
                                 <div
                                     aria-labelledby="navbarDropdown"
                                     class="dropdown-menu"
                                 >
                                     <a
                                         class="dropdown-item"
-                                        href="{{ route('admin.orders.index') }}"
-                                    >View All Orders</a>
+                                        href="{{ route('admin.categories.index') }}"
+                                    >View All Categories</a>
                                 </div>
                             </li>
 
@@ -157,7 +158,7 @@
                                     id="navbarDropdown"
                                     role="button"
                                 >
-                                    Payments
+                                    Orders
                                 </a>
                                 <div
                                     aria-labelledby="navbarDropdown"
@@ -165,12 +166,8 @@
                                 >
                                     <a
                                         class="dropdown-item"
-                                        href="{{ route('admin.payments.index') }}"
-                                    >View All Payments</a>
-                                    <a
-                                        class="dropdown-item"
-                                        href="{{ route('admin.payments.create') }}"
-                                    >Add New Payment</a>
+                                        href="{{ route('admin.orders.index') }}"
+                                    >View All Orders</a>
                                 </div>
                             </li>
 

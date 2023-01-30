@@ -7,7 +7,9 @@
                     :key="category.id"
                     :category="category"
                 />
-                <CustomizeBoxesComponent />
+                <div @click="goToPersonalizePage">
+                    <CustomizeBoxesComponent />
+                </div>
 
                 <JumboComponent />
                 <BannerNewsComponent />
@@ -88,6 +90,9 @@ export default {
         };
     },
     methods: {
+        goToPersonalizePage() {
+            this.$router.push({ path: "/personalize" });
+        },
         getCategories(pageCategories = 1) {
             axios
                 .get("/api/categories", {

@@ -17,12 +17,32 @@
                                 <div
                                     class="d-flex align-items-center justify-content-start"
                                 >
+                                    <div v-if="letterQ" class="bg-yellow">
+                                        {{ letterQ }}
+                                    </div>
+                                    <input
+                                        v-if="letterQ"
+                                        v-model="inputQ"
+                                        @input="emitQuantity"
+                                        type="number"
+                                        min="1"
+                                        placeholder="inserisci la quantità"
+                                    />
+                                    <h2 v-if="txtQ" class="mx-2">
+                                        {{ txtQ }}
+                                    </h2>
+                                </div>
+
+                                <div
+                                    class="d-flex align-items-center justify-content-start"
+                                >
                                     <div v-if="letterOne" class="bg-yellow">
                                         {{ letterOne }}
                                     </div>
                                     <input
-                                        v-model="inputL"
                                         v-if="letterOne"
+                                        v-model="inputL"
+                                        @input="emitInputValues"
                                         type="number"
                                         min="1"
                                         placeholder="inserisci il lato lungo"
@@ -40,6 +60,7 @@
                                     </div>
                                     <input
                                         v-model="inputP"
+                                        @input="emitInputValues"
                                         v-if="letterTwo"
                                         type="number"
                                         min="1"
@@ -58,6 +79,7 @@
                                     </div>
                                     <input
                                         v-model="inputH"
+                                        @input="emitInputValues"
                                         v-if="letterThree"
                                         type="number"
                                         min="1"
@@ -92,14 +114,38 @@ export default {
     props: {
         step: String,
         title: String,
+        letterQ: String,
         letterOne: String,
         letterTwo: String,
         letterThree: String,
+        txtQ: String,
         txtOne: String,
         txtTwo: String,
         txtThree: String,
         txtBanner: String,
         img: String,
+    },
+    data() {
+        return {
+            inputL: "",
+            inputH: "",
+            inputP: "",
+            inputQ: "",
+        };
+    },
+    methods: {
+        emitInputValues() {
+            this.$emit("inputValuesChanged", {
+                inputL: this.inputL,
+                inputH: this.inputH,
+                inputP: this.inputP,
+            });
+        },
+        emitQuantity() {
+            this.$emit("inputQuantityChanged", {
+                inputQ: this.inputQ,
+            });
+        },
     },
 };
 </script>
@@ -138,6 +184,8 @@ h2 {
 }
 
 .inputs input {
+    padding: 1rem 0.5rem;
+    font-weight: bold;
     height: 60px;
     width: 30%;
     margin: 1rem 0px;

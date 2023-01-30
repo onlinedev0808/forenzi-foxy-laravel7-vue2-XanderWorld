@@ -28,26 +28,30 @@
                     <!-- empty -->
                 </div>
                 <section class="col-2">
-                    <div id="login" class="d-flex align-items-center">
-                        <i class="fa fa-user-alt"></i>
-                        <div class="d-none d-lg-inline">
-                            <strong>
-                                <p>ACCEDI O</p>
-                            </strong>
-                            <p>REGISTRATI</p>
+                    <a href="/login">
+                        <div id="login" class="d-flex align-items-center">
+                            <i class="fa fa-user-alt"></i>
+                            <div class="d-none d-lg-inline">
+                                <strong>
+                                    <p>{{ this.$store.state.isAuth ? 'DISCONNETTERSI' : 'ACCEDI O' }}</p>
+                                </strong>
+                                <p>{{ this.$store.state.name }}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </section>
                 <section class="col-2">
-                    <div id="carriage" class="d-flex align-items-center">
-                        <i class="fa fa-bus-alt"></i>
-                        <div class="d-none d-lg-inline">
-                            <strong>
-                                <p>CARRELLO</p>
-                            </strong>
-                            <p>54,00 $ / 2 PRODOTTI</p>
+                    <a href="/cart">
+                        <div id="carriage" class="d-flex align-items-center">
+                            <router-link to="/cart"><i class="fa fa-bus-alt"></i></router-link>
+                            <div class="d-none d-lg-inline">
+                                <strong>
+                                    <p>CARRELLO</p>
+                                </strong>
+                                <p>{{ this.$store.state.total }}$ / {{ this.$store.state.productCount }} PRODOTTI</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </section>
             </div>
         </div>
@@ -55,7 +59,48 @@
 </template>
 
 <script>
-export default {};
+import axios from 'axios';
+
+export default {
+    data() {
+        return {
+            isLogin: false,
+            text: 'REGISTRATI'
+        }
+    },
+    methods:{
+        getUserInfo() {
+            axios
+                .get('api/user', {})
+                .then( (response) => {
+                    this.$store.commit('updateUser', {
+                        isAuth: true,
+                        name: response.data.name
+                    });
+                })
+                .catch( (error) => {
+
+                });
+        },
+        getCartInfo() {
+            axios
+                .put('api/orders', {})
+                .then( (response) => {
+                    this.$store.commit('updateCart', {
+                        productCount: response.data.results.products.length,
+                        total: parseFloat(response.data.results.total)
+                    });
+                })
+                .catch( (error) => {
+
+                });
+        }
+    },
+    created() {
+        this.getUserInfo();
+        this.getCartInfo();
+    }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -83,6 +128,12 @@ export default {};
             margin: 0px;
             font-size: 0.5rem;
         }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
     }
 }
 </style>

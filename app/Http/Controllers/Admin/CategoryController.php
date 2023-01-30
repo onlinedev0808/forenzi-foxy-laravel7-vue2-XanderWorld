@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('userDetail')->with('orders')->paginate(5);
-        return response()->json([
-            "response" => true,
-            "count" => count($users),
-            "results" => $users
-        ]);
+        $categories = Category::all();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -52,11 +48,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::with('userDetail')->with('orders')->findOrFail($id);
-        return response()->json([
-            "response" => true,
-            "results" => $user
-        ]);
+        $category = Category::findOrFail($id);
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -67,7 +60,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -79,7 +73,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $oldData = Category::findOrFail($id);
+
+        $oldData->name = $data['name'];
+        $oldData->description = $data['description'];
+        $oldData->img = $data['img'];
+        $oldData->img2 = $data['img2'];
+        $oldData->save();
+
+        return redirect()
+            ->route('admin.categories.show', ['category' => $oldData])
+            ->with('edited', $oldData['name']);
     }
 
     /**

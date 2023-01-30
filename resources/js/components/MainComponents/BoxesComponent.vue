@@ -48,6 +48,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     props: ["product"],
     data() {
@@ -59,6 +61,21 @@ export default {
         addToCart() {
             // code to add item to cart, for example
             // using this.product and this.quantity to add the product to the cart
+            axios
+            .post('/api/orders', {
+                id: this.product.id,
+                quantity: this.quantity
+            })
+            .then( (response) => {
+                if(response.data.productCount)
+                    this.$store.commit('updateCart', {
+                        productCount: response.data.productCount,
+                        total: response.data.result
+                    });
+            })
+            .catch((err) => {
+                //handle error
+            });
         },
         incrementQuantity() {
             this.quantity += this.product.purchasable_in_multi_of || 1;
@@ -66,6 +83,8 @@ export default {
         decrementQuantity() {
             if (this.quantity >= (this.product.purchasable_in_multi_of || 1)) {
                 this.quantity -= this.product.purchasable_in_multi_of || 1;
+                if (this.quantity < 0)
+                    this.quantity = 0; 
             }
         },
     },

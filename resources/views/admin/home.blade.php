@@ -1,3 +1,10 @@
+<!-- @if (session('status'))
+
+@else
+    <script>
+        window.location = "/home";
+    </script>
+@endif -->
 @extends('layouts.app')
 
 @section('content')
@@ -12,8 +19,11 @@
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
+                        
                     @endif
-
+                    <!-- <script>
+                            window.location = "/home";
+                        </script> -->
                     {{ __('You are logged in!') }}
                 </div>
             </div>

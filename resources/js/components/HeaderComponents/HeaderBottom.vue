@@ -69,7 +69,9 @@
     </div>
 </template>
 
-<script></script>
+<script>
+export default {};
+</script>
 
 errors: 1-Inserting lang=scss in the
 <style lang="scss">

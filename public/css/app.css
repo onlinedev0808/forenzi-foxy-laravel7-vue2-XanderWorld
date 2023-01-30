@@ -8109,6 +8109,54 @@ section.dark .blue:nth-child(2n)::before {
   }
 }
 
+.HeaderBoxes .container {
+  padding: 0px 5px;
+}
+
+.HeaderBoxes .card {
+  width: 8rem;
+  margin: 8px 0px;
+  border-radius: 0px;
+  border: 0px;
+  transition: transform 0.2s;
+  padding: 0px;
+  min-height: 180px;
+  max-height: 180px;
+}
+
+.HeaderBoxes .card:hover {
+  transform: scale(0.95);
+  cursor: pointer;
+}
+
+.HeaderBoxes .card span {
+  font-size: 0.8rem;
+}
+
+.HeaderBoxes .card img {
+  padding: 10px;
+  max-height: 120px;
+}
+
+.HeaderBoxes .card .litlogo {
+  bottom: 60px;
+  right: 0px;
+  height: 60px;
+  width: 60px;
+}
+
+.HeaderBoxes .orange-box {
+  background-color: rgb(245, 134, 47);
+}
+
+.HeaderBoxes .yellow-box {
+  background-color: rgb(253, 188, 72);
+}
+
+.HeaderBoxes .gray-box {
+  background-color: rgb(244, 244, 244);
+}
+
 .form-outline {
   margin: 1rem 0rem;
   width: -moz-max-content;

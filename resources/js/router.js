@@ -12,7 +12,7 @@ const router = new VueRouter({
     mode: "history",
     routes: [
         {
-            path: "/home",
+            path: "/",
             name: "home",
             component: HomePage,
         },
@@ -35,6 +35,16 @@ const router = new VueRouter({
             path: "/showvone",
             name: "showvone",
             component: ShowVonePage,
+        },
+        {
+            path: "/cart",
+            name: "cart",
+            component: CartPage,
+        },
+        {
+            path: "/checkout",
+            name: "checkout",
+            component: CheckoutPage,
         },
     ],
 });

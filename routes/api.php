@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    return response()->json(Auth::user());
 });
 
-Route::namespace('Api')->group(function () {
+Route::middleware('auth')->namespace('api')->group(function () {
     Route::get('/products', 'ProductController@index');
     Route::get('/products/{id}', 'ProductController@show');
     // Route::get('/products/{id}', 'ProductController@destroy');
@@ -27,8 +27,16 @@ Route::namespace('Api')->group(function () {
     Route::get('/categories/{id}', 'CategoryController@show');
 
     Route::get('/orders', 'OrderController@index');
-    Route::get('/orders/{id}', 'OrderController@show');
+    Route::put('/orders', 'OrderController@show');
+    Route::post('/orders', 'OrderController@create');
+    Route::delete('/orders', 'OrderController@update');
+    
+    Route::get('/cart/{id}', 'OrderController@create');
 
     Route::get('/users', 'UserController@index');
     Route::get('/users/{id}', 'UserController@show');
+
+    Route::get('/user', function(Request $request) {
+        return response()->json(['name' => Auth::user()->name]);
+    });
 });
