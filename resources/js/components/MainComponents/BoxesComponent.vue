@@ -72,11 +72,16 @@ export default {
                 quantity: this.quantity
             })
             .then( (response) => {
-                if(response.data.productCount)
+                if(response.data.productCount) {
+                    alert('Added to Cart');
                     this.$store.commit('updateCart', {
                         productCount: response.data.productCount,
                         total: response.data.result
                     });
+                }
+                else {
+                    alert(response.data.result);
+                }
             })
             .catch((err) => {
                 //handle error
