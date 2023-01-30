@@ -61,6 +61,11 @@ export default {
         addToCart() {
             // code to add item to cart, for example
             // using this.product and this.quantity to add the product to the cart
+
+            if(!this.$store.state.isAuth) {//not login
+                alert('Try to login');
+                return;
+            }
             axios
             .post('/api/orders', {
                 id: this.product.id,

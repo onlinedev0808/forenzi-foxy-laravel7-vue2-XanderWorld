@@ -130,9 +130,9 @@ class OrderController extends Controller
             $tmp = DB::table('products')->select(['quantity', 'price'])->where('id', $op->product_id)->first();
             
             if ($tmp->quantity > $op->quantity) {
-                $total += $tmp->price * $op->quantity;
+                $subtotal += $tmp->price * $op->quantity;
             } else {
-                $total += $tmp->price * $tmp->quantity;
+                $subtotal += $tmp->price * $tmp->quantity;
                 array_push($rejectedList, $op->order_id.'->'.$op->product_id);
             }
         }
@@ -148,7 +148,7 @@ class OrderController extends Controller
 
         return response() -> json([
             "response"=> true,
-            "result"=> $total,
+            "result"=> $subtotal,
             "productCount" => count($order_products),
             "rejected" => $rejectedList
         ]);
