@@ -25,7 +25,7 @@ class ProductsTableSeeder extends Seeder
 
         $purchasable_in_multi_of = [20, 50, 100, 200];
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 15; $i++) {
             $newProduct = new Product();
             $newProduct->code = $faker->unique()->randomNumber(8);
             $newProduct->name = $faker->name;
