@@ -2426,11 +2426,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.quantity = this.detail.quantity;
+    this.quantity = this.detail.pivot.quantity;
   },
   watch: {
     quantity: function quantity() {
-      this.computedPrice = this.detail.price * this.quantity;
+      this.computedPrice = (this.detail.price * this.quantity).toFixed(2);
     }
   },
   methods: {
@@ -2471,30 +2471,57 @@ __webpack_require__.r(__webpack_exports__);
     return {
       products: [],
       order: {},
-      order_products: []
+      order_products: [],
+      computedPrice: 0,
+      quantity: [],
+      subtotal: 0,
+      shipping_cost: 0,
+      conai: 0,
+      iva: 0,
+      total: 0,
+      params: []
     };
-  },
-  computed: {
-    price: function price() {
-      return item.quantity * item.price;
-    }
   },
   methods: {
     getOrders: function getOrders() {
       var _this = this;
-      axios.get('/api/orders/2').then(function (response) {
+      axios.put('/api/orders').then(function (response) {
+        console.log(response);
         _this.order = response.data.results;
-        _this.order_products = response.data.results.products;
+        _this.subtotal = parseFloat(_this.order.subtotal);
+        _this.shipping_cost = parseFloat(_this.order.shipping_cost);
+        _this.conai = parseFloat(_this.order.conai);
+        _this.iva = parseFloat(_this.order.iva);
+        _this.total = parseFloat(_this.order.total);
       })["catch"](function (error) {
         console.log(error.message);
       });
     },
-    test: function test() {
-      this.$forceUpdate();
+    test: function test(item) {
+      var _this2 = this;
+      this.subtotal += item.pivot.quantity * parseFloat(item.price);
+      this.shipping_cost += item.pivot.quantity * parseFloat(this.order.shipping_cost);
+      this.conai += item.pivot.quantity * parseFloat(this.order.conai);
+      this.iva += item.pivot.quantity * parseFloat(this.order.iva);
+      this.total += item.pivot.quantity * parseFloat(this.order.total);
+      this.$refs.totalQuantity.map(function (quantity) {
+        _this2.params.push({
+          id: quantity.id,
+          quantity: quantity.value
+        });
+      });
+    },
+    checkout: function checkout() {
+      axios["delete"]('/api/orders', this.params).then(function (res) {
+        console.log(res);
+        if (res.response) {
+          alert('Añadida al carrito'); // show alert
+          // this.$router.push({ name: '/checkout' })
+        }
+      });
     }
   },
   mounted: function mounted() {
-    // console.log(cookie);
     axios.get('/api/users').then(function (res) {
       console.log(res);
     });
@@ -2513,7 +2540,40 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      products: [],
+      order: {},
+      order_products: [],
+      computedPrice: 0,
+      quantity: 0,
+      subtotal: 0,
+      shipping_cost: 0,
+      conai: 0,
+      iva: 0,
+      total: 0
+    };
+  },
+  methods: {
+    getOrders: function getOrders() {
+      var _this = this;
+      axios.put('/api/orders').then(function (response) {
+        _this.order = response.data.results;
+        _this.subtotal = parseFloat(_this.order.subtotal);
+        _this.shipping_cost = parseFloat(_this.order.shipping_cost);
+        _this.conai = parseFloat(_this.order.conai);
+        _this.iva = parseFloat(_this.order.iva);
+        _this.total = parseFloat(_this.order.total);
+      })["catch"](function (error) {
+        console.log(error.message);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getOrders();
+  }
+});
 
 /***/ }),
 
@@ -4309,11 +4369,90 @@ var render = function render() {
   }, _vm._l(_vm.order.products, function (item) {
     return _c("div", {
       staticClass: "items"
-    }, [_c("CartItem", {
+    }, [_c("div", {
+      staticClass: "product"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_vm._m(1, true), _vm._v(" "), _c("div", {
+      staticClass: "col-md-8"
+    }, [_c("div", {
+      staticClass: "info"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-md-5 product-name"
+    }, [_c("div", {
+      staticClass: "product-name"
+    }, [_c("a", {
       attrs: {
-        detail: item
+        href: "#"
       }
-    }), _vm._v(" "), _c("hr")], 1);
+    }, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("div", {
+      staticClass: "product-info"
+    }, [_c("div", [_vm._v("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tDimensioni:\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"), _c("span", {
+      staticClass: "value"
+    }, [_vm._v(_vm._s(item.length) + " x " + _vm._s(item.height) + " x " + _vm._s(item.width))])]), _vm._v(" "), _c("div", [_vm._v("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCodice:\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"), _c("span", {
+      staticClass: "value"
+    }, [_vm._v(_vm._s(item.code))])])])])]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-4 quantity"
+    }, [_c("label", {
+      staticClass: "fw-bold",
+      attrs: {
+        "for": "quantity"
+      }
+    }, [_vm._v("\n\t\t\t\t\t\t\t\t\t\t\t\t\tQuantity:\n\t\t\t\t\t\t\t\t\t\t\t\t")]), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: item.pivot.quantity,
+        expression: "item.pivot.quantity"
+      }],
+      ref: "totalQuantity",
+      refInFor: true,
+      staticClass: "form-control quantity-input",
+      attrs: {
+        id: item.id,
+        type: "number"
+      },
+      domProps: {
+        value: item.pivot.quantity
+      },
+      on: {
+        change: function change($event) {
+          return _vm.test(item);
+        },
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(item.pivot, "quantity", $event.target.value);
+        }
+      }
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "col-md-3 price"
+    }, [_c("div", {
+      staticStyle: {
+        "white-space": "nowrap"
+      }
+    }, [_c("label", {
+      attrs: {
+        "for": "id1"
+      }
+    }, [_vm._v("$")]), _vm._v(" "), _c("input", {
+      staticClass: "priceLabel",
+      staticStyle: {
+        border: "none",
+        "box-shadow": "none",
+        "background-color": "white",
+        "pointer-events": "none"
+      },
+      attrs: {
+        type: "text",
+        id: "id1",
+        readonly: ""
+      },
+      domProps: {
+        value: (item.pivot.quantity * item.price).toFixed(2)
+      }
+    })])])])])])])]), _vm._v(" "), _c("hr")]);
   }), 0), _vm._v(" "), _c("div", {
     staticClass: "col-md-12 col-lg-4"
   }, [_c("div", {
@@ -4324,35 +4463,40 @@ var render = function render() {
     staticClass: "text"
   }, [_vm._v("SUBTOTALE")]), _vm._v(" "), _c("span", {
     staticClass: "price"
-  }, [_vm._v("$" + _vm._s(_vm.order.subtotal.toString()))])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("$" + _vm._s(this.subtotal.toFixed(2)))])]), _vm._v(" "), _c("div", {
     staticClass: "summary-item"
   }, [_c("span", {
     staticClass: "text"
   }, [_vm._v("SPEDIZIONE GRATUITA")]), _vm._v(" "), _c("span", {
     staticClass: "price"
-  }, [_vm._v("$" + _vm._s(_vm.order.shipping_cost))])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("$" + _vm._s(this.shipping_cost.toFixed(2)))])]), _vm._v(" "), _c("div", {
     staticClass: "summary-item"
   }, [_c("span", {
     staticClass: "text"
   }, [_vm._v("CONTRIBUTO CONAI")]), _vm._v(" "), _c("span", {
     staticClass: "price"
-  }, [_vm._v("$" + _vm._s(_vm.order.conai))])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("$" + _vm._s(this.conai.toFixed(2)))])]), _vm._v(" "), _c("div", {
     staticClass: "summary-item"
   }, [_c("span", {
     staticClass: "text"
   }, [_vm._v("IVA")]), _vm._v(" "), _c("span", {
     staticClass: "price"
-  }, [_vm._v("$" + _vm._s(_vm.order.iva))])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("$" + _vm._s(this.iva.toFixed(2)))])]), _vm._v(" "), _c("div", {
     staticClass: "summary-item txt-orange d-flex align-items-center justify-content-between"
   }, [_c("span", {
     staticClass: "text"
   }, [_vm._v("TOTALE ORDINE")]), _vm._v(" "), _c("span", {
     staticClass: "price"
-  }, [_vm._v("$" + _vm._s(_vm.order.total))])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("a", {
+  }, [_vm._v("$" + _vm._s(this.total.toFixed(2)))])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("a", {
     staticClass: "btn bg-yellow fw-bold btn-lg btn-block",
     attrs: {
       type: "button",
       href: "/checkout"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.checkout();
+      }
     }
   }, [_vm._v("\n\t\t\t\t\t\t\tPROCEDI AL CHECKOUT\n\t\t\t\t\t\t")])])])])])])]);
 };
@@ -4364,6 +4508,17 @@ var staticRenderFns = [function () {
   }, [_c("h2", {
     staticClass: "display-5 fw-bold"
   }, [_vm._v("IL TUO CARRELLO")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "col-md-3"
+  }, [_c("img", {
+    staticClass: "img-fluid mx-auto d-block image",
+    attrs: {
+      src: __webpack_require__(/*! ../../../public/Links/cat-scatole-maniglie-aperte.jpg */ "./public/Links/cat-scatole-maniglie-aperte.jpg")
+    }
+  })]);
 }];
 render._withStripped = true;
 
@@ -4384,24 +4539,97 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
   return _c("main", {
     staticClass: "page"
   }, [_c("div", {
     staticClass: "container-lg"
   }, [_c("div", {
     staticClass: "row"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "col-12 d-flex flex-wrap"
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "summary col-6"
   }, [_c("div", {
+    staticClass: "bg-white",
+    attrs: {
+      id: "cart"
+    }
+  }, [_vm._m(2), _vm._v(" "), _vm._l(_vm.order.products, function (item) {
+    return _c("div", [_c("div", {
+      staticClass: "d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom"
+    }, [_c("div", {
+      staticClass: "item pr-2"
+    }, [_c("img", {
+      attrs: {
+        alt: "",
+        height: "80",
+        src: __webpack_require__(/*! ../../../public/Links/cat-scatole-cartone-1-onda.jpg */ "./public/Links/cat-scatole-cartone-1-onda.jpg"),
+        width: "80"
+      }
+    }), _vm._v(" "), _c("div", {
+      staticClass: "number"
+    }, [_vm._v(_vm._s(item.pivot.quantity))])]), _vm._v(" "), _c("div", {
+      staticClass: "d-flex flex-column px-3"
+    }, [_c("b", {}, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("strong", [_vm._v("CODICE:\n                                        "), _c("span"), _vm._v(" "), _c("a", {
+      staticClass: "text-primary",
+      attrs: {
+        href: "#"
+      }
+    }, [_vm._v("\n                                            " + _vm._s(item.code) + "\n                                        ")])]), _vm._v(" "), _c("strong", [_vm._v("DIMENSIONI:\n                                        "), _c("span"), _vm._v(" "), _c("a", {
+      staticClass: "text-primary",
+      attrs: {
+        href: "#"
+      }
+    }, [_c("strong", [_vm._v("CODICE:\n                                                "), _c("span"), _vm._v(" "), _c("a", {
+      staticClass: "text-primary",
+      attrs: {
+        href: "#"
+      }
+    }, [_vm._v("\n                                                " + _vm._s(item.length) + " x " + _vm._s(item.height) + " x " + _vm._s(item.width) + "\n                                                ")])])])])])])]);
+  }), _vm._v(" "), _c("div", {
+    staticClass: "py-5"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center justify-content-between"
+  }, [_c("div", {
+    staticClass: "display-5"
+  }, [_vm._v("SUBTOTALE")]), _vm._v(" "), _c("div", {
+    staticClass: "ml-auto font-weight-bold"
+  }, [_vm._v("\n                                    $" + _vm._s(this.subtotal.toFixed(2)) + "\n                                ")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center justify-content-between"
+  }, [_c("div", {
+    staticClass: "display-5"
+  }, [_vm._v("\n                                    SPEDIZIONE GRATUITA\n                                ")]), _vm._v(" "), _c("div", {
+    staticClass: "ml-auto font-weight-bold"
+  }, [_vm._v("\n                                    $" + _vm._s(this.shipping_cost.toFixed(2)) + "\n                                ")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center justify-content-between"
+  }, [_c("div", {
+    staticClass: "display-5"
+  }, [_vm._v("\n                                    CONTRIBUTO CONAI\n                                ")]), _vm._v(" "), _c("div", {
+    staticClass: "ml-auto font-weight-bold"
+  }, [_vm._v("\n                                    $" + _vm._s(this.conai.toFixed(2)) + "\n                                ")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center justify-content-between"
+  }, [_c("div", {
+    staticClass: "display-5"
+  }, [_vm._v("IVA")]), _vm._v(" "), _c("div", {
+    staticClass: "ml-auto font-weight-bold"
+  }, [_vm._v("\n                                    $" + _vm._s(this.iva.toFixed(2)) + "\n                                ")])]), _vm._v(" "), _c("div", {
+    staticClass: "total border-top d-flex justify-content-between align-items-center ml-2 font-weight-bold"
+  }, [_c("div", [_vm._v("Total")]), _vm._v(" "), _c("div", {
+    staticClass: "px-2"
+  }, [_vm._v("$" + _vm._s(this.total.toFixed(2)))])])]), _vm._v(" "), _vm._m(3)], 2)])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "col-lg-12"
   }, [_c("div", {
     staticClass: "h5 mx-4 large font-weight-bold"
-  }, [_c("h1", [_vm._v("CHECKOUT")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("span", [_vm._v(" DETTAGLI DI FATTURAZIONE ")])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-12 d-flex flex-wrap"
-  }, [_c("div", {
+  }, [_c("h1", [_vm._v("CHECKOUT")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("span", [_vm._v(" DETTAGLI DI FATTURAZIONE ")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "col-6"
   }, [_c("div", {
     staticClass: "mobile h5"
@@ -4568,14 +4796,11 @@ var staticRenderFns = [function () {
       name: "",
       rows: "5"
     }
-  })])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "summary col-6"
-  }, [_c("div", {
-    staticClass: "bg-white",
-    attrs: {
-      id: "cart"
-    }
-  }, [_c("div", {
+  })])])])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex justify-content-between align-items-center"
   }, [_c("div", {
     staticClass: "h6"
@@ -4583,99 +4808,13 @@ var staticRenderFns = [function () {
     staticClass: "h6"
   }, [_c("a", {
     attrs: {
-      href: "#"
+      href: "/cart"
     }
-  }, [_vm._v("Back")])])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom"
-  }, [_c("div", {
-    staticClass: "item pr-2"
-  }, [_c("img", {
-    attrs: {
-      alt: "",
-      height: "80",
-      src: __webpack_require__(/*! ../../../public/Links/cat-scatole-cartone-1-onda.jpg */ "./public/Links/cat-scatole-cartone-1-onda.jpg"),
-      width: "80"
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "number"
-  }, [_vm._v("2")])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex flex-column px-3"
-  }, [_c("b", {}, [_vm._v("Scatole 2 onde")]), _vm._v(" "), _c("strong", [_vm._v("CODICE:\n                                    "), _c("span"), _vm._v(" "), _c("a", {
-    staticClass: "text-primary",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("\n                                        PT1014\n                                    ")])]), _vm._v(" "), _c("strong", [_vm._v("DIMENSIONI:\n                                    "), _c("span"), _vm._v(" "), _c("a", {
-    staticClass: "text-primary",
-    attrs: {
-      href: "#"
-    }
-  }, [_c("strong", [_vm._v("CODICE:\n                                            "), _c("span"), _vm._v(" "), _c("a", {
-    staticClass: "text-primary",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("\n                                                14 x 14 x 10\n                                            ")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom"
-  }, [_c("div", {
-    staticClass: "item pr-2"
-  }, [_c("img", {
-    attrs: {
-      alt: "",
-      height: "80",
-      src: __webpack_require__(/*! ../../../public/Links/cat-scatole-cartone-1-onda.jpg */ "./public/Links/cat-scatole-cartone-1-onda.jpg"),
-      width: "80"
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "number"
-  }, [_vm._v("2")])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex flex-column px-3"
-  }, [_c("b", {}, [_vm._v("Scatole 2 onde")]), _vm._v(" "), _c("strong", [_vm._v("CODICE:\n                                    "), _c("span"), _vm._v(" "), _c("a", {
-    staticClass: "text-primary",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("\n                                        PT1014\n                                    ")])]), _vm._v(" "), _c("strong", [_vm._v("DIMENSIONI:\n                                    "), _c("span"), _vm._v(" "), _c("a", {
-    staticClass: "text-primary",
-    attrs: {
-      href: "#"
-    }
-  }, [_c("strong", [_vm._v("CODICE:\n                                            "), _c("span"), _vm._v(" "), _c("a", {
-    staticClass: "text-primary",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("\n                                                14 x 14 x 10\n                                            ")])])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "py-5"
-  }, [_c("div", {
-    staticClass: "d-flex align-items-center justify-content-between"
-  }, [_c("div", {
-    staticClass: "display-5"
-  }, [_vm._v("SUBTOTALE")]), _vm._v(" "), _c("div", {
-    staticClass: "ml-auto font-weight-bold"
-  }, [_vm._v("\n                                    $80.9\n                                ")])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center justify-content-between"
-  }, [_c("div", {
-    staticClass: "display-5"
-  }, [_vm._v("\n                                    SPEDIZIONE GRATUITA\n                                ")]), _vm._v(" "), _c("div", {
-    staticClass: "ml-auto font-weight-bold"
-  }, [_vm._v("\n                                    $80.9\n                                ")])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center justify-content-between"
-  }, [_c("div", {
-    staticClass: "display-5"
-  }, [_vm._v("\n                                    CONTRIBUTO CONAI\n                                ")]), _vm._v(" "), _c("div", {
-    staticClass: "ml-auto font-weight-bold"
-  }, [_vm._v("\n                                    $80.9\n                                ")])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center justify-content-between"
-  }, [_c("div", {
-    staticClass: "display-5"
-  }, [_vm._v("IVA")]), _vm._v(" "), _c("div", {
-    staticClass: "ml-auto font-weight-bold"
-  }, [_vm._v("\n                                    $80.9\n                                ")])]), _vm._v(" "), _c("div", {
-    staticClass: "total border-top d-flex justify-content-between align-items-center ml-2 font-weight-bold"
-  }, [_c("div", [_vm._v("Total")]), _vm._v(" "), _c("div", {
-    staticClass: "px-2"
-  }, [_vm._v("$92.98")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Back")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "pay"
   }, [_c("h5", {
     staticClass: "fw-bold"
@@ -4702,7 +4841,7 @@ var staticRenderFns = [function () {
     staticClass: "col-md-12 my-4 d-flex justify-content-center w-100"
   }, [_c("div", {
     staticClass: "btn text-uppercase"
-  }, [_vm._v("\n                                    PROCEDI CON L'ORDINE\n                                ")])])])])])])])])]);
+  }, [_vm._v("\n                                    PROCEDI CON L'ORDINE\n                                ")])])]);
 }];
 render._withStripped = true;
 
@@ -9389,7 +9528,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".HeaderTop[data-v-64bc6a87] {\n  width: 100%;\n  height: -moz-fit-content;\n  height: fit-content;\n  background-color: rgb(245, 133, 47);\n  color: white;\n}\n.HeaderTop section[data-v-64bc6a87] {\n  cursor: pointer;\n  transition: 1s;\n}\n.HeaderTop section i[data-v-64bc6a87] {\n  font-size: 20px;\n  padding: 0 10px;\n  margin: 1rem 0px;\n}\n.HeaderTop section p[data-v-64bc6a87] {\n  margin: 0px;\n  font-size: 0.5rem;\n}", ""]);
+exports.push([module.i, ".HeaderTop[data-v-64bc6a87] {\n  width: 100%;\n  height: -moz-fit-content;\n  height: fit-content;\n  background-color: rgb(245, 133, 47);\n  color: white;\n}\n.HeaderTop section[data-v-64bc6a87] {\n  cursor: pointer;\n  transition: 1s;\n}\n.HeaderTop section i[data-v-64bc6a87] {\n  font-size: 20px;\n  padding: 0 10px;\n  margin: 1rem 0px;\n}\n.HeaderTop section p[data-v-64bc6a87] {\n  margin: 0px;\n  font-size: 0.5rem;\n}\n.HeaderTop section a[data-v-64bc6a87] {\n  text-decoration: none;\n  color: white;\n}", ""]);
 
 // exports
 
