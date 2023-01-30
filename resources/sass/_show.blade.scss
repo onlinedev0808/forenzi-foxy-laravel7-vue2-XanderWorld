@@ -341,3 +341,49 @@ section.dark {
         }
     }
 }
+
+//! CARD CATEGORY
+.HeaderBoxes {
+    .container {
+        padding: 0px 5px;
+    }
+    .card {
+        width: 8rem;
+        margin: 8px 0px;
+        border-radius: 0px;
+        border: 0px;
+        transition: transform 0.2s;
+        padding: 0px;
+        min-height: 180px;
+        max-height: 180px;
+
+        &:hover {
+            transform: scale(0.95);
+            cursor: pointer;
+        }
+        span {
+            font-size: 0.8rem;
+        }
+
+        img {
+            padding: 10px;
+            max-height: 120px;
+        }
+        .litlogo {
+            bottom: 60px;
+            right: 0px;
+            height: 60px;
+            width: 60px;
+        }
+    }
+
+    .orange-box {
+        background-color: rgb(245, 134, 47);
+    }
+    .yellow-box {
+        background-color: rgb(253, 188, 72);
+    }
+    .gray-box {
+        background-color: rgb(244, 244, 244);
+    }
+}

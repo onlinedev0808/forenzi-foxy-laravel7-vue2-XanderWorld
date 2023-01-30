@@ -35,10 +35,9 @@ Route::middleware('auth')
         Route::resource('/orders', 'OrderController');
         Route::resource('/payments', 'PaymentController');
         Route::resource('/users', 'UserController');
+        Route::resource('/categories', 'CategoryController');
     });
 
 Route::get("{any?}", function () {
     return view("guest.home");
 })->where("any", ".*");
-
-
