@@ -8201,6 +8201,14 @@ section.dark .blue:nth-child(2n)::before {
   text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 40px #000;
 }
 
+.w-35 {
+  width: 35%;
+}
+
+.w-65 {
+  width: 65%;
+}
+
 .bg-orange {
   background-color: #f68630;
   border-radius: 0px;
@@ -8230,7 +8238,7 @@ section.dark .blue:nth-child(2n)::before {
 }
 
 .yellow-button {
-  background-color: #f68630;
+  background-color: #fdbc48;
   border: none;
   border-radius: 0px;
   color: #fff;
@@ -8239,7 +8247,7 @@ section.dark .blue:nth-child(2n)::before {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 12px;
+  font-size: 8px;
   margin: 10px 0;
   cursor: pointer;
 }
@@ -8277,7 +8285,7 @@ section.classic {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background-color: red;
+  background-color: #f68630;
   color: #fff;
   font-size: 14px;
   font-weight: bold;

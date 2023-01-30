@@ -11,7 +11,7 @@
 
             <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
-                <h6 class="text-muted small">{{ product.category.name }}</h6>
+                <!-- <h6 class="text-muted small">{{ product.category.name }}</h6> -->
 
                 <div class="price d-flex align-items-center">
                     <div v-if="product.price_saled" class="sale-banner">
@@ -22,25 +22,41 @@
                     </p>
                     <p class="current-price">{{ product.price_saled }} €</p>
                 </div>
-                <div class="add-to-cart">
-                    <div class="quantity-input">
-                        <button @click="decrementQuantity" id="minus-button">
-                            -
-                        </button>
-                        <input
-                            class="font-weight-bold"
-                            v-model="quantity"
-                            type="number"
-                            readonly
-                            id="quantity-input"
-                        />
-                        <button @click="incrementQuantity" id="plus-button">
-                            +
-                        </button>
+
+                <div class="add-to-cart d-flex">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="">
+                                <button
+                                    @click="addToCart"
+                                    class="col-10 yellow-button"
+                                >
+                                    AGGIUNGI AL CARRELLO
+                                </button>
+                            </div>
+                            <div class="col-6 quantity-input">
+                                <button
+                                    @click="decrementQuantity"
+                                    id="minus-button"
+                                >
+                                    -
+                                </button>
+                                <input
+                                    class="font-weight-bold"
+                                    v-model="quantity"
+                                    type="number"
+                                    readonly
+                                    id="quantity-input"
+                                />
+                                <button
+                                    @click="incrementQuantity"
+                                    id="plus-button"
+                                >
+                                    +
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <button @click="addToCart" class="yellow-button">
-                        Add to Cart
-                    </button>
                 </div>
             </div>
         </div>
@@ -48,7 +64,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
     props: ["product"],
@@ -62,25 +78,26 @@ export default {
             // code to add item to cart, for example
             // using this.product and this.quantity to add the product to the cart
 
-            if(!this.$store.state.isAuth) {//not login
-                alert('Try to login');
+            if (!this.$store.state.isAuth) {
+                //not login
+                alert("Try to login");
                 return;
             }
             axios
-            .post('/api/orders', {
-                id: this.product.id,
-                quantity: this.quantity
-            })
-            .then( (response) => {
-                if(response.data.productCount)
-                    this.$store.commit('updateCart', {
-                        productCount: response.data.productCount,
-                        total: response.data.result
-                    });
-            })
-            .catch((err) => {
-                //handle error
-            });
+                .post("/api/orders", {
+                    id: this.product.id,
+                    quantity: this.quantity,
+                })
+                .then((response) => {
+                    if (response.data.productCount)
+                        this.$store.commit("updateCart", {
+                            productCount: response.data.productCount,
+                            total: response.data.result,
+                        });
+                })
+                .catch((err) => {
+                    //handle error
+                });
         },
         incrementQuantity() {
             this.quantity += this.product.purchasable_in_multi_of || 1;
@@ -88,8 +105,7 @@ export default {
         decrementQuantity() {
             if (this.quantity >= (this.product.purchasable_in_multi_of || 1)) {
                 this.quantity -= this.product.purchasable_in_multi_of || 1;
-                if (this.quantity < 0)
-                    this.quantity = 0; 
+                if (this.quantity < 0) this.quantity = 0;
             }
         },
     },
@@ -99,8 +115,7 @@ export default {
 <style lang="scss" scoped>
 .box {
     width: 250px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid white;
     overflow: hidden;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease-in-out;
@@ -127,9 +142,16 @@ export default {
             line-height: 1.5;
         }
 
-        .current-price,
+        .current-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
         .old-price {
             font-size: 0.8rem;
+            font-weight: bold;
+            color: lightgray;
+            margin-right: 5px;
         }
 
         .add-to-cart {
@@ -142,7 +164,6 @@ export default {
             background-color: black;
             margin: 0.5rem 0;
             color: white;
-            padding: 2px 10px;
             border: none;
             cursor: pointer;
         }
@@ -154,14 +175,12 @@ export default {
         .quantity-input {
             display: flex;
             align-items: center;
-            margin-left: 10px;
         }
 
         #minus-button,
         #plus-button {
-            background-color: #ddd;
+            background-color: white;
             border: none;
-            width: 32px;
             height: 32px;
             text-align: center;
             font-weight: bold;
@@ -170,13 +189,11 @@ export default {
 
         #minus-button:hover,
         #plus-button:hover {
-            background-color: #ccc;
+            background-color: #fdbc48;
         }
 
         #quantity-input {
-            width: 60px;
             text-align: center;
-            margin: 0px 10px;
         }
     }
 }

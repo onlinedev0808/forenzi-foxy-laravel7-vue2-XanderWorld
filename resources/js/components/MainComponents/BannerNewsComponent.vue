@@ -1,14 +1,14 @@
 <template>
     <section class="news-banner d-flex">
         <div class="new">
-            <div class="w-25">
+            <div class="w-35">
                 <img
                     class="img-fluid"
-                    src="https://www.pngmart.com/files/7/Box-PNG-Free-Download.png"
+                    src="https://picsum.photos/200/314"
                     alt=""
                 />
             </div>
-            <div class="w-75">
+            <div class="w-65">
                 <div style="font-weight: bold" class="new-text">
                     <h1>NOVITÀ!!</h1>
                     <span>
@@ -19,28 +19,28 @@
             </div>
         </div>
         <div class="new" style="">
-            <div class="new-img">
+            <div class="new-img w-35">
                 <img
                     class="img-fluid"
                     src="https://picsum.photos/200/314"
                     alt=""
                 />
             </div>
-            <div class="new-text">
+            <div class="new-text w-65">
                 <h4>Scatole con maniglie</h4>
                 <span>Disponibili bianche e avana</span>
                 <button class="yellow-button">SCOPRI IL PRODOTTO</button>
             </div>
         </div>
         <div class="new">
-            <div class="new-img">
+            <div class="new-img w-35">
                 <img
                     class="img-fluid"
                     src="https://picsum.photos/200/314"
                     alt=""
                 />
             </div>
-            <div class="new-text">
+            <div class="new-text w-65">
                 <h4>Scatole colorate</h4>
                 <span>Varie forme e colori</span>
                 <button class="yellow-button">SCOPRI IL PRODOTTO</button>
@@ -71,7 +71,7 @@ export default {
 
         height: 160px;
         width: 33.33%;
-        background-color: lightgrey;
+        background-color: #f1f1f1;
         margin: 50px 2px;
 
         img {
