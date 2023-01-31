@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
-use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Payment;
+use App\Models\UserDetail;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -259,6 +262,47 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // transmit shipping & payment information
+    public function transmit(Request $request, $id)
+    {
+        $params = $request->all();
+
+        // update order_product
+        $order = Order::where('order_id', $id)->first();
+        $order->status = 'spedito';
+
+        // create payment
+        $payment = new Payment;
+        $payment->order_id = $id;
+        $payment->transaction_id = random_int(1, 23234342);
+        $payment->payment_method = $params->payment->method;
+        $payment->amount = $params->payment->amount;
+        $payment->payment_status = 'successo';  // set static
+        $payment->created_at = now();
+        $payment->updated_at = now();
+        $payment->save();
+
+        // create user_detail
+        $user_detail = new UserDetail;
+        $user_detail->user_id = Auth::id();
+        $user_detail->surname = $params->user_detail->surname;
+        $user_detail->business_name = $params->user_detail->business_name;
+        $user_detail->notes = $params->user_detail->notes;
+        $user_detail->address = $params->user_detail->address;
+        $user_detail->phone = $params->user_detail->phone;
+        $user_detail->city = $params->user_detail->city;
+        $user_detail->cap = $params->user_detail->cap;
+        $user_detail->province = $params->user_detail->province;
+        $user_detail->state = $params->user_detail->state;
+        $user_detail->pec = $params->user_detail->pec;
+        $user_detail->code_sdi = $params->user_detail->code_sdi;
+        $user_detail->admin = 'registered'; // set static
+        $user_detail->created_at = now();
+        $user_detail->updated_at = now();
+        $user_detail->save();
+
     }
 
 }

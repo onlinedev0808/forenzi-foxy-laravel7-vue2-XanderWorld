@@ -31,6 +31,7 @@ Route::namespace('api')->group(function () {
     Route::put('/orders', 'OrderController@show');
     Route::post('/orders', 'OrderController@create');
     Route::post('/orders/{id}', 'OrderController@update');
+    Route::post('/orders/transmit/{id}', 'OrderController@transmit');
     
     Route::get('/cart/{id}', 'OrderController@create');
 
