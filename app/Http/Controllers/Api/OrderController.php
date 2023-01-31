@@ -277,7 +277,7 @@ class OrderController extends Controller
         $payment = new Payment;
         $payment->order_id = $id;
         $payment->transaction_id = random_int(1, 23234342);
-        $payment->payment_method = $params->payment->method;
+        $payment->payment_method = 'PayPal';    // set static
         $payment->amount = $params->payment->amount;
         $payment->payment_status = 'successo';  // set static
         $payment->created_at = now();
