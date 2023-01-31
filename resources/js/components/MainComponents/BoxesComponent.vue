@@ -20,42 +20,35 @@
                     <p v-if="product.price_saled" class="old-price">
                         {{ product.price }} €
                     </p>
-                    <p class="current-price">{{ product.price_saled }} €</p>
+                    <p v-if="!product.price_saled" class="price">
+                        {{ product.price }} €
+                    </p>
+                    <p v-if="product.price_saled" class="current-price">
+                        {{ product.price_saled }} €
+                    </p>
                 </div>
-
-                <div class="add-to-cart d-flex">
-                    <div class="row">
-                        <div class="col-12 mx-4">
-                            <div class="">
-                                <button
-                                    @click="addToCart"
-                                    class="col-10 yellow-button"
-                                >
-                                    AGGIUNGI AL CARRELLO
-                                </button>
-                            </div>
-                            <div class="col-10 quantity-input">
-                                <button
-                                    @click="decrementQuantity"
-                                    id="minus-button"
-                                >
-                                    -
-                                </button>
-                                <input
-                                    class="font-weight-bold"
-                                    v-model="quantity"
-                                    type="number"
-                                    readonly
-                                    id="quantity-input"
-                                />
-                                <button
-                                    @click="incrementQuantity"
-                                    id="plus-button"
-                                >
-                                    +
-                                </button>
-                            </div>
-                        </div>
+            </div>
+            <div class="card-footer">
+                <div class="add-to-cart d-flex col-12">
+                    <div class="left">
+                        <button @click="addToCart" class="yellow-button">
+                            AGGIUNGI AL CARRELLO
+                        </button>
+                    </div>
+                    <div class="right">
+                        <button @click="decrementQuantity" id="minus-button">
+                            -
+                        </button>
+                        <input
+                            class="font-weight-bold"
+                            v-model="quantity"
+                            type="number"
+                            readonly
+                            id="quantity-input"
+                        />
+                        <button @click="incrementQuantity" id="plus-button">
+                            +
+                        </button>
                     </div>
                 </div>
             </div>
@@ -89,12 +82,11 @@ export default {
                     quantity: this.quantity,
                 })
                 .then((response) => {
-                    if (response.data.productCount)
-                        alert("Added to Cart");
-                        this.$store.commit("updateCart", {
-                            productCount: response.data.productCount,
-                            total: response.data.result,
-                        });
+                    if (response.data.productCount) alert("Added to Cart");
+                    this.$store.commit("updateCart", {
+                        productCount: response.data.productCount,
+                        total: response.data.result,
+                    });
                 })
                 .catch((err) => {
                     //handle error
@@ -154,6 +146,10 @@ export default {
             color: lightgray;
             margin-right: 5px;
         }
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
 
         .add-to-cart {
             display: flex;
@@ -163,7 +159,6 @@ export default {
         }
         #add-to-cart-button {
             background-color: black;
-            margin: 0.5rem 0;
             color: white;
             border: none;
             cursor: pointer;
@@ -172,29 +167,45 @@ export default {
         #add-to-cart-button:hover {
             background-color: #3e8e41;
         }
-
-        .quantity-input {
+    }
+    .card-footer {
+        padding: 0px;
+        .left {
+            width: fit-content;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
+        .right {
+            margin: 1rem 5px;
 
-        #minus-button,
-        #plus-button {
-            background-color: white;
-            border: none;
-            height: 32px;
-            text-align: center;
-            font-weight: bold;
-            cursor: pointer;
-        }
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            input {
+                text-align: center;
+                max-width: 45px;
+                height: fit-content;
+            }
 
-        #minus-button:hover,
-        #plus-button:hover {
-            background-color: #fdbc48;
-        }
+            input,
+            button {
+                border: 1px solid lightgrey;
+                font-size: 0.7rem;
+            }
+            #minus-button,
+            #plus-button {
+                height: fit-content;
+                background-color: white;
 
-        #quantity-input {
-            text-align: center;
+                text-align: center;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            #minus-button:hover,
+            #plus-button:hover {
+                background-color: #fdbc48;
+            }
         }
     }
 }

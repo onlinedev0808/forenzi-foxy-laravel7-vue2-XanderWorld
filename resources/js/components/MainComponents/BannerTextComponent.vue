@@ -1,6 +1,6 @@
 <template>
     <section class="text-banner text-center">
-        <h1 class="display-4">
+        <h1>
             {{ title }}
         </h1>
         <span class="text">
@@ -29,15 +29,14 @@ export default {
 
 <style lang="scss" scoped>
 .text-banner {
-    padding: 100px;
-    font-size: 1rem;
+    padding: 2rem;
     .text {
-        font-size: .8rem;
+        font-size: 0.8rem;
     }
 
     h1 {
-        font-weight: bold;
-        font-size: 3rem;
+        font-weight: bolder;
+        font-size: 2rem;
     }
 }
 </style>

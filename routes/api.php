@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ Route::namespace('api')->group(function () {
     Route::get('/users', 'UserController@index');
     Route::get('/users/{id}', 'UserController@show');
 
-    Route::get('/user', function(Request $request) {
+    Route::get('/user', function(Request $request) {     
         return response()->json(['name' => Auth::user()->name]);
     });
 });

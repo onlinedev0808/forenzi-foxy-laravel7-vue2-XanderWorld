@@ -74,11 +74,13 @@ export default {};
 </script>
 
 errors: 1-Inserting lang=scss in the
-<style lang="scss">
+<style lang="scss" scoped>
+.inputs .input-group {
+    background-color: #f1f1f1;
+}
 input {
     border-radius: 0px;
     border: 1px solid white;
-    background-color: rgb(241, 241, 241);
     border-radius: 0px;
     padding: 0px;
     box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.3);
@@ -126,7 +128,7 @@ button.btn.btn-outline-secondary {
                             font-size: 1rem;
                             transition: all 0.3s ease-in-out;
                             &:hover {
-                                // box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.3);
+                                box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.3);
                             }
                         }
                         .input-group-append {

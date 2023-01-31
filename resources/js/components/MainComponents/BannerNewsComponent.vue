@@ -4,7 +4,7 @@
             <div class="w-35">
                 <img
                     class="img-fluid"
-                    src="https://picsum.photos/200/314"
+                    src="../../../../public/Links/side-view-of-smiling-curly-woman-pointing-away.jpg"
                     alt=""
                 />
             </div>
@@ -22,7 +22,7 @@
             <div class="new-img w-35">
                 <img
                     class="img-fluid"
-                    src="https://picsum.photos/200/314"
+                    src="../../../../public/Links/maniglie-ai.png"
                     alt=""
                 />
             </div>
@@ -36,7 +36,7 @@
             <div class="new-img w-35">
                 <img
                     class="img-fluid"
-                    src="https://picsum.photos/200/314"
+                    src="../../../../public/Links/maniglie-ai.png"
                     alt=""
                 />
             </div>
@@ -71,7 +71,7 @@ export default {
 
         height: 160px;
         width: 33.33%;
-        background-color: #f1f1f1;
+        background-color: #e5e5e5;
         margin: 50px 2px;
 
         img {

@@ -8243,7 +8243,7 @@ section.dark .blue:nth-child(2n)::before {
   border-radius: 0px;
   color: #fff;
   font-weight: bold;
-  padding: 8px 15px;
+  padding: 8px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
