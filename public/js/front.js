@@ -3190,7 +3190,7 @@ var render = function render() {
     staticClass: "fa fa-user-alt"
   }), _vm._v(" "), _c("div", {
     staticClass: "d-none d-lg-inline"
-  }, [_c("strong", [_c("p", [_vm._v("\n                                    " + _vm._s(this.$store.state.isAuth ? "DISCONNETTERSI" : "ACCEDI O") + "\n                                ")])]), _vm._v(" "), _c("p", [_vm._v(_vm._s(this.$store.state.name))])])])])]), _vm._v(" "), _c("section", {
+  }, [_c("strong", [_c("p", [_vm._v("\n                                    " + _vm._s(this.$store.state.isAuth ? "DISCONNETTITI" : "ACCEDI O") + "\n                                ")])]), _vm._v(" "), _c("p", [_vm._v(_vm._s(this.$store.state.name))])])])])]), _vm._v(" "), _c("section", {
     staticClass: "col-2"
   }, [_c("a", {
     attrs: {
@@ -60043,7 +60043,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
     isAuth: false,
-    name: "REGISTRAZIONE",
+    name: "REGISTRATI",
     productCount: 0,
     total: 0.00
   },

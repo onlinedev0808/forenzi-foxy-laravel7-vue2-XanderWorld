@@ -13,7 +13,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     isAuth: false,
-    name: "REGISTRAZIONE",
+    name: "REGISTRATI",
     productCount: 0,
     total: 0.00
   },

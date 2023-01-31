@@ -36,7 +36,7 @@
                                     <p>
                                         {{
                                             this.$store.state.isAuth
-                                                ? "DISCONNETTERSI"
+                                                ? "DISCONNETTITI"
                                                 : "ACCEDI O"
                                         }}
                                     </p>
