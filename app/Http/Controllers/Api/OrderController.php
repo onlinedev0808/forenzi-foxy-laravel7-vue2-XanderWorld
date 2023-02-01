@@ -268,41 +268,45 @@ class OrderController extends Controller
     public function transmit(Request $request, $id)
     {
         $params = $request->all();
-
         // update order_product
-        $order = Order::where('order_id', $id)->first();
+        $order = Order::where('id', $id)->first();
         $order->status = 'spedito';
 
-        // create payment
-        $payment = new Payment;
-        $payment->order_id = $id;
-        $payment->transaction_id = random_int(1, 23234342);
-        $payment->payment_method = 'PayPal';    // set static
-        $payment->amount = $params->payment->amount;
-        $payment->payment_status = 'successo';  // set static
-        $payment->created_at = now();
-        $payment->updated_at = now();
-        $payment->save();
+        if ($order->save()) {
+            // create user_detail
+            $user_detail = new UserDetail;
+            $user_detail->user_id = Auth::id();
+            $user_detail->surname = $params['user_detail']['surname'];
+            $user_detail->business_name = $params['user_detail']['business_name'];
+            $user_detail->notes = $params['user_detail']['notes'];
+            $user_detail->address = $params['user_detail']['address'];
+            $user_detail->phone = $params['user_detail']['phone'];
+            $user_detail->city = $params['user_detail']['city'];
+            $user_detail->cap = $params['user_detail']['cap'];
+            $user_detail->province = $params['user_detail']['province'];
+            $user_detail->state = $params['user_detail']['state'];
+            $user_detail->pec = $params['user_detail']['pec'];
+            $user_detail->code_sdi = $params['user_detail']['code_sdi'];
+            $user_detail->admin = 'registered'; // set static
+            $user_detail->created_at = now();
+            $user_detail->updated_at = now();
 
-        // create user_detail
-        $user_detail = new UserDetail;
-        $user_detail->user_id = Auth::id();
-        $user_detail->surname = $params->user_detail->surname;
-        $user_detail->business_name = $params->user_detail->business_name;
-        $user_detail->notes = $params->user_detail->notes;
-        $user_detail->address = $params->user_detail->address;
-        $user_detail->phone = $params->user_detail->phone;
-        $user_detail->city = $params->user_detail->city;
-        $user_detail->cap = $params->user_detail->cap;
-        $user_detail->province = $params->user_detail->province;
-        $user_detail->state = $params->user_detail->state;
-        $user_detail->pec = $params->user_detail->pec;
-        $user_detail->code_sdi = $params->user_detail->code_sdi;
-        $user_detail->admin = 'registered'; // set static
-        $user_detail->created_at = now();
-        $user_detail->updated_at = now();
-        $user_detail->save();
+            if ($user_detail->save()) {
+                // create payment
+                $payment = new Payment;
+                $payment->order_id = $id;
+                $payment->transaction_id = random_int(1, 23234342);
+                $payment->payment_method = 'PayPal';    // set static
+                $payment->amount = $params['payment']['amount'];
+                $payment->payment_status = 'successo';  // set static
+                $payment->created_at = now();
+                $payment->updated_at = now();
 
+                if ($payment->save()) {
+                    // if save success
+                    return true;
+                }
+            }
+        }
     }
-
 }
