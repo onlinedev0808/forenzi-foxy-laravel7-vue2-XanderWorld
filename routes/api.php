@@ -35,10 +35,11 @@ Route::namespace('api')->group(function () {
     
     Route::get('/cart/{id}', 'OrderController@create');
 
-    Route::get('/users', 'UserController@index');
     Route::get('/users/{id}', 'UserController@show');
-
     Route::get('/user', function(Request $request) {     
-        return response()->json(['name' => Auth::user()->name]);
+        return response()->json([
+            'name' => Auth::user()->name,
+            'email' => Auth::user()->email,
+        ]);
     });
 });
