@@ -183,7 +183,9 @@
                                 <div class="h6"><a href="/cart">Back</a></div>
                             </div>
                             <div v-for="item in order.products">
-                                <div class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom">
+                                <div
+                                    class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom"
+                                >
                                     <div class="item pr-2">
                                         <img
                                             alt=""
@@ -191,7 +193,9 @@
                                             src="../../../public/Links/cat-scatole-cartone-1-onda.jpg"
                                             width="80"
                                         />
-                                        <div class="number">{{ item.pivot.quantity }}</div>
+                                        <div class="number">
+                                            {{ item.pivot.quantity }}
+                                        </div>
                                     </div>
 
                                     <div class="d-flex flex-column px-3">
@@ -214,7 +218,9 @@
                                                         class="text-primary"
                                                         href="#"
                                                     >
-                                                    {{ item.length }} x {{ item.height }} x {{ item.width }}
+                                                        {{ item.length }} x
+                                                        {{ item.height }} x
+                                                        {{ item.width }}
                                                     </a>
                                                 </strong>
                                             </a>
@@ -222,7 +228,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- <div
                                 class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom"
                             >
@@ -321,7 +327,9 @@
                                     class="total border-top d-flex justify-content-between align-items-center ml-2 font-weight-bold"
                                 >
                                     <div>Total</div>
-                                    <div class="px-2">${{ this.total.toFixed(2) }}</div>
+                                    <div class="px-2">
+                                        ${{ this.total.toFixed(2) }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="pay">
@@ -396,38 +404,39 @@
 <script>
 export default {
     data() {
-		return {
-			products: [],
+        return {
+            products: [],
             order: {},
             order_products: [],
-			computedPrice: 0,
-			quantity: 0,
-			subtotal: 0,
-			shipping_cost: 0,
-			conai: 0,
-			iva: 0,
-			total: 0,
-		}
-	},
+            computedPrice: 0,
+            quantity: 0,
+            subtotal: 0,
+            shipping_cost: 0,
+            conai: 0,
+            iva: 0,
+            total: 0,
+        };
+    },
     methods: {
         getOrders() {
-            axios.put('/api/orders')
-            .then(response => {
-                this.order = response.data.results;
-				this.subtotal = parseFloat(this.order.subtotal);
-				this.shipping_cost = parseFloat(this.order.shipping_cost);
-				this.conai = parseFloat(this.order.conai);
-				this.iva = parseFloat(this.order.iva);
-				this.total = parseFloat(this.order.total);
-            })
-            .catch(error => {
-                console.log(error.message);
-            });
+            axios
+                .put("/api/orders")
+                .then((response) => {
+                    this.order = response.data.results;
+                    this.subtotal = parseFloat(this.order.subtotal);
+                    this.shipping_cost = parseFloat(this.order.shipping_cost);
+                    this.conai = parseFloat(this.order.conai);
+                    this.iva = parseFloat(this.order.iva);
+                    this.total = parseFloat(this.order.total);
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
         },
     },
     mounted() {
         this.getOrders();
-    }
+    },
 };
 </script>
 

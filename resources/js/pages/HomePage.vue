@@ -3,6 +3,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <NavBoxesComponent
+                    :loadingCategories="loadingCategories"
                     v-for="category in categories"
                     :key="category.id"
                     :category="category"
@@ -67,9 +68,10 @@ export default {
         return {
             products: [],
             categories: [],
-            currentPage: 1,
-            lastPage: null,
-            loading: false,
+            currentPageCategories: 1,
+            lastPageCategories: null,
+            loadingCategories: true,
+
             txtbanners: [
                 {
                     title: "FoxyBox - Scatole di tutti i tipi consegnate in tempi record",
@@ -94,6 +96,7 @@ export default {
             this.$router.push({ path: "/personalize" });
         },
         getCategories(pageCategories = 1) {
+            this.loadingCategories = true;
             axios
                 .get("/api/categories", {
                     page: pageCategories,
@@ -102,8 +105,10 @@ export default {
                     console.log("categories");
                     console.log(response.data.results.data);
                     this.categories = response.data.results.data;
-                    this.currentPage = response.data.results.currentPage;
-                    this.lastPage = response.data.results.lastPage;
+                    this.currentPageCategories =
+                        response.data.results.currentPage;
+                    this.lastPageCategories = response.data.results.lastPage;
+                    this.loadingCategories = false;
                 })
                 .catch((error) => {
                     console.warn(error.message);

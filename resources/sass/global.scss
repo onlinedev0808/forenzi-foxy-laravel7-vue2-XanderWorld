@@ -5,6 +5,12 @@
 .w-65 {
     width: 65%;
 }
+.w-40 {
+    width: 40%;
+}
+.w-60 {
+    width: 60%;
+}
 
 //! Background colors
 
@@ -44,7 +50,28 @@ $gray: #f1f1f1;
 //! Button styles
 
 .yellow-button {
+
     background-color: #fdbc48;
+    border: none;
+    border-radius: 0px;
+    color: $white;
+    font-weight: bold;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 8px;
+    margin: 10px 0;
+    cursor: pointer;
+    &:hover {
+        filter: blur(2);
+        transition: 1s;
+    }
+}
+
+.dark-button {
+
+    background-color: #000000;
     border: none;
     border-radius: 0px;
     color: $white;

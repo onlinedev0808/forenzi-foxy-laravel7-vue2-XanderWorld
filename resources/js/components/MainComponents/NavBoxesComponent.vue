@@ -1,6 +1,8 @@
 <template>
     <div>
         <div class="HeaderBoxes">
+            <!-- <LoadingComponent v-if="LoadingCategories" /> -->
+
             <nav class="d-flex">
                 <div class="container d-flex flex-wrap justify-content-around">
                     <div
@@ -19,6 +21,7 @@
                                 alt="img2"
                             />
                         </div>
+                       
 
                         <div class="card-body text-center p-1">
                             <span class="card-title">SCATOLE</span>
@@ -40,8 +43,16 @@
 </template>
 
 <script>
+import LoadingComponent from "../MainComponents/LoadingComponent.vue";
+
 export default {
-    props: ["category"],
+    components: {
+        LoadingComponent,
+    },
+    props: {
+        category: Array,
+        loadingCategories: Boolean,
+    },
     data() {
         return {};
     },
