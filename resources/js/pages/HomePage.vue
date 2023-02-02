@@ -15,7 +15,7 @@
                     </div>
                 </div>
 
-                <JumboComponent />
+                <!-- <JumboComponent /> -->
                 <BannerNewsComponent />
                 <BannerTextComponent
                     v-for="element in txtbanners"
