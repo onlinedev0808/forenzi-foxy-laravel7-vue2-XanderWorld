@@ -11,7 +11,7 @@
                     <CustomizeBoxesComponent />
                 </div>
 
-                <JumboComponent />
+                <!-- <JumboComponent /> -->
                 <BannerNewsComponent />
                 <BannerTextComponent
                     v-for="(element, index) in txtbanners"
@@ -25,7 +25,7 @@
                     :key="product.id"
                     :product="product"
                 />
-                <HolidayComponent />
+                <!-- <HolidayComponent /> -->
             </div>
         </div>
 

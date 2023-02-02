@@ -462,7 +462,7 @@
                                     id="terms"
                                     name="terms"
                                     type="checkbox"
-                                    value="agree"
+                                    v-model="agree"
                                     ref="checkTerm"
                                 />
                                 Ho letto e accetto
@@ -472,7 +472,7 @@
                                 <div
                                     class="col-md-12 my-4 d-flex justify-content-center w-100"
                                 >
-                                    <div class="btn text-uppercase" @click="transmitt()">
+                                    <div class="btn text-uppercase" @click="transmitt()" :disabled="!agree">
                                         PROCEDI CON L'ORDINE
                                     </div>
                                 </div>
@@ -516,6 +516,7 @@ export default {
             pec: '',
             code_sdi: '',
             mail:'',
+            agree:'',
 
             first_name_error: ['error'],
             last_name_error: ['error'],
@@ -550,8 +551,8 @@ export default {
 
     computed: {
         firstNameErrors () {
-            const errors = []
-            this.first_name_error = []
+            const errors = [];
+            this.first_name_error = [];
             if (!this.$v.first_name.$dirty) {this.first_name_error.push('error');return errors;}
             !this.$v.first_name.maxLength && errors.push('Must be at most 10 characters long') && this.first_name_error.push('error')
             !this.$v.first_name.required && errors.push('First Name is required.') && this.first_name_error.push('error')
@@ -559,8 +560,8 @@ export default {
         },
 
         lastNameErrors () {
-            const errors = []
-            this.last_name_error = []
+            const errors = [];
+            this.last_name_error = [];
             if (!this.$v.last_name.$dirty) {this.last_name_error.push('error');return errors;}
             !this.$v.last_name.maxLength && errors.push('Must be at most 10 characters long') && this.last_name_error.push('error')
             !this.$v.last_name.required && errors.push('Last Name is required.') && this.last_name_error.push('error')
@@ -697,36 +698,36 @@ export default {
                 this.code_sdi_error.length == 0 &&
                 this.notes_error.length == 0 &&
                 this.$refs.checkTerm.checked
-            ) {
-                axios.post(`/api/orders/transmit/id`, {
-                    user_detail: {
-                        surname: this.first_name + " " + this.last_name,
-                        business_name: this.business_name,
-                        notes: this.notes,
-                        address: this.address,
-                        phone: this.phone,
-                        city: this.city,
-                        cap: this.cap,
-                        province: this.province,
-                        state: this.state,
-                        pec: this.pec,
-                        code_sdi: this.code_sdi,
-                    },
-                    payment: {
-                        amount: this.total,
-                    },
-                })
-                .then(res => {
-                    if (res) {
-                        alert("Success transmitted!");
-                    } 
-                    else {
-                        alert("Failed!");
-                    }
-                });
-            }
+            )
+            axios.post(`/api/orders/transmit/id`, {
+                user_detail: {
+                    surname: this.last_name,
+                    business_name: this.business_name,
+                    notes: this.notes,
+                    address: this.address,
+                    phone: this.phone,
+                    city: this.city,
+                    cap: this.cap,
+                    province: this.province,
+                    state: this.state,
+                    pec: this.pec,
+                    code_sdi: this.code_sdi,
+                },
+                payment: {
+                    amount: this.total,
+                },
+            })
+            .then(res => {
+                if (res) {
+                    alert("Success transmitted!");
+                } 
+                else {
+                    alert("Failed!");
+                }
+            });
         },
     },
+
     mounted() {
         this.getUserInfo();
         this.getOrders();
@@ -911,6 +912,10 @@ tr.text-muted td {
 
 .btn.text-white:hover {
     background-color: #3cb371;
+}
+
+.btn:disabled {
+    cursor: not-allowed;
 }
 
 .wrapper .row + div.text-muted {
