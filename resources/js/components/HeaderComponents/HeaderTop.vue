@@ -57,7 +57,7 @@
                                     <p>CARRELLO</p>
                                 </strong>
                                 <p>
-                                    {{ this.$store.state.total }}$ /
+                                    {{ this.$store.state.total }} € /
                                     {{ this.$store.state.productCount }}
                                     PRODOTTI
                                 </p>
