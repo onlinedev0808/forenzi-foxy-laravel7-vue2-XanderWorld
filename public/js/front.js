@@ -2612,6 +2612,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2624,25 +2626,261 @@ __webpack_require__.r(__webpack_exports__);
       shipping_cost: 0,
       conai: 0,
       iva: 0,
-      total: 0
+      total: 0,
+      first_name: '',
+      last_name: '',
+      surname: '',
+      business_name: '',
+      notes: '',
+      address: '',
+      phone: '',
+      city: '',
+      cap: '',
+      province: '',
+      state: '',
+      pec: '',
+      code_sdi: '',
+      mail: '',
+      first_name_error: ['error'],
+      last_name_error: ['error'],
+      business_name_error: ['error'],
+      address_error: ['error'],
+      cap_error: ['error'],
+      city_error: ['error'],
+      province_error: ['error'],
+      state_error: ['error'],
+      phone_error: ['error'],
+      pec_error: ['error'],
+      code_sdi_error: ['error'],
+      notes_error: ['error']
     };
   },
+  validations: {
+    first_name: {
+      required: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+      maxLength: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(10)
+    },
+    last_name: {
+      required: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+      maxLength: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(10)
+    },
+    business_name: {
+      required: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+      maxLength: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(15)
+    },
+    address: {
+      required: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    },
+    cap: {
+      required: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    },
+    city: {
+      required: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    },
+    province: {
+      required: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    },
+    state: {
+      required: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    },
+    phone: {
+      required: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    },
+    // mail: { required },
+    pec: {
+      required: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    },
+    code_sdi: {
+      required: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    },
+    notes: {
+      required: !(function webpackMissingModule() { var e = new Error("Cannot find module 'vuelidate/lib/validators'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    }
+  },
+  computed: {
+    firstNameErrors: function firstNameErrors() {
+      var errors = [];
+      this.first_name_error = [];
+      if (!this.$v.first_name.$dirty) {
+        this.first_name_error.push('error');
+        return errors;
+      }
+      !this.$v.first_name.maxLength && errors.push('Must be at most 10 characters long') && this.first_name_error.push('error');
+      !this.$v.first_name.required && errors.push('First Name is required.') && this.first_name_error.push('error');
+      return errors;
+    },
+    lastNameErrors: function lastNameErrors() {
+      var errors = [];
+      this.last_name_error = [];
+      if (!this.$v.last_name.$dirty) {
+        this.last_name_error.push('error');
+        return errors;
+      }
+      !this.$v.last_name.maxLength && errors.push('Must be at most 10 characters long') && this.last_name_error.push('error');
+      !this.$v.last_name.required && errors.push('Last Name is required.') && this.last_name_error.push('error');
+      return errors;
+    },
+    businessNameErrors: function businessNameErrors() {
+      var errors = [];
+      this.business_name_error = [];
+      if (!this.$v.business_name.$dirty) {
+        this.business_name_error.push('error');
+        return errors;
+      }
+      !this.$v.business_name.maxLength && errors.push('Must be at most 10 characters long') && this.business_name_error.push('error');
+      !this.$v.business_name.required && errors.push('Business Name is required.') && this.business_name_error.push('error');
+      return errors;
+    },
+    addressErrors: function addressErrors() {
+      var errors = [];
+      this.address_error = [];
+      if (!this.$v.address.$dirty) {
+        this.address_error.push('error');
+        return errors;
+      }
+      !this.$v.address.required && errors.push('ADDRESS is required.') && this.address_error.push('error');
+      return errors;
+    },
+    capErrors: function capErrors() {
+      var errors = [];
+      this.cap_error = [];
+      if (!this.$v.cap.$dirty) {
+        this.cap_error.push('error');
+        return errors;
+      }
+      !this.$v.cap.required && errors.push('POSTAL CODE is required.') && this.cap_error.push('error');
+      return errors;
+    },
+    cityErrors: function cityErrors() {
+      var errors = [];
+      this.city_error = [];
+      if (!this.$v.city.$dirty) {
+        this.city_error.push('error');
+        return errors;
+      }
+      !this.$v.city.required && errors.push('CITY is required.') && this.city_error.push('error');
+      return errors;
+    },
+    provinceErrors: function provinceErrors() {
+      var errors = [];
+      this.province_error = [];
+      if (!this.$v.province.$dirty) {
+        this.province_error.push('error');
+        return errors;
+      }
+      !this.$v.province.required && errors.push('PROVINCE is required.') && this.province_error.push('error');
+      return errors;
+    },
+    stateErrors: function stateErrors() {
+      var errors = [];
+      this.state_error = [];
+      if (!this.$v.state.$dirty) {
+        this.state_error.push('error');
+        return errors;
+      }
+      !this.$v.state.required && errors.push('STATE is required.') && this.state_error.push('error');
+      return errors;
+    },
+    phoneErrors: function phoneErrors() {
+      var errors = [];
+      this.phone_error = [];
+      if (!this.$v.phone.$dirty) {
+        this.phone_error.push('error');
+        return errors;
+      }
+      !this.$v.phone.required && errors.push('TELEPHONE is required.') && this.phone_error.push('error');
+      return errors;
+    },
+    // mailErrors () {
+    //     const errors = []
+    //     this.mail_error = []
+    //     if (!this.$v.mail.$dirty) {this.mail_error.push('error');return errors;}
+    //     !this.$v.mail.required && errors.push('MAIL is required.') && this.mail_error.push('error')
+    //     return errors
+    // },
+    pecErrors: function pecErrors() {
+      var errors = [];
+      this.pec_error = [];
+      if (!this.$v.pec.$dirty) {
+        this.pec_error.push('error');
+        return errors;
+      }
+      !this.$v.pec.required && errors.push('PEC is required.') && this.pec_error.push('error');
+      return errors;
+    },
+    codeSdiErrors: function codeSdiErrors() {
+      var errors = [];
+      this.code_sdi_error = [];
+      if (!this.$v.code_sdi.$dirty) {
+        this.code_sdi_error.push('error');
+        return errors;
+      }
+      !this.$v.code_sdi.required && errors.push('SDI CODE is required.') && this.code_sdi_error.push('error');
+      return errors;
+    },
+    notesErrors: function notesErrors() {
+      var errors = [];
+      this.notes_error = [];
+      if (!this.$v.notes.$dirty) {
+        this.notes_error.push('error');
+        return errors;
+      }
+      !this.$v.notes.required && errors.push('NOTES is required.') && this.notes_error.push('error');
+      return errors;
+    }
+  },
   methods: {
-    getOrders: function getOrders() {
+    getUserInfo: function getUserInfo() {
       var _this = this;
-      axios.put("/api/orders").then(function (response) {
-        _this.order = response.data.results;
-        _this.subtotal = parseFloat(_this.order.subtotal);
-        _this.shipping_cost = parseFloat(_this.order.shipping_cost);
-        _this.conai = parseFloat(_this.order.conai);
-        _this.iva = parseFloat(_this.order.iva);
-        _this.total = parseFloat(_this.order.total);
+      axios.get("api/user", {}).then(function (response) {
+        _this.mail = response.data.email;
+      })["catch"](function (error) {});
+    },
+    getOrders: function getOrders() {
+      var _this2 = this;
+      axios.put('/api/orders', {}).then(function (response) {
+        _this2.order = response.data.results;
+        _this2.subtotal = parseFloat(_this2.order.subtotal);
+        _this2.shipping_cost = parseFloat(_this2.order.shipping_cost);
+        _this2.conai = parseFloat(_this2.order.conai);
+        _this2.iva = parseFloat(_this2.order.iva);
+        _this2.total = parseFloat(_this2.order.total);
       })["catch"](function (error) {
         console.log(error.message);
       });
+    },
+    transmitt: function transmitt() {
+      this.$v.$touch();
+      if (this.first_name_error.length == 0 && this.last_name_error.length == 0 && this.business_name_error.length == 0 && this.address_error.length == 0 && this.cap_error.length == 0 && this.city_error.length == 0 && this.cap_error.length == 0 && this.province_error.length == 0 && this.state_error.length == 0 && this.pec_error.length == 0 && this.code_sdi_error.length == 0 && this.notes_error.length == 0 && this.$refs.checkTerm.checked) {
+        axios.post("/api/orders/transmit/id", {
+          user_detail: {
+            surname: this.first_name + " " + this.last_name,
+            business_name: this.business_name,
+            notes: this.notes,
+            address: this.address,
+            phone: this.phone,
+            city: this.city,
+            cap: this.cap,
+            province: this.province,
+            state: this.state,
+            pec: this.pec,
+            code_sdi: this.code_sdi
+          },
+          payment: {
+            amount: this.total
+          }
+        }).then(function (res) {
+          if (res) {
+            alert("Success transmitted!");
+          } else {
+            alert("Failed!");
+          }
+        });
+      }
     }
   },
   mounted: function mounted() {
+    this.getUserInfo();
     this.getOrders();
   }
 });
@@ -4676,46 +4914,365 @@ var render = function render() {
     staticClass: "row"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "col-12 d-flex flex-wrap"
-  }, [_vm._m(1), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "col-6"
+  }, [_c("div", {
+    staticClass: "mobile h5"
+  }, [_vm._v("Billing Address")]), _vm._v(" "), _c("div", {
+    staticClass: "py-5",
+    attrs: {
+      id: "details"
+    }
+  }, [_c("v-form", {
+    ref: "entryForm"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-text-field", {
+    attrs: {
+      label: "NOME",
+      "error-messages": _vm.firstNameErrors,
+      required: ""
+    },
+    on: {
+      input: function input($event) {
+        return _vm.$v.first_name.$touch();
+      },
+      blur: function blur($event) {
+        return _vm.$v.first_name.$touch();
+      }
+    },
+    model: {
+      value: _vm.first_name,
+      callback: function callback($$v) {
+        _vm.first_name = $$v;
+      },
+      expression: "first_name"
+    }
+  })], 1)])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-text-field", {
+    attrs: {
+      label: "COGNOME",
+      "error-messages": _vm.lastNameErrors,
+      required: ""
+    },
+    on: {
+      input: function input($event) {
+        return _vm.$v.last_name.$touch();
+      },
+      blur: function blur($event) {
+        return _vm.$v.last_name.$touch();
+      }
+    },
+    model: {
+      value: _vm.last_name,
+      callback: function callback($$v) {
+        _vm.last_name = $$v;
+      },
+      expression: "last_name"
+    }
+  })], 1)])])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-text-field", {
+    attrs: {
+      label: "RAGIONE SOCIALE",
+      "error-messages": _vm.businessNameErrors,
+      required: ""
+    },
+    on: {
+      input: function input($event) {
+        return _vm.$v.business_name.$touch();
+      },
+      blur: function blur($event) {
+        return _vm.$v.business_name.$touch();
+      }
+    },
+    model: {
+      value: _vm.business_name,
+      callback: function callback($$v) {
+        _vm.business_name = $$v;
+      },
+      expression: "business_name"
+    }
+  })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-text-field", {
+    attrs: {
+      label: "INDIRIZZO",
+      "error-messages": _vm.addressErrors,
+      required: ""
+    },
+    on: {
+      input: function input($event) {
+        return _vm.$v.address.$touch();
+      },
+      blur: function blur($event) {
+        return _vm.$v.address.$touch();
+      }
+    },
+    model: {
+      value: _vm.address,
+      callback: function callback($$v) {
+        _vm.address = $$v;
+      },
+      expression: "address"
+    }
+  })], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-text-field", {
+    attrs: {
+      label: "CAP",
+      "error-messages": _vm.capErrors,
+      required: ""
+    },
+    on: {
+      input: function input($event) {
+        return _vm.$v.cap.$touch();
+      },
+      blur: function blur($event) {
+        return _vm.$v.cap.$touch();
+      }
+    },
+    model: {
+      value: _vm.cap,
+      callback: function callback($$v) {
+        _vm.cap = $$v;
+      },
+      expression: "cap"
+    }
+  })], 1)])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-text-field", {
+    attrs: {
+      label: "CITTÀ",
+      "error-messages": _vm.cityErrors,
+      required: ""
+    },
+    on: {
+      input: function input($event) {
+        return _vm.$v.city.$touch();
+      },
+      blur: function blur($event) {
+        return _vm.$v.city.$touch();
+      }
+    },
+    model: {
+      value: _vm.city,
+      callback: function callback($$v) {
+        _vm.city = $$v;
+      },
+      expression: "city"
+    }
+  })], 1)])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-text-field", {
+    attrs: {
+      label: "PROVINCIA",
+      "error-messages": _vm.provinceErrors,
+      required: ""
+    },
+    on: {
+      input: function input($event) {
+        return _vm.$v.province.$touch();
+      },
+      blur: function blur($event) {
+        return _vm.$v.province.$touch();
+      }
+    },
+    model: {
+      value: _vm.province,
+      callback: function callback($$v) {
+        _vm.province = $$v;
+      },
+      expression: "province"
+    }
+  })], 1)])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-text-field", {
+    attrs: {
+      label: "STATO",
+      "error-messages": _vm.stateErrors,
+      required: ""
+    },
+    on: {
+      input: function input($event) {
+        return _vm.$v.state.$touch();
+      },
+      blur: function blur($event) {
+        return _vm.$v.state.$touch();
+      }
+    },
+    model: {
+      value: _vm.state,
+      callback: function callback($$v) {
+        _vm.state = $$v;
+      },
+      expression: "state"
+    }
+  })], 1)])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-text-field", {
+    attrs: {
+      label: "TELEFONO",
+      "error-messages": _vm.phoneErrors,
+      required: ""
+    },
+    on: {
+      input: function input($event) {
+        return _vm.$v.phone.$touch();
+      },
+      blur: function blur($event) {
+        return _vm.$v.phone.$touch();
+      }
+    },
+    model: {
+      value: _vm.phone,
+      callback: function callback($$v) {
+        _vm.phone = $$v;
+      },
+      expression: "phone"
+    }
+  })], 1)])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-text-field", {
+    attrs: {
+      label: "MAIL",
+      value: _vm.mail,
+      readonly: ""
+    }
+  })], 1)])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-text-field", {
+    attrs: {
+      label: "PEC",
+      "error-messages": _vm.pecErrors,
+      required: ""
+    },
+    on: {
+      input: function input($event) {
+        return _vm.$v.pec.$touch();
+      },
+      blur: function blur($event) {
+        return _vm.$v.pec.$touch();
+      }
+    },
+    model: {
+      value: _vm.pec,
+      callback: function callback($$v) {
+        _vm.pec = $$v;
+      },
+      expression: "pec"
+    }
+  })], 1)])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-text-field", {
+    attrs: {
+      label: "CODICE SDI",
+      "error-messages": _vm.codeSdiErrors,
+      required: ""
+    },
+    on: {
+      input: function input($event) {
+        return _vm.$v.code_sdi.$touch();
+      },
+      blur: function blur($event) {
+        return _vm.$v.code_sdi.$touch();
+      }
+    },
+    model: {
+      value: _vm.code_sdi,
+      callback: function callback($$v) {
+        _vm.code_sdi = $$v;
+      },
+      expression: "code_sdi"
+    }
+  })], 1)])])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("v-textarea", {
+    attrs: {
+      label: "NOTE ORDINE (opzionale)",
+      "error-messages": _vm.notesErrors,
+      required: ""
+    },
+    on: {
+      input: function input($event) {
+        return _vm.$v.notes.$touch();
+      },
+      blur: function blur($event) {
+        return _vm.$v.notes.$touch();
+      }
+    },
+    model: {
+      value: _vm.notes,
+      callback: function callback($$v) {
+        _vm.notes = $$v;
+      },
+      expression: "notes"
+    }
+  })], 1)])])], 1)]), _vm._v(" "), _c("div", {
     staticClass: "summary col-6"
   }, [_c("div", {
     staticClass: "bg-white",
     attrs: {
       id: "cart"
     }
-  }, [_vm._m(2), _vm._v(" "), _vm._l(_vm.order.products, function (item) {
-    return _c("div", [_c("div", {
-      staticClass: "d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom"
-    }, [_c("div", {
-      staticClass: "item pr-2"
-    }, [_c("img", {
-      attrs: {
-        alt: "",
-        height: "80",
-        src: __webpack_require__(/*! ../../../public/Links/cat-scatole-cartone-1-onda.jpg */ "./public/Links/cat-scatole-cartone-1-onda.jpg"),
-        width: "80"
-      }
-    }), _vm._v(" "), _c("div", {
-      staticClass: "number"
-    }, [_vm._v("\n                                        " + _vm._s(item.pivot.quantity) + "\n                                    ")])]), _vm._v(" "), _c("div", {
-      staticClass: "d-flex flex-column px-3"
-    }, [_c("b", {}, [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("strong", [_vm._v("CODICE:\n                                        "), _c("span"), _vm._v(" "), _c("a", {
-      staticClass: "text-primary",
-      attrs: {
-        href: "#"
-      }
-    }, [_vm._v("\n                                            " + _vm._s(item.code) + "\n                                        ")])]), _vm._v(" "), _c("strong", [_vm._v("DIMENSIONI:\n                                        "), _c("span"), _vm._v(" "), _c("a", {
-      staticClass: "text-primary",
-      attrs: {
-        href: "#"
-      }
-    }, [_c("strong", [_vm._v("CODICE:\n                                                "), _c("span"), _vm._v(" "), _c("a", {
-      staticClass: "text-primary",
-      attrs: {
-        href: "#"
-      }
-    }, [_vm._v("\n                                                    " + _vm._s(item.length) + " x\n                                                    " + _vm._s(item.height) + " x\n                                                    " + _vm._s(item.width) + "\n                                                ")])])])])])])]);
-  }), _vm._v(" "), _c("div", {
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "py-5"
   }, [_c("div", {
     staticClass: "d-flex align-items-center justify-content-between"
@@ -4745,7 +5302,28 @@ var render = function render() {
     staticClass: "total border-top d-flex justify-content-between align-items-center ml-2 font-weight-bold"
   }, [_c("div", [_vm._v("Total")]), _vm._v(" "), _c("div", {
     staticClass: "px-2"
-  }, [_vm._v("\n                                    $" + _vm._s(this.total.toFixed(2)) + "\n                                ")])])]), _vm._v(" "), _vm._m(3)], 2)])])])])]);
+  }, [_vm._v("\n                                    $" + _vm._s(this.total.toFixed(2)) + "\n                                ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "pay"
+  }, [_c("h5", {
+    staticClass: "fw-bold"
+  }, [_vm._v("MODALITÀ DI PAGAMENTO")]), _vm._v(" "), _c("br"), _vm._v(" "), _c("h6", {}, [_vm._v("BONIFICO BANCARIO")]), _vm._v(" "), _c("p", [_vm._v("\n                                Effettua il pagamento tramite bonifico\n                                bancario. Usa l’ID dell’ordine come causale.\n                                Il tuo ordine non verrà spedito finché i\n                                fondi non risulteranno trasferiti nel nostro\n                                conto corrente.\n                            ")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h6", {}, [_vm._v("PAGAMENTO ALLA CONSEGNA")]), _vm._v(" "), _c("p", [_vm._v("\n                                Pagamento in contanti al momento della\n                                consegna.\n                            ")]), _vm._v(" "), _c("hr"), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("p", [_vm._v("\n                                Paga con PayPal; puoi pagare con la tua\n                                carta di credito se non hai un account\n                                PayPal.\n                            ")]), _vm._v(" "), _c("hr"), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("hr"), _vm._v(" "), _c("input", {
+    ref: "checkTerm",
+    attrs: {
+      id: "terms",
+      name: "terms",
+      type: "checkbox",
+      value: "agree"
+    }
+  }), _vm._v("\n                            Ho letto e accetto\n                            "), _c("strong", [_vm._v(" termini e condizioni ")]), _vm._v("\n                            del sito web\n                            "), _c("strong", [_vm._v("*")]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-12 my-4 d-flex justify-content-center w-100"
+  }, [_c("div", {
+    staticClass: "btn text-uppercase",
+    on: {
+      click: function click($event) {
+        return _vm.transmitt();
+      }
+    }
+  }, [_vm._v("\n                                    PROCEDI CON L'ORDINE\n                                ")])])])])])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -4755,177 +5333,6 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "h5 mx-4 large font-weight-bold"
   }, [_c("h1", [_vm._v("CHECKOUT")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("span", [_vm._v(" DETTAGLI DI FATTURAZIONE ")])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-6"
-  }, [_c("div", {
-    staticClass: "mobile h5"
-  }, [_vm._v("Billing Address")]), _vm._v(" "), _c("div", {
-    staticClass: "py-5",
-    attrs: {
-      id: "details"
-    }
-  }, [_c("form", [_c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("NOME")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("COGNOME")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("RAGIONE SOCIALE")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("INDIRIZZO")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("RAGIONE SOCIALE")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("CAP")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("CITTÀ")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("PROVINCIA")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("STATO")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("TELEFONO")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("MAIL")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("PEC")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("CODICE SDI")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("input", {
-    attrs: {
-      type: "text",
-      value: ""
-    }
-  })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("NOTE ORDINE (opzionale)")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
-  }, [_c("textarea", {
-    attrs: {
-      cols: "200",
-      id: "",
-      name: "",
-      rows: "5"
-    }
-  })])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -4944,10 +5351,6 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "pay"
-  }, [_c("h5", {
-    staticClass: "fw-bold"
-  }, [_vm._v("MODALITÀ DI PAGAMENTO")]), _vm._v(" "), _c("br"), _vm._v(" "), _c("h6", {}, [_vm._v("BONIFICO BANCARIO")]), _vm._v(" "), _c("p", [_vm._v("\n                                Effettua il pagamento tramite bonifico\n                                bancario. Usa l’ID dell’ordine come causale.\n                                Il tuo ordine non verrà spedito finché i\n                                fondi non risulteranno trasferiti nel nostro\n                                conto corrente.\n                            ")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("h6", {}, [_vm._v("PAGAMENTO ALLA CONSEGNA")]), _vm._v(" "), _c("p", [_vm._v("\n                                Pagamento in contanti al momento della\n                                consegna.\n                            ")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "d-flex"
   }, [_c("h6", [_vm._v("PAYPAL E CARTE DI CREDITO")]), _vm._v(" "), _c("i", {
     staticClass: "fa-brands fa-cc-paypal"
@@ -4959,18 +5362,11 @@ var staticRenderFns = [function () {
     staticClass: "fa-brands fa-cc-mastercard"
   }), _vm._v(" "), _c("i", {
     staticClass: "fa-brands fa-cc-mastercard"
-  })]), _vm._v(" "), _c("p", [_vm._v("\n                                Paga con PayPal; puoi pagare con la tua\n                                carta di credito se non hai un account\n                                PayPal.\n                            ")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("p", [_vm._v("\n                                I tuoi dati personali verranno utilizzati\n                                per elaborare il tuo ordine, supportare la\n                                tua esperienza in questo sito Web e per\n                                altri scopi descritti nella nostra\n                                "), _c("strong", [_vm._v("privacy policy.")])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("input", {
-    attrs: {
-      id: "terms",
-      name: "terms",
-      type: "checkbox",
-      value: "agree"
-    }
-  }), _vm._v("\n                            Ho letto e accetto\n                            "), _c("strong", [_vm._v(" termini e condizioni ")]), _vm._v("\n                            del sito web\n                            "), _c("strong", [_vm._v("*")]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-12 my-4 d-flex justify-content-center w-100"
-  }, [_c("div", {
-    staticClass: "btn text-uppercase"
-  }, [_vm._v("\n                                    PROCEDI CON L'ORDINE\n                                ")])])]);
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", [_vm._v("\n                                I tuoi dati personali verranno utilizzati\n                                per elaborare il tuo ordine, supportare la\n                                tua esperienza in questo sito Web e per\n                                altri scopi descritti nella nostra\n                                "), _c("strong", [_vm._v("privacy policy.")])]);
 }];
 render._withStripped = true;
 
@@ -58601,17 +58997,6 @@ module.exports = "/images/28_April_04.png?6b6adc8dc01534723953a2f1ce96b3c3";
 
 /***/ }),
 
-/***/ "./public/Links/cat-scatole-cartone-1-onda.jpg":
-/*!*****************************************************!*\
-  !*** ./public/Links/cat-scatole-cartone-1-onda.jpg ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/cat-scatole-cartone-1-onda.jpg?c64c81d74efce81169c085e0b909e04c";
-
-/***/ }),
-
 /***/ "./public/Links/cat-scatole-cartone-2-onde.jpg":
 /*!*****************************************************!*\
   !*** ./public/Links/cat-scatole-cartone-2-onde.jpg ***!
@@ -60843,17 +61228,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
     name: "cart",
     component: _pages_CartPage__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
-    path: "/checkout",
-    name: "checkout",
-    component: _pages_CheckoutPage__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }, {
     path: "/showvone",
     name: "showvone",
     component: _pages_ShowVonePage__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }, {
-    path: "/cart",
-    name: "cart",
-    component: _pages_CartPage__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
     path: "/checkout",
     name: "checkout",
