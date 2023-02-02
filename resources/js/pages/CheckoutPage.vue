@@ -361,7 +361,7 @@
                                 >
                                     <div class="display-5">SUBTOTALE</div>
                                     <div class="ml-auto font-weight-bold">
-                                        ${{ this.subtotal.toFixed(2) }}
+                                        € {{ this.subtotal.toFixed(2) }}
                                     </div>
                                 </div>
                                 <!-- <div
@@ -387,7 +387,7 @@
                                         SPEDIZIONE GRATUITA
                                     </div>
                                     <div class="ml-auto font-weight-bold">
-                                        ${{ this.shipping_cost.toFixed(2) }}
+                                        € {{ this.shipping_cost.toFixed(2) }}
                                     </div>
                                 </div>
                                 <div
@@ -397,7 +397,7 @@
                                         CONTRIBUTO CONAI
                                     </div>
                                     <div class="ml-auto font-weight-bold">
-                                        ${{ this.conai.toFixed(2) }}
+                                        € {{ this.conai.toFixed(2) }}
                                     </div>
                                 </div>
                                 <div
@@ -405,14 +405,16 @@
                                 >
                                     <div class="display-5">IVA</div>
                                     <div class="ml-auto font-weight-bold">
-                                        ${{ this.iva.toFixed(2) }}
+                                        € {{ this.iva.toFixed(2) }}
                                     </div>
                                 </div>
                                 <div
                                     class="total border-top d-flex justify-content-between align-items-center ml-2 font-weight-bold"
                                 >
                                     <div>Total</div>
-                                    <div class="px-2">${{ this.total.toFixed(2) }}</div>
+                                    <div class="px-2">
+                                        € {{ this.total.toFixed(2) }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="pay">
