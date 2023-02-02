@@ -1,9 +1,18 @@
 //! Width
+.w-5 {
+    width: 5%;
+}
 .w-35 {
     width: 35%;
 }
+.w-40 {
+    width: 40%;
+}
 .w-65 {
     width: 65%;
+}
+.w-60 {
+    width: 60%;
 }
 
 //! Background colors
@@ -15,6 +24,8 @@ $white: #fff;
 $gray: #f1f1f1;
 
 .bg-orange {
+    min-width: fit-content;
+
     background-color: $orange;
     border-radius: 0px;
 }
@@ -23,6 +34,8 @@ $gray: #f1f1f1;
 }
 
 .bg-yellow {
+    min-width: fit-content;
+
     background-color: $yellow;
     border-radius: 0px;
     color: white;
@@ -45,6 +58,25 @@ $gray: #f1f1f1;
 
 .yellow-button {
     background-color: #fdbc48;
+    border: none;
+    border-radius: 0px;
+    color: $white;
+    font-weight: bold;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 8px;
+    margin: 10px 0;
+    cursor: pointer;
+    &:hover {
+        filter: blur(2);
+        transition: 1s;
+    }
+}
+
+.dark-button {
+    background-color: #000000;
     border: none;
     border-radius: 0px;
     color: $white;

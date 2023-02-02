@@ -1,6 +1,8 @@
 <template>
     <div>
         <div class="HeaderBoxes">
+            <!-- <LoadingComponent v-if="LoadingCategories" /> -->
+
             <nav class="d-flex">
                 <div class="container d-flex flex-wrap justify-content-around">
                     <div
@@ -41,7 +43,10 @@
 
 <script>
 export default {
-    props: ["category"],
+    components: {},
+    props: {
+        category: Array,
+    },
     data() {
         return {};
     },

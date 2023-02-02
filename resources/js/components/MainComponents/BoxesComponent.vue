@@ -122,7 +122,14 @@ export default {
         object-fit: contain;
     }
 
+    .card-header {
+        background-color: white;
+
+        border-bottom: 0px;
+    }
+
     .card-body {
+        background-color: white;
         padding: 1rem;
         display: flex;
         flex-direction: column;
@@ -169,7 +176,10 @@ export default {
         }
     }
     .card-footer {
+        background-color: white;
         padding: 0px;
+
+        border-top: 0px;
         .left {
             width: fit-content;
             display: flex;

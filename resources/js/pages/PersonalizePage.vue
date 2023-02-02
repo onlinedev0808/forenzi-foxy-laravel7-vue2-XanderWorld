@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="d-flex flex-column align-items-center p-2">
-            <h1 class="display-5 text-center font-weight-bold my-5">
-                CONFIGURA LA TUA SCATOLA SU MISURA IN MENO DI UN MINUTO!
-            </h1>
-            <hr class="w-10" />
+            <h2 class="text-center font-weight-bold my-2">
+                Configura la tua scatola su misura in meno di un minuto!
+            </h2>
+            <hr class="w-5" />
         </div>
         <div class="bg-gray">
             <div class="container-lg">
@@ -130,7 +130,7 @@ export default {
                     txtThree: "",
                     txtBanner:
                         "500 è la quantità minima che puoi richiedere per le misure che hai scelto",
-                    img: require("../../../public/Links/cat-scatole-cartone-2-onde.jpg"),
+                    img: "",
                 },
             ],
             boxtwo: [
@@ -211,7 +211,10 @@ export default {
 @import "../../sass/global.scss";
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2),
+        0px -5px 35px rgba(255, 255, 255, 0.3);
 }
 
 .active {

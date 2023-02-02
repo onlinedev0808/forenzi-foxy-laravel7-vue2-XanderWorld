@@ -7,16 +7,16 @@
             <div class="summary-item">
                 <span class="text">MISURE</span>
                 <span class="price"
-                    ><strong>{{ inputL }}</strong> L x
-                    <strong>{{ inputP }}</strong> P x
-                    <strong>{{ inputH }}</strong> H</span
-                >
+                    ><strong>{{ inputL }} L x</strong>
+                    <strong>{{ inputP }} P x</strong>
+                    <strong>{{ inputH }} H</strong>
+                </span>
             </div>
             <div class="summary-item">
                 <span class="text">QUANTITÀ</span>
                 <span class="price"
-                    ><strong>{{ inputQ }}</strong> PEZZI</span
-                >
+                    ><strong>{{ inputQ }} PEZZI</strong>
+                </span>
             </div>
             <div class="summary-item">
                 <span class="text">COLORE SCATOLA</span>
@@ -31,68 +31,65 @@
                 <span class="price">{{ radioValue }}</span>
             </div>
 
-            <div class="summary-item py-3">
-                <span class="title-create">INSERISCI I DATI</span>
-            </div>
-
             <div class="summary-item">
+                <div class="summary-item py-3">
+                    <span class="title-create">INSERISCI I DATI</span>
+                </div>
                 <form>
                     <div class="row">
-                        <div class="d-flex col-lg-12">
-                            <div class="form-group col-6">
-                                <label class="">NOME</label>
-                                <div
-                                    class="d-flex jusify-content-start align-items-center p-2"
-                                >
-                                    <input type="text" value="" />
-                                </div>
-                            </div>
-                            <div class="form-group col-6">
-                                <label class="">COGNOME</label>
-                                <div
-                                    class="d-flex jusify-content-start align-items-center p-2"
-                                >
-                                    <input type="text" value="" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group col-lg-12">
-                        <label class="">RAGIONE SOCIALE</label>
-                        <div
-                            class="d-flex jusify-content-start align-items-center p-2"
-                        >
-                            <input type="text" value="" />
-                        </div>
-                    </div>
-
-                    <div class="form-group col-lg-12">
-                        <label class="">CITTÀ</label>
-                        <div
-                            class="d-flex jusify-content-start align-items-center p-2"
-                        >
-                            <input type="text" value="" />
-                        </div>
-                    </div>
-
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label class="">TELEFONO</label>
+                        <div class="form-group col-12">
+                            <label class="">NOME</label>
                             <div
-                                class="d-flex jusify-content-start align-items-center p-2"
+                                class="d-flex jusify-content-start align-items-center"
                             >
                                 <input type="text" value="" />
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label class="">MAIL</label>
+                        <div class="form-group col-12">
+                            <label class="">COGNOME</label>
                             <div
-                                class="d-flex jusify-content-start align-items-center p-2"
+                                class="d-flex jusify-content-start align-items-center"
                             >
                                 <input type="text" value="" />
+                            </div>
+                        </div>
+
+                        <div class="form-group col-12">
+                            <label class="">RAGIONE SOCIALE</label>
+                            <div
+                                class="d-flex jusify-content-start align-items-center"
+                            >
+                                <input type="text" value="" />
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12">
+                            <label class="">CITTÀ</label>
+                            <div
+                                class="d-flex jusify-content-start align-items-center"
+                            >
+                                <input type="text" value="" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="">TELEFONO</label>
+                                <div
+                                    class="d-flex jusify-content-start align-items-center"
+                                >
+                                    <input type="text" value="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="">EMAIL</label>
+                                <div
+                                    class="d-flex jusify-content-start align-items-center"
+                                >
+                                    <input type="text" value="" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -103,7 +100,7 @@
                 class="btn bg-yellow fw-bold btn-lg btn-block"
                 type="button"
             >
-                PROCEDI AL CHECKOUT
+                INVIA IL PREVENTIVO
             </button>
         </div>
     </div>
@@ -160,6 +157,7 @@ export default {
 
 .shopping-cart .summary .price {
     float: right;
+    font-size: 0.8rem;
 }
 
 .shopping-cart .summary button {
@@ -204,15 +202,15 @@ i {
 
 label {
     font-size: 1rem;
+    font-weight: bold;
+    margin: 0px;
 }
 
 input {
     width: 30%;
-    margin: 1rem 0px;
-    height: 30px;
     font-size: 1.5rem;
-    border: none;
-    background-color: #f1f1f1;
+    border: 1px solid lightgray;
+    background-color: white;
 }
 
 .form-group input {

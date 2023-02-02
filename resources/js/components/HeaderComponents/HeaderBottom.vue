@@ -4,11 +4,13 @@
             <div class="container-lg">
                 <div class="row d-flex">
                     <div class="col-12 col-md-3 logo">
-                        <img
-                            class="img-fluid mb-4"
-                            src="../../../../public/img/logo.png"
-                            alt="Logo"
-                        />
+                        <router-link to="/">
+                            <img
+                                class="img-fluid mb-4"
+                                src="../../../../public/img/logo.png"
+                                alt="Logo"
+                            />
+                        </router-link>
                     </div>
                     <div
                         class="col-12 col-md-9 d-flex align-items-center justify-content-end"

@@ -11,26 +11,46 @@
                     <div class="mt-5 d-flex flex-column justify-content-center">
                         <div class="">
                             <input
-                                v-bind:checked="radioValue === 'huey'"
+                                v-bind:checked="radioValue === 'NEUTRA'"
                                 id="NEUTRA"
                                 name="drone"
                                 type="radio"
                                 value="NEUTRA"
                                 @change="emitRadioValue"
                             />
-                            <label for="huey">NEUTRA</label>
+                            <label for="NEUTRA">NEUTRA</label>
                         </div>
 
                         <div>
                             <input
-                                v-bind:checked="radioValue === 'dewey'"
-                                id="PERSONALIZZATA"
+                                v-bind:checked="
+                                    radioValue === 'STAMPA A 1 COLORE'
+                                "
+                                id="STAMPA A 1 COLORE"
                                 name="drone"
                                 type="radio"
-                                value="PERSONALIZZATA"
+                                value="STAMPA A 1 COLORE"
                                 @change="emitRadioValue"
                             />
-                            <label for="dewey">PERSONALIZZATA</label>
+                            <label for="STAMPA A 1 COLORE"
+                                >STAMPA A 1 COLORE
+                            </label>
+                        </div>
+
+                        <div>
+                            <input
+                                v-bind:checked="
+                                    radioValue === 'STAMPA A 2 COLORI'
+                                "
+                                id="STAMPA A 2 COLORI"
+                                name="drone"
+                                type="radio"
+                                value="STAMPA A 2 COLORI"
+                                @change="emitRadioValue"
+                            />
+                            <label for="STAMPA A 2 COLORI"
+                                >STAMPA A 2 COLORI
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -58,6 +78,7 @@ export default {
 <style lang="scss" scoped>
 label {
     font-size: 1rem;
+    font-weight: bold;
 }
 
 .bg-yellow {
