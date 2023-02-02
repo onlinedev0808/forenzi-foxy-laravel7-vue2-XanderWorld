@@ -10,13 +10,17 @@
             </div>
             <div class="right w-50">
                 <div>
-                    <h2 class="fw-bold">Scatola a 1 Onda</h2>
-                    <h6 class="fw-bold">14 x 14 x 10 cm</h6>
+                    <h2 class="fw-bold">{{ product.name }}</h2>
+                    <span class="price font-weight-bold"
+                        ><strong>{{ product.length }} L x</strong>
+                        <strong>{{ product.width }} P x</strong>
+                        <strong>{{ product.height }} H</strong>
+                    </span>
                     <!-- <div class="stars">
                         <i v-for="n in 5" :key="n" class="far fa-star"></i>
                     </div> -->
                     <div class="d-flex align-items-center">
-                        <h1>€ 2,08</h1>
+                        <h1>€ {{ product.price }}</h1>
                         <span class="fw-bold px-2">prezzo cad.</span>
                     </div>
                     <p>
@@ -30,10 +34,19 @@
                         class="d-flex flex-column py-2"
                         style="border-bottom: 1px solid lightgray"
                     >
-                        <span>CODICE:</span>
-                        <span class="fw-bold">PT014</span>
-                        <span>CODICE CATEGORIA:</span>
-                        <span class="fw-bold">SCATOLE 1 ONDA</span>
+                        <div class="d-flex">
+                            <span>CODICE:</span>
+                            <strong class="fw-bold">{{ product.code }}</strong>
+                        </div>
+
+                        <div class="d-flex">
+                            <span>CATEGORIA:</span>
+                            <strong
+                                ><span class="fw-bold">{{
+                                    product.category.name
+                                }}</span></strong
+                            >
+                        </div>
                     </div>
                     <div class="d-flex">
                         <div style="display: flex; justify-content: flex-end">
@@ -82,16 +95,18 @@
                     </tr>
                     <tr>
                         <td class="td1">PREZZO UNITARIO</td>
-                        <td class="td2">€ 2,08</td>
-                        <td class="td2">€ 2,08</td>
-                        <td class="td2">€ 2,08</td>
-                        <td class="td2">€ 2,08</td>
-                        <td class="td2">€ 2,08</td>
+                        <td class="td2">€ {{ product.price }}</td>
+                        <td class="td2">€ {{ product.first_price }}</td>
+                        <td class="td2">€ {{ product.second_price }}</td>
+                        <td class="td2">€ {{ product.third_price }}</td>
+                        <td class="td2">€ {{ product.fourth_price }}</td>
                     </tr>
                 </table>
                 <h5 class="fw-bold py-2">
                     PREZZO TOTALE CON IVA E CONAI:
-                    <span style="color: orange">€ 50,74</span>
+                    <span style="color: orange"
+                        >€ {{ totalPrice.toFixed(2) }}</span
+                    >
                 </h5>
             </div>
         </div>
@@ -104,34 +119,40 @@
         <table class="alternating-rows my-5">
             <tr>
                 <td class="td1">Tipologia:</td>
-                <td class="td2">Scatole 1 onda</td>
+                <td class="td2">{{ product.category.name }}</td>
             </tr>
             <tr>
                 <td class="td1">Cartone:</td>
-                <td class="td2">Un'Onda Bassa Avana</td>
+                <td class="td2">{{ product.color }}</td>
             </tr>
             <tr>
                 <td class="td1">Misure (cm):</td>
-                <td class="td2">14x14x10 h</td>
+                <td class="td2">
+                    {{ product.length }} L x {{ product.width }} P x
+                    {{ product.height }} H
+                </td>
             </tr>
             <tr>
                 <td class="td1">Stampa esterna:</td>
-                <td class="td2">Simboli + Fragile</td>
+                <td class="td2">{{ product.print }}</td>
             </tr>
             <tr>
                 <td class="td1">Peso scatola:</td>
-                <td class="td2">0,051 kg</td>
+                <td class="td2">{{ product.weight }} kg</td>
             </tr>
         </table>
     </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
     data() {
         return {
             value: 100,
             isReadOnly: true,
+            product: {},
+            priceDynamic: "",
         };
     },
     methods: {
@@ -141,6 +162,44 @@ export default {
         decreaseValue() {
             this.value -= 10;
         },
+        getProduct() {
+            axios
+                .get(`/api/products/${this.$route.params.id}`)
+                .then((response) => {
+                    this.product = response.data.results;
+                    console.log(this.product);
+                })
+                .catch((error) => {
+                    console.warn(error.message);
+                });
+        },
+    },
+    computed: {
+        totalPrice() {
+            if (this.value >= 1) {
+                this.priceDynamic = this.product.price;
+            }
+            if (this.value >= 100) {
+                this.priceDynamic = this.product.first_price;
+            }
+            if (this.value >= 300) {
+                this.priceDynamic = this.product.second_price;
+            }
+            if (this.value >= 500) {
+                this.priceDynamic = this.product.third_price;
+            }
+            if (this.value >= 1000) {
+                this.priceDynamic = this.product.fourth_price;
+            }
+
+            return this.priceDynamic * this.value * 1.22;
+        },
+    },
+    created() {
+        this.getProduct();
+    },
+    mounted() {
+        window.scrollTo(0, 0);
     },
 };
 </script>
@@ -192,7 +251,7 @@ table {
 }
 
 td {
-    padding: 8px;
+    padding: 0px;
 }
 
 .td1 {

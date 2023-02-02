@@ -7,7 +7,8 @@ import HomePage from "./pages/HomePage";
 import PersonalizePage from "./pages/PersonalizePage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
-import ShowVonePage from "./pages/ShowVonePage";
+import ProductPage from "./pages/ProductPage";
+import CategoryPage from "./pages/CategoryPage";
 
 const router = new VueRouter({
     mode: "history",
@@ -28,9 +29,14 @@ const router = new VueRouter({
             component: CartPage,
         },
         {
-            path: "/showvone",
-            name: "showvone",
-            component: ShowVonePage,
+            path: "/product/:id",
+            name: "product",
+            component: ProductPage,
+        },
+        {
+            path: "/category/:id",
+            name: "category",
+            component: CategoryPage,
         },
         {
             path: "/checkout",

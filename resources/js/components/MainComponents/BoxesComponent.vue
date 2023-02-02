@@ -2,11 +2,15 @@
     <section class="boxes d-flex flex-wrap justify-content-center">
         <div class="box">
             <div class="card-header">
-                <img
-                    class="img-fluid"
-                    src="https://static.wixstatic.com/media/2cd43b_0fe4090271224c51a780c0cccb961b83~mv2_d_2132_2400_s_2.png/v1/fill/w_320,h_360,q_90/2cd43b_0fe4090271224c51a780c0cccb961b83~mv2_d_2132_2400_s_2.png"
-                    :alt="product.name"
-                />
+                <router-link
+                    :to="{ name: 'product', params: { id: product.id } }"
+                >
+                    <img
+                        class="img-fluid"
+                        src="https://static.wixstatic.com/media/2cd43b_0fe4090271224c51a780c0cccb961b83~mv2_d_2132_2400_s_2.png/v1/fill/w_320,h_360,q_90/2cd43b_0fe4090271224c51a780c0cccb961b83~mv2_d_2132_2400_s_2.png"
+                        :alt="product.name"
+                    />
+                </router-link>
             </div>
 
             <div class="card-body">
@@ -60,7 +64,9 @@
 import axios from "axios";
 
 export default {
-    props: ["product"],
+    props: {
+        product: Array,
+    },
     data() {
         return {
             quantity: this.product.purchasable_in_multi_of || 1,

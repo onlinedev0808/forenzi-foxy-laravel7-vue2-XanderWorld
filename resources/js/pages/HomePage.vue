@@ -3,11 +3,11 @@
         <div class="container">
             <div class="row justify-content-center">
                 <loadingComponent v-if="loadingCategories" />
-                
+
                 <div class="d-flex" v-else>
                     <NavBoxesComponent
                         v-for="category in categories"
-                        :key="category.id"
+                        :key="category.name"
                         :category="category"
                     />
                     <div @click="goToPersonalizePage">
@@ -18,17 +18,19 @@
                 <JumboComponent />
                 <BannerNewsComponent />
                 <BannerTextComponent
-                    v-for="(element, index) in txtbanners"
-                    :key="index"
+                    v-for="element in txtbanners"
+                    :key="element.title"
                     :title="element.title"
                     :description="element.description"
                     :descriptionBold="element.descriptionBold"
                 />
+
                 <BoxesComponent
                     v-for="product in products"
-                    :key="product.id"
+                    :key="product.name"
                     :product="product"
                 />
+
                 <HolidayComponent />
             </div>
         </div>
