@@ -88,7 +88,7 @@
                                                         "
                                                     >
                                                         <label for="id1"
-                                                            >$</label
+                                                            >€</label
                                                         >
                                                         <input
                                                             type="text"
@@ -142,25 +142,25 @@
                             <div class="summary-item">
                                 <span class="text">SUBTOTALE</span>
                                 <span class="price"
-                                    >${{
+                                    >€ {{
                                         parseFloat(this.subtotal).toFixed(2)
                                     }}</span
                                 >
                             </div>
                             <!-- <div class="summary-item">
 																						<span class="text">FOXTOP - SCONTO 5%</span>
-																						<span class="price">$0</span>
+																						<span class="price">€0</span>
 																		</div> -->
                             <!-- <div class="summary-item">
 																						<span class="text"
 																										>ABBONAMENTO FOXTOP - VALIDO 1 ANNO</span
 																						>
-																						<span class="price">$0</span>
+																						<span class="price">€0</span>
 																		</div> -->
                             <div class="summary-item">
                                 <span class="text">SPEDIZIONE GRATUITA</span>
                                 <span class="price"
-                                    >${{
+                                    >€ {{
                                         parseFloat(this.shipping_cost).toFixed(
                                             2
                                         )
@@ -170,7 +170,7 @@
                             <div class="summary-item">
                                 <span class="text">CONTRIBUTO CONAI</span>
                                 <span class="price"
-                                    >${{
+                                    >€ {{
                                         parseFloat(this.conai).toFixed(2)
                                     }}</span
                                 >
@@ -178,7 +178,7 @@
                             <div class="summary-item">
                                 <span class="text">IVA</span>
                                 <span class="price"
-                                    >${{
+                                    >€ {{
                                         parseFloat(this.iva).toFixed(2)
                                     }}</span
                                 >
@@ -188,7 +188,7 @@
                             >
                                 <span class="text">TOTALE ORDINE</span>
                                 <span class="price"
-                                    >${{
+                                    >€ {{
                                         parseFloat(this.total).toFixed(2)
                                     }}</span
                                 >
