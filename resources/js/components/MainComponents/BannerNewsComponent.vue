@@ -28,7 +28,7 @@
             </div>
             <div class="new-text w-65">
                 <h4>Scatole con maniglie</h4>
-                <span>Disponibili bianche e avana</span>
+                <p>Disponibili bianche e avana</p>
                 <button class="yellow-button">SCOPRI IL PRODOTTO</button>
             </div>
         </div>
@@ -42,7 +42,7 @@
             </div>
             <div class="new-text w-65">
                 <h4>Scatole colorate</h4>
-                <span>Varie forme e colori</span>
+                <p>Varie forme e colori</p>
                 <button class="yellow-button">SCOPRI IL PRODOTTO</button>
             </div>
         </div>
@@ -77,6 +77,10 @@ export default {
         img {
             height: 160px;
             object-fit: cover;
+        }
+
+        p{
+            margin: 0px;
         }
         .new-text {
             padding: 10px;

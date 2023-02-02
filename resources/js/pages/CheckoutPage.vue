@@ -273,6 +273,7 @@
                                 <div class="h6">RIEPILOGO ORDINE</div>
                                 <div class="h6"><a href="/cart">Back</a></div>
                             </div>
+
                             <!-- <div v-for="item in order.products">
                                 <div class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom">
                                     <div class="item pr-2">
@@ -282,7 +283,9 @@
                                             src="../../../public/Links/cat-scatole-cartone-1-onda.jpg"
                                             width="80"
                                         />
-                                        <div class="number">{{ item.pivot.quantity }}</div>
+                                        <div class="number">
+                                            {{ item.pivot.quantity }}
+                                        </div>
                                     </div>
 
                                     <div class="d-flex flex-column px-3">
@@ -305,15 +308,18 @@
                                                         class="text-primary"
                                                         href="#"
                                                     >
-                                                    {{ item.length }} x {{ item.height }} x {{ item.width }}
+                                                        {{ item.length }} x
+                                                        {{ item.height }} x
+                                                        {{ item.width }}
                                                     </a>
                                                 </strong>
                                             </a>
                                         </strong>
                                     </div>
                                 </div>
-                            </div> -->
-                            
+                            </div>
+
+
                             <!-- <div
                                 class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom"
                             >
@@ -412,7 +418,9 @@
                                     class="total border-top d-flex justify-content-between align-items-center ml-2 font-weight-bold"
                                 >
                                     <div>Total</div>
-                                    <div class="px-2">${{ this.total.toFixed(2) }}</div>
+                                    <div class="px-2">
+                                        ${{ this.total.toFixed(2) }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="pay">
@@ -490,10 +498,11 @@
 import { required, minLength, maxLength, email, between } from 'vuelidate/lib/validators'
 export default {
     data() {
-		return {
-			products: [],
+        return {
+            products: [],
             order: {},
             order_products: [],
+
 			computedPrice: 0,
 			quantity: 0,
 			subtotal: 0,
@@ -667,6 +676,7 @@ export default {
         },
 
         getOrders() {
+
             axios.put('/api/orders', {})
             .then(response => {
                 this.order = response.data.results;
@@ -679,6 +689,7 @@ export default {
             .catch(error => {
                 console.log(error.message);
             });
+
         },
         
         transmitt() {

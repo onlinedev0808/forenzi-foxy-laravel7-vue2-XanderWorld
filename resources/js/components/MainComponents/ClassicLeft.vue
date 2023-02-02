@@ -4,7 +4,7 @@
             <div
                 class="row d-flex flex-wrap justify-content-between align-items-center"
             >
-                <div class="classic-text w-50">
+                <div class="classic-text col-6">
                     <h1 class="">{{ title }}</h1>
                     <p class="">
                         {{ description }}
@@ -15,15 +15,11 @@
                     <p class="">
                         {{ notes }}
                     </p>
-                    <button
-                        v-show="button"
-                        class="yellow-button"
-                        style="background-color: black"
-                    >
+                    <button v-show="button" class="yellow-button">
                         {{ button }}
                     </button>
                 </div>
-                <div class="classic-image w-25 d-flex align-items-center">
+                <div class="classic-image col-6 d-flex align-items-center">
                     <img
                         class="img-fluid"
                         src="https://pngimg.com/uploads/box/box_PNG140.png"
@@ -54,8 +50,12 @@ export default {
 
 <style lang="scss" scoped>
 .classic {
+    background-color: #f1f1f1;
     .classic-text {
         width: fit-content;
+    }
+    img {
+        max-height: 380px;
     }
     p {
         font-size: 1rem;
@@ -64,6 +64,8 @@ export default {
         color: rgb(246, 135, 46);
         font-weight: bold;
         font-size: 2rem;
+
+        margin-right: 13rem;
     }
 }
 </style>
