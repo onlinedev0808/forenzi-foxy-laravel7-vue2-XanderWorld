@@ -1,95 +1,54 @@
 <template>
     <div class="container">
-       <h1>AIOSKUèDHN</h1>
+        <div class="bar"></div>
     </div>
 </template>
 
 <script></script>
 
 <style lang="scss" scoped>
-* {
-    box-sizing: border-box;
+.bar {
+    background-color: #fce0de;
+    min-width: 300px;
+    min-height: 5px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
 }
-body {
-    background-color: #353842;
+.bar::after {
+    content: "";
+    min-height: 5px;
+    position: absolute;
+    background: red;
+    transform: translateX(-100%);
+    animation: animate 3s infinite;
 }
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 60px;
-    transform: rotate(-45deg);
-    margin: auto;
-    position: fixed;
-    top: calc(50% - 30px);
-    left: calc(50% - 30px);
-    animation: scale-x 1s ease forwards;
-    animation-delay: 2.3s;
-}
-.container span {
-    flex-basis: 50%;
-    aspect-ratio: 1/1;
-    display: block;
-    transition: opacity 0.7s ease;
-}
-
-.tile-1 {
-    background-color: #fecd03;
-    transform-origin: 100% 100%;
-    animation: flip-1 0.5s linear forwards;
-    border: none;
-    opacity: 0;
-    transition: opacity 0.7s ease;
-}
-.tile-2 {
-    background-color: #fecd03;
-    transform-origin: 50% 100%;
-    animation: flip-2 0.5s linear forwards;
-    animation-delay: 0.5s;
-    opacity: 0;
-}
-.tile-3 {
-    background-color: #fecd03;
-    transform-origin: 50% 0%;
-    animation: flip-4 0.5s linear forwards;
-    animation-delay: 1.5s;
-    opacity: 0;
-}
-.tile-4 {
-    background-color: #fecd03;
-    transform-origin: 0% 50%;
-    animation: flip-3 0.5s linear forwards;
+.bar::before {
+    content: "";
+    min-height: 5px;
+    position: absolute;
+    background: red;
+    transform: translateX(-100%);
+    animation: animate 3s ease-out infinite;
     animation-delay: 1s;
-    opacity: 0;
+    z-index: 5;
 }
 
-@keyframes flip-1 {
-    to {
-        transform: rotateY(180deg);
-        opacity: 1;
-    }
+.by {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-family: "roboto";
+    font-size: 20px;
 }
-@keyframes flip-2 {
-    to {
-        transform: rotateX(180deg);
-        opacity: 1;
+@keyframes animate {
+    0% {
+        transform: translateX(-100%);
+        min-width: 10px;
     }
-}
-@keyframes flip-3 {
-    to {
-        transform: rotateY(-180deg);
-        opacity: 1;
-    }
-}
-@keyframes flip-4 {
-    to {
-        transform: rotateX(-180deg);
-        opacity: 1;
-    }
-}
-@keyframes scale-x {
-    to {
-        transform: scale(50);
-        opacity: 0;
+    100% {
+        transform: translateX(300%);
+        min-width: 400px;
     }
 }
 </style>

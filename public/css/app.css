@@ -8201,16 +8201,20 @@ section.dark .blue:nth-child(2n)::before {
   text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 40px #000;
 }
 
+.w-5 {
+  width: 5%;
+}
+
 .w-35 {
   width: 35%;
 }
 
-.w-65 {
-  width: 65%;
-}
-
 .w-40 {
   width: 40%;
+}
+
+.w-65 {
+  width: 65%;
 }
 
 .w-60 {
@@ -8218,6 +8222,8 @@ section.dark .blue:nth-child(2n)::before {
 }
 
 .bg-orange {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
   background-color: #f68630;
   border-radius: 0px;
 }
@@ -8227,6 +8233,8 @@ section.dark .blue:nth-child(2n)::before {
 }
 
 .bg-yellow {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
   background-color: #fdbc48;
   border-radius: 0px;
   color: white;

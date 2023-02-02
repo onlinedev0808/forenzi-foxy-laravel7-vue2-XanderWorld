@@ -2245,15 +2245,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _MainComponents_LoadingComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../MainComponents/LoadingComponent.vue */ "./resources/js/components/MainComponents/LoadingComponent.vue");
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    LoadingComponent: _MainComponents_LoadingComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
+  components: {},
   props: {
-    category: Array,
-    loadingCategories: Boolean
+    category: Array
   },
   data: function data() {
     return {};
@@ -2665,13 +2660,15 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_MainComponents_NavBoxesComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/MainComponents/NavBoxesComponent.vue */ "./resources/js/components/MainComponents/NavBoxesComponent.vue");
-/* harmony import */ var _components_MainComponents_BannerNewsComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/MainComponents/BannerNewsComponent.vue */ "./resources/js/components/MainComponents/BannerNewsComponent.vue");
-/* harmony import */ var _components_MainComponents_BannerTextComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/MainComponents/BannerTextComponent.vue */ "./resources/js/components/MainComponents/BannerTextComponent.vue");
-/* harmony import */ var _components_MainComponents_BoxesComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/MainComponents/BoxesComponent.vue */ "./resources/js/components/MainComponents/BoxesComponent.vue");
-/* harmony import */ var _components_MainComponents_ClassicLeft_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/MainComponents/ClassicLeft.vue */ "./resources/js/components/MainComponents/ClassicLeft.vue");
-/* harmony import */ var _components_MainComponents_ClassicRight_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/MainComponents/ClassicRight.vue */ "./resources/js/components/MainComponents/ClassicRight.vue");
-/* harmony import */ var _components_MainComponents_CustomizeBoxesComponent_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/MainComponents/CustomizeBoxesComponent.vue */ "./resources/js/components/MainComponents/CustomizeBoxesComponent.vue");
+/* harmony import */ var _components_MainComponents_LoadingComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/MainComponents/LoadingComponent.vue */ "./resources/js/components/MainComponents/LoadingComponent.vue");
+/* harmony import */ var _components_MainComponents_NavBoxesComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/MainComponents/NavBoxesComponent.vue */ "./resources/js/components/MainComponents/NavBoxesComponent.vue");
+/* harmony import */ var _components_MainComponents_BannerNewsComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/MainComponents/BannerNewsComponent.vue */ "./resources/js/components/MainComponents/BannerNewsComponent.vue");
+/* harmony import */ var _components_MainComponents_BannerTextComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/MainComponents/BannerTextComponent.vue */ "./resources/js/components/MainComponents/BannerTextComponent.vue");
+/* harmony import */ var _components_MainComponents_BoxesComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/MainComponents/BoxesComponent.vue */ "./resources/js/components/MainComponents/BoxesComponent.vue");
+/* harmony import */ var _components_MainComponents_ClassicLeft_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/MainComponents/ClassicLeft.vue */ "./resources/js/components/MainComponents/ClassicLeft.vue");
+/* harmony import */ var _components_MainComponents_ClassicRight_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/MainComponents/ClassicRight.vue */ "./resources/js/components/MainComponents/ClassicRight.vue");
+/* harmony import */ var _components_MainComponents_CustomizeBoxesComponent_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/MainComponents/CustomizeBoxesComponent.vue */ "./resources/js/components/MainComponents/CustomizeBoxesComponent.vue");
+
 
 
 
@@ -2683,13 +2680,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HomeComponent",
   components: {
-    NavBoxesComponent: _components_MainComponents_NavBoxesComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BannerNewsComponent: _components_MainComponents_BannerNewsComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    BannerTextComponent: _components_MainComponents_BannerTextComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    BoxesComponent: _components_MainComponents_BoxesComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    ClassicLeft: _components_MainComponents_ClassicLeft_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    ClassicRight: _components_MainComponents_ClassicRight_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
-    CustomizeBoxesComponent: _components_MainComponents_CustomizeBoxesComponent_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+    LoadingComponent: _components_MainComponents_LoadingComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    NavBoxesComponent: _components_MainComponents_NavBoxesComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    BannerNewsComponent: _components_MainComponents_BannerNewsComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    BannerTextComponent: _components_MainComponents_BannerTextComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    BoxesComponent: _components_MainComponents_BoxesComponent_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    ClassicLeft: _components_MainComponents_ClassicLeft_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    ClassicRight: _components_MainComponents_ClassicRight_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
+    CustomizeBoxesComponent: _components_MainComponents_CustomizeBoxesComponent_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
   data: function data() {
     return {
@@ -2721,6 +2719,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
       var pageCategories = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       this.loadingCategories = true;
+      console.log(this.loadingCategories);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/categories", {
         page: pageCategories
       }).then(function (response) {
@@ -2730,6 +2729,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.currentPageCategories = response.data.results.currentPage;
         _this.lastPageCategories = response.data.results.lastPage;
         _this.loadingCategories = false;
+        console.log(_this.loadingCategories);
       })["catch"](function (error) {
         console.warn(error.message);
       });
@@ -2808,7 +2808,7 @@ __webpack_require__.r(__webpack_exports__);
         txtTwo: "",
         txtThree: "",
         txtBanner: "500 è la quantità minima che puoi richiedere per le misure che hai scelto",
-        img: __webpack_require__(/*! ../../../public/Links/cat-scatole-cartone-2-onde.jpg */ "./public/Links/cat-scatole-cartone-2-onde.jpg")
+        img: ""
       }],
       boxtwo: [{
         step: "3",
@@ -3094,11 +3094,6 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
   return _c("div", {
     staticClass: "HeaderBottom py-4"
   }, [_c("div", {
@@ -3109,13 +3104,22 @@ var staticRenderFns = [function () {
     staticClass: "row d-flex"
   }, [_c("div", {
     staticClass: "col-12 col-md-3 logo"
+  }, [_c("router-link", {
+    attrs: {
+      to: "/"
+    }
   }, [_c("img", {
     staticClass: "img-fluid mb-4",
     attrs: {
       src: __webpack_require__(/*! ../../../../public/img/logo.png */ "./public/img/logo.png"),
       alt: "Logo"
     }
-  })]), _vm._v(" "), _c("div", {
+  })])], 1), _vm._v(" "), _vm._m(0)])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "col-12 col-md-9 d-flex align-items-center justify-content-end"
   }, [_c("div", {
     staticClass: "inputs d-flex flex-sm-row"
@@ -3174,7 +3178,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fa fa-search"
-  })])])])])])])])])]);
+  })])])])])]);
 }];
 render._withStripped = true;
 
@@ -3670,7 +3674,9 @@ var staticRenderFns = [function () {
     _setup = _vm._self._setupProxy;
   return _c("div", {
     staticClass: "container"
-  }, [_c("h1", [_vm._v("AIOSKUèDHN")])]);
+  }, [_c("div", {
+    staticClass: "bar"
+  })]);
 }];
 render._withStripped = true;
 
@@ -3950,7 +3956,7 @@ var render = function render() {
     attrs: {
       type: "number",
       min: "1",
-      placeholder: "inserisci la quantità"
+      placeholder: ""
     },
     domProps: {
       value: _vm.inputQ
@@ -3977,7 +3983,7 @@ var render = function render() {
     attrs: {
       type: "number",
       min: "1",
-      placeholder: "inserisci il lato lungo"
+      placeholder: ""
     },
     domProps: {
       value: _vm.inputL
@@ -4004,7 +4010,7 @@ var render = function render() {
     attrs: {
       type: "number",
       min: "1",
-      placeholder: "inserisci il lato corto"
+      placeholder: ""
     },
     domProps: {
       value: _vm.inputP
@@ -4031,7 +4037,7 @@ var render = function render() {
     attrs: {
       type: "number",
       min: "1",
-      placeholder: "inserisci l'altezza"
+      placeholder: ""
     },
     domProps: {
       value: _vm.inputH
@@ -4167,33 +4173,50 @@ var render = function render() {
       value: "NEUTRA"
     },
     domProps: {
-      checked: _vm.radioValue === "huey"
+      checked: _vm.radioValue === "NEUTRA"
     },
     on: {
       change: _vm.emitRadioValue
     }
   }), _vm._v(" "), _c("label", {
     attrs: {
-      "for": "huey"
+      "for": "NEUTRA"
     }
   }, [_vm._v("NEUTRA")])]), _vm._v(" "), _c("div", [_c("input", {
     attrs: {
-      id: "PERSONALIZZATA",
+      id: "STAMPA A 1 COLORE",
       name: "drone",
       type: "radio",
-      value: "PERSONALIZZATA"
+      value: "STAMPA A 1 COLORE"
     },
     domProps: {
-      checked: _vm.radioValue === "dewey"
+      checked: _vm.radioValue === "STAMPA A 1 COLORE"
     },
     on: {
       change: _vm.emitRadioValue
     }
   }), _vm._v(" "), _c("label", {
     attrs: {
-      "for": "dewey"
+      "for": "STAMPA A 1 COLORE"
     }
-  }, [_vm._v("PERSONALIZZATA")])])])])])])]);
+  }, [_vm._v("STAMPA A 1 COLORE\n                        ")])]), _vm._v(" "), _c("div", [_c("input", {
+    attrs: {
+      id: "STAMPA A 2 COLORI",
+      name: "drone",
+      type: "radio",
+      value: "STAMPA A 2 COLORI"
+    },
+    domProps: {
+      checked: _vm.radioValue === "STAMPA A 2 COLORI"
+    },
+    on: {
+      change: _vm.emitRadioValue
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "STAMPA A 2 COLORI"
+    }
+  }, [_vm._v("STAMPA A 2 COLORI\n                        ")])])])])])])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -4225,13 +4248,13 @@ var render = function render() {
     staticClass: "text"
   }, [_vm._v("MISURE")]), _vm._v(" "), _c("span", {
     staticClass: "price"
-  }, [_c("strong", [_vm._v(_vm._s(_vm.inputL))]), _vm._v(" L x\n                "), _c("strong", [_vm._v(_vm._s(_vm.inputP))]), _vm._v(" P x\n                "), _c("strong", [_vm._v(_vm._s(_vm.inputH))]), _vm._v(" H")])]), _vm._v(" "), _c("div", {
+  }, [_c("strong", [_vm._v(_vm._s(_vm.inputL) + " L x")]), _vm._v(" "), _c("strong", [_vm._v(_vm._s(_vm.inputP) + " P x")]), _vm._v(" "), _c("strong", [_vm._v(_vm._s(_vm.inputH) + " H")])])]), _vm._v(" "), _c("div", {
     staticClass: "summary-item"
   }, [_c("span", {
     staticClass: "text"
   }, [_vm._v("QUANTITÀ")]), _vm._v(" "), _c("span", {
     staticClass: "price"
-  }, [_c("strong", [_vm._v(_vm._s(_vm.inputQ))]), _vm._v(" PEZZI")])]), _vm._v(" "), _c("div", {
+  }, [_c("strong", [_vm._v(_vm._s(_vm.inputQ) + " PEZZI")])])]), _vm._v(" "), _c("div", {
     staticClass: "summary-item"
   }, [_c("span", {
     staticClass: "text"
@@ -4249,52 +4272,46 @@ var render = function render() {
     staticClass: "text"
   }, [_vm._v("STAMPA")]), _vm._v(" "), _c("span", {
     staticClass: "price"
-  }, [_vm._v(_vm._s(_vm.radioValue))])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("button", {
+  }, [_vm._v(_vm._s(_vm.radioValue))])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("button", {
     staticClass: "btn bg-yellow fw-bold btn-lg btn-block",
     attrs: {
       type: "button"
     }
-  }, [_vm._v("\n            PROCEDI AL CHECKOUT\n        ")])])]);
+  }, [_vm._v("\n            INVIA IL PREVENTIVO\n        ")])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
+    staticClass: "summary-item"
+  }, [_c("div", {
     staticClass: "summary-item py-3"
   }, [_c("span", {
     staticClass: "title-create"
-  }, [_vm._v("INSERISCI I DATI")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "summary-item"
-  }, [_c("form", [_c("div", {
+  }, [_vm._v("INSERISCI I DATI")])]), _vm._v(" "), _c("form", [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "d-flex col-lg-12"
-  }, [_c("div", {
-    staticClass: "form-group col-6"
+    staticClass: "form-group col-12"
   }, [_c("label", {}, [_vm._v("NOME")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
+    staticClass: "d-flex jusify-content-start align-items-center"
   }, [_c("input", {
     attrs: {
       type: "text",
       value: ""
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-6"
+    staticClass: "form-group col-12"
   }, [_c("label", {}, [_vm._v("COGNOME")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
+    staticClass: "d-flex jusify-content-start align-items-center"
   }, [_c("input", {
     attrs: {
       type: "text",
       value: ""
     }
-  })])])])]), _vm._v(" "), _c("div", {
-    staticClass: "form-group col-lg-12"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "form-group col-12"
   }, [_c("label", {}, [_vm._v("RAGIONE SOCIALE")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
+    staticClass: "d-flex jusify-content-start align-items-center"
   }, [_c("input", {
     attrs: {
       type: "text",
@@ -4303,7 +4320,7 @@ var staticRenderFns = [function () {
   })])]), _vm._v(" "), _c("div", {
     staticClass: "form-group col-lg-12"
   }, [_c("label", {}, [_vm._v("CITTÀ")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
+    staticClass: "d-flex jusify-content-start align-items-center"
   }, [_c("input", {
     attrs: {
       type: "text",
@@ -4314,7 +4331,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "form-group"
   }, [_c("label", {}, [_vm._v("TELEFONO")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
+    staticClass: "d-flex jusify-content-start align-items-center"
   }, [_c("input", {
     attrs: {
       type: "text",
@@ -4324,14 +4341,14 @@ var staticRenderFns = [function () {
     staticClass: "col-lg-12"
   }, [_c("div", {
     staticClass: "form-group"
-  }, [_c("label", {}, [_vm._v("MAIL")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex jusify-content-start align-items-center p-2"
+  }, [_c("label", {}, [_vm._v("EMAIL")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex jusify-content-start align-items-center"
   }, [_c("input", {
     attrs: {
       type: "text",
       value: ""
     }
-  })])])])])]);
+  })])])])])])]);
 }];
 render._withStripped = true;
 
@@ -4980,11 +4997,12 @@ var render = function render() {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "row justify-content-center"
+  }, [_vm.loadingCategories ? _c("loadingComponent") : _c("div", {
+    staticClass: "d-flex"
   }, [_vm._l(_vm.categories, function (category) {
     return _c("NavBoxesComponent", {
       key: category.id,
       attrs: {
-        loadingCategories: _vm.loadingCategories,
         category: category
       }
     });
@@ -4992,7 +5010,7 @@ var render = function render() {
     on: {
       click: _vm.goToPersonalizePage
     }
-  }, [_c("CustomizeBoxesComponent")], 1), _vm._v(" "), _c("JumboComponent"), _vm._v(" "), _c("BannerNewsComponent"), _vm._v(" "), _vm._l(_vm.txtbanners, function (element, index) {
+  }, [_c("CustomizeBoxesComponent")], 1)], 2), _vm._v(" "), _c("JumboComponent"), _vm._v(" "), _c("BannerNewsComponent"), _vm._v(" "), _vm._l(_vm.txtbanners, function (element, index) {
     return _c("BannerTextComponent", {
       key: index,
       attrs: {
@@ -5125,10 +5143,10 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "d-flex flex-column align-items-center p-2"
-  }, [_c("h1", {
-    staticClass: "display-5 text-center font-weight-bold my-5"
-  }, [_vm._v("\n            CONFIGURA LA TUA SCATOLA SU MISURA IN MENO DI UN MINUTO!\n        ")]), _vm._v(" "), _c("hr", {
-    staticClass: "w-10"
+  }, [_c("h2", {
+    staticClass: "text-center font-weight-bold my-2"
+  }, [_vm._v("\n            Configura la tua scatola su misura in meno di un minuto!\n        ")]), _vm._v(" "), _c("hr", {
+    staticClass: "w-5"
   })]);
 }];
 render._withStripped = true;
@@ -9584,7 +9602,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".FooterBottom[data-v-267e55a9] {\n  width: 100vw;\n  background-color: black;\n  color: white;\n}\n.FooterBottom i[data-v-267e55a9] {\n  font-size: 1.5rem;\n  margin: 0px 10px;\n}\n.FooterBottom .policy[data-v-267e55a9] {\n  display: contents;\n  font-size: 0.6rem;\n}", ""]);
+exports.push([module.i, ".FooterBottom[data-v-267e55a9] {\n  width: 100%;\n  background-color: black;\n  color: white;\n}\n.FooterBottom i[data-v-267e55a9] {\n  font-size: 1.5rem;\n  margin: 0px 10px;\n}\n.FooterBottom .policy[data-v-267e55a9] {\n  display: contents;\n  font-size: 0.6rem;\n}", ""]);
 
 // exports
 
@@ -9774,7 +9792,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "*[data-v-6e938186] {\n  box-sizing: border-box;\n}\nbody[data-v-6e938186] {\n  background-color: #353842;\n}\n.container[data-v-6e938186] {\n  display: flex;\n  flex-wrap: wrap;\n  width: 60px;\n  transform: rotate(-45deg);\n  margin: auto;\n  position: fixed;\n  top: calc(50% - 30px);\n  left: calc(50% - 30px);\n  animation: scale-x-6e938186 1s ease forwards;\n  animation-delay: 2.3s;\n}\n.container span[data-v-6e938186] {\n  flex-basis: 50%;\n  aspect-ratio: 1/1;\n  display: block;\n  transition: opacity 0.7s ease;\n}\n.tile-1[data-v-6e938186] {\n  background-color: #fecd03;\n  transform-origin: 100% 100%;\n  animation: flip-1-6e938186 0.5s linear forwards;\n  border: none;\n  opacity: 0;\n  transition: opacity 0.7s ease;\n}\n.tile-2[data-v-6e938186] {\n  background-color: #fecd03;\n  transform-origin: 50% 100%;\n  animation: flip-2-6e938186 0.5s linear forwards;\n  animation-delay: 0.5s;\n  opacity: 0;\n}\n.tile-3[data-v-6e938186] {\n  background-color: #fecd03;\n  transform-origin: 50% 0%;\n  animation: flip-4-6e938186 0.5s linear forwards;\n  animation-delay: 1.5s;\n  opacity: 0;\n}\n.tile-4[data-v-6e938186] {\n  background-color: #fecd03;\n  transform-origin: 0% 50%;\n  animation: flip-3-6e938186 0.5s linear forwards;\n  animation-delay: 1s;\n  opacity: 0;\n}\n@keyframes flip-1-6e938186 {\nto {\n    transform: rotateY(180deg);\n    opacity: 1;\n}\n}\n@keyframes flip-2-6e938186 {\nto {\n    transform: rotateX(180deg);\n    opacity: 1;\n}\n}\n@keyframes flip-3-6e938186 {\nto {\n    transform: rotateY(-180deg);\n    opacity: 1;\n}\n}\n@keyframes flip-4-6e938186 {\nto {\n    transform: rotateX(-180deg);\n    opacity: 1;\n}\n}\n@keyframes scale-x-6e938186 {\nto {\n    transform: scale(50);\n    opacity: 0;\n}\n}", ""]);
+exports.push([module.i, ".bar[data-v-6e938186] {\n  background-color: #fce0de;\n  min-width: 300px;\n  min-height: 5px;\n  border-radius: 5px;\n  position: relative;\n  overflow: hidden;\n}\n.bar[data-v-6e938186]::after {\n  content: \"\";\n  min-height: 5px;\n  position: absolute;\n  background: red;\n  transform: translateX(-100%);\n  animation: animate-6e938186 3s infinite;\n}\n.bar[data-v-6e938186]::before {\n  content: \"\";\n  min-height: 5px;\n  position: absolute;\n  background: red;\n  transform: translateX(-100%);\n  animation: animate-6e938186 3s ease-out infinite;\n  animation-delay: 1s;\n  z-index: 5;\n}\n.by[data-v-6e938186] {\n  position: fixed;\n  bottom: 10px;\n  right: 10px;\n  font-family: \"roboto\";\n  font-size: 20px;\n}\n@keyframes animate-6e938186 {\n0% {\n    transform: translateX(-100%);\n    min-width: 10px;\n}\n100% {\n    transform: translateX(300%);\n    min-width: 400px;\n}\n}", ""]);
 
 // exports
 
@@ -9831,7 +9849,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".w-35[data-v-1ee39dc0] {\n  width: 35%;\n}\n.w-65[data-v-1ee39dc0] {\n  width: 65%;\n}\n.w-40[data-v-1ee39dc0] {\n  width: 40%;\n}\n.w-60[data-v-1ee39dc0] {\n  width: 60%;\n}\n.bg-orange[data-v-1ee39dc0] {\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-1ee39dc0] {\n  color: #f68630;\n}\n.bg-yellow[data-v-1ee39dc0] {\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-1ee39dc0] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-1ee39dc0] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-1ee39dc0] {\n  background-color: #fdbc48;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-1ee39dc0]:hover {\n  filter: blur(2);\n  transition: 1s;\n}\n.dark-button[data-v-1ee39dc0] {\n  background-color: #000000;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.dark-button[data-v-1ee39dc0]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-1ee39dc0] {\n  background-color: #f68630;\n}\n.orange[data-v-1ee39dc0]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-1ee39dc0] {\n  width: 10%;\n}\nsection.classic[data-v-1ee39dc0] {\n  padding: 2rem;\n}\n.box[data-v-1ee39dc0] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-1ee39dc0] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: #f68630;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-1ee39dc0] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-1ee39dc0] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-1ee39dc0] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-1ee39dc0] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-1ee39dc0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-1ee39dc0] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-1ee39dc0] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-1ee39dc0] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-1ee39dc0] {\n  margin-right: 50px;\n}\nli i[data-v-1ee39dc0] {\n  font-size: 2rem;\n}\na[data-v-1ee39dc0] {\n  color: black;\n  text-decoration: none;\n}\n.bg-yellow[data-v-1ee39dc0] {\n  background-color: #f68630;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n}\nh2[data-v-1ee39dc0] {\n  font-size: 1.5rem;\n}\n.inputs[data-v-1ee39dc0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.inputs .d-flex[data-v-1ee39dc0] {\n  align-items: center;\n  justify-content: start;\n}\n.inputs .bg-yellow[data-v-1ee39dc0] {\n  background-color: #f68630;\n  color: white;\n  display: flex;\n  height: 60px;\n  justify-content: center;\n  align-items: center;\n  width: 60px;\n}\n.inputs input[data-v-1ee39dc0] {\n  padding: 1rem 0.5rem;\n  font-weight: bold;\n  height: 60px;\n  width: 30%;\n  margin: 1rem 0px;\n  font-size: 1.5rem;\n  border: none;\n  background-color: #f1f1f1;\n}\n.inputs input[data-v-1ee39dc0]::-moz-placeholder {\n  font-size: 0.5rem;\n}\n.inputs input[data-v-1ee39dc0]::placeholder {\n  font-size: 0.5rem;\n}\n.image[data-v-1ee39dc0] {\n  display: flex;\n  flex-direction: column;\n}\n.image img[data-v-1ee39dc0] {\n  width: 60%;\n}\n.step[data-v-1ee39dc0] {\n  margin-bottom: 5rem;\n  display: flex;\n  border: 1px solid lightgray;\n  padding: 1rem;\n  background-color: white;\n  color: black;\n}\n.title-create[data-v-1ee39dc0] {\n  font-weight: bold;\n  font-size: 1.5rem;\n}", ""]);
+exports.push([module.i, ".w-5[data-v-1ee39dc0] {\n  width: 5%;\n}\n.w-35[data-v-1ee39dc0] {\n  width: 35%;\n}\n.w-40[data-v-1ee39dc0] {\n  width: 40%;\n}\n.w-65[data-v-1ee39dc0] {\n  width: 65%;\n}\n.w-60[data-v-1ee39dc0] {\n  width: 60%;\n}\n.bg-orange[data-v-1ee39dc0] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-1ee39dc0] {\n  color: #f68630;\n}\n.bg-yellow[data-v-1ee39dc0] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-1ee39dc0] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-1ee39dc0] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-1ee39dc0] {\n  background-color: #fdbc48;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-1ee39dc0]:hover {\n  filter: blur(2);\n  transition: 1s;\n}\n.dark-button[data-v-1ee39dc0] {\n  background-color: #000000;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.dark-button[data-v-1ee39dc0]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-1ee39dc0] {\n  background-color: #f68630;\n}\n.orange[data-v-1ee39dc0]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-1ee39dc0] {\n  width: 10%;\n}\nsection.classic[data-v-1ee39dc0] {\n  padding: 2rem;\n}\n.box[data-v-1ee39dc0] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-1ee39dc0] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: #f68630;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-1ee39dc0] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-1ee39dc0] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-1ee39dc0] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-1ee39dc0] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-1ee39dc0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-1ee39dc0] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-1ee39dc0] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-1ee39dc0] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-1ee39dc0] {\n  margin-right: 50px;\n}\nli i[data-v-1ee39dc0] {\n  font-size: 2rem;\n}\na[data-v-1ee39dc0] {\n  color: black;\n  text-decoration: none;\n}\nh2[data-v-1ee39dc0] {\n  font-size: 1.5rem;\n}\n.inputs[data-v-1ee39dc0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.inputs .d-flex[data-v-1ee39dc0] {\n  align-items: center;\n  justify-content: start;\n}\n.inputs .bg-yellow[data-v-1ee39dc0] {\n  color: white;\n  display: flex;\n  height: 60px;\n  justify-content: center;\n  align-items: center;\n  width: 60px;\n}\n.inputs input[data-v-1ee39dc0] {\n  padding: 1rem 0.5rem;\n  font-weight: bold;\n  height: 60px;\n  width: 30%;\n  margin: 1rem 0px;\n  font-size: 1.5rem;\n  border: none;\n  background-color: #f1f1f1;\n}\n.inputs input[data-v-1ee39dc0]::-moz-placeholder {\n  font-size: 0.5rem;\n}\n.inputs input[data-v-1ee39dc0]::placeholder {\n  font-size: 0.5rem;\n}\n.image[data-v-1ee39dc0] {\n  display: flex;\n  flex-direction: column;\n}\n.image img[data-v-1ee39dc0] {\n  width: 60%;\n}\n.step[data-v-1ee39dc0] {\n  margin-bottom: 5rem;\n  display: flex;\n  border: 1px solid lightgray;\n  padding: 1rem;\n  background-color: white;\n  color: black;\n}\n.title-create[data-v-1ee39dc0] {\n  font-weight: bold;\n  font-size: 1.5rem;\n}", ""]);
 
 // exports
 
@@ -9869,7 +9887,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "label[data-v-7ece3aae] {\n  font-size: 1rem;\n}\n.bg-yellow[data-v-7ece3aae] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n}\nh2[data-v-7ece3aae] {\n  font-size: 1.5rem;\n}\n.shopping-cart .summary[data-v-7ece3aae] {\n  border: 1px solid lightgray;\n  background-color: white;\n  padding: 30px;\n  color: black;\n  width: 100%;\n}\n.shopping-cart .summary h3[data-v-7ece3aae] {\n  text-align: start;\n  font-size: 1.3em;\n  font-weight: 600;\n  padding-top: 20px;\n  padding-bottom: 20px;\n}\n.shopping-cart .summary .summary-item[data-v-7ece3aae]:not(:last-of-type) {\n  padding-bottom: 10px;\n  padding-top: 10px;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.shopping-cart .summary .text[data-v-7ece3aae] {\n  font-size: 1em;\n  font-weight: 600;\n}\n.shopping-cart .summary .price[data-v-7ece3aae] {\n  float: right;\n}\n.shopping-cart .summary button[data-v-7ece3aae] {\n  margin-top: 20px;\n}\n.active[data-v-7ece3aae] {\n  transition: 1s;\n  transform: scale(0.9);\n}\n.box[data-v-7ece3aae] {\n  position: relative;\n  border: none;\n}\ni[data-v-7ece3aae] {\n  position: absolute;\n  font-size: 8rem;\n  top: 80px;\n  color: white;\n  font-weight: bold;\n}\n.title-create[data-v-7ece3aae] {\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.step[data-v-7ece3aae] {\n  margin-bottom: 5rem;\n  display: flex;\n  border: 1px solid lightgray;\n  padding: 1rem;\n  background-color: white;\n  color: black;\n}\n.form-group input[data-v-7ece3aae] {\n  width: 100%;\n}\n.image img[data-v-7ece3aae] {\n  padding: 1rem;\n}", ""]);
+exports.push([module.i, "label[data-v-7ece3aae] {\n  font-size: 1rem;\n  font-weight: bold;\n}\n.bg-yellow[data-v-7ece3aae] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n}\nh2[data-v-7ece3aae] {\n  font-size: 1.5rem;\n}\n.shopping-cart .summary[data-v-7ece3aae] {\n  border: 1px solid lightgray;\n  background-color: white;\n  padding: 30px;\n  color: black;\n  width: 100%;\n}\n.shopping-cart .summary h3[data-v-7ece3aae] {\n  text-align: start;\n  font-size: 1.3em;\n  font-weight: 600;\n  padding-top: 20px;\n  padding-bottom: 20px;\n}\n.shopping-cart .summary .summary-item[data-v-7ece3aae]:not(:last-of-type) {\n  padding-bottom: 10px;\n  padding-top: 10px;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.shopping-cart .summary .text[data-v-7ece3aae] {\n  font-size: 1em;\n  font-weight: 600;\n}\n.shopping-cart .summary .price[data-v-7ece3aae] {\n  float: right;\n}\n.shopping-cart .summary button[data-v-7ece3aae] {\n  margin-top: 20px;\n}\n.active[data-v-7ece3aae] {\n  transition: 1s;\n  transform: scale(0.9);\n}\n.box[data-v-7ece3aae] {\n  position: relative;\n  border: none;\n}\ni[data-v-7ece3aae] {\n  position: absolute;\n  font-size: 8rem;\n  top: 80px;\n  color: white;\n  font-weight: bold;\n}\n.title-create[data-v-7ece3aae] {\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.step[data-v-7ece3aae] {\n  margin-bottom: 5rem;\n  display: flex;\n  border: 1px solid lightgray;\n  padding: 1rem;\n  background-color: white;\n  color: black;\n}\n.form-group input[data-v-7ece3aae] {\n  width: 100%;\n}\n.image img[data-v-7ece3aae] {\n  padding: 1rem;\n}", ""]);
 
 // exports
 
@@ -9888,7 +9906,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".w-35[data-v-8e29679a] {\n  width: 35%;\n}\n.w-65[data-v-8e29679a] {\n  width: 65%;\n}\n.w-40[data-v-8e29679a] {\n  width: 40%;\n}\n.w-60[data-v-8e29679a] {\n  width: 60%;\n}\n.bg-orange[data-v-8e29679a] {\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-8e29679a] {\n  color: #f68630;\n}\n.bg-yellow[data-v-8e29679a] {\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-8e29679a] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-8e29679a] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-8e29679a] {\n  background-color: #fdbc48;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-8e29679a]:hover {\n  filter: blur(2);\n  transition: 1s;\n}\n.dark-button[data-v-8e29679a] {\n  background-color: #000000;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.dark-button[data-v-8e29679a]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-8e29679a] {\n  background-color: #f68630;\n}\n.orange[data-v-8e29679a]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-8e29679a] {\n  width: 10%;\n}\nsection.classic[data-v-8e29679a] {\n  padding: 2rem;\n}\n.box[data-v-8e29679a] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-8e29679a] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: #f68630;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-8e29679a] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-8e29679a] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-8e29679a] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-8e29679a] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-8e29679a] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-8e29679a] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-8e29679a] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-8e29679a] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-8e29679a] {\n  margin-right: 50px;\n}\nli i[data-v-8e29679a] {\n  font-size: 2rem;\n}\na[data-v-8e29679a] {\n  color: black;\n  text-decoration: none;\n}\n.shopping-cart .summary[data-v-8e29679a] {\n  border: 1px solid lightgray;\n  background-color: white;\n  padding: 30px;\n  color: black;\n  width: 100%;\n}\n.shopping-cart .summary h3[data-v-8e29679a] {\n  text-align: start;\n  font-size: 1.3em;\n  font-weight: 600;\n  padding-top: 20px;\n  padding-bottom: 20px;\n}\n.shopping-cart .summary .summary-item[data-v-8e29679a]:not(:last-of-type) {\n  padding-bottom: 10px;\n  padding-top: 10px;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.shopping-cart .summary .text[data-v-8e29679a] {\n  font-size: 1em;\n  font-weight: 600;\n}\n.shopping-cart .summary .price[data-v-8e29679a] {\n  float: right;\n}\n.shopping-cart .summary button[data-v-8e29679a] {\n  margin-top: 20px;\n}\nh2[data-v-8e29679a] {\n  font-size: 1.5rem;\n}\n.active[data-v-8e29679a] {\n  transition: 1s;\n  transform: scale(0.9);\n}\n.box[data-v-8e29679a] {\n  position: relative;\n  border: none;\n}\ni[data-v-8e29679a] {\n  position: absolute;\n  font-size: 8rem;\n  top: 80px;\n  color: white;\n  font-weight: bold;\n}\n.title-create[data-v-8e29679a] {\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.step[data-v-8e29679a] {\n  margin-bottom: 5rem;\n  display: flex;\n  border: 1px solid lightgray;\n  padding: 1rem;\n  background-color: white;\n  color: black;\n}\nlabel[data-v-8e29679a] {\n  font-size: 1rem;\n}\ninput[data-v-8e29679a] {\n  width: 30%;\n  margin: 1rem 0px;\n  height: 30px;\n  font-size: 1.5rem;\n  border: none;\n  background-color: #f1f1f1;\n}\n.form-group input[data-v-8e29679a] {\n  width: 100%;\n}\n.image img[data-v-8e29679a] {\n  padding: 1rem;\n}", ""]);
+exports.push([module.i, ".w-5[data-v-8e29679a] {\n  width: 5%;\n}\n.w-35[data-v-8e29679a] {\n  width: 35%;\n}\n.w-40[data-v-8e29679a] {\n  width: 40%;\n}\n.w-65[data-v-8e29679a] {\n  width: 65%;\n}\n.w-60[data-v-8e29679a] {\n  width: 60%;\n}\n.bg-orange[data-v-8e29679a] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-8e29679a] {\n  color: #f68630;\n}\n.bg-yellow[data-v-8e29679a] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-8e29679a] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-8e29679a] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-8e29679a] {\n  background-color: #fdbc48;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-8e29679a]:hover {\n  filter: blur(2);\n  transition: 1s;\n}\n.dark-button[data-v-8e29679a] {\n  background-color: #000000;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.dark-button[data-v-8e29679a]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-8e29679a] {\n  background-color: #f68630;\n}\n.orange[data-v-8e29679a]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-8e29679a] {\n  width: 10%;\n}\nsection.classic[data-v-8e29679a] {\n  padding: 2rem;\n}\n.box[data-v-8e29679a] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-8e29679a] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: #f68630;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-8e29679a] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-8e29679a] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-8e29679a] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-8e29679a] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-8e29679a] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-8e29679a] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-8e29679a] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-8e29679a] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-8e29679a] {\n  margin-right: 50px;\n}\nli i[data-v-8e29679a] {\n  font-size: 2rem;\n}\na[data-v-8e29679a] {\n  color: black;\n  text-decoration: none;\n}\n.shopping-cart .summary[data-v-8e29679a] {\n  border: 1px solid lightgray;\n  background-color: white;\n  padding: 30px;\n  color: black;\n  width: 100%;\n}\n.shopping-cart .summary h3[data-v-8e29679a] {\n  text-align: start;\n  font-size: 1.3em;\n  font-weight: 600;\n  padding-top: 20px;\n  padding-bottom: 20px;\n}\n.shopping-cart .summary .summary-item[data-v-8e29679a]:not(:last-of-type) {\n  padding-bottom: 10px;\n  padding-top: 10px;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.shopping-cart .summary .text[data-v-8e29679a] {\n  font-size: 1em;\n  font-weight: 600;\n}\n.shopping-cart .summary .price[data-v-8e29679a] {\n  float: right;\n  font-size: 0.8rem;\n}\n.shopping-cart .summary button[data-v-8e29679a] {\n  margin-top: 20px;\n}\nh2[data-v-8e29679a] {\n  font-size: 1.5rem;\n}\n.active[data-v-8e29679a] {\n  transition: 1s;\n  transform: scale(0.9);\n}\n.box[data-v-8e29679a] {\n  position: relative;\n  border: none;\n}\ni[data-v-8e29679a] {\n  position: absolute;\n  font-size: 8rem;\n  top: 80px;\n  color: white;\n  font-weight: bold;\n}\n.title-create[data-v-8e29679a] {\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.step[data-v-8e29679a] {\n  margin-bottom: 5rem;\n  display: flex;\n  border: 1px solid lightgray;\n  padding: 1rem;\n  background-color: white;\n  color: black;\n}\nlabel[data-v-8e29679a] {\n  font-size: 1rem;\n  font-weight: bold;\n  margin: 0px;\n}\ninput[data-v-8e29679a] {\n  width: 30%;\n  font-size: 1.5rem;\n  border: 1px solid lightgray;\n  background-color: white;\n}\n.form-group input[data-v-8e29679a] {\n  width: 100%;\n}\n.image img[data-v-8e29679a] {\n  padding: 1rem;\n}", ""]);
 
 // exports
 
@@ -9907,7 +9925,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".w-35[data-v-422f835c] {\n  width: 35%;\n}\n.w-65[data-v-422f835c] {\n  width: 65%;\n}\n.w-40[data-v-422f835c] {\n  width: 40%;\n}\n.w-60[data-v-422f835c] {\n  width: 60%;\n}\n.bg-orange[data-v-422f835c] {\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-422f835c] {\n  color: #f68630;\n}\n.bg-yellow[data-v-422f835c] {\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-422f835c] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-422f835c] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-422f835c] {\n  background-color: #fdbc48;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-422f835c]:hover {\n  filter: blur(2);\n  transition: 1s;\n}\n.dark-button[data-v-422f835c] {\n  background-color: #000000;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.dark-button[data-v-422f835c]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-422f835c] {\n  background-color: #f68630;\n}\n.orange[data-v-422f835c]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-422f835c] {\n  width: 10%;\n}\nsection.classic[data-v-422f835c] {\n  padding: 2rem;\n}\n.box[data-v-422f835c] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-422f835c] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: #f68630;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-422f835c] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-422f835c] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-422f835c] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-422f835c] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-422f835c] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-422f835c] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-422f835c] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-422f835c] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-422f835c] {\n  margin-right: 50px;\n}\nli i[data-v-422f835c] {\n  font-size: 2rem;\n}\na[data-v-422f835c] {\n  color: black;\n  text-decoration: none;\n}\n.product img[data-v-422f835c] {\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.coupon[data-v-422f835c] {\n  margin: 2rem;\n}\n.shopping-cart[data-v-422f835c] {\n  padding-bottom: 50px;\n}\n.shopping-cart .block-heading[data-v-422f835c] {\n  padding-top: 50px;\n  margin-bottom: 40px;\n  text-align: start;\n}\n.shopping-cart .block-heading p[data-v-422f835c] {\n  text-align: center;\n  max-width: 420px;\n  margin: auto;\n  opacity: 0.7;\n}\n.shopping-cart .dark .block-heading p[data-v-422f835c] {\n  opacity: 0.8;\n}\n.shopping-cart .block-heading h1[data-v-422f835c],\n.shopping-cart .block-heading h2[data-v-422f835c],\n.shopping-cart .block-heading h3[data-v-422f835c] {\n  margin-bottom: 1.2rem;\n}\n.shopping-cart .items[data-v-422f835c] {\n  margin: auto;\n}\n.shopping-cart .items .product img[data-v-422f835c] {\n  transform: scale(0.8);\n}\n.shopping-cart .items .product .info[data-v-422f835c] {\n  padding-top: 0px;\n  text-align: center;\n}\n.shopping-cart .items .product .info .product-name[data-v-422f835c] {\n  font-weight: 600;\n}\n.shopping-cart .items .product .info .product-name .product-info[data-v-422f835c] {\n  font-size: 10px;\n  margin-top: 15px;\n}\n.shopping-cart .items .product .info .product-name .product-info .value[data-v-422f835c] {\n  font-weight: 400;\n}\n.shopping-cart .items .product .info .quantity .quantity-input[data-v-422f835c] {\n  margin: auto;\n  width: 80px;\n}\n.shopping-cart .items .product .info .price[data-v-422f835c] {\n  margin-top: 15px;\n  font-weight: bold;\n}\n.shopping-cart .summary[data-v-422f835c] {\n  border: 1px solid lightgray;\n  background-color: white;\n  height: 100%;\n  padding: 30px;\n}\n.shopping-cart .summary h3[data-v-422f835c] {\n  text-align: start;\n  font-size: 1rem;\n  font-weight: 600;\n  padding-top: 20px;\n  padding-bottom: 20px;\n}\n.shopping-cart .summary .summary-item[data-v-422f835c]:not(:last-of-type) {\n  padding-bottom: 10px;\n  padding-top: 10px;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.shopping-cart .summary .text[data-v-422f835c] {\n  font-size: 0.6rem;\n  font-weight: 600;\n}\n.shopping-cart .summary .price[data-v-422f835c] {\n  float: right;\n  font-size: 0.6rem;\n}\n.shopping-cart .summary button[data-v-422f835c] {\n  margin-top: 20px;\n}\n@media (min-width: 768px) {\n.shopping-cart .items .product .info[data-v-422f835c] {\n    padding-top: 25px;\n    text-align: left;\n}\n.shopping-cart .items .product .info .price[data-v-422f835c] {\n    font-weight: bold;\n    top: 17px;\n}\n.shopping-cart .items .product .info .quantity[data-v-422f835c] {\n    text-align: center;\n}\n.shopping-cart .items .product .info .quantity .quantity-input[data-v-422f835c] {\n    padding: 4px 10px;\n    text-align: center;\n}\ninput[data-v-422f835c] {\n    border: 1px solid lightgray;\n    outline: none;\n}\n}", ""]);
+exports.push([module.i, ".w-5[data-v-422f835c] {\n  width: 5%;\n}\n.w-35[data-v-422f835c] {\n  width: 35%;\n}\n.w-40[data-v-422f835c] {\n  width: 40%;\n}\n.w-65[data-v-422f835c] {\n  width: 65%;\n}\n.w-60[data-v-422f835c] {\n  width: 60%;\n}\n.bg-orange[data-v-422f835c] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-422f835c] {\n  color: #f68630;\n}\n.bg-yellow[data-v-422f835c] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-422f835c] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-422f835c] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-422f835c] {\n  background-color: #fdbc48;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-422f835c]:hover {\n  filter: blur(2);\n  transition: 1s;\n}\n.dark-button[data-v-422f835c] {\n  background-color: #000000;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.dark-button[data-v-422f835c]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-422f835c] {\n  background-color: #f68630;\n}\n.orange[data-v-422f835c]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-422f835c] {\n  width: 10%;\n}\nsection.classic[data-v-422f835c] {\n  padding: 2rem;\n}\n.box[data-v-422f835c] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-422f835c] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: #f68630;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-422f835c] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-422f835c] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-422f835c] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-422f835c] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-422f835c] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-422f835c] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-422f835c] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-422f835c] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-422f835c] {\n  margin-right: 50px;\n}\nli i[data-v-422f835c] {\n  font-size: 2rem;\n}\na[data-v-422f835c] {\n  color: black;\n  text-decoration: none;\n}\n.product img[data-v-422f835c] {\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.coupon[data-v-422f835c] {\n  margin: 2rem;\n}\n.shopping-cart[data-v-422f835c] {\n  padding-bottom: 50px;\n}\n.shopping-cart .block-heading[data-v-422f835c] {\n  padding-top: 50px;\n  margin-bottom: 40px;\n  text-align: start;\n}\n.shopping-cart .block-heading p[data-v-422f835c] {\n  text-align: center;\n  max-width: 420px;\n  margin: auto;\n  opacity: 0.7;\n}\n.shopping-cart .dark .block-heading p[data-v-422f835c] {\n  opacity: 0.8;\n}\n.shopping-cart .block-heading h1[data-v-422f835c],\n.shopping-cart .block-heading h2[data-v-422f835c],\n.shopping-cart .block-heading h3[data-v-422f835c] {\n  margin-bottom: 1.2rem;\n}\n.shopping-cart .items[data-v-422f835c] {\n  margin: auto;\n}\n.shopping-cart .items .product img[data-v-422f835c] {\n  transform: scale(0.8);\n}\n.shopping-cart .items .product .info[data-v-422f835c] {\n  padding-top: 0px;\n  text-align: center;\n}\n.shopping-cart .items .product .info .product-name[data-v-422f835c] {\n  font-weight: 600;\n}\n.shopping-cart .items .product .info .product-name .product-info[data-v-422f835c] {\n  font-size: 10px;\n  margin-top: 15px;\n}\n.shopping-cart .items .product .info .product-name .product-info .value[data-v-422f835c] {\n  font-weight: 400;\n}\n.shopping-cart .items .product .info .quantity .quantity-input[data-v-422f835c] {\n  margin: auto;\n  width: 80px;\n}\n.shopping-cart .items .product .info .price[data-v-422f835c] {\n  margin-top: 15px;\n  font-weight: bold;\n}\n.shopping-cart .summary[data-v-422f835c] {\n  border: 1px solid lightgray;\n  background-color: white;\n  height: 100%;\n  padding: 30px;\n}\n.shopping-cart .summary h3[data-v-422f835c] {\n  text-align: start;\n  font-size: 1rem;\n  font-weight: 600;\n  padding-top: 20px;\n  padding-bottom: 20px;\n}\n.shopping-cart .summary .summary-item[data-v-422f835c]:not(:last-of-type) {\n  padding-bottom: 10px;\n  padding-top: 10px;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.shopping-cart .summary .text[data-v-422f835c] {\n  font-size: 0.6rem;\n  font-weight: 600;\n}\n.shopping-cart .summary .price[data-v-422f835c] {\n  float: right;\n  font-size: 0.6rem;\n}\n.shopping-cart .summary button[data-v-422f835c] {\n  margin-top: 20px;\n}\n@media (min-width: 768px) {\n.shopping-cart .items .product .info[data-v-422f835c] {\n    padding-top: 25px;\n    text-align: left;\n}\n.shopping-cart .items .product .info .price[data-v-422f835c] {\n    font-weight: bold;\n    top: 17px;\n}\n.shopping-cart .items .product .info .quantity[data-v-422f835c] {\n    text-align: center;\n}\n.shopping-cart .items .product .info .quantity .quantity-input[data-v-422f835c] {\n    padding: 4px 10px;\n    text-align: center;\n}\ninput[data-v-422f835c] {\n    border: 1px solid lightgray;\n    outline: none;\n}\n}", ""]);
 
 // exports
 
@@ -9926,7 +9944,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".w-35[data-v-2f3a4cd8] {\n  width: 35%;\n}\n.w-65[data-v-2f3a4cd8] {\n  width: 65%;\n}\n.w-40[data-v-2f3a4cd8] {\n  width: 40%;\n}\n.w-60[data-v-2f3a4cd8] {\n  width: 60%;\n}\n.bg-orange[data-v-2f3a4cd8] {\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-2f3a4cd8] {\n  color: #f68630;\n}\n.bg-yellow[data-v-2f3a4cd8] {\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-2f3a4cd8] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-2f3a4cd8] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-2f3a4cd8] {\n  background-color: #fdbc48;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-2f3a4cd8]:hover {\n  filter: blur(2);\n  transition: 1s;\n}\n.dark-button[data-v-2f3a4cd8] {\n  background-color: #000000;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.dark-button[data-v-2f3a4cd8]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-2f3a4cd8] {\n  background-color: #f68630;\n}\n.orange[data-v-2f3a4cd8]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-2f3a4cd8] {\n  width: 10%;\n}\nsection.classic[data-v-2f3a4cd8] {\n  padding: 2rem;\n}\n.box[data-v-2f3a4cd8] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-2f3a4cd8] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: #f68630;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-2f3a4cd8] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-2f3a4cd8] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-2f3a4cd8] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-2f3a4cd8] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-2f3a4cd8] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-2f3a4cd8] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-2f3a4cd8] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-2f3a4cd8] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-2f3a4cd8] {\n  margin-right: 50px;\n}\nli i[data-v-2f3a4cd8] {\n  font-size: 2rem;\n}\na[data-v-2f3a4cd8] {\n  color: black;\n  text-decoration: none;\n}\n.product img[data-v-2f3a4cd8] {\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.coupon[data-v-2f3a4cd8] {\n  margin: 2rem;\n}\n.shopping-cart[data-v-2f3a4cd8] {\n  padding-bottom: 50px;\n}\n.shopping-cart .block-heading[data-v-2f3a4cd8] {\n  padding-top: 50px;\n  margin-bottom: 40px;\n  text-align: start;\n}\n.shopping-cart .block-heading p[data-v-2f3a4cd8] {\n  text-align: center;\n  max-width: 420px;\n  margin: auto;\n  opacity: 0.7;\n}\n.shopping-cart .dark .block-heading p[data-v-2f3a4cd8] {\n  opacity: 0.8;\n}\n.shopping-cart .block-heading h1[data-v-2f3a4cd8],\n.shopping-cart .block-heading h2[data-v-2f3a4cd8],\n.shopping-cart .block-heading h3[data-v-2f3a4cd8] {\n  margin-bottom: 1.2rem;\n}\n.shopping-cart .items[data-v-2f3a4cd8] {\n  margin: auto;\n}\n.shopping-cart .items .product img[data-v-2f3a4cd8] {\n  transform: scale(0.8);\n}\n.shopping-cart .items .product .info[data-v-2f3a4cd8] {\n  padding-top: 0px;\n  text-align: center;\n}\n.shopping-cart .items .product .info .product-name[data-v-2f3a4cd8] {\n  font-weight: 600;\n}\n.shopping-cart .items .product .info .product-name .product-info[data-v-2f3a4cd8] {\n  font-size: 10px;\n  margin-top: 15px;\n}\n.shopping-cart .items .product .info .product-name .product-info .value[data-v-2f3a4cd8] {\n  font-weight: 400;\n}\n.shopping-cart .items .product .info .quantity .quantity-input[data-v-2f3a4cd8] {\n  margin: auto;\n  width: 80px;\n}\n.shopping-cart .items .product .info .price[data-v-2f3a4cd8] {\n  margin-top: 15px;\n  font-weight: bold;\n}\n.shopping-cart .summary[data-v-2f3a4cd8] {\n  border: 1px solid lightgray;\n  background-color: white;\n  height: 100%;\n  padding: 30px;\n}\n.shopping-cart .summary h3[data-v-2f3a4cd8] {\n  text-align: start;\n  font-size: 1rem;\n  font-weight: 600;\n  padding-top: 20px;\n  padding-bottom: 20px;\n}\n.shopping-cart .summary .summary-item[data-v-2f3a4cd8]:not(:last-of-type) {\n  padding-bottom: 10px;\n  padding-top: 10px;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.shopping-cart .summary .text[data-v-2f3a4cd8] {\n  font-size: 0.6rem;\n  font-weight: 600;\n}\n.shopping-cart .summary .price[data-v-2f3a4cd8] {\n  float: right;\n  font-size: 0.6rem;\n}\n.shopping-cart .summary button[data-v-2f3a4cd8] {\n  margin-top: 20px;\n}\n@media (min-width: 768px) {\n.shopping-cart .items .product .info[data-v-2f3a4cd8] {\n    padding-top: 25px;\n    text-align: left;\n}\n.shopping-cart .items .product .info .price[data-v-2f3a4cd8] {\n    font-weight: bold;\n    top: 17px;\n}\n.shopping-cart .items .product .info .quantity[data-v-2f3a4cd8] {\n    text-align: center;\n}\n.shopping-cart .items .product .info .quantity .quantity-input[data-v-2f3a4cd8] {\n    padding: 4px 10px;\n    text-align: center;\n}\ninput[data-v-2f3a4cd8] {\n    border: 1px solid lightgray;\n    outline: none;\n}\n}", ""]);
+exports.push([module.i, ".w-5[data-v-2f3a4cd8] {\n  width: 5%;\n}\n.w-35[data-v-2f3a4cd8] {\n  width: 35%;\n}\n.w-40[data-v-2f3a4cd8] {\n  width: 40%;\n}\n.w-65[data-v-2f3a4cd8] {\n  width: 65%;\n}\n.w-60[data-v-2f3a4cd8] {\n  width: 60%;\n}\n.bg-orange[data-v-2f3a4cd8] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-2f3a4cd8] {\n  color: #f68630;\n}\n.bg-yellow[data-v-2f3a4cd8] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-2f3a4cd8] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-2f3a4cd8] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-2f3a4cd8] {\n  background-color: #fdbc48;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-2f3a4cd8]:hover {\n  filter: blur(2);\n  transition: 1s;\n}\n.dark-button[data-v-2f3a4cd8] {\n  background-color: #000000;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.dark-button[data-v-2f3a4cd8]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-2f3a4cd8] {\n  background-color: #f68630;\n}\n.orange[data-v-2f3a4cd8]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-2f3a4cd8] {\n  width: 10%;\n}\nsection.classic[data-v-2f3a4cd8] {\n  padding: 2rem;\n}\n.box[data-v-2f3a4cd8] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-2f3a4cd8] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: #f68630;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-2f3a4cd8] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-2f3a4cd8] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-2f3a4cd8] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-2f3a4cd8] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-2f3a4cd8] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-2f3a4cd8] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-2f3a4cd8] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-2f3a4cd8] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-2f3a4cd8] {\n  margin-right: 50px;\n}\nli i[data-v-2f3a4cd8] {\n  font-size: 2rem;\n}\na[data-v-2f3a4cd8] {\n  color: black;\n  text-decoration: none;\n}\n.product img[data-v-2f3a4cd8] {\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.coupon[data-v-2f3a4cd8] {\n  margin: 2rem;\n}\n.shopping-cart[data-v-2f3a4cd8] {\n  padding-bottom: 50px;\n}\n.shopping-cart .block-heading[data-v-2f3a4cd8] {\n  padding-top: 50px;\n  margin-bottom: 40px;\n  text-align: start;\n}\n.shopping-cart .block-heading p[data-v-2f3a4cd8] {\n  text-align: center;\n  max-width: 420px;\n  margin: auto;\n  opacity: 0.7;\n}\n.shopping-cart .dark .block-heading p[data-v-2f3a4cd8] {\n  opacity: 0.8;\n}\n.shopping-cart .block-heading h1[data-v-2f3a4cd8],\n.shopping-cart .block-heading h2[data-v-2f3a4cd8],\n.shopping-cart .block-heading h3[data-v-2f3a4cd8] {\n  margin-bottom: 1.2rem;\n}\n.shopping-cart .items[data-v-2f3a4cd8] {\n  margin: auto;\n}\n.shopping-cart .items .product img[data-v-2f3a4cd8] {\n  transform: scale(0.8);\n}\n.shopping-cart .items .product .info[data-v-2f3a4cd8] {\n  padding-top: 0px;\n  text-align: center;\n}\n.shopping-cart .items .product .info .product-name[data-v-2f3a4cd8] {\n  font-weight: 600;\n}\n.shopping-cart .items .product .info .product-name .product-info[data-v-2f3a4cd8] {\n  font-size: 10px;\n  margin-top: 15px;\n}\n.shopping-cart .items .product .info .product-name .product-info .value[data-v-2f3a4cd8] {\n  font-weight: 400;\n}\n.shopping-cart .items .product .info .quantity .quantity-input[data-v-2f3a4cd8] {\n  margin: auto;\n  width: 80px;\n}\n.shopping-cart .items .product .info .price[data-v-2f3a4cd8] {\n  margin-top: 15px;\n  font-weight: bold;\n}\n.shopping-cart .summary[data-v-2f3a4cd8] {\n  border: 1px solid lightgray;\n  background-color: white;\n  height: 100%;\n  padding: 30px;\n}\n.shopping-cart .summary h3[data-v-2f3a4cd8] {\n  text-align: start;\n  font-size: 1rem;\n  font-weight: 600;\n  padding-top: 20px;\n  padding-bottom: 20px;\n}\n.shopping-cart .summary .summary-item[data-v-2f3a4cd8]:not(:last-of-type) {\n  padding-bottom: 10px;\n  padding-top: 10px;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.shopping-cart .summary .text[data-v-2f3a4cd8] {\n  font-size: 0.6rem;\n  font-weight: 600;\n}\n.shopping-cart .summary .price[data-v-2f3a4cd8] {\n  float: right;\n  font-size: 0.6rem;\n}\n.shopping-cart .summary button[data-v-2f3a4cd8] {\n  margin-top: 20px;\n}\n@media (min-width: 768px) {\n.shopping-cart .items .product .info[data-v-2f3a4cd8] {\n    padding-top: 25px;\n    text-align: left;\n}\n.shopping-cart .items .product .info .price[data-v-2f3a4cd8] {\n    font-weight: bold;\n    top: 17px;\n}\n.shopping-cart .items .product .info .quantity[data-v-2f3a4cd8] {\n    text-align: center;\n}\n.shopping-cart .items .product .info .quantity .quantity-input[data-v-2f3a4cd8] {\n    padding: 4px 10px;\n    text-align: center;\n}\ninput[data-v-2f3a4cd8] {\n    border: 1px solid lightgray;\n    outline: none;\n}\n}", ""]);
 
 // exports
 
@@ -9964,7 +9982,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".w-35[data-v-04c29797] {\n  width: 35%;\n}\n.w-65[data-v-04c29797] {\n  width: 65%;\n}\n.w-40[data-v-04c29797] {\n  width: 40%;\n}\n.w-60[data-v-04c29797] {\n  width: 60%;\n}\n.bg-orange[data-v-04c29797] {\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-04c29797] {\n  color: #f68630;\n}\n.bg-yellow[data-v-04c29797] {\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-04c29797] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-04c29797] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-04c29797] {\n  background-color: #fdbc48;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-04c29797]:hover {\n  filter: blur(2);\n  transition: 1s;\n}\n.dark-button[data-v-04c29797] {\n  background-color: #000000;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.dark-button[data-v-04c29797]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-04c29797] {\n  background-color: #f68630;\n}\n.orange[data-v-04c29797]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-04c29797] {\n  width: 10%;\n}\nsection.classic[data-v-04c29797] {\n  padding: 2rem;\n}\n.box[data-v-04c29797] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-04c29797] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: #f68630;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-04c29797] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-04c29797] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-04c29797] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-04c29797] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-04c29797] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-04c29797] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-04c29797] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-04c29797] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-04c29797] {\n  margin-right: 50px;\n}\nli i[data-v-04c29797] {\n  font-size: 2rem;\n}\na[data-v-04c29797] {\n  color: black;\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, ".w-5[data-v-04c29797] {\n  width: 5%;\n}\n.w-35[data-v-04c29797] {\n  width: 35%;\n}\n.w-40[data-v-04c29797] {\n  width: 40%;\n}\n.w-65[data-v-04c29797] {\n  width: 65%;\n}\n.w-60[data-v-04c29797] {\n  width: 60%;\n}\n.bg-orange[data-v-04c29797] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-04c29797] {\n  color: #f68630;\n}\n.bg-yellow[data-v-04c29797] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-04c29797] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-04c29797] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-04c29797] {\n  background-color: #fdbc48;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-04c29797]:hover {\n  filter: blur(2);\n  transition: 1s;\n}\n.dark-button[data-v-04c29797] {\n  background-color: #000000;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.dark-button[data-v-04c29797]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-04c29797] {\n  background-color: #f68630;\n}\n.orange[data-v-04c29797]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-04c29797] {\n  width: 10%;\n}\nsection.classic[data-v-04c29797] {\n  padding: 2rem;\n}\n.box[data-v-04c29797] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-04c29797] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: #f68630;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-04c29797] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-04c29797] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-04c29797] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-04c29797] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-04c29797] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-04c29797] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-04c29797] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-04c29797] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-04c29797] {\n  margin-right: 50px;\n}\nli i[data-v-04c29797] {\n  font-size: 2rem;\n}\na[data-v-04c29797] {\n  color: black;\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -9983,7 +10001,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".w-35[data-v-4e9217ca] {\n  width: 35%;\n}\n.w-65[data-v-4e9217ca] {\n  width: 65%;\n}\n.w-40[data-v-4e9217ca] {\n  width: 40%;\n}\n.w-60[data-v-4e9217ca] {\n  width: 60%;\n}\n.bg-orange[data-v-4e9217ca] {\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-4e9217ca] {\n  color: #f68630;\n}\n.bg-yellow[data-v-4e9217ca] {\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-4e9217ca] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-4e9217ca] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-4e9217ca] {\n  background-color: #fdbc48;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-4e9217ca]:hover {\n  filter: blur(2);\n  transition: 1s;\n}\n.dark-button[data-v-4e9217ca] {\n  background-color: #000000;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.dark-button[data-v-4e9217ca]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-4e9217ca] {\n  background-color: #f68630;\n}\n.orange[data-v-4e9217ca]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-4e9217ca] {\n  width: 10%;\n}\nsection.classic[data-v-4e9217ca] {\n  padding: 2rem;\n}\n.box[data-v-4e9217ca] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-4e9217ca] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: #f68630;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-4e9217ca] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-4e9217ca] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-4e9217ca] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-4e9217ca] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-4e9217ca] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-4e9217ca] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-4e9217ca] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-4e9217ca] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-4e9217ca] {\n  margin-right: 50px;\n}\nli i[data-v-4e9217ca] {\n  font-size: 2rem;\n}\na[data-v-4e9217ca] {\n  color: black;\n  text-decoration: none;\n}\nh2[data-v-4e9217ca] {\n  font-size: 1.5rem;\n}\n.active[data-v-4e9217ca] {\n  transition: 1s;\n  transform: scale(0.9);\n}\n.box[data-v-4e9217ca] {\n  position: relative;\n  border: none;\n}\ni[data-v-4e9217ca] {\n  position: absolute;\n  font-size: 8rem;\n  top: 80px;\n  color: white;\n  font-weight: bold;\n}\n.title-create[data-v-4e9217ca] {\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.step[data-v-4e9217ca] {\n  margin-bottom: 5rem;\n  display: flex;\n  border: 1px solid lightgray;\n  padding: 1rem;\n  background-color: white;\n  color: black;\n}\nlabel[data-v-4e9217ca] {\n  font-size: 1rem;\n}\ninput[data-v-4e9217ca] {\n  width: 30%;\n  margin: 1rem 0px;\n  height: 30px;\n  font-size: 1.5rem;\n  border: none;\n  background-color: #f1f1f1;\n}\n.form-group input[data-v-4e9217ca] {\n  width: 100%;\n}\n.image img[data-v-4e9217ca] {\n  padding: 1rem;\n}", ""]);
+exports.push([module.i, ".w-5[data-v-4e9217ca] {\n  width: 5%;\n}\n.w-35[data-v-4e9217ca] {\n  width: 35%;\n}\n.w-40[data-v-4e9217ca] {\n  width: 40%;\n}\n.w-65[data-v-4e9217ca] {\n  width: 65%;\n}\n.w-60[data-v-4e9217ca] {\n  width: 60%;\n}\n.bg-orange[data-v-4e9217ca] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  background-color: #f68630;\n  border-radius: 0px;\n}\n.txt-orange[data-v-4e9217ca] {\n  color: #f68630;\n}\n.bg-yellow[data-v-4e9217ca] {\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  background-color: #fdbc48;\n  border-radius: 0px;\n  color: white;\n  font-weight: bold;\n}\n.bg-gray[data-v-4e9217ca] {\n  background-color: #f1f1f1;\n  border-radius: 0px;\n  color: white;\n}\n.bg-white *[data-v-4e9217ca] {\n  background-color: #fff;\n  color: #000;\n  border-radius: 0px;\n}\n.yellow-button[data-v-4e9217ca] {\n  background-color: #fdbc48;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.yellow-button[data-v-4e9217ca]:hover {\n  filter: blur(2);\n  transition: 1s;\n}\n.dark-button[data-v-4e9217ca] {\n  background-color: #000000;\n  border: none;\n  border-radius: 0px;\n  color: #fff;\n  font-weight: bold;\n  padding: 8px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 8px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.dark-button[data-v-4e9217ca]:hover {\n  filter: invert(100%);\n  transition: 1s;\n}\n.orange[data-v-4e9217ca] {\n  background-color: #f68630;\n}\n.orange[data-v-4e9217ca]:hover {\n  background-color: sandybrown;\n}\n.w-10[data-v-4e9217ca] {\n  width: 10%;\n}\nsection.classic[data-v-4e9217ca] {\n  padding: 2rem;\n}\n.box[data-v-4e9217ca] {\n  position: relative;\n  width: 300px;\n  margin-bottom: 1rem;\n  border: 1px solid #ccc;\n  margin: 10px;\n}\n.box .sale-banner[data-v-4e9217ca] {\n  position: absolute;\n  top: 1rem;\n  left: 1rem;\n  background-color: #f68630;\n  color: #fff;\n  font-size: 14px;\n  font-weight: bold;\n  padding: 2px 10px;\n}\n.box .stars[data-v-4e9217ca] {\n  color: gray;\n  font-size: 14px;\n}\n.box .old-price[data-v-4e9217ca] {\n  color: #6c757d;\n  text-decoration: line-through;\n  margin-right: 10px;\n  font-size: 1.2rem;\n}\n.box .current-price[data-v-4e9217ca] {\n  color: #000;\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.box .card-header[data-v-4e9217ca] {\n  height: 200px;\n  overflow: hidden;\n  padding: 1rem;\n}\n.box .card-header img[data-v-4e9217ca] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .card-body[data-v-4e9217ca] {\n  padding: 1rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.box .card-body .card-title[data-v-4e9217ca] {\n  margin: 0;\n  font-size: 1.25rem;\n  font-weight: 600;\n  line-height: 1.5;\n}\nul[data-v-4e9217ca] {\n  list-style-type: none;\n  padding: 0px;\n}\nli[data-v-4e9217ca] {\n  margin-right: 50px;\n}\nli i[data-v-4e9217ca] {\n  font-size: 2rem;\n}\na[data-v-4e9217ca] {\n  color: black;\n  text-decoration: none;\n}\nh2[data-v-4e9217ca] {\n  font-size: 2rem;\n  font-weight: bold;\n  text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);\n}\n.active[data-v-4e9217ca] {\n  transition: 1s;\n  transform: scale(0.9);\n}\n.box[data-v-4e9217ca] {\n  position: relative;\n  border: none;\n}\ni[data-v-4e9217ca] {\n  position: absolute;\n  font-size: 8rem;\n  top: 80px;\n  color: white;\n  font-weight: bold;\n}\n.title-create[data-v-4e9217ca] {\n  font-weight: bold;\n  font-size: 1.5rem;\n}\n.step[data-v-4e9217ca] {\n  margin-bottom: 5rem;\n  display: flex;\n  border: 1px solid lightgray;\n  padding: 1rem;\n  background-color: white;\n  color: black;\n}\nlabel[data-v-4e9217ca] {\n  font-size: 1rem;\n}\ninput[data-v-4e9217ca] {\n  width: 30%;\n  margin: 1rem 0px;\n  height: 30px;\n  font-size: 1.5rem;\n  border: none;\n  background-color: #f1f1f1;\n}\n.form-group input[data-v-4e9217ca] {\n  width: 100%;\n}\n.image img[data-v-4e9217ca] {\n  padding: 1rem;\n}", ""]);
 
 // exports
 

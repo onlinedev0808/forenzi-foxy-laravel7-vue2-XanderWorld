@@ -1,12 +1,15 @@
 //! Width
+.w-5 {
+    width: 5%;
+}
 .w-35 {
     width: 35%;
 }
-.w-65 {
-    width: 65%;
-}
 .w-40 {
     width: 40%;
+}
+.w-65 {
+    width: 65%;
 }
 .w-60 {
     width: 60%;
@@ -21,6 +24,8 @@ $white: #fff;
 $gray: #f1f1f1;
 
 .bg-orange {
+    min-width: fit-content;
+
     background-color: $orange;
     border-radius: 0px;
 }
@@ -29,6 +34,8 @@ $gray: #f1f1f1;
 }
 
 .bg-yellow {
+    min-width: fit-content;
+
     background-color: $yellow;
     border-radius: 0px;
     color: white;
@@ -50,7 +57,6 @@ $gray: #f1f1f1;
 //! Button styles
 
 .yellow-button {
-
     background-color: #fdbc48;
     border: none;
     border-radius: 0px;
@@ -70,7 +76,6 @@ $gray: #f1f1f1;
 }
 
 .dark-button {
-
     background-color: #000000;
     border: none;
     border-radius: 0px;

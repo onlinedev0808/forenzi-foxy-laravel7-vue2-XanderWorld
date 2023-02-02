@@ -21,7 +21,6 @@
                                 alt="img2"
                             />
                         </div>
-                       
 
                         <div class="card-body text-center p-1">
                             <span class="card-title">SCATOLE</span>
@@ -43,15 +42,10 @@
 </template>
 
 <script>
-import LoadingComponent from "../MainComponents/LoadingComponent.vue";
-
 export default {
-    components: {
-        LoadingComponent,
-    },
+    components: {},
     props: {
         category: Array,
-        loadingCategories: Boolean,
     },
     data() {
         return {};

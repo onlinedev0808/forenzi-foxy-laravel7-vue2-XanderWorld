@@ -27,7 +27,7 @@ export default {};
 
 <style lang="scss" scoped>
 .FooterBottom {
-    width: 100vw;
+    width: 100%;
     background-color: black;
     color: white;
 

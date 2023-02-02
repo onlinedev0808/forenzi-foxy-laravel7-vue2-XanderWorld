@@ -2,14 +2,17 @@
     <div class="home">
         <div class="container">
             <div class="row justify-content-center">
-                <NavBoxesComponent
-                    :loadingCategories="loadingCategories"
-                    v-for="category in categories"
-                    :key="category.id"
-                    :category="category"
-                />
-                <div @click="goToPersonalizePage">
-                    <CustomizeBoxesComponent />
+                <loadingComponent v-if="loadingCategories" />
+                
+                <div class="d-flex" v-else>
+                    <NavBoxesComponent
+                        v-for="category in categories"
+                        :key="category.id"
+                        :category="category"
+                    />
+                    <div @click="goToPersonalizePage">
+                        <CustomizeBoxesComponent />
+                    </div>
                 </div>
 
                 <JumboComponent />
@@ -45,6 +48,8 @@
 
 <script>
 import axios from "axios";
+import LoadingComponent from "../components/MainComponents/LoadingComponent.vue";
+
 import NavBoxesComponent from "../components/MainComponents/NavBoxesComponent.vue";
 import BannerNewsComponent from "../components/MainComponents/BannerNewsComponent.vue";
 import BannerTextComponent from "../components/MainComponents/BannerTextComponent.vue";
@@ -56,6 +61,8 @@ import CustomizeBoxesComponent from "../components/MainComponents/CustomizeBoxes
 export default {
     name: "HomeComponent",
     components: {
+        LoadingComponent,
+
         NavBoxesComponent,
         BannerNewsComponent,
         BannerTextComponent,
@@ -97,6 +104,7 @@ export default {
         },
         getCategories(pageCategories = 1) {
             this.loadingCategories = true;
+            console.log(this.loadingCategories);
             axios
                 .get("/api/categories", {
                     page: pageCategories,
@@ -109,6 +117,7 @@ export default {
                         response.data.results.currentPage;
                     this.lastPageCategories = response.data.results.lastPage;
                     this.loadingCategories = false;
+                    console.log(this.loadingCategories);
                 })
                 .catch((error) => {
                     console.warn(error.message);

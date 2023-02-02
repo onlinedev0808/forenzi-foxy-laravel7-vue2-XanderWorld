@@ -26,7 +26,7 @@
                                         @input="emitQuantity"
                                         type="number"
                                         min="1"
-                                        placeholder="inserisci la quantità"
+                                        placeholder=""
                                     />
                                     <h2 v-if="txtQ" class="mx-2">
                                         {{ txtQ }}
@@ -45,7 +45,7 @@
                                         @input="emitInputValues"
                                         type="number"
                                         min="1"
-                                        placeholder="inserisci il lato lungo"
+                                        placeholder=""
                                     />
                                     <h2 v-if="txtOne" class="mx-2">
                                         {{ txtOne }}
@@ -64,7 +64,7 @@
                                         v-if="letterTwo"
                                         type="number"
                                         min="1"
-                                        placeholder="inserisci il lato corto"
+                                        placeholder=""
                                     />
                                     <h2 v-if="txtTwo" class="mx-2">
                                         {{ txtTwo }}
@@ -83,7 +83,7 @@
                                         v-if="letterThree"
                                         type="number"
                                         min="1"
-                                        placeholder="inserisci l'altezza"
+                                        placeholder=""
                                     />
                                     <h2 v-if="txtThree" class="mx-2">
                                         {{ txtThree }}
@@ -152,10 +152,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../sass/global.scss";
-.bg-yellow {
-    background-color: $orange;
-    min-width: fit-content;
-}
 
 h2 {
     font-size: 1.5rem;
@@ -174,7 +170,6 @@ h2 {
 }
 
 .inputs .bg-yellow {
-    background-color: $orange;
     color: white;
     display: flex;
     height: 60px;
