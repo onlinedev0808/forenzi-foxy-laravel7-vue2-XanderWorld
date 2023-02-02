@@ -1,5 +1,6 @@
 import VueRouter from "vue-router";
 import Vue from "vue";
+
 Vue.use(VueRouter);
 
 import HomePage from "./pages/HomePage";
@@ -27,19 +28,9 @@ const router = new VueRouter({
             component: CartPage,
         },
         {
-            path: "/checkout",
-            name: "checkout",
-            component: CheckoutPage,
-        },
-        {
             path: "/showvone",
             name: "showvone",
             component: ShowVonePage,
-        },
-        {
-            path: "/cart",
-            name: "cart",
-            component: CartPage,
         },
         {
             path: "/checkout",

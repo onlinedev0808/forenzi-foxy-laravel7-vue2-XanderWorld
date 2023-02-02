@@ -13,165 +13,256 @@
                     <div class="col-6">
                         <div class="mobile h5">Billing Address</div>
                         <div class="py-5" id="details">
-                            <form>
+                            <v-form ref="entryForm">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="">NOME</label>
-                                            <div
-                                                class="d-flex jusify-content-start align-items-center p-2"
-                                            >
-                                                <input type="text" value="" />
+                                            <!-- <label class="">NOME</label> -->
+                                            <div class="d-flex jusify-content-start align-items-center p-2">
+                                                <v-text-field 
+                                                    label="NOME" 
+                                                    v-model="first_name" 
+                                                    :error-messages="firstNameErrors"
+                                                    required
+                                                    @input="$v.first_name.$touch()"
+                                                    @blur="$v.first_name.$touch()"
+                                                ></v-text-field>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="">COGNOME</label>
-                                            <div
-                                                class="d-flex jusify-content-start align-items-center p-2"
-                                            >
-                                                <input type="text" value="" />
+                                            <!-- <label class="">COGNOME</label> -->
+                                            <div class="d-flex jusify-content-start align-items-center p-2">
+                                                <v-text-field 
+                                                    label="COGNOME" 
+                                                    v-model="last_name" 
+                                                    :error-messages="lastNameErrors"
+                                                    required
+                                                    @input="$v.last_name.$touch()"
+                                                    @blur="$v.last_name.$touch()"
+                                                ></v-text-field>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
+                                    <!-- <label class="">RAGIONE SOCIALE</label> -->
+                                    <div class="d-flex jusify-content-start align-items-center p-2" >
+                                        <!-- COGNOME
+                                        <input type="text" v-model="business_name" /> -->
+                                        <v-text-field 
+                                            label="RAGIONE SOCIALE" 
+                                            v-model="business_name" 
+                                            :error-messages="businessNameErrors"
+                                            required
+                                            @input="$v.business_name.$touch()"
+                                            @blur="$v.business_name.$touch()"
+                                        ></v-text-field>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <!-- <label class="">INDIRIZZO</label> -->
+                                    <div class="d-flex jusify-content-start align-items-center p-2">
+                                        <!-- <input type="text" v-model="address" /> -->
+                                        <v-text-field 
+                                            label="INDIRIZZO" 
+                                            v-model="address" 
+                                            :error-messages="addressErrors"
+                                            required
+                                            @input="$v.address.$touch()"
+                                            @blur="$v.address.$touch()"
+                                        ></v-text-field>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="form-group">
                                     <label class="">RAGIONE SOCIALE</label>
-                                    <div
-                                        class="d-flex jusify-content-start align-items-center p-2"
-                                    >
+                                    <div class="d-flex jusify-content-start align-items-center p-2">
                                         <input type="text" value="" />
+                                    </div>
+                                </div> -->
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <!-- <label class="">CAP</label> -->
+                                            <div
+                                                class="d-flex jusify-content-start align-items-center p-2"
+                                            >
+                                                <!-- <input type="text" v-model="cap" /> -->
+                                                <v-text-field 
+                                                    label="CAP" 
+                                                    v-model="cap" 
+                                                    :error-messages="capErrors"
+                                                    required
+                                                    @input="$v.cap.$touch()"
+                                                    @blur="$v.cap.$touch()"
+                                                ></v-text-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <!-- <label class="">CITTÀ</label> -->
+                                            <div
+                                                class="d-flex jusify-content-start align-items-center p-2"
+                                            >
+                                                <!-- <input type="text" v-model="city" /> -->
+                                                <v-text-field 
+                                                    label="CITTÀ" 
+                                                    v-model="city" 
+                                                    :error-messages="cityErrors"
+                                                    required
+                                                    @input="$v.city.$touch()"
+                                                    @blur="$v.city.$touch()"
+                                                ></v-text-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <!-- <label class="">PROVINCIA</label> -->
+                                            <div
+                                                class="d-flex jusify-content-start align-items-center p-2"
+                                            >
+                                                <!-- <input type="text" v-model="province" /> -->
+                                                <v-text-field 
+                                                    label="PROVINCIA" 
+                                                    v-model="province" 
+                                                    :error-messages="provinceErrors"
+                                                    required
+                                                    @input="$v.province.$touch()"
+                                                    @blur="$v.province.$touch()"
+                                                ></v-text-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <!-- <label class="">STATO</label> -->
+                                            <div
+                                                class="d-flex jusify-content-start align-items-center p-2"
+                                            >
+                                                <!-- <input type="text" v-model="state" /> -->
+                                                <v-text-field 
+                                                    label="STATO" 
+                                                    v-model="state" 
+                                                    :error-messages="stateErrors"
+                                                    required
+                                                    @input="$v.state.$touch()"
+                                                    @blur="$v.state.$touch()"
+                                                ></v-text-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <!-- <label class="">TELEFONO</label> -->
+                                            <div
+                                                class="d-flex jusify-content-start align-items-center p-2"
+                                            >
+                                                <!-- <input type="text" v-model="phone" /> -->
+                                                <v-text-field 
+                                                    label="TELEFONO" 
+                                                    v-model="phone" 
+                                                    :error-messages="phoneErrors"
+                                                    required
+                                                    @input="$v.phone.$touch()"
+                                                    @blur="$v.phone.$touch()"
+                                                ></v-text-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <!-- <label class="">MAIL</label> -->
+                                            <div
+                                                class="d-flex jusify-content-start align-items-center p-2"
+                                            >
+                                                <!-- <input type="text" value="" /> -->
+                                                <v-text-field 
+                                                    label="MAIL"
+                                                    :value="mail"
+                                                    readonly
+                                                ></v-text-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <!-- <label class="">PEC</label> -->
+                                            <div
+                                                class="d-flex jusify-content-start align-items-center p-2"
+                                            >
+                                                <!-- <input type="text" v-model="pec" /> -->
+                                                <v-text-field 
+                                                    label="PEC" 
+                                                    v-model="pec" 
+                                                    :error-messages="pecErrors"
+                                                    required
+                                                    @input="$v.pec.$touch()"
+                                                    @blur="$v.pec.$touch()"
+                                                ></v-text-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <!-- <label class="">CODICE SDI</label> -->
+                                            <div
+                                                class="d-flex jusify-content-start align-items-center p-2"
+                                            >
+                                                <!-- <input type="text" v-model="code_sdi" /> -->
+                                                <v-text-field 
+                                                    label="CODICE SDI" 
+                                                    v-model="code_sdi" 
+                                                    :error-messages="codeSdiErrors"
+                                                    required
+                                                    @input="$v.code_sdi.$touch()"
+                                                    @blur="$v.code_sdi.$touch()"
+                                                ></v-text-field>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="">INDIRIZZO</label>
-                                    <div
-                                        class="d-flex jusify-content-start align-items-center p-2"
-                                    >
-                                        <input type="text" value="" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="">RAGIONE SOCIALE</label>
-                                    <div
-                                        class="d-flex jusify-content-start align-items-center p-2"
-                                    >
-                                        <input type="text" value="" />
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="">CAP</label>
-                                            <div
-                                                class="d-flex jusify-content-start align-items-center p-2"
-                                            >
-                                                <input type="text" value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="">CITTÀ</label>
-                                            <div
-                                                class="d-flex jusify-content-start align-items-center p-2"
-                                            >
-                                                <input type="text" value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="">PROVINCIA</label>
-                                            <div
-                                                class="d-flex jusify-content-start align-items-center p-2"
-                                            >
-                                                <input type="text" value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="">STATO</label>
-                                            <div
-                                                class="d-flex jusify-content-start align-items-center p-2"
-                                            >
-                                                <input type="text" value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="">TELEFONO</label>
-                                            <div
-                                                class="d-flex jusify-content-start align-items-center p-2"
-                                            >
-                                                <input type="text" value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="">MAIL</label>
-                                            <div
-                                                class="d-flex jusify-content-start align-items-center p-2"
-                                            >
-                                                <input type="text" value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="">PEC</label>
-                                            <div
-                                                class="d-flex jusify-content-start align-items-center p-2"
-                                            >
-                                                <input type="text" value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="">CODICE SDI</label>
-                                            <div
-                                                class="d-flex jusify-content-start align-items-center p-2"
-                                            >
-                                                <input type="text" value="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class=""
+                                    <!-- <label class=""
                                         >NOTE ORDINE (opzionale)</label
-                                    >
+                                    > -->
                                     <div
                                         class="d-flex jusify-content-start align-items-center p-2"
                                     >
-                                        <textarea
+                                        <!-- <v-textarea
                                             cols="200"
                                             id=""
                                             name=""
                                             rows="5"
-                                        ></textarea>
+                                            v-model="notes"
+                                        ></v-textarea> -->
+                                        <v-textarea
+                                            label="NOTE ORDINE (opzionale)" 
+                                            v-model="notes" 
+                                            :error-messages="notesErrors"
+                                            required
+                                            @input="$v.notes.$touch()"
+                                            @blur="$v.notes.$touch()"
+                                        ></v-textarea>
                                     </div>
                                 </div>
-                            </form>
+                            </v-form>
                         </div>
                     </div>
                     <div class="summary col-6">
@@ -182,10 +273,9 @@
                                 <div class="h6">RIEPILOGO ORDINE</div>
                                 <div class="h6"><a href="/cart">Back</a></div>
                             </div>
-                            <div v-for="item in order.products">
-                                <div
-                                    class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom"
-                                >
+
+                            <!-- <div v-for="item in order.products">
+                                <div class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom">
                                     <div class="item pr-2">
                                         <img
                                             alt=""
@@ -228,6 +318,7 @@
                                     </div>
                                 </div>
                             </div>
+
 
                             <!-- <div
                                 class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom"
@@ -380,6 +471,7 @@
                                     name="terms"
                                     type="checkbox"
                                     value="agree"
+                                    ref="checkTerm"
                                 />
                                 Ho letto e accetto
                                 <strong> termini e condizioni </strong>
@@ -388,7 +480,7 @@
                                 <div
                                     class="col-md-12 my-4 d-flex justify-content-center w-100"
                                 >
-                                    <div class="btn text-uppercase">
+                                    <div class="btn text-uppercase" @click="transmitt()">
                                         PROCEDI CON L'ORDINE
                                     </div>
                                 </div>
@@ -402,39 +494,252 @@
 </template>
 
 <script>
+
+import { required, minLength, maxLength, email, between } from 'vuelidate/lib/validators'
 export default {
     data() {
         return {
             products: [],
             order: {},
             order_products: [],
-            computedPrice: 0,
-            quantity: 0,
-            subtotal: 0,
-            shipping_cost: 0,
-            conai: 0,
-            iva: 0,
-            total: 0,
-        };
+
+			computedPrice: 0,
+			quantity: 0,
+			subtotal: 0,
+			shipping_cost: 0,
+			conai: 0,
+			iva: 0,
+			total: 0,
+
+            first_name: '',
+            last_name: '',
+            surname: '',
+            business_name: '',
+            notes: '',
+            address: '',
+            phone: '',
+            city: '',
+            cap: '',
+            province: '',
+            state: '',
+            pec: '',
+            code_sdi: '',
+            mail:'',
+
+            first_name_error: ['error'],
+            last_name_error: ['error'],
+            business_name_error: ['error'],
+            address_error: ['error'],
+            cap_error: ['error'],
+            city_error: ['error'],
+            province_error: ['error'],
+            state_error: ['error'],
+            phone_error: ['error'],
+            pec_error: ['error'],
+            code_sdi_error: ['error'],
+            notes_error: ['error'],
+		}
+	},
+
+    validations: {
+        first_name: { required, maxLength: maxLength(10) },
+        last_name: { required, maxLength: maxLength(10) },
+        business_name: { required, maxLength: maxLength(15) },
+        address: { required },
+        cap: { required },
+        city: { required },
+        province: { required },
+        state: { required },
+        phone: { required },
+        // mail: { required },
+        pec: { required },
+        code_sdi: { required },
+        notes: { required },
+    },
+
+    computed: {
+        firstNameErrors () {
+            const errors = []
+            this.first_name_error = []
+            if (!this.$v.first_name.$dirty) {this.first_name_error.push('error');return errors;}
+            !this.$v.first_name.maxLength && errors.push('Must be at most 10 characters long') && this.first_name_error.push('error')
+            !this.$v.first_name.required && errors.push('First Name is required.') && this.first_name_error.push('error')
+            return errors;
+        },
+
+        lastNameErrors () {
+            const errors = []
+            this.last_name_error = []
+            if (!this.$v.last_name.$dirty) {this.last_name_error.push('error');return errors;}
+            !this.$v.last_name.maxLength && errors.push('Must be at most 10 characters long') && this.last_name_error.push('error')
+            !this.$v.last_name.required && errors.push('Last Name is required.') && this.last_name_error.push('error')
+            return errors
+        },
+
+        businessNameErrors () {
+            const errors = []
+            this.business_name_error = []
+            if (!this.$v.business_name.$dirty) {this.business_name_error.push('error');return errors;}
+            !this.$v.business_name.maxLength && errors.push('Must be at most 10 characters long') && this.business_name_error.push('error')
+            !this.$v.business_name.required && errors.push('Business Name is required.') && this.business_name_error.push('error')
+            return errors
+        },
+
+        addressErrors () {
+            const errors = []
+            this.address_error = []
+            if (!this.$v.address.$dirty) {this.address_error.push('error');return errors;}
+            !this.$v.address.required && errors.push('ADDRESS is required.') && this.address_error.push('error')
+            return errors
+        },
+
+        capErrors () {
+            const errors = []
+            this.cap_error = []
+            if (!this.$v.cap.$dirty) {this.cap_error.push('error');return errors;}
+            !this.$v.cap.required && errors.push('POSTAL CODE is required.') && this.cap_error.push('error')
+            return errors
+        },
+
+        cityErrors () {
+            const errors = []
+            this.city_error = []
+            if (!this.$v.city.$dirty) {this.city_error.push('error');return errors;}
+            !this.$v.city.required && errors.push('CITY is required.') && this.city_error.push('error')
+            return errors
+        },
+
+        provinceErrors () {
+            const errors = []
+            this.province_error = []
+            if (!this.$v.province.$dirty) {this.province_error.push('error');return errors;}
+            !this.$v.province.required && errors.push('PROVINCE is required.') && this.province_error.push('error')
+            return errors
+        },
+
+        stateErrors () {
+            const errors = []
+            this.state_error = []
+            if (!this.$v.state.$dirty) {this.state_error.push('error');return errors;}
+            !this.$v.state.required && errors.push('STATE is required.') && this.state_error.push('error')
+            return errors
+        },
+
+        phoneErrors () {
+            const errors = []
+            this.phone_error = []
+            if (!this.$v.phone.$dirty) {this.phone_error.push('error');return errors;}
+            !this.$v.phone.required && errors.push('TELEPHONE is required.') && this.phone_error.push('error')
+            return errors
+        },
+
+        // mailErrors () {
+        //     const errors = []
+        //     this.mail_error = []
+        //     if (!this.$v.mail.$dirty) {this.mail_error.push('error');return errors;}
+        //     !this.$v.mail.required && errors.push('MAIL is required.') && this.mail_error.push('error')
+        //     return errors
+        // },
+
+        pecErrors () {
+            const errors = []
+            this.pec_error = []
+            if (!this.$v.pec.$dirty) {this.pec_error.push('error');return errors;}
+            !this.$v.pec.required && errors.push('PEC is required.') && this.pec_error.push('error')
+            return errors
+        },
+
+        codeSdiErrors () {
+            const errors = []
+            this.code_sdi_error = []
+            if (!this.$v.code_sdi.$dirty) {this.code_sdi_error.push('error');return errors;}
+            !this.$v.code_sdi.required && errors.push('SDI CODE is required.') && this.code_sdi_error.push('error')
+            return errors
+        },
+
+        notesErrors () {
+            const errors = []
+            this.notes_error = []
+            if (!this.$v.notes.$dirty) {this.notes_error.push('error');return errors;}
+            !this.$v.notes.required && errors.push('NOTES is required.') && this.notes_error.push('error')
+            return errors
+        },
     },
     methods: {
-        getOrders() {
+        getUserInfo() {
             axios
-                .put("/api/orders")
+                .get("api/user", {})
                 .then((response) => {
-                    this.order = response.data.results;
-                    this.subtotal = parseFloat(this.order.subtotal);
-                    this.shipping_cost = parseFloat(this.order.shipping_cost);
-                    this.conai = parseFloat(this.order.conai);
-                    this.iva = parseFloat(this.order.iva);
-                    this.total = parseFloat(this.order.total);
+                    this.mail = response.data.email;
                 })
-                .catch((error) => {
-                    console.log(error.message);
+                .catch((error) => {});
+        },
+
+        getOrders() {
+
+            axios.put('/api/orders', {})
+            .then(response => {
+                this.order = response.data.results;
+				this.subtotal = parseFloat(this.order.subtotal);
+				this.shipping_cost = parseFloat(this.order.shipping_cost);
+				this.conai = parseFloat(this.order.conai);
+				this.iva = parseFloat(this.order.iva);
+				this.total = parseFloat(this.order.total);
+            })
+            .catch(error => {
+                console.log(error.message);
+            });
+
+        },
+        
+        transmitt() {
+            this.$v.$touch();
+            if (
+                this.first_name_error.length == 0 && 
+                this.last_name_error.length == 0 &&
+                this.business_name_error.length == 0 &&
+                this.address_error.length == 0 &&
+                this.cap_error.length == 0 &&
+                this.city_error.length == 0 &&
+                this.cap_error.length == 0 &&
+                this.province_error.length == 0 &&
+                this.state_error.length == 0 &&
+                this.pec_error.length == 0 &&
+                this.code_sdi_error.length == 0 &&
+                this.notes_error.length == 0 &&
+                this.$refs.checkTerm.checked
+            ) {
+                axios.post(`/api/orders/transmit/id`, {
+                    user_detail: {
+                        surname: this.first_name + " " + this.last_name,
+                        business_name: this.business_name,
+                        notes: this.notes,
+                        address: this.address,
+                        phone: this.phone,
+                        city: this.city,
+                        cap: this.cap,
+                        province: this.province,
+                        state: this.state,
+                        pec: this.pec,
+                        code_sdi: this.code_sdi,
+                    },
+                    payment: {
+                        amount: this.total,
+                    },
+                })
+                .then(res => {
+                    if (res) {
+                        alert("Success transmitted!");
+                    } 
+                    else {
+                        alert("Failed!");
+                    }
                 });
+            }
         },
     },
     mounted() {
+        this.getUserInfo();
         this.getOrders();
     },
 };
