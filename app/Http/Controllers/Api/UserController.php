@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -50,9 +51,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $user = User::with('userDetail')->with('orders')->findOrFail($id);
+        $user = User::with('userDetail')->with('orders')->where('id', Auth::id())->first();
         return response()->json([
             "response" => true,
             "results" => $user
