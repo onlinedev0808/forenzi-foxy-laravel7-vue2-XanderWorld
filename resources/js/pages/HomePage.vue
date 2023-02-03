@@ -31,7 +31,7 @@
                     :product="product"
                 />
 
-                <HolidayComponent />
+                <!-- <HolidayComponent /> -->
             </div>
         </div>
 
