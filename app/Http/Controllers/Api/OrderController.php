@@ -84,7 +84,6 @@ class OrderController extends Controller
         }
         else
         {
-            
             $orderLog = new Order();
             $orderLog->user_id = $id;
             $orderLog->order_number = random_int(1, 23234342);
@@ -261,7 +260,17 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = DB::table('order_product')->where(
+            'product_id', $id
+        )->delete();
+        if ($product['order_id'])
+            return response() -> json([
+                "response" => false
+            ]);
+        else
+            return response() -> json([
+                "response" => true
+            ]);
     }
 
     // transmit shipping & payment information

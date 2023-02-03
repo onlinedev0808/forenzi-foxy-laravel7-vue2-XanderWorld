@@ -13,11 +13,12 @@
 
                             <div class="product">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 item">
                                         <img
                                             class="img-fluid mx-auto d-block image"
-                                            src="../../../public/Links/cat-scatole-maniglie-aperte.jpg"
+                                            src="https://static.wixstatic.com/media/2cd43b_0fe4090271224c51a780c0cccb961b83~mv2_d_2132_2400_s_2.png/v1/fill/w_320,h_360,q_90/2cd43b_0fe4090271224c51a780c0cccb961b83~mv2_d_2132_2400_s_2.png"
                                         />
+                                        <a type="button" class="delete" @click="deleteProduct(item)">X</a>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="info">
@@ -84,7 +85,7 @@
                                                 <div class="col-md-3 price">
                                                     <div
                                                         style="
-                                                            white-space: nowrap;
+                                                            white-space: nowrap
                                                         "
                                                     >
                                                         <label for="id1"
@@ -237,8 +238,6 @@ export default {
             axios
                 .get("/api/products", {})
                 .then((response) => {
-                    console.log("products");
-                    console.log(response.data.results);
                     this.products = response.data.results;
                 })
                 .catch((error) => {
@@ -261,6 +260,7 @@ export default {
                     console.log(error.message);
                 });
         },
+
         test(item) {
             this.subtotal += item.pivot.quantity * parseFloat(item.price);
 
@@ -282,6 +282,7 @@ export default {
             this.conai = ((this.subtotal * 22) / 100.0).toFixed(2);
             this.total = this.subtotal + this.conai + this.iva;
         },
+
         checkout() {
             axios.post("/api/orders/id", this.params).then((res) => {
                 console.log(res);
@@ -291,6 +292,18 @@ export default {
                 }
             });
         },
+
+        deleteProduct(item) {
+            axios.delete(`/api/orders/${item.pivot.product_id}`, {})
+            .then(res => {
+                if (res.data.response == true)
+                    alert("Cancelled");
+                if (res.data.response == false)
+                    alert("Failed");
+                this.getOrders();
+                this.test(item);
+            });
+        }
     },
     mounted() {
         axios.get("/api/users").then((res) => {
@@ -436,5 +449,28 @@ export default {
         border: 1px solid lightgray;
         outline: none;
     }
+}
+
+.item img {
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.item {
+    position: relative;
+}
+.delete {
+    position: absolute;
+    cursor: pointer;
+    font-weight: 800;
+    color: #fff;
+    background-color: orange;
+    padding-left: 4px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    width: 25px;
+    height: 25px;
+    top: 0px;
+    right: 0px;
 }
 </style>

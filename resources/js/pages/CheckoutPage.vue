@@ -273,7 +273,7 @@
                                 <div class="h6">RIEPILOGO ORDINE</div>
                                 <div class="h6"><a href="/cart">Back</a></div>
                             </div>
-                            <!-- <div v-for="item in order.products">
+                            <div v-for="item in order.products">
                                 <div class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom">
                                     <div class="item pr-2">
                                         <img
@@ -312,7 +312,7 @@
                                         </strong>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             
                             <!-- <div
                                 class="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom"
@@ -722,6 +722,7 @@ export default {
             .then(res => {
                 if (res) {
                     alert("Success transmitted!");
+                    this.$router.replace({ path: '/confirm/'});
                 } 
                 else {
                     alert("Failed!");
