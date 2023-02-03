@@ -9,11 +9,19 @@
                         class="card d-flex align-items-center position-relative"
                         :class="category.color"
                     >
-                        <img
-                            class="card-img-top"
-                            :src="category.img"
-                            alt="img"
-                        />
+                        <router-link
+                            :to="{
+                                name: 'category',
+                                params: { id: category.id },
+                            }"
+                        >
+                            <img
+                                class="card-img-top"
+                                :src="category.img"
+                                alt="img"
+                            />
+                        </router-link>
+
                         <div class="litlogo position-absolute">
                             <img
                                 class="img-fluid"

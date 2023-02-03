@@ -4,10 +4,9 @@
             <div class="right">
                 <div class="d-flex">
                     <div class="w-75">
-                        <h2 class="fw-bold">Scatola a 2 Onde</h2>
+                        <h2 class="fw-bold">{{ category.name }}</h2>
                         <h6 class="fw-bold">
-                            Scatole di cartone due onde. La scelta ideale per
-                            contenere prodotti pesanti e fragili!
+                            {{ category.description }}
                         </h6>
                         <!-- <div class="stars">
                         <i v-for="n in 5" :key="n" class="far fa-star"></i>
@@ -18,26 +17,19 @@
                             <span>IVA esclusa</span>
                         </div>
                         <p>
-                            Cerchi scatole resistenti, che proteggano i tuoi
-                            prodotti, acquistando in modo Sicuro al 100%?
-                            Complimenti, sei sull’e-commerce delle Originali
-                            Semprepronte®, le Scatole di Cartone in Pronta
-                            Consegna N.1 in Italia. Fai arrivare integro il tuo
-                            prodotto a destinazione, scegli tra 1500 Formati con
-                            la Convenienza del produttore. Acquista sicuro
-                            grazie alla speciale GARANZIA
+                            {{ category.description }}
                         </p>
                     </div>
                     <div class="w-25 p-5">
                         <img
                             class="img-fluid"
-                            src="https://www.pngmart.com/files/7/Box-PNG-Free-Download.png"
+                            :src="category.img"
                             alt=""
                         />
                     </div>
                 </div>
 
-                <div class="d-flex text-center fs-5">
+                <!-- <div class="d-flex text-center fs-5">
                     <div class="orange w-60 p-2 m-1">
                         <i class="fas fa-info-circle"> </i
                         ><strong> SCONTO </strong><span>FOX</span
@@ -54,7 +46,7 @@
                         <input type="checkbox" />
                         <strong>SCONTO 10%</strong> Totale ordine da €1.000
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -65,6 +57,7 @@ export default {
     data() {
         return {
             value: 100,
+            category: {},
         };
     },
     methods: {
@@ -74,6 +67,23 @@ export default {
         decreaseValue() {
             this.value -= 10;
         },
+        getCategory() {
+            axios
+                .get(`/api/categories/${this.$route.params.id}`)
+                .then((response) => {
+                    this.category = response.data.results;
+                    console.log(this.category);
+                })
+                .catch((error) => {
+                    console.warn(error.message);
+                });
+        },
+    },
+    created() {
+        this.getCategory();
+    },
+    mounted() {
+        window.scrollTo(0, 0);
     },
 };
 </script>
