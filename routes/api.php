@@ -36,7 +36,7 @@ Route::namespace('api')->group(function () {
     
     Route::get('/cart/{id}', 'OrderController@create');
 
-    Route::get('/users/{id}', 'UserController@show');
+    Route::get('/user/detail', 'UserController@show');
     Route::get('/user', function(Request $request) {     
         return response()->json([
             'name' => Auth::user()->name,

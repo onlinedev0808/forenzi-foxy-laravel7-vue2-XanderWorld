@@ -9,7 +9,7 @@
                         </div>
                         <div class="invoice p-5">
                             <h5>Your order Confirmed!</h5> 
-                            <span class="font-weight-bold d-block mt-4">Hello, Chris</span> 
+                            <span class="font-weight-bold d-block mt-4">Hello, {{ this.surname }}</span> 
                             <span>You order has been confirmed and will be shipped in next two days!</span>
                             <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
                             <table class="table table-borderless">
@@ -30,14 +30,13 @@
                                         <td>
                                             <div class="py-2"> 
                                                 <span class="d-block text-muted">Payment</span> 
-                                                <!-- <span><img src="https://img.icons8.com/color/48/000000/mastercard.png" width="20"></span>  -->
-                                                <span>{{ this.payment_method }}</span>
+                                                <span><img src="https://img.icons8.com/color/48/000000/mastercard.png" width="20"></span> 
                                             </div>
                                         </td>
                                         <td>
                                             <div class="py-2"> 
                                                 <span class="d-block text-muted">Shiping Address</span> 
-                                                <span></span> 
+                                                <span>{{ this.address }}</span> 
                                             </div>
                                         </td>
                                     </tr>
@@ -165,6 +164,8 @@ export default {
             conai: 0,
             iva: 0,
             total: 0,
+            address: '',
+            surname: '',
         };
     },
     methods: {
@@ -173,21 +174,32 @@ export default {
             .put("/api/orders")
             .then((response) => {
                 this.order = response.data.results;
-                console.log("**************", this.order);
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+        },
+        getUser() {
+            axios
+            .get("api/user/detail", {})
+            .then((response) => {
+                this.order = response.data.results.orders[0];
                 this.subtotal = parseFloat(this.order.subtotal);
                 this.conai = parseFloat(this.order.conai);
                 this.iva = parseFloat(this.order.iva);
                 this.total = parseFloat(this.order.total);
                 this.order_date = this.order.order_date;
                 this.order_number = this.order.order_number;
+                
+                this.address = response.data.results.user_detail.address;
+                this.surname = response.data.results.user_detail.surname;
             })
-            .catch((error) => {
-                console.log(error.message);
-            });
+            .catch((error) => {});
         },
     },
     mounted() {
         this.getOrders();
+        this.getUser();
     }
 };
 </script>
